@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dasdhboard New</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-toggler">
+
+        <div class="container-fluid flex-column">
+
+            <ul class="navbar-nav w-100 flex-row">
+
+                <button class="btn btn-primary d-lg-none d-inline" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    Toggle
+                  </button>
+
+                <li class="nav-item">
+                    <img class="hello-logo1 m-2" src="images/hellodoc-logo.png" alt="">
+                </li>
+
+                <li class="nav-item navbar-right ml-auto">
+
+                    <span class="wlcm">Welcome <span style="font-weight: 500;">Admin admin2</span></span>
+
+                    <button type="button" class="btn btn-outline-info mx-2 lo">Logout</button>
+
+                    <button type="button" class="btn btn-outline-info mx-2 lo-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                            <path fill-rule="evenodd"
+                                d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                        </svg>
+                    </button>
+
+                    <button type="button" class="btn btn-outline-info px-0 moon-img">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-moon" viewBox="0 0 16 16">
+                            <path
+                                d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- <hr class="bg-dark"> -->
+
+            <div class="collapse navbar-collapse w-100 d-none d-lg-inline" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-underline">
+                    <li class="nav-item mx-2">
+                        <a href="" class="nav-link active  text-info">Dashboard</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="" class="nav-link">Provider Location</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="" class="nav-link">My Profile</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="" class="nav-link">Providers</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="" class="nav-link">Partners</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="" class="nav-link">Access</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="" class="nav-link">Records</a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class=" offcanvas offcanvas-start d-sm-block d-lg-none bg-white" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav nav-underline">
+                        <li class="nav-item mx-2">
+                            <a href="" class="nav-link active  text-info">Dashboard</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="" class="nav-link">Provider Location</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="" class="nav-link">My Profile</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="" class="nav-link">Providers</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="" class="nav-link">Partners</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="" class="nav-link">Access</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="" class="nav-link">Records</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            
+
+        </div>
+
+    </nav>
+
+
+    <div class="container-fluid my-4">
+        <div class="row w-100">
+
+            <button type="button" class="btn btn-link col-md-2 col-4"
+                onclick="myFunction('blue','blu1', 'bluecol', 'blue-icon-white', 'blue-icon')">
+                <img src="images/tri-blue.svg" alt="" class="dnone" id="blu1">
+                <span class="badge bdg-1 w-100" id="blue">
+                    <img class="new-badge m-2" src="images/new.svg" alt="" id="blue-icon">
+                    <img class="new-badge m-2 dnone" src="images/new - Copy.svg" alt="" id="blue-icon-white">
+                    <span class="h6">NEW</span>
+                    <p class="h4 ml-2 fw-bold">1452</p>
+                </span>
+            </button>
+
+            <button type="button" class="btn btn-link col-md-2 col-4"
+                onclick="myFunction('sky','sky1', 'skycol','sky1-icon-white', 'sky-icon')">
+                <img src="images/tri-sky.svg" alt="" class="dnone" id="sky1">
+                <span class="badge bdg-2 bg-info-subtle text-info w-100" id="sky">
+                    <img class="new-badge m-2" src="images/pending.svg" alt="" id="sky-icon">
+                    <img class="new-badge  m-2 dnone" src="images/pending - Copy.svg" alt="" id="sky1-icon-white">
+                    <span class="h6">PENDING</span>
+                    <p class="h4 ml-2 fw-bold">266</p>
+                </span>
+            </button>
+
+            <button type="button" class="btn btn-link col-md-2 col-4"
+                onclick="myFunction('green','grn1','grncol','grn1-icon-white','grn-icon')">
+                <img src="images/tri-green.svg" alt="" class="dnone" id="grn1">
+                <span class="badge bdg-3 bg-success-subtle text-success w-100" id="green">
+                    <img class="new-badge m-2" src="images/active.svg" alt="" id="grn-icon">
+                    <img class="new-badge m-2 dnone" src="images/active - Copy.svg" alt="" id="grn1-icon-white">
+                    <span class="h6">ACTIVE</span>
+                    <p class="h4 ml-2 fw-bold">26</p>
+                </span>
+            </button>
+
+            <button type="button" class="btn btn-link col-md-2 col-4"
+                onclick="myFunction('pink','pink1','pinkcol','pink1-icon-white','pink-icon')">
+                <img src="images/tri-pink.svg" alt="" class="dnone" id="pink1">
+                <span class="badge bdg-4 w-100" id="pink">
+                    <img class="new-badge m-2" src="images/conclude.svg" alt="" id="pink-icon">
+                    <img class="new-badge m-2 dnone" src="images/conclude - Copy.svg" alt="" id="pink1-icon-white">
+                    <span class="h6">CONCLUDE</span>
+                    <p class="h4 ml-2 fw-bold">1078</p>
+                </span>
+            </button>
+
+            <button type="button" class="btn btn-link col-md-2 col-4"
+                onclick="myFunction('light-blue','l-blu1','l-bluecol','l-blu1-icon-white','l-blue-icon')">
+                <img src="images/tri-lightblue.svg" alt="" class="dnone" id="l-blu1">
+                <span class="badge bdg-5 bg-primary-subtle text-primary w-100" id="light-blue">
+                    <img class="new-badge m-2" src="images/to_close.svg" alt="" id="l-blue-icon">
+                    <img class="new-badge m-2 dnone" src="images/to_close - Copy.svg" alt="" id="l-blu1-icon-white">
+                    <span class="h6">TO CLOSE</span>
+                    <p class="h4 ml-2 fw-bold">519</p>
+                </span>
+            </button>
+
+            <button type="button" class="btn btn-link col-md-2 col-4"
+                onclick="myFunction('purple','purple1','purplecol','purple1-icon-white','purple-icon')">
+                <img src="images/tri-purple.svg" alt="" class="dnone" id="purple1">
+                <span class="badge bdg-6 w-100" id="purple">
+                    <img class="new-badge m-2" src="images/unpaid.svg" alt="" id="purple-icon">
+                    <img class="new-badge m-2 dnone" src="images/unpaid - Copy.svg" alt="" id="purple1-icon-white">
+                    <span class="h6">UNPAID</span>
+                    <p class="h4 ml-2 fw-bold">16</p>
+                </span>
+            </button>
+
+        </div>
+    </div>
+
+    <div class="container-fluid mt-5">
+        <div class="d-flex flex-row">
+            <span class="h3 fs-6-sm">Patients <span>(New)</span></span>
+            <button type="button" class="btn btn-info ml-auto mx-2">
+                <img src="images/link.svg" alt="">
+                <span class="btn-span">Send Link</span>
+            </button>
+            <button type="button" class="btn btn-info mr-2">
+                <img src="images/req.svg" alt="">
+                <span class="btn-span">Create Requests</span>
+            </button>
+            <button type="button" class="btn btn-info mr-2">
+                <img src="images/export 1.svg" alt="">
+                <span class="btn-span">Export</span>
+            </button>
+            <button type="button" class="btn btn-info mr-2">
+                <img src="images/exxport.svg" alt="">
+                <span class="btn-span">Export All</span>
+            </button>
+            <button type="button" class="btn btn-info">
+                <img src="images/person1.svg" alt="">
+                <span class="btn-span">Request DTY Support</span>
+            </button>
+        </div>
+
+
+
+        <div class="container-fluid my-3">
+            <div class="row">
+                <input type="text" class="form-control uname col-md-3 col-12 mb-1" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Search Patients" onclick="myFunction2(uname, uicon2)">
+                <!-- <img class="uicon2 mx-2" src="images/search.svg" alt=""> -->
+                <select id="Select" class="form-select form-control mx-2 col-md-3 col-12" onclick="myFunction2(uname, uicon3)">
+                    <option>All Regions</option>
+                </select>
+                <!-- <img class="uicon3" src="images/search.svg" alt=""> -->
+                <button style="width: 50px;" type="button" class="btn btn-outline-dark ml-auto btnall">
+                    All
+                </button>
+                <span class="col-md-5 col-12">
+                    <span class="mr-3 my-1">
+                        <span class="cir1"></span>
+                        <span>Patient</span>
+                    </span>
+                    <span class="mr-3 my-1">
+                        <span class="cir2"></span>
+                        <span>Family/Friend</span>
+                    </span>
+                    <span class="mr-3 my-1">
+                        <span class="cir3"></span>
+                        <span>Business</span>
+                    </span>
+                    <span class="mr-3 my-1">
+                        <span class="cir4"></span>
+                        <span>Conceirge</span>
+                    </span>
+                    <span class="my-1">
+                        <span class="cir5"></span>
+                        <span>VIP</span>
+                    </span>
+                </span>
+            </div>
+        </div>
+
+
+        <div class="container-fluid table-responsive">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Date Of Birth</th>
+                        <th scope="col">Requestor</th>
+                        <th scope="col">Requested Date</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Notes</th>
+                        <th scope="col">Chat With</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row" class="bg-success text-white">test,test<img class="p-1"
+                                style="border: 1px solid white; border-radius: 4px; display: inline;"
+                                src="images/envelope.svg" alt=""></td>
+                        <td class="bg-success text-white">Jun 16, 2023(0)</td>
+                        <td class="bg-success text-white">Patient test, test</td>
+                        <td class="bg-success text-white">Nov 20, 0223 335h 2m 02m</td>
+                        <td class="bg-success text-white"><span style="border: 1px solid white; border-radius: 4px;"
+                                class="p-1">+1(202) 456-1237 </span>(Patient)</td>
+                        <td class="bg-success text-white">Room Location : 101</td>
+                        <td class="bg-success text-white">-</td>
+                        <td class="bg-success text-white"><span style="border: 1px solid white; border-radius: 4px;"
+                                class="p-1"><img src="images/person1.svg" alt="">Provider</span></td>
+                        <td class="bg-success text-white"><span style="border: 1px solid white; border-radius: 4px;"
+                                class="p-1">Actions</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
