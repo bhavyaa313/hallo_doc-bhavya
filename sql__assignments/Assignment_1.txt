@@ -1,0 +1,10 @@
+1. SELECT ProductID, ProductName, UnitPrice from products  where UnitPrice < 20;
+
+
+2. SELECT ProductID, ProductName, UnitPrice from products  where UnitPrice < 20 and UnitPrice > 15;
+3. SELECT ProductName, UnitPrice from products  where UnitPrice > (select AVG(UnitPrice) from products);
+4. SELECT ProductName, UnitPrice from products 
+   order by UnitPrice desc
+   limit 10;
+5. SELECT count(Discontinued) , Discontinued from products group by Discontinued; 
+6. SELECT ProductName, UnitsInStock , UnitsOnOrder from products where UnitsOnorder > UnitsInStock;

@@ -1,0 +1,39 @@
+use northwind;
+1. SELECT 
+    MAX(employee.salary),
+    MAX(employee.emp_name),
+    department.dept_name
+   FROM
+    employee
+        INNER JOIN
+    department ON department.dept_id = employee.dept_id
+   GROUP BY employee.dept_id;
+
+
+
+2. SELECT 
+     department.dept_name
+   FROM
+     department
+        LEFT JOIN
+    employee ON department.dept_id = employee.dept_id
+   GROUP BY department.dept_id
+   HAVING COUNT(employee.dept_id) < 3;
+
+
+3. SELECT 
+     department.dept_name, COUNT(employee.emp_id)
+   FROM
+     department
+        LEFT JOIN
+      employee ON department.dept_id = employee.dept_id
+   GROUP BY department.dept_id;
+
+
+4. SELECT 
+     department.dept_name, SUM(employee.salary)
+   FROM
+     department
+        LEFT JOIN
+    employee ON department.dept_id = employee.dept_id
+   GROUP BY department.dept_id;
