@@ -62,3 +62,43 @@ function myFunction2(boxid, searchid) {
     c[1].classList.add("dnone")
 }
 
+function changebg(){
+
+    const btn = document.getElementById('btnnn');
+
+btn.addEventListener('click', function onClick(event) {
+  // 👇️ change background color
+  document.body.style.backgroundColor = 'black';
+
+  // 👇️ optionally change text color
+  // document.body.style.color = 'white';
+});
+}
+
+
+function myFunctions() {
+    var element = document.body;
+
+    element.classList.toggle("dark-mode");
+
+    var navbarElements = document.querySelectorAll('.navbar-nav a.nav-link, .navbar-nav .btn .dm');
+    navbarElements.forEach(function (element) {
+        element.classList.toggle("text-dark");
+    });
+}
+
+
+document.getElementsByClassName('drill_cursor')[0]
+.addEventListener('click', function (event) {
+    // do something
+    document.getElementById('input_file').click();
+    changePlaceholder();
+    
+})
+function changePlaceholder() { 
+    $('input[type="file"]').change(function (e) {
+        const names = e.target.files[0].name;
+    
+        $('#txt').attr('placeholder', names); 
+    });
+} 
