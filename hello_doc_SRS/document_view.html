@@ -12,6 +12,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="card_view.css">
 
     <script src="js/custom.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -148,12 +149,12 @@
                         <input type="file" name="" id="input_file" hidden>
                         <input type="text" class="form-control col-form-label-lg " id="txt" onclick="open_file"
                             placeholder="Upload " aria-label="Upload" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-info bg-info" type="button" onclick="open_file()"
+                        <button class="btn btn-outline-info bg-info " type="button" onclick="open_file()"
                             id="button-addon2">
                             <img src="images/cloud-arrow-up.svg" alt="">
-                            <span style="color: white;">Upload</span>
+                            <span style="color: white;" class="lo">Upload</span>
                         </button>
-                    </div>
+                       
                 </div>
             </div>
         </div>
@@ -161,9 +162,55 @@
             <h4 class="mx-2">Documents</h4>
             <div class="ms-auto "> <a href="select.html" type="button" class="btn btn-outline-info mx-2 lo">
                    Download all</a>
+                   
+                   <button type="button" class="btn btn-outline-info mx-2 lo-btn">
+                   <img src="images/download-svgrepo-com.svg" alt="">
+                </button>
             </div>
 
         </div>
+
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Uploader</th>
+                <th scope="col">Upload Date</th>
+                <th scope="col">Action</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                
+                <td><div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked >
+                    <label class="form-check-label" for="flexCheckChecked">
+                     
+                    </label>
+                  </div></td>
+                <td>test</td>
+                <td>2 aug, 2023</td>
+                <td>   <button type="button" class="btn btn-outline-info mx-2 ">
+                    <img src="images/download-svgrepo-com.svg" alt="">
+                 </button></td>
+              </tr>
+              <tr>
+                <td><div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked >
+                    <label class="form-check-label" for="flexCheckChecked">
+                     
+                    </label>
+                  </div></td>
+                <td>test</td>
+                <td>2 aug, 2023</td>
+                <td>   <button type="button" class="btn btn-outline-info mx-2 ">
+                    <img src="images/download-svgrepo-com.svg" alt="">
+                 </button></td>
+              </tr>
+          
+            </tbody>
+          </table>
 
 
     </div>
