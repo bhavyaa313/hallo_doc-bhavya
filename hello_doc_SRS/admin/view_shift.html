@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Shift</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        View Shift
+    </button>
+    <!--   
+   Modal  -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">View Shift</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>Maryland</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Region</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>Nikunj</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Physician</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <!-- <input type="date" class="form-control" id="floatingInput"
+                    mailto:placeholder="name@example.com">
+                <label for="floatingInput">Date of Birth</label> -->
+                        <input type="text" id="uname" class="form-control" placeholder="Date Of Birth"
+                            onfocus="(this.type='date')"></input>
+                        <label for="floatingInput" class="dm">Date of Birth</label>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col-md col-12">
+                            <div class="form-floating mb-3">
+                                <input type="time" class="form-control" id="floatingInput" placeholder="rttttttth">
+                                <label for="floatingInput" class="dm">Start</label>
+                            </div>
+                        </div>
+                        <div class="col-md col-12">
+                            <div class="form-floating mb-3">
+                                <input type="time" class="form-control" id="floatingInput" placeholder="trr">
+                                <label for="floatingInput" class="dm">End</label>
+                            </div>
+                        </div>
+                    </div>
+                  
+
+
+
+
+                    
+
+
+
+
+
+
+
+
+
+
+
+                  
+
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-info">Edit</button>
+                    <button type="button" class="btn btn-info" data-bs-dismiss="modal">Return</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#yourModalId').modal('show');
+        });
+    </script>
+   
+
+    </script>
+
+ 
+
+
+
+
+
+</body>
+
+</html>

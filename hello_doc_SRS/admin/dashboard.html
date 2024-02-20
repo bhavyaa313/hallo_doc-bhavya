@@ -13,9 +13,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/custom.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         body {
 
@@ -93,11 +91,19 @@
                         <a href="" class="nav-link">Provider Location</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a href="" class="nav-link">My Profile</a>
+                        <a href="my_profile.html" class="nav-link">My Profile</a>
                     </li>
-                    <li class="nav-item mx-2">
-                        <a href="" class="nav-link">Providers</a>
-                    </li>
+                    <li class="nav-item dropdown mx-2">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
+                          <li><a class="dropdown-item" href="#">Scheduling</a></li>
+                          
+                          <li><a class="dropdown-item" href="#">Invoicing</a></li>
+                        </ul>
+                      </li>
                     <li class="nav-item mx-2">
                         <a href="" class="nav-link">Partners</a>
                     </li>
@@ -122,7 +128,7 @@
                             <a href="" class="nav-link">Provider Location</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="" class="nav-link">My Profile</a>
+                            <a href="my_profile.html" class="nav-link">My Profile</a>
                         </li>
                         <li class="nav-item mx-2">
                             <a href="" class="nav-link">Providers</a>
@@ -222,14 +228,14 @@
     <div class="container-fluid mt-5">
         <div class="d-flex flex-row">
             <span class="h3 fs-6-sm">Patients <span>(New)</span></span>
-            <button type="button" class="btn btn-info ml-auto mx-2">
+            <button type="button" class="btn btn-info ml-auto mx-2" data-bs-toggle="modal" data-bs-target="#send_mail">
                 <img src="images/link.svg" alt="">
                 <span class="btn-span">Send Link</span>
             </button>
-            <button type="button" class="btn btn-info mr-2">
+            <a   href="new_request.html" type="button" class="btn btn-info mr-2">
                 <img src="images/req.svg" alt="">
-                <span class="btn-span">Create Requests</span>
-            </button>
+                <span class="btn-span text-white">Create Requests</span>
+            </a>
             <button type="button" class="btn btn-info mr-2">
                 <img src="images/export 1.svg" alt="">
                 <span class="btn-span">Export</span>
@@ -238,7 +244,7 @@
                 <img src="images/exxport.svg" alt="">
                 <span class="btn-span">Export All</span>
             </button>
-            <button type="button" class="btn btn-info">
+            <button type="button" class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#req">
                 <img src="images/person1.svg" alt="">
                 <span class="btn-span">Request DTY Support</span>
             </button>
@@ -314,14 +320,337 @@
                         <td class="bg-success text-white">-</td>
                         <td class="bg-success text-white"><span style="border: 1px solid white; border-radius: 4px;"
                                 class="p-1"><img src="images/person1.svg" alt="">Provider</span></td>
-                        <td class="bg-success text-white"><span style="border: 1px solid white; border-radius: 4px;"
-                                class="p-1">Actions</span></td>
+                        <td class="bg-success " > <a class=" dropdown-toggle btn btn-outline-white  "   style="border: 1px solid white; border-radius: 4px;" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                           Actions
+                        </a>
+
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#assign" >assign Case</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#cancel">cancel case</a></li>
+                            <li><a class="dropdown-item" href="view_case.html">view case</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#clear">clear case</a></li>
+                            <li><a class="dropdown-item" href="close_case.html">close case</a></li>
+                            <li><a class="dropdown-item" href="view_notes.html">view notes</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#block">Block Patients</a></li>
+                            <li><a class="dropdown-item" href="View_uploads.html">view uploads</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#transfer">transfer</a></li>
+                            <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#send">send agreement</a></li>
+                            <li><a class="dropdown-item" href="orders.html">orders</a></li>
+                            <li><a class="dropdown-item" href="#">doctors notes</a></li>
+
+                            <li><a class="dropdown-item" href="#">encounter</a></li>
+                        </ul>
+</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
     </div>
+
+    <div class="modal fade" id="assign" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+              <h1 class="modal-title fs-5 " id="exampleModalLabel">Assign Case</h1>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              
+                <p mb-3>To assign this request search and select another Physician </p>
+    
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                      <option selected>Maryland</option>
+                      <option value="1" >One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                    <label for="floatingSelect">Narrow Search By region</label>
+                  </div>
+    
+                  <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                      <option selected></option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                    <label for="floatingSelect">Select Physician</label>
+                  </div>
+    
+                  <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Description</label>
+                  </div>
+                
+            </div>
+            <div class="modal-footer">
+             
+              <button type="button" class="btn btn-info">Submit</button>
+              <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="cancel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+              <h1 class="modal-title fs-5 " id="exampleModalLabel">Confirm Cancellation</h1>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              
+                <p mb-3>Patient Name: <span class="text-info">test test</span> </p>
+    
+                
+    
+                  <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                      <option selected></option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                    <label for="floatingSelect">Reasons for Cancellation</label>
+                  </div>
+    
+                  <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Provide Additional Notes</label>
+                  </div>
+                
+            </div>
+            <div class="modal-footer">
+              
+              <button type="button" class="btn btn-info">Confirm</button>
+              <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+      <div class="modal fade" id="clear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+          
+                <div class="modal-content rounded-4">
+                    <div class="modal-body">
+                        <div class="mb-2 pt-3 pb-3">
+                            <img src="images/modal.svg"
+                                class="border img-fluid border-warning p-1 rounded-circle d-block m-auto " alt="...">
+                        </div>
+                        <h5 class=" d-flex justify-content-center ms-auto">Confirmation for clear case</h5>
+                        <p class=" d-flex justify-content-center text-center">Are sure you want to clear this request? Once clear this request then you are not able to see this request.</p>
+                    </div>
+                    <div class="modal-footer border-top-0 pb-5 d-flex justify-content-center">
+            
+                        <button type="button" class="btn btn-info  text-white btn-lg "
+                            data-bs-dismiss="modal">clear</button>
+                            <button type="button" class="btn btn-info  text-white btn-lg "
+
+                            data-bs-dismiss="modal">cancel</button>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    
+        <div class="modal fade" id="block" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h1 class="modal-title fs-5 " id="exampleModalLabel">Assign Case</h1>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                    <p mb-3>Patient Name: <span class="text-info">test test</span> </p>
+        
+                    
+                      <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Reason for  Block Request</label>
+                      </div>
+                    
+                </div>
+                <div class="modal-footer">
+                 
+                  <button type="button" class="btn btn-info">Confirm</button>
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+
+          <div class="modal fade" id="transfer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h1 class="modal-title fs-5 " id="exampleModalLabel">Transfer Request</h1>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                    <p mb-3>To transfer this request, search and select another Physician.  </p>
+        
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                          <option selected>Maryland</option>
+                          <option value="1" >One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Narrow Search By region</label>
+                      </div>
+        
+                      <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                          <option selected></option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Select Physician</label>
+                      </div>
+        
+                      <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Description</label>
+                      </div>
+                    
+                </div>
+                <div class="modal-footer">
+                
+                  <button type="button" class="btn btn-info">Submit</button>
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+          <div class="modal fade" id="send" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h1 class="modal-title fs-5 " id="exampleModalLabel">Send Agreement</h1>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                    
+                      <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          Patient
+                        </label>
+                      </div>
+                      <p>To Send Agreement please make sure you are updating the current contact information below for the responsible party.</p>
+                      <div class="form-floating mb-3">
+                        <input type="number" class="form-control"  placeholder="Number">
+                        <label for="floatingPassword">Phone Number</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                      </div>
+                    
+                    
+        
+                    
+                    
+                </div>
+                <div class="modal-footer">
+          
+                  <button type="button" class="btn btn-info">Send</button>
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modal fade" id="req" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h1 class="modal-title fs-5 " id="exampleModalLabel">Request Support</h1>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                    <p mb-3>To all unscheduled Physicians: We are short on coverage and needs additional support On call to respond to requests.</p>
+        
+                    
+                      <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Message</label>
+                      </div>
+                    
+                </div>
+                <div class="modal-footer">
+                 
+                  <button type="button" class="btn btn-info">Send</button>
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+        
+
+          <div class="modal fade" id="send_mail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h3 class="modal-title fs-5 " id="exampleModalLabel">Send mail to patient for submitting request</h3>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                   
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="name">
+                        <label for="floatingInput">First Name</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="name">
+                        <label for="floatingInput">last Name</label>
+                      </div>
+        
+        
+        
+                      <div class="form-floating mb-3">
+                        <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list" id="phone">
+        
+                    </div>
+        
+                      <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                      </div>
+                  
+        
+        
+        
+        
+        
+                </div>
+                <div class="modal-footer">
+                
+                  <button type="button" class="btn btn-info">Send</button>
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+        
+
     <script>
         function myFunctions() {
             var element = document.body;
@@ -334,7 +663,15 @@
             });
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+</script>
+
 </body>
 
 </html>
