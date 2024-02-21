@@ -306,6 +306,9 @@ footer {
    .btnall {
     display: none;
    }
+   .form-check {
+    width: 104px;
+}
 }
 
 .offcanvas-backdrop  {

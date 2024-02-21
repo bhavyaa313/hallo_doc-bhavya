@@ -175,7 +175,8 @@
                 </div>
                 <div class="col-md">
                     <div class="form-floating">
-                        <select class="form-select dropdwn" id="floatingSelect " aria-label="Floating label select example">
+                        <select class="form-select dropdwn" id="floatingSelect "
+                            aria-label="Floating label select example">
                             <option selected>All</option>
                             <option value="1">Admin</option>
                             <option value="2">Patient</option>
@@ -186,7 +187,7 @@
                 </div>
             </div>
             <div id="roles">
-                <div class="d-flex flex-row  ">
+                <div class="d-flex flex-row  flex-wrap ">
                     <div class="p-2 mx-1">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -259,8 +260,6 @@
                         </div>
                     </div>
 
-                </div>
-                <div class="d-flex flex-row  ">
                     <div class="p-2 mx-1 ">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -332,10 +331,6 @@
 
                         </div>
                     </div>
-
-                </div>
-
-                <div class="d-flex flex-row  ">
                     <div class="p-2 mx-1 ">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -400,8 +395,8 @@
                     </div>
 
 
-                </div>
-                <div class="d-flex flex-row  ">
+
+
                     <div class="p-2 mx-1">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -411,9 +406,18 @@
 
                         </div>
                     </div>
+
+
                 </div>
 
-              
+
+
+
+
+
+
+
+
             </div>
 
 
@@ -423,7 +427,7 @@
 
 
             <div id="roles_provider">
-                <div class="d-flex flex-row  ">
+                <div class="d-md-flex flex-md-row  ">
                     <div class="p-2 mx-1">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -477,16 +481,16 @@
 
                         </div>
                     </div>
-                 
-                   
+
+
 
                 </div>
-             
 
-               
-                
 
-              
+
+
+
+
             </div>
             <div class="mt-4 d-flex flex-row-reverse mb-3 ">
 
@@ -495,9 +499,9 @@
 
 
             </div>
-       
 
-        
+
+
 
 
 
@@ -520,40 +524,42 @@
         }
     </script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function(){
-        
-        $('.dropdwn').click(function(){
-            // var selectedValue = $(this).val();
-            var selectedValue = $('.dropdwn').find(":selected").val()
-            console.log(selectedValue);
-            if(selectedValue == '1' || selectedValue.toLowerCase() == 'all')
-            {
-                $('#roles').show();
-            } else {
-                $('#roles').hide();
-            }
-        });
-    });
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
 
-    $(document).ready(function(){
-      
-        $('.dropdwn').click(function(){
-            var selectedValue = $('.dropdwn').find(":selected").val()
-            if(selectedValue == '3')
-           {
-                $('#roles_provider').show();
-            } else {
-                $('#roles_provider').hide();
-            }
+            $('.dropdwn').click(function () {
+                // var selectedValue = $(this).val();
+                var selectedValue = $('.dropdwn').find(":selected").val()
+                console.log(selectedValue);
+                if (selectedValue == '1' || selectedValue.toLowerCase() == 'all') {
+                    $('#roles').show();
+                } else {
+                    $('#roles').hide();
+                }
+            });
         });
-    });
-</script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        $(document).ready(function () {
+
+            $('.dropdwn').click(function () {
+                var selectedValue = $('.dropdwn').find(":selected").val()
+                if (selectedValue == '3') {
+                    $('#roles_provider').show();
+                } else {
+                    $('#roles_provider').hide();
+                }
+            });
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
     <script>

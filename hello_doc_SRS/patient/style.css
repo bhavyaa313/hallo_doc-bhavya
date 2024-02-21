@@ -1,0 +1,28 @@
+.uname{
+    position: relative;
+}
+.uicon{
+    position: absolute;
+    margin-top: -37px;
+    margin-left: 40%;
+    z-index: 999;
+}
+
+.hero{
+   height: 800px;
+   width: auto;
+   margin-bottom: 100%;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .div1 {
+      display: none;
+    }
+  }
+
+.logo{
+    height: 70px;
+    margin-left: 0%;
+    
+}

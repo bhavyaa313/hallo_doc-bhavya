@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Dasdhboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/custom.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+
+            background-color: white;
+            color: black;
+
+        }
+
+
+        .dark-mode {
+            background-color: black !important;
+            color: white !important;
+        }
+
+        .text-dark {
+            color: #f5f0f0 !important;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-toggler">
+
+        <div class="container-fluid flex-column">
+
+            <ul class="navbar-nav w-100 flex-row">
+
+
+
+                <button class="btn btn-outline-info d-lg-none d-inline" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    <img src="images/icons8-menu.svg" alt="">
+                </button>
+
+                <li class="nav-item">
+                    <img class="hello-logo1 m-2" src="images/hellodoc-logo.png" alt="">
+                </li>
+
+                <li class="nav-item navbar-right ml-auto">
+
+                    <span class="wlcm">Welcome <span style="font-weight: 500;">provider p</span></span>
+
+                    <button type="button" class="btn btn-outline-info mx-2 lo">Logout</button>
+
+                    <button type="button" class="btn btn-outline-info mx-2 lo-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                            <path fill-rule="evenodd"
+                                d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                        </svg>
+                    </button>
+
+                    <button type="button" class="btn btn-outline-info px-0 moon-img" onclick="myFunctions()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-moon" viewBox="0 0 16 16">
+                            <path
+                                d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- <hr class="bg-dark"> -->
+
+            <div class="collapse navbar-collapse w-100 d-none d-lg-inline" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-underline">
+                    <li class="nav-item mx-2">
+                        <a href="provider_dashboard.html" class="nav-link active  text-info">Dashboard</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="" class="nav-link">Invoicing</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="" class="nav-link">My Schedule</a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <a href="my_profile.html" class="nav-link">My Profile</a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+            <div class=" offcanvas offcanvas-start d-sm-block d-lg-none bg-white" tabindex="-1" id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav nav-underline">
+                        <li class="nav-item mx-2">
+                            <a href="provider_dashboard.html" class="nav-link active  text-info">Dashboard</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="" class="nav-link">Invoicing</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="" class="nav-link">My Schedule</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="my_profile.html" class="nav-link">My Profile</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </nav>
+
+
+    <div class="container-fluid my-4">
+        <div class="row w-100">
+
+            <button type="button" class="btn btn-link col-md-2 col-4"
+                onclick="myFunction('blue','blu1', 'bluecol', 'blue-icon-white', 'blue-icon')">
+                <img src="images/tri-blue.svg" alt="" class="dnone" id="blu1">
+                <span class="badge bdg-1 w-100" id="blue">
+                    <img class="new-badge m-2" src="images/new.svg" alt="" id="blue-icon">
+                    <img class="new-badge m-2 dnone" src="images/new - Copy.svg" alt="" id="blue-icon-white">
+                    <span class="h6">NEW</span>
+                    <p class="h4 ml-2 fw-bold">1452</p>
+                </span>
+            </button>
+
+            <button type="button" class="btn btn-link col-md-2 col-4"
+                onclick="myFunction('sky','sky1', 'skycol','sky1-icon-white', 'sky-icon')">
+                <img src="images/tri-sky.svg" alt="" class="dnone" id="sky1">
+                <span class="badge bdg-2 bg-info-subtle text-info w-100" id="sky">
+                    <img class="new-badge m-2" src="images/pending.svg" alt="" id="sky-icon">
+                    <img class="new-badge  m-2 dnone" src="images/pending - Copy.svg" alt="" id="sky1-icon-white">
+                    <span class="h6">PENDING</span>
+                    <p class="h4 ml-2 fw-bold">266</p>
+                </span>
+            </button>
+
+            <button type="button" class="btn btn-link col-md-2 col-4"
+                onclick="myFunction('green','grn1','grncol','grn1-icon-white','grn-icon')">
+                <img src="images/tri-green.svg" alt="" class="dnone" id="grn1">
+                <span class="badge bdg-3 bg-success-subtle text-success w-100" id="green">
+                    <img class="new-badge m-2" src="images/active.svg" alt="" id="grn-icon">
+                    <img class="new-badge m-2 dnone" src="images/active - Copy.svg" alt="" id="grn1-icon-white">
+                    <span class="h6">ACTIVE</span>
+                    <p class="h4 ml-2 fw-bold">26</p>
+                </span>
+            </button>
+
+            <button type="button" class="btn btn-link col-md-2 col-4"
+                onclick="myFunction('pink','pink1','pinkcol','pink1-icon-white','pink-icon')">
+                <img src="images/tri-pink.svg" alt="" class="dnone" id="pink1">
+                <span class="badge bdg-4 w-100" id="pink">
+                    <img class="new-badge m-2" src="images/conclude.svg" alt="" id="pink-icon">
+                    <img class="new-badge m-2 dnone" src="images/conclude - Copy.svg" alt="" id="pink1-icon-white">
+                    <span class="h6">CONCLUDE</span>
+                    <p class="h4 ml-2 fw-bold">1078</p>
+                </span>
+            </button>
+
+
+
+
+
+        </div>
+    </div>
+
+    <div class="container-fluid mt-5">
+        <div class="d-flex flex-row">
+            <span class="h3 fs-6-sm">Patients <span>(New)</span></span>
+            <button type="button" class="btn btn-info ml-auto mx-2" data-bs-toggle="modal" data-bs-target="#send_mail">
+                <img src="images/link.svg" alt="">
+                <span class="btn-span">Send Link</span>
+            </button>
+            <a   href="new_request.html" type="button" class="btn btn-info mr-2">
+                <img src="images/req.svg" alt="">
+                <span class="btn-span text-white">Create Requests</span>
+            </a>
+            
+        </div>
+
+
+
+        <div class="container-fluid my-3">
+            <div class="d-flex">
+                <input type="text" class="form-control uname col-md-3 col-12 mb-1" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Search Patients" onclick="myFunction2(uname, uicon2)">
+                <div class="ms-auto">
+                    <button style="width: 50px;" type="button" class="btn btn-outline-dark     ms-auto btnall ">
+                        All
+                    </button>
+                    <span class="col-md-5 col-12">
+                        <span class="mr-3 my-1">
+                            <span class="cir1"></span>
+                            <span>Patient</span>
+                        </span>
+                        <span class="mr-3 my-1">
+                            <span class="cir2"></span>
+                            <span>Family/Friend</span>
+                        </span>
+
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container-fluid table-responsive">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Date Of Birth</th>
+                        <th scope="col">Requestor</th>
+                        <th scope="col">Requested Date</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Notes</th>
+                        <th scope="col">Chat With</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row" class="bg-success text-white">test,test<img class="p-1"
+                                style="border: 1px solid white; border-radius: 4px; display: inline;"
+                                src="images/envelope.svg" alt=""></td>
+                        <td class="bg-success text-white">Jun 16, 2023(0)</td>
+                        <td class="bg-success text-white">Patient test, test</td>
+                        <td class="bg-success text-white">Nov 20, 0223 335h 2m 02m</td>
+                        <td class="bg-success text-white"><span style="border: 1px solid white; border-radius: 4px;"
+                                class="p-1">+1(202) 456-1237 </span>(Patient)</td>
+                        <td class="bg-success text-white">Room Location : 101</td>
+                        <td class="bg-success text-white">-</td>
+                        <td class="bg-success text-white"><span style="border: 1px solid white; border-radius: 4px;"
+                                class="p-1"><img src="images/person1.svg" alt="">Provider</span></td>
+                        <td class="bg-success "> <a class=" dropdown-toggle btn btn-outline-white  "
+                                style="border: 1px solid white; border-radius: 4px;" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </a>
+
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#assign">assign
+                                        Case</a></li>
+                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#cancel">cancel
+                                        case</a></li>
+                                <li><a class="dropdown-item" href="view_case.html">view case</a></li>
+                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#clear">clear
+                                        case</a></li>
+                                <li><a class="dropdown-item" href="close_case.html">close case</a></li>
+                                <li><a class="dropdown-item" href="view_notes.html">view notes</a></li>
+                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#block">Block
+                                        Patients</a></li>
+                                <li><a class="dropdown-item" href="View_uploads.html">view uploads</a></li>
+                                <li><a class="dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#transfer">transfer</a></li>
+                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#send">send
+                                        agreement</a></li>
+                                <li><a class="dropdown-item" href="orders.html">orders</a></li>
+                                <li><a class="dropdown-item" href="#">doctors notes</a></li>
+
+                                <li><a class="dropdown-item" href="#">encounter</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="assign" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Assign Case</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <p mb-3>To assign this request search and select another Physician </p>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>Maryland</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Narrow Search By region</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected></option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Select Physician</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                            style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Description</label>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-info">Submit</button>
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="cancel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Confirm Cancellation</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <p mb-3>Patient Name: <span class="text-info">test test</span> </p>
+
+
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected></option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Reasons for Cancellation</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                            style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Provide Additional Notes</label>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-info">Confirm</button>
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="clear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+
+            <div class="modal-content rounded-4">
+                <div class="modal-body">
+                    <div class="mb-2 pt-3 pb-3">
+                        <img src="images/modal.svg"
+                            class="border img-fluid border-warning p-1 rounded-circle d-block m-auto " alt="...">
+                    </div>
+                    <h5 class=" d-flex justify-content-center ms-auto">Confirmation for clear case</h5>
+                    <p class=" d-flex justify-content-center text-center">Are sure you want to clear this request? Once
+                        clear this request then you are not able to see this request.</p>
+                </div>
+                <div class="modal-footer border-top-0 pb-5 d-flex justify-content-center">
+
+                    <button type="button" class="btn btn-info  text-white btn-lg "
+                        data-bs-dismiss="modal">clear</button>
+                    <button type="button" class="btn btn-info  text-white btn-lg "
+                        data-bs-dismiss="modal">cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="block" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Assign Case</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <p mb-3>Patient Name: <span class="text-info">test test</span> </p>
+
+
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                            style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Reason for Block Request</label>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-info">Confirm</button>
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="transfer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Transfer Request</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <p mb-3>To transfer this request, search and select another Physician. </p>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>Maryland</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Narrow Search By region</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected></option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Select Physician</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                            style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Description</label>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-info">Submit</button>
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="send" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Send Agreement</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                            checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Patient
+                        </label>
+                    </div>
+                    <p>To Send Agreement please make sure you are updating the current contact information below for the
+                        responsible party.</p>
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" placeholder="Number">
+                        <label for="floatingPassword">Phone Number</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-info">Send</button>
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="req" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Request Support</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <p mb-3>To all unscheduled Physicians: We are short on coverage and needs additional support On call
+                        to respond to requests.</p>
+
+
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                            style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Message</label>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-info">Send</button>
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="send_mail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h3 class="modal-title fs-5 " id="exampleModalLabel">Send mail to patient for submitting request
+                    </h3>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="name">
+                        <label for="floatingInput">First Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="name">
+                        <label for="floatingInput">last Name</label>
+                    </div>
+
+
+
+                    <div class="form-floating mb-3">
+                        <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list" id="phone">
+
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+
+
+
+
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-info">Send</button>
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function myFunctions() {
+            var element = document.body;
+
+            element.classList.toggle("dark-mode");
+
+            var navbarElements = document.querySelectorAll('.navbar-nav a.nav-link, .navbar-nav .btn');
+            navbarElements.forEach(function (element) {
+                element.classList.toggle("text-dark");
+            });
+        }
+    </script>
+
+    <script>
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            utilsScript:
+                "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+    </script>
+
+</body>
+
+</html>

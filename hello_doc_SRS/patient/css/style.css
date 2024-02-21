@@ -1,0 +1,319 @@
+.main-img {
+    width: 100%;
+    height: 100%;
+}
+
+.main-img1 {
+    width: 100%;
+    height: 100%;
+}
+
+.column2 {
+    /* width: 100%; */
+    padding-bottom: 5%;
+}
+
+.moon-img {
+    width: 50px;
+    height: 40px;
+}
+
+.hello-logo {
+    width: 230px;
+    height: 110px;
+}
+
+.uname {
+    position: relative;
+}
+
+.uincon1 {
+    border: 1px solid rgb(206, 17, 17);
+}
+
+.uicon1, .uicon {
+    position: absolute;
+    margin-top: -35px;
+    margin-left: 92%;
+}
+
+footer {
+   
+    
+}
+
+.form-control:focus {
+    border-color: rgb(81, 188, 230);;
+    box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(67, 215, 252, 0.6);
+  }
+
+.form-floating>.form-control:focus~label {
+    color: rgb(19, 183, 224);
+}
+
+@media only screen and (max-width: 769px) {
+    .div1 {
+        display: none;
+    }
+    /* .moon-img {
+        width: 40%;
+        height: 30%;
+        margin: 0px;
+    } */
+    .uicon1, .uicon {
+        margin-left: 85%;
+    }
+}
+
+/* Admin Dashboard */
+
+.hello-logo1 {
+    width: 150px;
+    height: 70px;
+}
+
+.hello-logo {
+    width: 350px;
+    height: 170px;
+}
+
+.lo-btn {
+    display: none;
+}
+
+.new-badge {
+    width: 10%;
+    height: 10%;
+}
+
+.badge {
+    border-radius: 10px;
+}
+
+.uicon2 {
+    position: absolute;
+    margin-top: 13px;
+    display: inline;
+}
+
+.uicon3 {
+    position: absolute;
+    margin-left: 25%;
+    margin-top: 13px;
+    display: inline;
+}
+
+.cir1 {
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.cir2 {
+    height: 10px;
+    width: 10px;
+    background-color: orange;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.cir3 {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(216, 90, 172);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.cir4 {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(0, 119, 255);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.cir5 {
+    height: 10px;
+    width: 10px;
+    background-color: purple;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+
+
+
+
+.dnone {
+    display: none;
+}
+
+.dblock {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    height: 150px;
+    width: 62px;
+    top: 20%;
+    left: 35%;
+}
+
+.bdg-1 {
+    background-color: rgb(132, 132, 136);
+    border: 2px solid rgb(138, 137, 223);
+    text-align: left;
+    position: relative;
+}
+
+.bluecol {
+    background-color: #203F9A;
+    text-align: left;
+    position: relative;
+    color: white !important;
+    border: 0px;
+}
+
+
+.bdg-2 {
+    text-align: left;
+    border: 2px solid rgb(158, 214, 235);
+    position: relative;
+}
+
+.skycol {
+    background-color: #00ADEF !important ;
+    text-align: left;
+    position: relative;
+    color: white !important;
+    border: 0px;
+}
+
+.bdg-3 {
+    text-align: left;
+    border: 2px solid rgb(158, 235, 188);
+    position: relative;
+}
+
+.grncol {
+    background-color: #228C20 !important  ;
+    text-align: left;
+    position: relative;
+    color: white !important;
+    border: 0px;
+}
+
+
+.bdg-4 {
+    background-color: rgb(228, 207, 219);
+    color: rgb(159, 30, 163);
+    text-align: left;
+    border: 2px solid rgb(218, 172, 198);
+    position: relative;
+}
+
+.pinkcol {
+    background-color: #DA0F82 !important  ;
+    text-align: left;
+    position: relative;
+    color: white !important;
+    border: 0px;
+}
+
+.bdg-5 {
+    text-align: left;
+    border: 2px solid rgb(170, 176, 235);
+    position: relative;
+}
+
+.l-bluecol {
+    background-color: #0370D7 !important  ;
+    text-align: left;
+    position: relative;
+    color: white !important;
+    border: 0px;
+}
+
+
+.bdg-6 {
+    background-color: rgb(217, 204, 240);
+    color: rgb(128, 43, 226);
+    text-align: left;
+    border: 2px solid rgb(199, 178, 236);
+    position: relative;
+
+}
+
+.purplecol {
+    background-color: #9966CD !important  ;
+    text-align: left;
+    position: relative;
+    color: white !important;
+    border: 0px;
+}
+
+
+
+@media only screen and (max-width : 1025px) and (min-width : 768px) {
+    .dblock {
+        display: block;
+        position: absolute;
+        z-index: -1;
+        height: 105px;
+        width: 58px;
+        top: 20%;
+        left: 28%;
+    }
+}
+
+@media only screen and (max-width : 767px) {
+    .dblock {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    .nav-tog-btn {
+    border: 1px solid #17a2b8;
+    height: 40px;
+    width: 40px;
+    }
+   .badge {
+    width: 130px;
+   }
+   .new-badge {
+    display: none;
+   }
+   .wlcm {
+    display: none;
+   }
+   .lo{
+    display: none;
+   }
+   .lo-btn {
+    display: inline;
+   }
+   .hello-logo1 {
+    width: 100px;
+    height: 40px;
+   }
+   .btn-span {
+    display: none;
+   }
+   .btnall {
+    display: none;
+   }
+}
+
+.offcanvas-backdrop  {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: #000 !important ;
+    opacity: 0.3 !important;
+}
+
