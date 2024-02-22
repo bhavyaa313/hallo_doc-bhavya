@@ -88,13 +88,13 @@
     <body>
 
 
- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#care">
+ <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#care11">
    type_of_Care
   </button>
 <!--   
    Modal  -->
  
-   <div class="modal fade" id="care" tabindex="-1" aria-labelledby="exampleModalLabel"
+   <div class="modal fade" id="care11" tabindex="-1" aria-labelledby="exampleModalLabel"
    aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered">
        <div class="modal-content">
@@ -120,8 +120,44 @@
    </div>
 </div>
 
+               
+<script>
 
 
+
+
+
+    let metemp = false;
+    let elsetemp = false;
+
+    $('#mev').on('click', function () {
+        // $('#me').click();
+        metemp = true;
+        elsetemp = false;
+        console.log(metemp);
+    })
+    $('#elsev').on('click', function () {
+        // $('#else').click();
+        elsetemp = true;
+        metemp = false;
+        console.log(elsetemp);
+    })
+    $('#continue').on('click', function () {
+        if (metemp == true) {
+            alert("transferred to conclude state")
+            // document.location.href = 'submit_info_patient.html'
+            console.log("me")
+        }
+        else if (elsetemp == true) {
+            alert("Select the time")
+            // document.location.href = 'submit_info_else.html'
+            console.log("else")
+        }
+    })
+
+
+
+</script>
 
 
 
@@ -153,43 +189,7 @@
                     });
                 </script>
                
-               <script>
-
-
-
-
-
-                let metemp = false;
-                let elsetemp = false;
-        
-                $('#mev').on('click', function () {
-                    // $('#me').click();
-                    metemp = true;
-                    elsetemp = false;
-                    console.log(metemp);
-                })
-                $('#elsev').on('click', function () {
-                    // $('#else').click();
-                    elsetemp = true;
-                    metemp = false;
-                    console.log(elsetemp);
-                })
-                $('#continue').on('click', function () {
-                    if (metemp == true) {
-                        alert("transferred to conclude state")
-                        // document.location.href = 'submit_info_patient.html'
-                        console.log("me")
-                    }
-                    else if (elsetemp == true) {
-                        alert("Select the time")
-                        // document.location.href = 'submit_info_else.html'
-                        console.log("else")
-                    }
-                })
-        
-        
-        
-            </script>
+      
          
 
 
