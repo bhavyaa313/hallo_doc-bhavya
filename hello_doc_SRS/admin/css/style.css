@@ -320,3 +320,17 @@ footer {
     opacity: 0.3 !important;
 }
 
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: right;
+ }
+
+
+ .foot{
+    position: relative;
+ }

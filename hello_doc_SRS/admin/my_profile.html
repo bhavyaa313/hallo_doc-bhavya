@@ -93,26 +93,26 @@
         <nav class="navbar navbar-expand-lg navbar-toggler">
 
             <div class="container-fluid flex-column">
-    
+
                 <ul class="navbar-nav w-100 flex-row">
-    
-                   
-    
+
+
+
                     <button class="btn btn-outline-info d-lg-none d-inline" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    <img src="images/icons8-menu.svg" alt="">
-                </button>
-    
+                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        <img src="images/icons8-menu.svg" alt="">
+                    </button>
+
                     <li class="nav-item">
                         <img class="hello-logo1 m-2" src="images/hellodoc-logo.png" alt="">
                     </li>
-    
+
                     <li class="nav-item navbar-right ml-auto">
-    
+
                         <span class="wlcm">Welcome <span style="font-weight: 500;">Admin admin2</span></span>
-    
+
                         <button type="button" class="btn btn-outline-info mx-2 lo">Logout</button>
-    
+
                         <button type="button" class="btn btn-outline-info mx-2 lo-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -122,7 +122,7 @@
                                     d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
                             </svg>
                         </button>
-    
+
                         <button type="button" class="btn btn-outline-info px-0 moon-img" onclick="myFunctions()">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-moon" viewBox="0 0 16 16">
@@ -132,13 +132,13 @@
                         </button>
                     </li>
                 </ul>
-    
+
                 <!-- <hr class="bg-dark"> -->
-    
+
                 <div class="collapse navbar-collapse w-100 d-none d-lg-inline" id="navbarSupportedContent">
                     <ul class="navbar-nav nav-underline">
                         <li class="nav-item mx-2">
-                            <a href="" class="nav-link ">Dashboard</a>
+                            <a href="dashboard.html" class="nav-link ">Dashboard</a>
                         </li>
                         <li class="nav-item mx-2">
                             <a href="" class="nav-link">Provider Location</a>
@@ -147,53 +147,70 @@
                             <a href="my_profile.html" class="nav-link active  text-info">My Profile</a>
                         </li>
                         <li class="nav-item dropdown mx-2">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                             providers
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                providers
                             </a>
                             <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="#">Invoicing</a></li>
+                                <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Invoicing</a></li>
                             </ul>
-                          </li>
+                        </li>
                         <li class="nav-item mx-2">
                             <a href="vendor.html" class="nav-link">Partners</a>
                         </li>
                         <li class="nav-item dropdown mx-2">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Access
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
-                         
-                          </ul>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Access
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
+
+                            </ul>
                         </li>
                         <li class="nav-item dropdown mx-2">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Records
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
-                          </ul>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Records
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
-    
-    
-                <div class=" offcanvas offcanvas-start d-sm-block d-lg-none bg-white" tabindex="-1" id="offcanvasExample"
-                    aria-labelledby="offcanvasExampleLabel">
+
+
+                <div class=" offcanvas offcanvas-start d-sm-block d-lg-none bg-white" tabindex="-1"
+                    id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                     <div class="offcanvas-body">
                         <ul class="navbar-nav nav-underline">
                             <li class="nav-item mx-2">
@@ -206,61 +223,80 @@
                                 <a href="my_profile.html" class="nav-link active  text-info">My Profile</a>
                             </li>
                             <li class="nav-item dropdown mx-2">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Providers
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Invoicing</a></li>
-                              </ul>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Providers
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Invoicing</a></li>
+                                </ul>
                             </li>
                             <li class="nav-item mx-2">
                                 <a href="vendor.html" class="nav-link">Partners</a>
                             </li>
                             <li class="nav-item dropdown mx-2">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Access
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
-                             
-                              </ul>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Access
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
+
+                                </ul>
                             </li>
                             <li class="nav-item dropdown mx-2">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Records
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="patient_history.html">Block History</a></li>
-                                
-                              </ul>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Records
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="patient_history.html">Block History</a></li>
+
+                                </ul>
                             </li>
                         </ul>
                     </div>
                 </div>
-    
-    
-    
+
+
+
             </div>
-    
+
         </nav>
 
-
+<div class="foot">
         <div class="container-fluid bg-light ">
             <div class="row">
                 <div class=" col-md-2"></div>
@@ -518,7 +554,7 @@
 
                         <div class="mt-4 d-flex flex-row-reverse mb-3 ">
 
-                            <button type="submit" class="btn btn-info btn-lg">Edit</button>
+                            <button type="submit" class="btn btn-info btn-lg mb-3">Edit</button>
 
 
                         </div>
@@ -535,31 +571,45 @@
                         <div class="col-md-2"></div>
                     </div>
 
-                    <script
-                        src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-                    <script>
-                        $(document).ready(function () {
-                            $('#yourModalId').modal('show');
-                        });
-                    </script>
-                    <script>
-                        const phoneInputField = document.querySelector("#phone");
-                        const phoneInput = window.intlTelInput(phoneInputField, {
-                            utilsScript:
-                                "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-                        });
-                    </script>
-                    <script>
-                        const phoneInputField1 = document.querySelector("#phone1");
-                        const phoneInput1 = window.intlTelInput(phoneInputField1, {
-                            utilsScript:
-                                "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-                        });
-                    </script>
+
+                </div>
+              
+            </div>
+            
+
+          
+
+        </div>
+        <div class="footer d-flex  align-items-center justify-content-end mt-3 ">
+            <p class="mx-3 text-center mb-2 mt-2  ">Terms & conditions | privacy policy</p>
+          </div>
+    </div>   
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('#yourModalId').modal('show');
+            });
+        </script>
+        <script>
+            const phoneInputField = document.querySelector("#phone");
+            const phoneInput = window.intlTelInput(phoneInputField, {
+                utilsScript:
+                    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            });
+        </script>
+        <script>
+            const phoneInputField1 = document.querySelector("#phone1");
+            const phoneInput1 = window.intlTelInput(phoneInputField1, {
+                utilsScript:
+                    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            });
+        </script>
 
 
     </body>

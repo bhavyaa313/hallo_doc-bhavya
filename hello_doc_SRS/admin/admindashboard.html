@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin DashBoard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/custom.js"></script>
+
+
+</head>
+
+<body class="bg-light">
+
+    <!-- Navbar of the Page -->
+
+    <nav class="navbar navbar-expand-lg navbar-toggler">
+
+        <div class="container-fluid flex-column">
+
+            <ul class="navbar-nav w-100 flex-row">
+
+               
+
+                <button class="btn btn-outline-info d-lg-none d-inline" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                <img src="images/icons8-menu.svg" alt="">
+            </button>
+
+                <li class="nav-item">
+                    <img class="hello-logo1 m-2" src="images/hellodoc-logo.png" alt="">
+                </li>
+
+                <li class="nav-item navbar-right ml-auto">
+
+                    <span class="wlcm">Welcome <span style="font-weight: 500;">Admin admin2</span></span>
+
+                    <button type="button" class="btn btn-outline-info mx-2 lo d-sm-none">Logout</button>
+
+                    <button type="button" class="btn btn-outline-info mx-2 lo-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                            <path fill-rule="evenodd"
+                                d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                        </svg>
+                    </button>
+
+                    <button type="button" class="btn btn-outline-info px-0 moon-img" onclick="myFunctions()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-moon" viewBox="0 0 16 16">
+                            <path
+                                d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- <hr class="bg-dark"> -->
+
+            <div class="collapse navbar-collapse w-100 d-none d-lg-inline" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-underline">
+                    <li class="nav-item mx-2">
+                        <a href="" class="nav-link active  text-info">Dashboard</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="" class="nav-link">Provider Location</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a href="my_profile.html" class="nav-link">My Profile</a>
+                    </li>
+                    <li class="nav-item dropdown mx-2">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                         providers
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Invoicing</a></li>
+                        </ul>
+                      </li>
+                    <li class="nav-item mx-2">
+                        <a href="vendor.html" class="nav-link">Partners</a>
+                    </li>
+                    <li class="nav-item dropdown mx-2">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Access
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
+                     
+                      </ul>
+                    </li>
+                    <li class="nav-item dropdown mx-2">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Records
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
+                      </ul>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class=" offcanvas offcanvas-start d-sm-block d-lg-none bg-white" tabindex="-1" id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav nav-underline">
+                        <li class="nav-item mx-2">
+                            <a href="dashboard.html" class="nav-link active  text-info">Dashboard</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="" class="nav-link">Provider Location</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="my_profile.html" class="nav-link">My Profile</a>
+                        </li>
+                        <li class="nav-item dropdown mx-2">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Providers
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Invoicing</a></li>
+                          </ul>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="vendor.html" class="nav-link">Partners</a>
+                        </li>
+                        <li class="nav-item dropdown mx-2">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Access
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
+                         
+                          </ul>
+                        </li>
+                        <li class="nav-item dropdown mx-2">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Records
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="patient_history.html">Block History</a></li>
+                            
+                          </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </nav>
+
+
+    <!-- Content of the web-page -->
+    <div class="container-fluid ">
+
+
+
+        <div class="row d-sm-flex d-none px-3 mt-5">
+            <div class="col-lg-2 col-sm-4 col-4 align-items-start mb-4 px-1">
+                <button class="btn bg-primary text-white w-100 rounded-2 new" >
+                    <div class="d-flex my-2">
+                        <i class="bi bi-universal-access-circle me-2"></i>
+                        <h6 class="my-auto">NEW</h6>
+                    </div>
+                    <p class="h3 d-flex justify-content-start">1223</p>
+                </button>
+            </div>
+            <div class="col-lg-2 col-sm-4 col-4 mb-4 px-1">
+                <button class="btn bg-primary-subtle btn-outline-info text-info w-100 rounded-2 pending" onclick="btn(this)">
+                    <div class="d-flex my-2">
+                        <i class="bi bi-book me-2 text-info"></i>
+                        <h6 class="my-auto">PENDING</h6>
+                    </div>
+                    <p class="h3 d-flex justify-content-start">1223</p>
+                </button>
+            </div>
+            <div class="col-lg-2 col-sm-4 col-4 mb-4 px-1">
+                <button class="btn bg-success-subtle btn-outline-success text-success w-100 rounded-2">
+                    <div class="d-flex my-2">
+                        <i class="bi bi-check2-circle text-success me-2"></i>
+                        <h6 class="my-auto">ACTIVE</h6>
+                    </div>
+                    <p class="h3 d-flex justify-content-start">1223</p>
+                </button>
+            </div>
+            <div class="col-lg-2 col-sm-4 col-4 mb-4 px-1">
+                <button class="btn bg-danger-subtle btn-outline-danger text-danger w-100 rounded-2">
+                    <div class="d-flex my-2">
+                        <i class="bi bi-alexa me-2 text-danger"></i>
+                        <h6 class="my-auto">CONCLUDE</h6>
+                    </div>
+                    <p class="h3 d-flex justify-content-start">1223</p>
+                </button>
+            </div>
+            <div class="col-lg-2 col-sm-4 col-4 mb-4 px-1">
+                <button class="btn bg-primary-subtle btn-outline-primary text-primary w-100 rounded-2 ">
+                    <div class="d-flex my-2">
+                        <i class="bi bi-person-plus text-primary me-2"></i>
+                        <h6 class="my-auto">TO CLOSE</h6>
+                    </div>
+                    <p class="h3 d-flex justify-content-start">1223</p>
+                </button>
+            </div>
+            <div class="col-lg-2 col-sm-4 col-4 mb-4 px-1">
+                <button class="btn   w-100 rounded-2" style=" background-color: rgb(217, 204, 240);   color: rgb(128, 43, 226);
+               
+                border: 1px solid rgb(131, 95, 194);">
+                    <div class="d-flex my-2">
+                        <i class="bi bi-cash-coin me-2 " style="color: rgb(128, 43, 226);"></i>
+                        <h6 class="my-auto">UNPAID</h6>
+                    </div>
+                    <p class="h3 d-flex justify-content-start">1223</p>
+                </button>
+            </div>
+
+        </div>
+
+
+
+        <div class="row d-sm-none d-flex py-2 px-2">
+            <div class="col-4 mb-2 px-1">
+                <button class="btn bg-primary text-white w-100 rounded-2">
+                    <p class="h6 pb-1" style="font-size: small;">NEW</h6>
+                    <p class="h5">1223</p>
+                </button>
+            </div>
+            <div class="col-4 mb-2 px-1">
+                <button class="btn bg-primary-subtle btn-outline-info text-info w-100 rounded-2">
+                    <p class="h6 pb-1" style="font-size: small;">PENDING</h6>
+                    <p class="h5">1223</p>
+                </button>
+            </div>
+            <div class="col-4 mb-2 px-1">
+                <button class="btn bg-success-subtle btn-outline-success text-success w-100 rounded-2">
+                    <p class="h6 pb-1" style="font-size: small;">ACTIVE</h6>
+                    <p class="h5">1223</p>
+                </button>
+            </div>
+            <div class="col-4 mb-2 px-1">
+                <button class="btn bg-danger-subtle btn-outline-danger text-danger w-100 rounded-2 px-1">
+                    <p class="h6 pb-1" style="font-size: small;">CONCLUDE</h6>
+                    <p class="h5">1223</p>
+                </button>
+            </div>
+            <div class="col-4 mb-2 px-1">
+                <button class="btn bg-primary-subtle btn-outline-primary text-primary w-100 rounded-2 ">
+                    <p class="h6 pb-1" style="font-size: small;">TO CLOSE</p>
+                    <p class="h5">1223</p>
+                </button>
+            </div>
+            <div class="col-4 mb-2 px-1">
+                <button class="btn   w-100 rounded-2" style=" background-color: rgb(217, 204, 240); color: rgb(128, 43, 226);
+               
+                border: 1px solid  rgb(138, 88, 225);">
+                    <p class="h6 pb-1" style="font-size: small;" >UNPAID</p>
+                    <p class="h5">1223</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="container-fluid px-3">
+        <div class="d-flex justify-content-between mb-2">
+            <div class="d-sm-flex d-none">
+                <h4 class="">Patients <span class="text-primary fs-6">(New)</span></h4>
+            </div>
+            <div class="d-sm-none d-flex pt-2 me-1">
+                <h6 class="">Patients <span class="text-primary" style="font-size:small;">(New)</span></h6>
+            </div>
+
+
+
+            <div class="d-none d-lg-flex">
+                <div class="me-2">
+                    <button class="btn btn-info text-white d-flex align-items-center">
+                        <i class="bi bi-send me-2 "></i>
+                        <p class="my-auto">Send Link</p>
+                    </button>
+
+                </div>
+                <div class="me-2">
+                    <button class="btn btn-info text-white d-flex align-items-center">
+                        <i class="bi bi-file-earmark-text me-2"></i>
+                        <p class="my-auto ">Create Request</p>
+                    </button>
+                </div>
+                <div class="me-2">
+                    <button class="btn btn-info text-white d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-reply-all-fill me-2" viewBox="0 0 16 16" style="transform: scale(-1, 1);">
+                            <path
+                                d="M8.021 11.9 3.453 8.62a.72.72 0 0 1 0-1.238L8.021 4.1a.716.716 0 0 1 1.079.619V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z" />
+                        </svg>
+                        <p class="my-auto ">Export</p>
+                    </button>
+                </div>
+                <div class="me-2">
+                    <button class="btn btn-info text-white d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-reply-all-fill me-2" viewBox="0 0 16 16" style="transform: scale(-1, 1);">
+                            <path
+                                d="M8.021 11.9 3.453 8.62a.72.72 0 0 1 0-1.238L8.021 4.1a.716.716 0 0 1 1.079.619V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z" />
+                            <path
+                                d="M5.232 4.293a.5.5 0 0 1-.106.7L1.114 7.945l-.042.028a.147.147 0 0 0 0 .252l.042.028 4.012 2.954a.5.5 0 1 1-.593.805L.539 9.073a1.147 1.147 0 0 1 0-1.946l3.994-2.94a.5.5 0 0 1 .699.106" />
+                        </svg>
+                        <p class="my-auto">Export All</p>
+                    </button>
+                </div>
+                <div class="me-2">
+                    <button class="btn btn-info text-white d-flex align-items-center ">
+                        <i class="bi bi-person-check-fill me-2"></i>
+                        <p class="my-auto">Request DIY Support</p>
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="d-lg-none d-flex">
+                <div class="pe-1">
+                    <button class="btn btn-info text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+                          </svg>
+                    </button>
+
+                </div>
+                <div class="pe-1">
+                    <button class="btn btn-info text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
+                            <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+                            <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+                          </svg>
+                    </button>
+                </div>
+                <div class="pe-1">
+                    <button class="btn btn-info text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-reply-all-fill" viewBox="0 0 16 16" style="transform: scale(-1, 1);">
+                            <path
+                                d="M8.021 11.9 3.453 8.62a.72.72 0 0 1 0-1.238L8.021 4.1a.716.716 0 0 1 1.079.619V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z" />
+                        </svg>
+                    </button>
+
+                </div>
+                <div class="pe-1 ">
+                    <button class="btn btn-info text-white ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-reply-all-fill" viewBox="0 0 16 16" style="transform: scale(-1, 1);">
+                            <path
+                                d="M8.021 11.9 3.453 8.62a.72.72 0 0 1 0-1.238L8.021 4.1a.716.716 0 0 1 1.079.619V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z" />
+                            <path
+                                d="M5.232 4.293a.5.5 0 0 1-.106.7L1.114 7.945l-.042.028a.147.147 0 0 0 0 .252l.042.028 4.012 2.954a.5.5 0 1 1-.593.805L.539 9.073a1.147 1.147 0 0 1 0-1.946l3.994-2.94a.5.5 0 0 1 .699.106" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="pe-1">
+                    <button class="btn btn-info text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+                            <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                          </svg>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid px-3">
+        <form action="" role="" class=" ">
+            <div class="row m-0 p-2 bg-white">
+                <div class="col-lg-4 d-md-flex d-block">
+
+                    <div class="input-group border me-2 rounded-0 mb-2 form-control">
+                        <div class="input-group-append">
+                            <button class="btn text-secondary border border-0 bg-white" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control border-0  shadow-none" placeholder="Search Patients">
+                    </div>
+
+                    <div class="input-group border rounded-0 mb-2 form-control">
+                        <div class="input-group-append">
+                            <button class="btn text-secondary border border-0 bg-white" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                        <input type="text" class="form-control border-0 shadow-none" placeholder="All Regions">
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-8 pt-2">
+                    <div class="d-lg-flex d-none justify-content-end align-items-center">
+                        <div class="me-4">
+                            <button class="btn btn-outline-secondary">All</button>
+                        </div>
+                        <div class="me-2 d-sm-flex align-items-center">
+                            <div class="rounded-circle me-1"
+                                style="height: 15px; width: 15px; background-color: rgb(15, 189, 64);"></div>
+                            <p class="my-auto">Patients</p>
+                        </div>
+                        <div class="me-2 d-sm-flex align-items-center">
+                            <div class="rounded-circle me-1"
+                                style="height: 15px; width: 15px; background-color: rgb(212, 107, 21);"></div>
+                            <p class="my-auto">Family/Friend</p>
+                        </div>
+                        <div class="me-2 d-sm-flex align-items-center">
+                            <div class="rounded-circle me-1"
+                                style="height: 15px; width: 15px; background-color: rgb(203, 22, 134);"></div>
+                            <p class="my-auto">Business</p>
+                        </div>
+                        <div class="me-2 d-sm-flex align-items-center">
+                            <div class="rounded-circle me-1"
+                                style="height: 15px; width: 15px; background-color: rgb(65, 65, 232);"></div>
+                            <p class="my-auto">Concierge</p>
+                        </div>
+                        <div class="me-2 d-sm-flex align-items-center">
+                            <div class="rounded-circle me-1"
+                                style="height: 15px; width: 15px; background-color: rgb(129, 12, 129);"></div>
+                            <p class="my-auto">VIP</p>
+                        </div>
+                    </div>
+
+
+                    <div class="d-lg-none d-flex align-items-center justify-content-around">
+                        <div class="me-4 d-sm-block d-none">
+                            <button class="btn btn-outline-secondary">All</button>
+                        </div>
+                        <div class="me-1 d-sm-flex align-items-center">
+                            <div class="rounded-circle mx-auto"
+                                style="height: 12px; width: 12px; background-color: rgb(15, 189, 64);"></div>
+                            <p class="my-auto ps-1" style="font-size: small;">Patients</p>
+                        </div>
+                        <div class="me-1 d-sm-flex align-items-center">
+                            <div class="rounded-circle mx-auto"
+                                style="height: 12px; width: 12px; background-color: rgb(212, 107, 21);"></div>
+                            <p class="my-auto ps-1" style="font-size: small;">Family/Friend</p>
+                        </div>
+                        <div class="me-1 d-sm-flex align-items-center">
+                            <div class="rounded-circle mx-auto"
+                                style="height: 12px; width: 12px; background-color: rgb(203, 22, 134);"></div>
+                            <p class="my-auto ps-1" style="font-size: small;">Business</p>
+                        </div>
+                        <div class="me-1 d-sm-flex align-items-center">
+                            <div class="rounded-circle mx-auto"
+                                style="height: 12px; width: 12px; background-color: rgb(65, 65, 232);"></div>
+                            <p class="my-auto ps-1" style="font-size: small;">Concierge</p>
+                        </div>
+                        <div class="d-sm-flex align-items-center">
+                            <div class="rounded-circle mx-auto"
+                                style="height: 12px; width: 12px; background-color: rgb(129, 12, 129);"></div>
+                            <p class="my-auto ps-1" style="font-size: small;">VIP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+
+
+
+
+
+
+        <div class="d-md-block d-none">
+            <table class="table">
+
+
+                <tr class="table-secondary">
+                    <td scope="col">Name</td>
+                    <td scope="col">Date of Birth</td>
+                    <td scope="col">Requestor</td>
+                    <td scope="col">Requested Date</td>
+                    <td scope="col">Phone</td>
+                    <td scope="col">Address</td>
+                    <td scope="col">Notes</td>
+                    <td scope="col">Chat With</td>
+                    <td scope="col">Actions</td>
+                </tr>
+
+
+                <tr class="table-success">
+                    <td class="">Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td class=" " > <a class=" dropdown-toggle btn  "   style="border: 1px solid rgb(12, 12, 12); border-radius: 4px;" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                       Actions
+                    </a>
+
+
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#assign" >assign Case</a></li>
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#cancel">cancel case</a></li>
+                        <li><a class="dropdown-item" href="view_case.html">view case</a></li>
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#clear">clear case</a></li>
+                        <li><a class="dropdown-item" href="close_case.html">close case</a></li>
+                        <li><a class="dropdown-item" href="view_notes.html">view notes</a></li>
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#block">Block Patients</a></li>
+                        <li><a class="dropdown-item" href="View_uploads.html">view uploads</a></li>
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#transfer">transfer</a></li>
+                        <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#send">send agreement</a></li>
+                        <li><a class="dropdown-item" href="orders.html">orders</a></li>
+                        <li><a class="dropdown-item" href="#">doctors notes</a></li>
+
+                        <li><a class="dropdown-item" href="#">encounter</a></li>
+                    </ul>
+</td>
+                </tr>
+                <tr class="bg-primary">
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+
+
+
+
+
+
+        <!-- mobile view for table -->
+        <div class="d-md-none">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <div class="accordion-button collapsed bg-primary-subtle" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                            aria-controls="flush-collapseOne">
+                            <div class="container-fluid">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <div class="">
+                                        <h6>Patel, Sahil</h6>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <h6 class="me-1">Patients</h6>
+                                        <div class="rounded-circle mt-1"
+                                            style="height: 12px; width: 12px; background-color: rgb(15, 189, 64);">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="">
+                                        <p class="fw-normal mb-0">Maryland Maryland,</p>
+                                        <p class="fw-normal">Maryland 2121</p>
+                                    </div>
+                                    <div class="">
+                                        <button class="btn btn-outline-info btn-sm rounded-pill">Map
+                                            Location</button>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <img src="" alt="">
+                                    <p class="text-secondary fw-small" style="font-size: 0.8rem;">Wait Time: <span
+                                            class="fw-small">Dec 5,2023 08:52AM (641.59)</span> </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+
+                        <hr class="m-0">
+                        <div class="d-flex justify-content-end" style="margin-top: -12px; ">
+                            <button
+                                class="btn text-primary btn-outline-primary rounded-pill bg-white py-0 px-2 me-4 z-3"
+                                style="font-size:small; position: absolute;">View Case</button>
+                        </div>
+
+
+                        <div class="accordion-body container-fluid mt-2">
+                            <div class="d-flex">
+                                <div class="me-1">
+                                    <i class="bi bi-calendar-event"></i>
+                                </div>
+                                <label for="" class="me-2 text-secondary">Date of birth:</label>
+                                <p>Jun 28, 1991(33)</p>
+                            </div>
+                            <div class="d-flex">
+                                <div class="me-1">
+                                    <i class="bi bi-envelope"></i>
+                                </div>
+                                <label for="" class="me-2 text-secondary">Email:</label>
+                                <p>sahil.patel@gmail.com</p>
+                            </div>
+                            <div class="d-flex">
+                                <div class="me-1">
+                                    <i class="bi bi-telephone"></i>
+                                </div>
+                                <label for="" class="me-2 text-secondary">Patient:</label>
+                                <p>2-23-1991(33)</p>
+                            </div>
+                            <div class="d-flex">
+                                <div class="me-1">
+                                    <i class="bi bi-person"></i>
+                                </div>
+                                <label for="" class="me-2 text-secondary">Requestor:</label>
+                                <p>Patient Patel,sahil</p>
+                            </div>
+                            <div>
+                                <div class="row mb-2 ">
+                                    <div class="col-6">
+                                        <button class="btn text-white rounded-pill w-100"
+                                            style="background-color: purple; font-size: small;">Assign Case</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button class="btn bg-danger border-0 text-white rounded-pill w-100"
+                                            style="font-size: small;">Cancel Case</button>
+                                    </div>
+
+
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <button class="btn bg-success text-white rounded-pill w-100"
+                                            style="font-size: small;">View Notes</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button class="btn bg-danger border-0 text-white rounded-pill w-100"
+                                            style="font-size: small;">Block Patients</button>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-6">
+                                        <button class="btn bg-success text-white rounded-pill w-100"
+                                            style="font-size: small;">Email</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Accordion Item #2
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                            demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion
+                            body. Let's imagine this being filled with some actual content.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Accordion Item #3
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">Placeholder content for this accordion, which is intended to
+                            demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion
+                            body. Nothing more exciting happening here in terms of content, but just filling up the
+                            space to make it look, at least at first glance, a bit more representative of how this would
+                            look in a real-world application.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+    <div class="modal fade" id="cancel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+              <h1 class="modal-title fs-5 " id="exampleModalLabel">Confirm Cancellation</h1>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              
+                <p mb-3>Patient Name: <span class="text-info">test test</span> </p>
+    
+                
+    
+                  <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                      <option selected></option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                    <label for="floatingSelect">Reasons for Cancellation</label>
+                  </div>
+    
+                  <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="floatingTextarea2">Provide Additional Notes</label>
+                  </div>
+                
+            </div>
+            <div class="modal-footer">
+              
+              <button type="button" class="btn btn-info">Confirm</button>
+              <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+      <div class="modal fade" id="clear" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+          
+                <div class="modal-content rounded-4">
+                    <div class="modal-body">
+                        <div class="mb-2 pt-3 pb-3">
+                            <img src="images/modal.svg"
+                                class="border img-fluid border-warning p-1 rounded-circle d-block m-auto " alt="...">
+                        </div>
+                        <h5 class=" d-flex justify-content-center ms-auto">Confirmation for clear case</h5>
+                        <p class=" d-flex justify-content-center text-center">Are sure you want to clear this request? Once clear this request then you are not able to see this request.</p>
+                    </div>
+                    <div class="modal-footer border-top-0 pb-5 d-flex justify-content-center">
+            
+                        <button type="button" class="btn btn-info  text-white btn-lg "
+                            data-bs-dismiss="modal">clear</button>
+                            <button type="button" class="btn btn-info  text-white btn-lg "
+
+                            data-bs-dismiss="modal">cancel</button>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    
+        <div class="modal fade" id="block" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h1 class="modal-title fs-5 " id="exampleModalLabel">Assign Case</h1>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                    <p mb-3>Patient Name: <span class="text-info">test test</span> </p>
+        
+                    
+                      <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Reason for  Block Request</label>
+                      </div>
+                    
+                </div>
+                <div class="modal-footer">
+                 
+                  <button type="button" class="btn btn-info">Confirm</button>
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+
+          <div class="modal fade" id="transfer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h1 class="modal-title fs-5 " id="exampleModalLabel">Transfer Request</h1>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                    <p mb-3>To transfer this request, search and select another Physician.  </p>
+        
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                          <option selected>Maryland</option>
+                          <option value="1" >One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Narrow Search By region</label>
+                      </div>
+        
+                      <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                          <option selected></option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Select Physician</label>
+                      </div>
+        
+                      <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Description</label>
+                      </div>
+                    
+                </div>
+                <div class="modal-footer">
+                
+                  <button type="button" class="btn btn-info">Submit</button>
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+
+          <div class="modal fade" id="send" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h1 class="modal-title fs-5 " id="exampleModalLabel">Send Agreement</h1>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                    
+                      <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          Patient
+                        </label>
+                      </div>
+                      <p>To Send Agreement please make sure you are updating the current contact information below for the responsible party.</p>
+                      <div class="form-floating mb-3">
+                        <input type="number" class="form-control"  placeholder="Number">
+                        <label for="floatingPassword">Phone Number</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                      </div>
+                    
+                    
+        
+                    
+                    
+                </div>
+                <div class="modal-footer">
+          
+                  <button type="button" class="btn btn-info">Send</button>
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="modal fade" id="req" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h1 class="modal-title fs-5 " id="exampleModalLabel">Request Support</h1>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                    <p mb-3>To all unscheduled Physicians: We are short on coverage and needs additional support On call to respond to requests.</p>
+        
+                    
+                      <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Message</label>
+                      </div>
+                    
+                </div>
+                <div class="modal-footer">
+                 
+                  <button type="button" class="btn btn-info">Send</button>
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+        
+
+          <div class="modal fade" id="send_mail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h3 class="modal-title fs-5 " id="exampleModalLabel">Send mail to patient for submitting request</h3>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                   
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="name">
+                        <label for="floatingInput">First Name</label>
+                      </div>
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingPassword" placeholder="name">
+                        <label for="floatingInput">last Name</label>
+                      </div>
+        
+        
+        
+                      <div class="form-floating mb-3">
+                        <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list" id="phone">
+        
+                    </div>
+        
+                      <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                      </div>
+                  
+        
+        
+        
+        
+        
+                </div>
+                <div class="modal-footer">
+                
+                  <button type="button" class="btn btn-info">Send</button>
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+
+          <div class="modal fade" id="assign" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                  <h1 class="modal-title fs-5 " id="exampleModalLabel">Assign Case</h1>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  
+                    <p mb-3>To assign this request search and select another Physician </p>
+        
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                          <option selected>Maryland</option>
+                          <option value="1" >One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Narrow Search By region</label>
+                      </div>
+        
+                      <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                          <option selected></option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Select Physician</label>
+                      </div>
+        
+                      <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Description</label>
+                      </div>
+                    
+                </div>
+                <div class="modal-footer">
+                 
+                  <button type="button" class="btn btn-info">Submit</button>
+                  <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+</body>
+
+</html>

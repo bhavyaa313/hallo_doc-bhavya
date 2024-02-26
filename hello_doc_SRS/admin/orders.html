@@ -22,6 +22,16 @@
 
 
 <style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(168, 163, 163);
+        color: rgb(2, 2, 2);
+        text-align: right;
+    }
+
     body {
 
         background-color: white;
@@ -89,12 +99,12 @@
 
             <ul class="navbar-nav w-100 flex-row">
 
-               
+
 
                 <button class="btn btn-outline-info d-lg-none d-inline" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                <img src="images/icons8-menu.svg" alt="">
-            </button>
+                    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    <img src="images/icons8-menu.svg" alt="">
+                </button>
 
                 <li class="nav-item">
                     <img class="hello-logo1 m-2" src="images/hellodoc-logo.png" alt="">
@@ -131,7 +141,7 @@
             <div class="collapse navbar-collapse w-100 d-none d-lg-inline" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-underline">
                     <li class="nav-item mx-2">
-                        <a href="" class="nav-link active  text-info">Dashboard</a>
+                        <a href="dashboard.html" class="nav-link active  text-info">Dashboard</a>
                     </li>
                     <li class="nav-item mx-2">
                         <a href="" class="nav-link">Provider Location</a>
@@ -140,46 +150,63 @@
                         <a href="my_profile.html" class="nav-link">My Profile</a>
                     </li>
                     <li class="nav-item dropdown mx-2">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                         providers
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            providers
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Invoicing</a></li>
+                            <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Invoicing</a></li>
                         </ul>
-                      </li>
+                    </li>
                     <li class="nav-item mx-2">
                         <a href="vendor.html" class="nav-link">Partners</a>
                     </li>
                     <li class="nav-item dropdown mx-2">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Access
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
-                     
-                      </ul>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Access
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
+
+                        </ul>
                     </li>
                     <li class="nav-item dropdown mx-2">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Records
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
-                      </ul>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Records
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -199,49 +226,68 @@
                             <a href="my_profile.html" class="nav-link">My Profile</a>
                         </li>
                         <li class="nav-item dropdown mx-2">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Providers
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Invoicing</a></li>
-                          </ul>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Providers
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Invoicing</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item mx-2">
                             <a href="vendor.html" class="nav-link">Partners</a>
                         </li>
                         <li class="nav-item dropdown mx-2">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Access
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
-                         
-                          </ul>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Access
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
+
+                            </ul>
                         </li>
                         <li class="nav-item dropdown mx-2">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Records
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="patient_history.html">Block History</a></li>
-                            
-                          </ul>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Records
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="patient_history.html">Block History</a></li>
+
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -255,14 +301,14 @@
 
 
 
-
+<div class="foot">
     <div class="container-fluid ">
         <div class="row">
             <div class=" col-md-2"></div>
             <div class="col-12 col-md-8 ">
                 <div class="container-fluid bg-light">
                     <div class="d-flex mb-3">
-                        <h3 class="mt-4">Send Order 
+                        <h3 class="mt-4">Send Order
                         </h3>
                         <div class="ms-auto p-3"> <a href="dashboard.html" type="button"
                                 class="btn btn-outline-info mx-2 ">
@@ -275,14 +321,15 @@
                     <div class="row g-2">
                         <div class="col-md">
                             <div class="form-floating">
-                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                <select class="form-select" id="floatingSelect"
+                                    aria-label="Floating label select example">
                                     <option selected></option>
-                                  <option value="1">Doctor</option>
-                                  <option value="2">Provider</option>
-                                  <option value="3">kuch bhi</option>
+                                    <option value="1">Doctor</option>
+                                    <option value="2">Provider</option>
+                                    <option value="3">kuch bhi</option>
                                 </select>
                                 <label for="floatingSelect">Select Profession</label>
-                              </div>
+                            </div>
 
                         </div>
                         <div class="col-md">
@@ -292,9 +339,9 @@
                             </div>
                         </div>
                     </div>
-                   
 
-                    
+
+
                     <div class="row g-2">
                         <div class="col-md">
                             <div class="form-floating mb-3">
@@ -309,14 +356,13 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <!-- <input type="tel" class="form-control pt-3 pb-3  " id="phone"> -->
-                 
+
                     <div class="row g-2">
                         <div class="col-md-6 col-6">
                             <div class="form-floating mb-3">
-                                <input type="number" class="form-control" id="floatingInput"
-                                    placeholder="nvfnkiefvkn">
+                                <input type="number" class="form-control" id="floatingInput" placeholder="nvfnkiefvkn">
                                 <label for="floatingInput" class="dm">Fax Number</label>
                             </div>
                         </div>
@@ -329,20 +375,21 @@
                         <label for="floatingTextarea2" class="dm"> Prescription or Order details</label>
                         <hr>
                     </div>
-                   
-                   
+
+
                     <div class="row g-2">
                         <div class="col-md-6 col-6">
-                            
+
                             <div class="form-floating">
-                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                  <option selected>Not required</option>
-                                  <option value="1">One</option>
-                                  <option value="2">Two</option>
-                                  <option value="3">Three</option>
+                                <select class="form-select" id="floatingSelect"
+                                    aria-label="Floating label select example">
+                                    <option selected>Not required</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
                                 </select>
                                 <label for="floatingSelect">Number Of Refill</label>
-                              </div>
+                            </div>
 
 
                         </div>
@@ -364,7 +411,7 @@
                     <div class="mt-4 d-flex flex-row-reverse mb-3 ">
 
                         <button type="cancel" class="btn btn-outline-info  mx-2 btn-lg">cancel</button>
-            
+
                         <button type="submit" class="btn btn-info mx-2 btn-lg">Submit</button>
 
                     </div>
@@ -387,32 +434,36 @@
                 <div class="col-md-2"></div>
             </div>
 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            <div class="footer d-flex  align-items-center justify-content-end mt-3 ">
+                <p class="mx-3 text-center mb-2 mt-2  ">Terms & conditions | privacy policy</p>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-            <script>
-                $(document).ready(function () {
-                    $('#yourModalId').modal('show');
-                });
-            </script>
-            <script>
-                const phoneInputField = document.querySelector("#phone");
-                const phoneInput = window.intlTelInput(phoneInputField, {
-                    utilsScript:
-                        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-                });
-            </script>
-            <script>
-                const phoneInputField1 = document.querySelector("#phone1");
-                const phoneInput1 = window.intlTelInput(phoneInputField1, {
-                    utilsScript:
-                        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-                });
-            </script>
+        <script>
+            $(document).ready(function () {
+                $('#yourModalId').modal('show');
+            });
+        </script>
+        <script>
+            const phoneInputField = document.querySelector("#phone");
+            const phoneInput = window.intlTelInput(phoneInputField, {
+                utilsScript:
+                    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            });
+        </script>
+        <script>
+            const phoneInputField1 = document.querySelector("#phone1");
+            const phoneInput1 = window.intlTelInput(phoneInputField1, {
+                utilsScript:
+                    "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+            });
+        </script>
 
-            </script>
+        </script>
 
 
 

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="daypilot-all.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="scheduler"></div>
+    <script>
+        const scheduler = new DayPilot.Scheduler("scheduler");
+        scheduler.scale = "Manual";
+        scheduler.timeline = getTimeline();
+        scheduler.timeHeaders = getTimeHeaders();
+        scheduler.resources = [
+          {"id":"1","name":"Doctor 1"},
+          {"id":"2","name":"Doctor 2"},
+          {"id":"3","name":"Doctor 3"},
+          {"id":"4","name":"Doctor 4"},
+          {"id":"5","name":"Doctor 5"}
+        ];
+        scheduler.init();
+        const scheduler = new DayPilot.Scheduler("scheduler");
+  
+  // ...
+  
+  scheduler.onTimeRangeSelected = async args => {
+    const dp = scheduler;
+    const scale = document.querySelector("input[name=scale]:checked").value;
+
+    const params = {
+      start: args.start.toString(),
+      end: args.end.toString(),
+      resource: args.resource,
+      scale: scale
+    };
+
+    dp.clearSelection();
+
+    const {data} = await DayPilot.Http.post("backend_create.php", params);
+    loadEvents();
+    dp.message(data.message);
+
+  };
+
+  scheduler.init();
+  const scheduler = new DayPilot.Scheduler("scheduler");
+  
+  // ...
+  
+  scheduler.onEventDeleted = async args => {
+    var params = {
+      id: args.e.id(),
+    };
+    const {data: result} = await DayPilot.Http.post("backend_delete.php", params);
+    scheduler.message("Deleted.");
+  };
+
+  scheduler.init();
+  const scheduler = new DayPilot.Scheduler("scheduler");
+  
+  // ...
+  
+  scheduler.onBeforeEventRender = args => {
+    switch (args.data.tags.status) {
+      case "free":
+        args.data.backColor = "#3d85c6";  // blue
+        args.data.barHidden = true;
+        args.data.borderColor = "darker";
+        args.data.fontColor = "white";
+        args.data.deleteDisabled = document.querySelector("input[name=scale]:checked").value === "shifts"; // only allow deleting in the more detailed hour scale mode
+        break;
+      case "waiting":
+        args.data.backColor = "#e69138";  // orange
+        args.data.barHidden = true;
+        args.data.borderColor = "darker";
+        args.data.fontColor = "white";
+        break;
+      case "confirmed":
+        args.data.backColor = "#6aa84f";  // green
+        args.data.barHidden = true;
+        args.data.borderColor = "darker";
+        args.data.fontColor = "white";
+        break;
+    }
+  };
+
+  scheduler.init();
+      </script>
+</body>
+</html>
