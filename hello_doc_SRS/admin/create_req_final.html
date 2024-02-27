@@ -141,7 +141,7 @@
                             <a href="dashboard.html" class="nav-link active  text-info ">Dashboard</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="" class="nav-link">Provider Location</a>
+                            <a href="provider_location.html" class="nav-link">Provider Location</a>
                         </li>
                         <li class="nav-item mx-2">
                             <a href="my_profile.html" class="nav-link ">My Profile</a>
@@ -270,7 +270,7 @@
                     <div class="d-flex mb-3">
                         <h3 class="mt-3">Submit Information
                           </h3>
-                        <div class="ms-auto p-3"> <a href="dashboard.html" type="button"
+                        <div class="ms-auto p-3"> <a href="javascript: history.go(-1)" type="button"
                                 class="btn btn-outline-info mx-2 ">
                                 < Back</a>
                         </div>
@@ -343,13 +343,13 @@
                     <div class="row g-2">
                         <div class="col-md">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="rttttttth">
+                                <input type="text" class="form-control" id="street" placeholder="rttttttth">
                                 <label for="floatingInput" class="dm">Street</label>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="trr">
+                                <input type="text" class="form-control" id="city" placeholder="trr">
                                 <label for="floatingInput" class="dm">City</label>
                             </div>
                         </div>
@@ -359,13 +359,13 @@
                     <div class="row g-2">
                         <div class="col-md">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="rttttttth">
+                                <input type="text" class="form-control" id="state" placeholder="rttttttth">
                                 <label for="floatingInput" class="dm">State</label>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="trr">
+                                <input type="text" class="form-control" id="map" placeholder="trr">
                                 <label for="floatingInput" class="dm">Zip Code</label>
                             </div>
                         </div>
@@ -380,7 +380,16 @@
                         </div>
                         <div class="col-md">
                             <button type="submit" class="btn btn-info mx-2 btn-lg ">Verify</button>
-                            <button type="submit" class="btn btn-info mx-2  btn-lg">Map</button>
+                            <button type="button"
+                            class="btn btn-outline-info mx-2 p-2 highlight btn-lg" onclick="searchAddress()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
+                                <path
+                                    d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                            </svg>
+                            Map</button>
                         </div>
                     </div>
 
@@ -459,7 +468,18 @@
 
             </script>
 
-
+            <script>
+   
+                function searchAddress() {
+                  const Street = document.getElementById('street').value;
+                  const City = document.getElementById('city').value;
+                  const State = document.getElementById('state').value;
+                  const Zip = document.getElementById('map').value;
+                  const address = Street + " " + City  + " " + State  + " " + Zip;
+                  window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
+                }
+              </script>
+            
 
 </body>
 

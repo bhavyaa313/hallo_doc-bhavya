@@ -19,12 +19,40 @@
 
 
     <style>
+      .iti {
+            width: 100% !important;
+            display: inline-block;
+        }
+
+        .iti__country-list {
+            z-index: 100;
+            width: 600%;
+
+        }
         body {
 
             background-color: white;
             color: black;
 
         }
+        .footer {
+    margin-top: auto !important;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: right;
+ }
+
+
+
+ body{
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
 
 
         .dark-mode {
@@ -326,16 +354,16 @@
             </a>
 
 
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu text-secondary">
                
          
                
-                <li><a class="dropdown-item" href="encounter_form.html">Encounter Form</a></li>
-                <li><a class="dropdown-item" data-bs-toggle="modal"
-                        data-bs-target="#transfer">transfer</a></li>
+                <li><a class="dropdown-item text-secondary" href="encounter_form.html"><i class="bi bi-file-earmark-richtext mx-2"></i>Encounter Form</a></li>
+                <li><a class="dropdown-item text-secondary" data-bs-toggle="modal"
+                        data-bs-target="#transfer"><i class="bi bi-card-checklist mx-2"></i>transfer</a></li>
                
                
-                <li><a class="dropdown-item " data-bs-toggle="modal" data-bs-target="#care11" >encounter</a></li>
+                <li><a class="dropdown-item text-secondary" data-bs-toggle="modal" data-bs-target="#care11" ><i class="bi bi-file-earmark-richtext mx-2"></i>encounter</a></li>
             </ul>
         </td>
             </tr>
@@ -509,9 +537,9 @@
       </div>
     
 
-    <div class="footer d-flex  align-items-center justify-content-end mt-3 ">
+    <!-- <div class="footer d-flex  align-items-center justify-content-end mt-3 ">
         <p class="mx-3 text-center mb-2 mt-2  ">Terms & conditions | privacy policy</p>
-    </div> </div>
+    </div> </div> -->
 
 
 
@@ -736,7 +764,13 @@
     </script>
 
 
-
+<script>
+  const phoneInputField = document.querySelector("#phone");
+  const phoneInput = window.intlTelInput(phoneInputField, {
+      utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+  });
+</script>
 </body>
 
 </html>

@@ -89,7 +89,7 @@
             <a href="dashboard.html" class="nav-link active  text-info">Dashboard</a>
           </li>
           <li class="nav-item mx-2">
-            <a href="" class="nav-link">Provider Location</a>
+            <a href="provider_location.html" class="nav-link">Provider Location</a>
           </li>
           <li class="nav-item mx-2">
             <a href="my_profile.html" class="nav-link">My Profile</a>
@@ -162,7 +162,7 @@
               <a href="dashboard.html" class="nav-link active  text-info">Dashboard</a>
             </li>
             <li class="nav-item mx-2">
-              <a href="" class="nav-link">Provider Location</a>
+              <a href="provider_location.html" class="nav-link">Provider Location</a>
             </li>
             <li class="nav-item mx-2">
               <a href="my_profile.html" class="nav-link">My Profile</a>
@@ -358,24 +358,20 @@
             <input type="text" id="myInput" onkeyup="search()" class="form-control border-0  shadow-none" placeholder="Search Patients">
           </div>
 
-          <div class="input-group border rounded-0 mb-2 form-control">
+          <div class="input-group border me-2 rounded-0 mb-2 form-control">
             <div class="input-group-append">
-              <button class="btn text-secondary border border-0 bg-white" type="button">
-                <i class="bi bi-search"></i>
-
-              </button>
+                <button class="btn text-secondary border border-0 bg-white" type="button">
+                    <i class="bi bi-search"></i>
+                </button>
             </div>
-
-
-            <select class="form-select border-0  shadow-none" aria-label="Default select example">
-              <option selected>Region</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-
-          </div>
-
+            <input type="search" class="form-control border-0  shadow-none" placeholder="Search Regions" list="data">
+            <datalist class=" border-0  shadow-none" aria-label="Default select example" id="data">
+          
+                <option value="mumbai">
+                <option value="kolkata"></option>
+                <option value="banglore"></option>
+              </datalist>
+        </div>
         </div>
 
 
@@ -486,21 +482,21 @@
             </a>
 
 
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#assign">assign Case</a></li>
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#cancel">cancel case</a></li>
-              <li><a class="dropdown-item" href="view_case.html">view case</a></li>
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#clear">clear case</a></li>
-              <li><a class="dropdown-item" href="close_case.html">close case</a></li>
-              <li><a class="dropdown-item" href="view_notes.html">view notes</a></li>
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#block">Block Patients</a></li>
-              <li><a class="dropdown-item" href="View_uploads.html">view uploads</a></li>
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#transfer">transfer</a></li>
-              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#send">send agreement</a></li>
-              <li><a class="dropdown-item" href="orders.html">orders</a></li>
-              <li><a class="dropdown-item" href="#">doctors notes</a></li>
+            <ul class="dropdown-menu text-muted">
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#assign"><i class="bi bi-card-checklist mx-2"></i>assign Case</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#cancel"><i class="bi bi-x-circle mx-2"></i>cancel case</a></li>
+              <li><a class="dropdown-item text-secondary" href="view_case.html"><i class="bi bi-card-heading mx-2"></i>view case</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#clear"><i class="bi bi-x-circle mx-2"></i>clear case</a></li>
+              <li><a class="dropdown-item text-secondary" href="close_case.html"><i class="bi bi-x-circle mx-2"></i>close case</a></li>
+              <li><a class="dropdown-item text-secondary" href="view_notes.html"><i class="bi bi-journal-medical mx-2"></i>view notes</a></li>
+              <li><a class="dropdown-item text-secondary" data-bs-toggle="modal" data-bs-target="#block"><i class="bi bi-ban mx-2"></i>Block Patients</a></li>
+              <li><a class="dropdown-item text-secondary" href="View_uploads.html"><i class="bi bi-file-earmark-arrow-up mx-2"></i> view uploads</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#transfer"><i class="bi bi-card-checklist mx-2"></i>transfer</a></li>
+              <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#send"> <i class="bi bi-file-earmark-slides mx-2"></i>send agreement</a></li>
+              <li><a class="dropdown-item text-secondary" href="orders.html"><i class="bi bi-clipboard-check-fill mx-2"></i>orders</a></li>
+              <li><a class="dropdown-item text-secondary" href="#"><i class="bi bi-file-earmark-richtext mx-2"></i>doctors notes</a></li>
 
-              <li><a class="dropdown-item" href="#">encounter</a></li>
+              <li><a class="dropdown-item text-secondary" href="#"><i class="bi bi-file-earmark-richtext mx-2"></i>encounter</a></li>
             </ul>
           </td>
         </tr>

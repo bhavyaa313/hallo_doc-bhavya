@@ -1,0 +1,21 @@
+.mfk-keyboard.black
+{
+    background-color: #767676;
+}
+.mfk-keyboard.black .mfk-key
+{
+    color: #fff;
+    background-color: #282828;
+    border-style: solid;
+    border-color: #333; 
+    border-width: 0 2px 2px 0;
+
+}
+.mfk-keyboard.black .mfk-key:hover
+{
+    background-color: #f2cf63;
+}
+.mfk-keyboard.black .mfk-key-down
+{
+    border-width: 1px;
+}

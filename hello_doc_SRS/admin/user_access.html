@@ -91,7 +91,7 @@
                         <a href="dashboard.html" class="nav-link ">Dashboard</a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a href="" class="nav-link">Provider Location</a>
+                        <a href="provider_location.html" class="nav-link">Provider Location</a>
                     </li>
                     <li class="nav-item mx-2">
                         <a href="my_profile.html" class="nav-link">My Profile</a>
@@ -167,7 +167,7 @@
                             <a href="dashboard.html" class="nav-link ">Dashboard</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="" class="nav-link">Provider Location</a>
+                            <a href="provider_location.html" class="nav-link">Provider Location</a>
                         </li>
                         <li class="nav-item mx-2">
                             <a href="my_profile.html" class="nav-link">My Profile</a>
@@ -250,7 +250,7 @@
         <div class="container bg-light mt-3">
             <div class="  d-flex p-4  ">
                 <h3 class="mx-2 mt-3">User Access</h3>
-                <div class="ms-auto "> <a href="dashboard.html" type="button" class="btn btn-outline-info mx-2 ">
+                <div class="ms-auto "> <a href="javascript: history.go(-1)" type="button" class="btn btn-outline-info mx-2 ">
                         < Back</a>
                 </div>
 
@@ -273,24 +273,20 @@
                         <input type="text" class="form-control border-0  shadow-none" placeholder="Search Patients" id="myInput" onkeyup="search()">
                     </div>
 
-                    <div class="input-group border rounded-0 mb-2 form-control">
+                    <div class="input-group border me-2 rounded-0 mb-2 form-control">
                         <div class="input-group-append">
                             <button class="btn text-secondary border border-0 bg-white" type="button">
                                 <i class="bi bi-search"></i>
-
                             </button>
                         </div>
-
-
-                        <select class="form-select border-0  shadow-none" aria-label="Default select example">
-                            <option selected>Region</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-
+                        <input type="search" class="form-control border-0  shadow-none" placeholder="Search Regions" list="data" id="myInput2" onkeyup="searchRegion()">
+                        <datalist class=" border-0  shadow-none" aria-label="Default select example" id="data">
+                      
+                            <option value="mumbai">
+                            <option value="kolkata"></option>
+                            <option value="banglore"></option>
+                          </datalist>
                     </div>
-
                 </div>
 
 
@@ -304,6 +300,8 @@
                             <th scope="col">Account Type </th>
                             <th scope="col">Account POC</th>
                             <th scope="col">Phone</th>
+                            <th scope="col">City</th>
+
                             <th scope="col">Status</th>
                             <th scope="col">Open Requests</th>
                             <th scope="col">Actions</th>
@@ -318,6 +316,7 @@
                             </td>
                             <td>saloni</td>
                             <td>+919426144202</td>
+                            <td>mumbai</td>
                             <td>Active</td>
                             <td>200</td>
                             <td>
@@ -332,6 +331,7 @@
                             </td>
                             <td>Nikunj 643</td>
                             <td>+919426144202</td>
+                            <td>kolkata</td>
                             <td>Active</td>
                             <td>200</td>
                             <td>
@@ -348,6 +348,7 @@
                             </td>
                             <td>bhavya</td>
                             <td>+919426144202</td>
+                            <td>banglore</td>
                             <td>Active</td>
                             <td>200</td>
                             <td>
@@ -362,6 +363,7 @@
                             </td>
                             <td>sweta</td>
                             <td>+919426144202</td>
+                            <td>mumbai</td>
                             <td>Active</td>
                             <td>200</td>
                             <td>
@@ -532,6 +534,26 @@
           tr = table.getElementsByTagName("tr");
           for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+
+
+        function searchRegion() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput2");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
             if (td) {
               txtValue = td.textContent || td.innerText;
               if (txtValue.toUpperCase().indexOf(filter) > -1) {

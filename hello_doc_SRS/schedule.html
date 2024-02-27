@@ -30,6 +30,14 @@
         if (modal.canceled) {
             return;
         }
+        dp.eventDeleteHandling = "Update";
+        dp.onEventDelete = function (args) {
+/*
+            if (!confirm("Do you really want to delete this event?")) {
+                args.preventDefault();
+            }
+*/
+        };
         const name = modal.result;
         dp.events.add({
             start: args.start,
