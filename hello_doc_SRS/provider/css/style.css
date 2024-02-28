@@ -321,7 +321,7 @@ footer {
 }
 
 .footer {
-    margin-top: auto !important;
+    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -331,9 +331,6 @@ footer {
  }
 
 
-
- body{
-    min-height: 100vh !important;
-    display: flex !important;
-    flex-direction: column !important;
-}
+ .foot{
+    position: relative;
+ }

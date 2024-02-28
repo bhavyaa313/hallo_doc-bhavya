@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>daypilot-project</title>
+<script src="daypilot-all.min.js"></script>
+  <style type="text/css">
+    p, body, td, input, select, button { font-family: -apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif; font-size: 14px; }
+    body { padding: 0px; margin: 0px; background-color: #ffffff; }
+    a { color: #1155a3; }
+    .space { margin: 10px 0px 10px 0px; }
+    .header { background: #003267; background: linear-gradient(to right, #011329 0%,#00639e 44%,#011329 100%); padding:20px 10px; color: white; box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75); }
+    .header a { color: white; }
+    .header h1 a { text-decoration: none; }
+    .header h1 { padding: 0px; margin: 0px; }
+    .main { padding: 10px; margin-top: 10px; }
+    .generated { color: #999; }
+    .generated a { color: #999; }
+  </style>
+
+  <!-- DayPilot library -->
+  <script src="js/daypilot/daypilot-all.min.js"></script>
+</head>
+<body>
+
+<div class="main">
+  <div class="space">
+    day:
+    <a href="javascript:dp.startDate = dp.startDate.addDays(-1); dp.update();">Previous</a>
+    |
+    <a href="javascript:dp.startDate = dp.startDate.addDays(1); dp.update();">Next</a>
+  </div>
+  <div id="dp"></div>
+  <div id="app"></div>
+ 
+</div>
+
+
+<script>
+  const dp = new DayPilot.Scheduler("dp", {
+    timeHeaders: [{"groupBy":"Day", "format":"dddd, MMM dd, yyyy"},{"groupBy":"Hour"}],
+    cellWidthSpec: "Auto",
+    scale: "Hour",
+    days: 1,
+    startDate: DayPilot.Date.today(),
+    timeRangeSelectedHandling: "Enabled",
+    onTimeRangeSelected: async (args) => {
+      const dp = args.control;
+      
+      const modal = await DayPilot.Modal.prompt("Create a new event:", "Event 1");
+      dp.clearSelection();
+      if (modal.canceled) { return; }
+      dp.events.add({
+        start: args.start,
+        end: args.end,
+        id: DayPilot.guid(),
+        resource: args.resource,
+        text: modal.result
+      });
+    },
+    eventMoveHandling: "Update",
+    onEventMoved: (args) => {
+      args.control.message("Event moved: " + args.e.text());
+    },
+    eventResizeHandling: "Update",
+    onEventResized: (args) => {
+      args.control.message("Event resized: " + args.e.text());
+    },
+    eventDeleteHandling: "Update",
+    onEventDeleted: (args) => {
+      args.control.message("Event deleted: " + args.e.text());
+    },
+    eventClickHandling: "Edit",
+    eventEditHandling: "Update",
+    onEventEdited: (args) => {
+      args.control.message("Event edited: " + args.e.text());
+    },
+    eventHoverHandling: "Bubble",
+    bubble: new DayPilot.Bubble({
+      onLoad: (args) => {
+        // if the event object doesn't specify "bubbleHtml" property
+        // this onLoad handler will be called to provide the bubble HTML
+        args.html = "Event details";
+      }
+    }),
+  });
+  dp.resources = [
+    {name: "Resource 1", id: "R1"},
+    {name: "Resource 2", id: "R2"},
+    {name: "Resource 3", id: "R3"},
+    {name: "Resource 4", id: "R4"},
+    {name: "Resource 5", id: "R5"},
+    {name: "Resource 6", id: "R6"},
+    {name: "Resource 7", id: "R7"},
+    {name: "Resource 8", id: "R8"},
+    {name: "Resource 9", id: "R9"},
+  ];
+  dp.events.list = [];
+  dp.init();
+  const app = {
+    elements: {
+        previous: document.getElementById('previous'),
+        next: document.getElementById('next')
+    },
+    init() {
+        this.addEventHandlers();
+        this.loadEventData();
+    },
+    addEventHandlers() {
+        this.elements.previous.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            this.previous();
+        });
+        this.elements.next.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            this.next();
+        });
+    },
+    previous() {
+        const startDate = dp.startDate.addDays(-1);
+        dp.update({startDate: startDate});
+    },
+    next() {
+        const startDate = dp.startDate.addDays(1);
+        dp.update({startDate: startDate});
+    },
+    loadEventData() {
+        const events = [
+            {
+                start: new DayPilot.Date("2021-03-25T12:00:00"),
+                end: new DayPilot.Date("2021-03-25T12:00:00").addHours(3),
+                id: DayPilot.guid(),
+                text: "Special event"
+            }
+        ];
+        dp.update({events: events});
+    }
+};
+app.init();
+</script>
+
+</body>
+</html>

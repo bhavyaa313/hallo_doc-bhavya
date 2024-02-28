@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <span>
+        <button type="button" class="btn btn-info mx-2   " id="daybtn">
+            Day</button>
+    </span>
+    <span>
+        <button  type="button" class="btn btn-outline-info mx-2   " id="weekbtn">
+            Week</button>
+    </span>
+    <div class="main">
+
+        <div id="dp" class="day">
+day
+        </div>
+
+
+
+    </div>
+    
+    <div class="main">
+
+        <div id="dp1" class="week" style="display: none;">
+week
+        </div>
+
+
+
+    </div>
+
+<script>
+   
+    $(document).ready(function(){
+ $('#daybtn').click(function () {
+    console.log("duyhdfhdyf")
+    $('.day').show()
+    $('.week').hide();
+  
+  }); 
+  $('#weekbtn').click(function () {
+    $('.day').hide();
+    $('.week').show()
+  
+  }); 
+});
+
+
+
+</script>
+</body>
+
+</html>

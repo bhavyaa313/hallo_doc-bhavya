@@ -13,9 +13,97 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/custom.js"></script>
+    <script src="daypilot-all.min.js"></script>
+    <script src="js/daypilot/daypilot-all.min.js"></script>
+    <script src="https://javascript.daypilot.org/demo/lite/helpers/v2/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
+
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <style>
+        p,
+        body,
+        td,
+        input,
+        select,
+        button {
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        body {
+            padding: 0px;
+            margin: 0px;
+            background-color: #ffffff;
+        }
+
+        a {
+            color: #1155a3;
+        }
+
+        .space .space1 .space2 {
+            margin: 10px 0px 10px 0px;
+        }
+
+        .header {
+            background: #003267;
+            background: linear-gradient(to right, #011329 0%, #00639e 44%, #011329 100%);
+            padding: 20px 10px;
+            color: white;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75);
+        }
+
+        .hide {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .header a {
+            color: white;
+        }
+
+        .header h1 a {
+            text-decoration: none;
+        }
+
+        .header h1 {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .main {
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .generated {
+            color: #999;
+        }
+
+        .generated a {
+            color: #999;
+        }
+
+
+
+
+        .circle {
+            width: 40px;
+            height: 30px;
+            border-radius: 30%;
+            background-color: #ffc0cb;
+            /* This is the hex code for pink */
+        }
+
+        .circle2 {
+            width: 40px;
+            height: 30px;
+            border-radius: 30%;
+            background-color: #c0e4ff;
+            /* This is the hex code for pink */
+        }
+
         body {
 
             background-color: white;
@@ -36,84 +124,16 @@
     </style>
 
 
-<style>
-    html,
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-        font-size: 13px;
-    }
-
-    #calendar {
-        max-width: 1100px;
-        margin: 40px auto;
-        max-height: 500px;
-    }
-</style>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.11/index.global.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.11/index.global.min.js"></script>
 
 
     <script src="/docs/dist/demo-to-codepen.js"></script>
 
 
-    <script>
-
-    document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            headerToolbar: {
-                left: 'today prev,next',
-                center: 'title',
-                right: 'resourceTimelineDay,resourceTimelineWeek'
-            },
-            aspectRatio: 1,
-            initialView: 'resourceTimelineDay',
-            resourceGroupField: 'building',
-            resources: [
-                { id: 'a', building: '460 Bryant', title: 'gggggggggg' },
-                { id: 'b', building: '460 Bryant', title: 'Auditorium B' },
-                { id: 'c', building: '460 Bryant', title: 'Auditorium C' },
-                { id: 'd', building: '460 Bryant', title: 'Auditorium D' },
-                { id: 'e', building: '460 Bryant', title: 'Auditorium E' },
-                { id: 'f', building: '460 Bryant', title: 'Auditorium F' },
-                { id: 'g', building: '564 Pacific', title: 'Auditorium G' },
-                { id: 'h', building: '564 Pacific', title: 'Auditorium H' },
-                { id: 'i', building: '564 Pacific', title: 'Auditorium I' },
-                { id: 'j', building: '564 Pacific', title: 'Auditorium J' },
-             
-               
-            ],
-            customButtons: {
-    addEventButton: {
-      text: 'Add new event',
-      click: function () {
-        var dateStr = prompt('Enter date in YYYY-MM-DD format');
-        var date = moment(dateStr);
-
-        if (date.isValid()) {
-          $('#calendar').fullCalendar('renderEvent', {
-            title: 'Dynamic event',
-            start: date,
-            allDay: true
-          });
-        } else {
-          alert('Invalid Date');
-        }
-
-      }
-    }
-  },
-        });
-
-        calendar.render();
-    });
-
-</script>
 
 </head>
 
@@ -126,12 +146,12 @@
 
             <ul class="navbar-nav w-100 flex-row">
 
-               
+
 
                 <button class="btn btn-outline-info d-lg-none d-inline" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                <img src="images/icons8-menu.svg" alt="">
-            </button>
+                    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    <img src="images/icons8-menu.svg" alt="">
+                </button>
 
                 <li class="nav-item">
                     <img class="hello-logo1 m-2" src="images/hellodoc-logo.png" alt="">
@@ -177,46 +197,63 @@
                         <a href="my_profile.html" class="nav-link">My Profile</a>
                     </li>
                     <li class="nav-item dropdown mx-2">
-                        <a class="nav-link dropdown-toggle active  text-info" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                         providers
+                        <a class="nav-link dropdown-toggle active  text-info" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            providers
                         </a>
                         <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item text-info" href="day_wise_scheduling.html ">Scheduling</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Invoicing</a></li>
+                            <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-info" href="day_wise_scheduling.html ">Scheduling</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Invoicing</a></li>
                         </ul>
-                      </li>
+                    </li>
                     <li class="nav-item mx-2">
                         <a href="vendor.html" class="nav-link">Partners</a>
                     </li>
                     <li class="nav-item dropdown mx-2">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Access
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
-                     
-                      </ul>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Access
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
+
+                        </ul>
                     </li>
                     <li class="nav-item dropdown mx-2">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Records
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
-                      </ul>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Records
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -236,49 +273,69 @@
                             <a href="my_profile.html" class="nav-link">My Profile</a>
                         </li>
                         <li class="nav-item dropdown mx-2">
-                          <a class="nav-link dropdown-toggle active  text-info" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Providers
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-info" href="day_wise_scheduling.html">Scheduling</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Invoicing</a></li>
-                          </ul>
+                            <a class="nav-link dropdown-toggle active  text-info" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Providers
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item text-info" href="day_wise_scheduling.html">Scheduling</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Invoicing</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item mx-2">
                             <a href="vendor.html" class="nav-link">Partners</a>
                         </li>
                         <li class="nav-item dropdown mx-2">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Access
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
-                         
-                          </ul>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Access
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
+
+                            </ul>
                         </li>
                         <li class="nav-item dropdown mx-2">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Records
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="patient_history.html">Block History</a></li>
-                            
-                          </ul>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Records
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="patient_history.html">Block History</a></li>
+
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -295,24 +352,40 @@
     <div class="container ">
         <div class="  d-flex p-4  ">
             <h4 class="mx-2 mb-4">Scheduling</h4>
-            <div class="ms-auto mt-0 "> <a href="javascript: history.go(-1)" type="button" class="btn btn-outline-info mx-2 ">
+            <div class="ms-auto mt-0 "> <a href="javascript: history.go(-1)" type="button" class="btn btn-info mx-2  ">
                     < Back</a>
             </div>
 
         </div>
 
 
-        <div class="d-flex flex-row-reverse ">
-            <div class=" "> <a href="create_shift.html" type="button" class="btn btn-outline-info mx-2 ">
-                Add New Event</a>
-            </div>
-            <div class=" "> <a href="Req_shift.html" type="button" class="btn btn-outline-info mx-2 ">
-                    Shifts For Review</a>
-            </div>
-            <div class=" "> <a href="select.html" type="button" class="btn btn-outline-info mx-2 ">
-                    Providers On call</a>
-            </div>
+        <div class="d-flex  ">
+            <div class="input-group border me-2 rounded-0 mb-2 form-control col-md-3">
+                <div class="input-group-append">
+                    <button class="btn text-secondary border border-0 bg-white" type="button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+                <input type="search" class="form-control border-0  shadow-none" placeholder="Search Regions" list="data"
+                    id="myInput2" onkeyup="searchRegion()">
+                <datalist class=" border-0  shadow-none" aria-label="Default select example" id="data">
 
+                    <option value="mumbai">
+                    <option value="kolkata"></option>
+                    <option value="banglore"></option>
+                </datalist>
+            </div>
+            <div class="d-flex ms-auto">
+                <div class=" "> <a href="" type="button" class="btn btn-info mx-2  ">
+                        Add New Event</a>
+                </div>
+                <div class=" "> <a href="Req_shift.html" type="button" class="btn btn-info mx-2   ">
+                        Shifts For Review</a>
+                </div>
+                <div class=" "> <a href="providers_oncall.html" type="button" class="btn btn-info mx-2   ">
+                        Providers On call</a>
+                </div>
+            </div>
 
 
         </div>
@@ -324,999 +397,364 @@
         </div>
 
         <div class="d-flex flex-row-reverse mt-3">
-            <div class="mx-5">Pending Shift</div>
-            <div>Approved Shift</div>
+
+            <div class="mx-2">Approved Shift</div>
+            <div class="circle2 mx-2"></div>
+            <div class="mx-2">Pending Shift</div>
+            <div class="circle mx-2"></div>
         </div>
+
+
+
+
+
+        <div class="  d-flex p-3  ">
+            <div class="space">
+
+                <a href="javascript:dp.startDate = dp.startDate.addDays(-1); dp.update();"
+                    class="btn btn-info  rounded-circle">
+                    < </a>
+                        <span id="start" class="hide" style=""></span><button class="btn"
+                            onclick="picker.show(); return false;"><i class="bi bi-calendar2-x h3"></i></button>
+
+                        <a href="javascript:dp.startDate = dp.startDate.addDays(1); dp.update();"
+                            class="btn btn-info  rounded-circle">></a>
+
+
+
+            </div>
+
+            <div class="space2" style="display: none;">
+
+                <a href="javascript:dp1.startDate = dp1.startDate.addDays(-7); dp1.update();"
+                    class="btn btn-info  rounded-circle">
+                    < </a>
+                        <span id="start" class="hide" style="opacity: 0;"></span><button class="btn"
+                            onclick="picker.show(); return false;"><i class="bi bi-calendar2-x h3"></i></button>
+                        <a href="javascript:dp1.startDate = dp1.startDate.addDays(7); dp1.update();"
+                            class="btn btn-info  rounded-circle">></a>
+
+
+
+            </div>
+
+            <div class="space3" style="display: none;">
+
+                <a href="javascript:dp3.startDate = dp3.startDate.addMonths(-1); dp3.update();"
+                    class="btn btn-info  rounded-circle">
+                    < </a>
+                        <span id="start" class="hide"></span><button class="btn"
+                            onclick="picker.show(); return false;"><i class="bi bi-calendar2-x h3"></i></button>
+                        <a href="javascript:dp3.startDate = dp3.startDate.addMonths(1); dp3.update();"
+                            class="btn btn-info rounded-circle">></a>
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class=" d-flex ms-auto mt-3">
+                <span>
+                    <button type="button" class="btn btn-outline-info mx-2   " id="daybtn">
+                        Day</button>
+                </span>
+                <span>
+                    <button type="button" class="btn btn-outline-info mx-2   " id="weekbtn">
+                        Week</button>
+                </span>
+                <span>
+                    <button href="create_shift.html" type="button" class="btn btn-outline-info mx-2  " id="monthbtn">
+                        Month</button>
+                </span>
+
+
+            </div>
+
+        </div>
+
+        <div class="main">
+
+            <div id="dp">
+
+
+
+            </div>
+
+
+
+        </div>
+
+        <div class="main">
+
+            <div id="dp1" style="display: none;">
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+        <div class="main">
+
+            <div id="dp3" style="display: none;"></div>
+
+
+        </div>
+
+
+
+
+
+
+
 
 
     </div>
 
 
 
+    <script>
+        const dp = new DayPilot.Scheduler("dp", {
+            timeHeaders: [{ "groupBy": "Day", "format": "dddd, MMM dd, yyyy" }, { "groupBy": "Hour" }],
+            cellWidthSpec: "Auto",
+            scale: "Hour",
+            days: 1,
+            startDate: DayPilot.Date.today(),
+            timeRangeSelectedHandling: "Enabled",
+            onTimeRangeSelected: async (args) => {
+                const dp = args.control;
 
-    <div id="calendar" class="fc fc-media-screen fc-direction-ltr fc-theme-standard">
-        <div class="fc-header-toolbar fc-toolbar fc-toolbar-ltr">
-            <div class="fc-toolbar-chunk"><button type="button" title="Today" disabled="" aria-pressed="false"
-                    class="fc-today-button fc-button fc-button-primary">today</button>
-                <div class="fc-button-group"><button type="button" title="Previous day" aria-pressed="false"
-                        class="fc-prev-button fc-button fc-button-primary"><span class="fc-icon fc-icon-chevron-left"
-                            role="img"></span></button><button type="button" title="Next day" aria-pressed="false"
-                        class="fc-next-button fc-button fc-button-primary"><span class="fc-icon fc-icon-chevron-right"
-                            role="img"></span></button></div>
-            </div>
+                const modal = await DayPilot.Modal.prompt("Create a new event:", "Event 1");
+                dp.clearSelection();
+                if (modal.canceled) { return; }
+                dp.events.add({
+                    start: args.start,
+                    end: args.end,
+                    id: DayPilot.guid(),
+                    resource: args.resource,
+                    text: modal.result
+                });
+            },
+            eventMoveHandling: "Update",
+            onEventMoved: (args) => {
+                args.control.message("Event moved: " + args.e.text());
+            },
+            eventResizeHandling: "Update",
+            onEventResized: (args) => {
+                args.control.message("Event resized: " + args.e.text());
+            },
+            eventDeleteHandling: "Update",
+            onEventDeleted: (args) => {
+                args.control.message("Event deleted: " + args.e.text());
+            },
+            eventClickHandling: "Edit",
+            eventEditHandling: "Update",
+            onEventEdited: (args) => {
+                args.control.message("Event edited: " + args.e.text());
+            },
+            eventHoverHandling: "Bubble",
+            bubble: new DayPilot.Bubble({
+                onLoad: (args) => {
+                    // if the event object doesn't specify "bubbleHtml" property
+                    // this onLoad handler will be called to provide the bubble HTML
+                    args.html = "Event details";
+                }
+            }),
+        });
+        dp.resources = [
+            { name: "Resource 1", id: "R1" },
+            { name: "Resource 2", id: "R2" },
+            { name: "Resource 3", id: "R3" },
+            { name: "Resource 4", id: "R4" },
+            { name: "Resource 5", id: "R5" },
+            { name: "Resource 6", id: "R6" },
+            { name: "Resource 7", id: "R7" },
+            { name: "Resource 8", id: "R8" },
+            { name: "Resource 9", id: "R9" },
+        ];
+        dp.events.list = [];
+        dp.init();
+        var picker = new DayPilot.DatePicker({
+            target: 'start',
+            pattern: 'yyyy-MM-dd',
+            onTimeRangeSelected: function (args) {
+                dp.startDate = args.date;
+                dp.update();
+            }
+        });
 
-            <div class="fc-toolbar-chunk">
-                <div class="fc-button-group"><button type="button" title="day view" aria-pressed="true"
-                        class="fc-resourceTimelineDay-button fc-button fc-button-primary fc-button-active">day</button><button
-                        type="button" title="week view" aria-pressed="false"
-                        class="fc-resourceTimelineWeek-button fc-button fc-button-primary">week</button></div>
-            </div>
-        </div>
-        <div aria-labelledby="fc-dom-1" class="fc-view-harness fc-view-harness-active" style="height: 687.5px;">
-            <div
-                class="fc-resourceTimelineDay-view fc-view fc-resource-timeline fc-timeline fc-timeline-overlap-enabled">
-                <table role="grid" class="fc-scrollgrid  fc-scrollgrid-liquid">
-                    <colgroup>
-                        <col style="width: 30%;">
-                        <col>
-                        <col>
-                    </colgroup>
-                    <thead role="rowgroup">
-                        <tr role="presentation" class="fc-scrollgrid-section fc-scrollgrid-section-header ">
-                            <th role="presentation">
-                                <div class="fc-scroller-harness">
-                                    <div class="fc-scroller" style="overflow: hidden;">
-                                        <table role="presentation" class="fc-datagrid-header fc-scrollgrid-sync-table"
-                                            style="width: 328px;">
-                                            <colgroup>
-                                                <col>
-                                            </colgroup>
-                                            <thead role="presentation">
-                                                <tr role="row">
-                                                    <th role="columnheader" class="fc-datagrid-cell">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 33px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span
-                                                                    class="fc-datagrid-expander fc-datagrid-expander-placeholder"><span
-                                                                        class="fc-icon"></span></span><span
-                                                                    class="fc-datagrid-cell-main">Resources</span>
-                                                            </div>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div>
-                            </th>
-                            <td role="presentation" class="fc-resource-timeline-divider fc-cell-shaded"></td>
-                            <th role="presentation">
-                                <div class="fc-scroller-harness">
-                                    <div class="fc-scroller" style="overflow: scroll; margin-bottom: -17px;">
-                                        <div class="fc-timeline-header">
-                                            <table aria-hidden="true" class="fc-scrollgrid-sync-table"
-                                                style="min-width: 1440px; width: 748px;">
-                                                <colgroup>
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
-                                                    <col style="min-width: 30px;">
+    </script>
+    <script>
+        const dp1 = new DayPilot.Scheduler("dp1", {
+            timeHeaders: [{ "groupBy": "Week", "format": "MMM dd, yyyy" }, { "groupBy": "Day", "format": "dddd" }],
+            scale: "Day",
+            days: 7,
+            startDate: DayPilot.Date.today().firstDayOfWeek(),
+            businessWeekends: true,
+            cellWidthSpec: "Auto",
+            timeRangeSelectedHandling: "Enabled",
+            onTimeRangeSelected: async (args) => {
+                const dp1 = args.control;
+                const modal = await DayPilot.Modal.prompt("Create a new event:", "Event 1");
+                dp1.clearSelection();
+                if (modal.canceled) { return; }
+                dp1.events.add({
+                    start: args.start,
+                    end: args.end,
+                    id: DayPilot.guid(),
+                    resource: args.resource,
+                    text: modal.result
+                });
+            },
+            eventMoveHandling: "Update",
+            onEventMoved: (args) => {
+                args.control.message("Event moved: " + args.e.text());
+            },
+            eventResizeHandling: "Update",
+            onEventResized: (args) => {
+                args.control.message("Event resized: " + args.e.text());
+            },
+            eventDeleteHandling: "Update",
+            onEventDeleted: (args) => {
+                args.control.message("Event deleted: " + args.e.text());
+            },
+            eventClickHandling: "Disabled",
+            eventHoverHandling: "Bubble",
+            bubble: new DayPilot.Bubble({
+                onLoad: (args) => {
+                    // if the event object doesn't specify "bubbleHtml" property
+                    // this onLoad handler will be called to provide the bubble HTML
+                    args.html = "Event details";
+                }
+            }),
+        });
+        dp1.resources = [
+            { name: "Resource 1", id: "R1" },
+            { name: "Resource 2", id: "R2" },
+            { name: "Resource 3", id: "R3" },
+            { name: "Resource 4", id: "R4" },
+            { name: "Resource 5", id: "R5" },
+            { name: "Resource 6", id: "R6" },
+            { name: "Resource 7", id: "R7" },
+            { name: "Resource 8", id: "R8" },
+            { name: "Resource 9", id: "R9" },
+        ];
+        dp1.events.list = [];
+        dp1.init();
+        var picker = new DayPilot.DatePicker({
+            target: 'start',
+            pattern: 'yyyy-MM-dd',
+            onTimeRangeSelected: function (args) {
+                dp1.startDate = args.date;
+                dp1.update();
+            }
+        });
+    </script>
 
-                                                </colgroup>
-                                                <tbody>
-                                                    <tr class="fc-timeline-header-row fc-timeline-header-row-chrono">
-                                                        <th colspan="2" data-date="2024-02-22T00:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">12</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T01:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">1</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T02:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">2am</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T03:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">3am</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T04:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">4am</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T05:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">5am</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T06:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">6am</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T07:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">7am</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T08:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">8am</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T09:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">9am</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T10:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">10am</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T11:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">11am</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T12:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">12pm</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T13:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">1pm</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T14:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">2pm</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T15:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">3pm</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T16:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">4pm</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T17:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">5pm</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T18:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">6pm</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T19:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 15px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">7pm</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T20:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 33px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">8pm</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T21:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 33px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">9pm</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T22:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 33px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">10pm</a>
-                                                            </div>
-                                                        </th>
-                                                        <th colspan="2" data-date="2024-02-22T23:00:00"
-                                                            class="fc-timeline-slot fc-timeline-slot-label fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                            <div class="fc-timeline-slot-frame" style="height: 33px;"><a
-                                                                    class="fc-timeline-slot-cushion fc-scrollgrid-sync-inner">11pm</a>
-                                                            </div>
-                                                        </th>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody role="rowgroup">
-                        <tr role="presentation"
-                            class="fc-scrollgrid-section fc-scrollgrid-section-body  fc-scrollgrid-section-liquid">
-                            <td role="presentation">
-                                <div class="fc-scroller-harness fc-scroller-harness-liquid">
-                                    <div class="fc-scroller fc-scroller-liquid-absolute"
-                                        style="overflow: scroll; right: -17px;">
-                                        <table role="presentation" class="fc-datagrid-body fc-scrollgrid-sync-table"
-                                            style="width: 328px;">
-                                            <colgroup>
-                                                <col>
-                                            </colgroup>
-                                            <tbody role="presentation">
-                                                <tr role="row">
-                                                    <th role="columnheader" scope="colgroup" colspan="1"
-                                                        class="fc-datagrid-cell fc-resource-group fc-cell-shaded">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 32px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span class="fc-datagrid-expander"><span
-                                                                        class="fc-icon fc-icon-minus-square"></span></span><span
-                                                                    class="fc-datagrid-cell-main">460 Bryant</span>
-                                                            </div>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                                <tr role="row">
-                                                    <td role="gridcell" data-resource-id="a"
-                                                        class="fc-datagrid-cell fc-resource">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 33px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span class="fc-icon"></span><span
-                                                                    class="fc-datagrid-expander fc-datagrid-expander-placeholder"><span
-                                                                        class="fc-icon"></span></span><span
-                                                                    class="fc-datagrid-cell-main">Provider 1</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr role="row">
-                                                    <td role="gridcell" data-resource-id="b"
-                                                        class="fc-datagrid-cell fc-resource">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 33px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span class="fc-icon"></span><span
-                                                                    class="fc-datagrid-expander fc-datagrid-expander-placeholder"><span
-                                                                        class="fc-icon"></span></span><span
-                                                                    class="fc-datagrid-cell-main">Provider 2</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr role="row">
-                                                    <td role="gridcell" data-resource-id="c"
-                                                        class="fc-datagrid-cell fc-resource">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 33px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span class="fc-icon"></span><span
-                                                                    class="fc-datagrid-expander fc-datagrid-expander-placeholder"><span
-                                                                        class="fc-icon"></span></span><span
-                                                                    class="fc-datagrid-cell-main">Provider 3</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr role="row">
-                                                    <td role="gridcell" data-resource-id="d"
-                                                        class="fc-datagrid-cell fc-resource">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 33px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span class="fc-icon"></span><span
-                                                                    class="fc-datagrid-expander fc-datagrid-expander-placeholder"><span
-                                                                        class="fc-icon"></span></span><span
-                                                                    class="fc-datagrid-cell-main">Provider 4</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr role="row">
-                                                    <td role="gridcell" data-resource-id="e"
-                                                        class="fc-datagrid-cell fc-resource">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 33px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span class="fc-icon"></span><span
-                                                                    class="fc-datagrid-expander fc-datagrid-expander-placeholder"><span
-                                                                        class="fc-icon"></span></span><span
-                                                                    class="fc-datagrid-cell-main">Provider 5</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr role="row">
-                                                    <td role="gridcell" data-resource-id="f"
-                                                        class="fc-datagrid-cell fc-resource">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 33px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span class="fc-icon"></span><span
-                                                                    class="fc-datagrid-expander fc-datagrid-expander-placeholder"><span
-                                                                        class="fc-icon"></span></span><span
-                                                                    class="fc-datagrid-cell-main">Provider 6</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr role="row">
-                                                    <th role="columnheader" scope="colgroup" colspan="1"
-                                                        class="fc-datagrid-cell fc-resource-group fc-cell-shaded">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 32px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span class="fc-datagrid-expander"><span
-                                                                        class="fc-icon fc-icon-minus-square"></span></span><span
-                                                                    class="fc-datagrid-cell-main">Provider 7</span>
-                                                            </div>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                                <tr role="row">
-                                                    <td role="gridcell" data-resource-id="g"
-                                                        class="fc-datagrid-cell fc-resource">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 33px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span class="fc-icon"></span><span
-                                                                    class="fc-datagrid-expander fc-datagrid-expander-placeholder"><span
-                                                                        class="fc-icon"></span></span><span
-                                                                    class="fc-datagrid-cell-main">Provider 8</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr role="row">
-                                                    <td role="gridcell" data-resource-id="h"
-                                                        class="fc-datagrid-cell fc-resource">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 33px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span class="fc-icon"></span><span
-                                                                    class="fc-datagrid-expander fc-datagrid-expander-placeholder"><span
-                                                                        class="fc-icon"></span></span><span
-                                                                    class="fc-datagrid-cell-main">Provider 9</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr role="row">
-                                                    <td role="gridcell" data-resource-id="i"
-                                                        class="fc-datagrid-cell fc-resource">
-                                                        <div class="fc-datagrid-cell-frame" style="height: 33px;">
-                                                            <div
-                                                                class="fc-datagrid-cell-cushion fc-scrollgrid-sync-inner">
-                                                                <span class="fc-icon"></span><span
-                                                                    class="fc-datagrid-expander fc-datagrid-expander-placeholder"><span
-                                                                        class="fc-icon"></span></span><span
-                                                                    class="fc-datagrid-cell-main">provider 10</span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </td>
-                            <td role="presentation" class="fc-resource-timeline-divider fc-cell-shaded"></td>
-                            <td role="presentation">
-                                <div class="fc-scroller-harness fc-scroller-harness-liquid">
-                                    <div class="fc-scroller fc-scroller-liquid-absolute" style="overflow: scroll;">
-                                        <div class="fc-timeline-body " style="min-width: 1440px;">
-                                            <div class="fc-timeline-slots">
-                                                <table aria-hidden="true" class=""
-                                                    style="min-width: 1440px; width: 748px;">
-                                                    <colgroup>
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                        <col style="min-width: 30px;">
-                                                    </colgroup>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td data-date="2024-02-22T00:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T00:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T01:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T01:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T02:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T02:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T03:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T03:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T04:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T04:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T05:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T05:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T06:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T06:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T07:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T07:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T08:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T08:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T09:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T09:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T10:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T10:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-past">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T11:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T11:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T12:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T12:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T13:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T13:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T14:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T14:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T15:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T15:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T16:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T16:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T17:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T17:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T18:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T18:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T19:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T19:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T20:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T20:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T21:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T21:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T22:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T22:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T23:00:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-major fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                            <td data-date="2024-02-22T23:30:00"
-                                                                class="fc-timeline-slot fc-timeline-slot-lane fc-timeline-slot-minor fc-slot fc-slot-thu fc-slot-today fc-slot-future">
-                                                                <div class=""></div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="fc-timeline-bg"></div>
-                                            <table aria-hidden="true" class="fc-scrollgrid-sync-table "
-                                                style="min-width: 1440px; width: 748px;">
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="fc-timeline-lane fc-resource-group fc-cell-shaded">
-                                                            <div class="" style="height: 32px;"></div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="a" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="b" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="c" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="d" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="e" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="f" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="fc-timeline-lane fc-resource-group fc-cell-shaded">
-                                                            <div class="" style="height: 32px;"></div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="g" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="h" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="i" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="j" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="k" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="l" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="m" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td data-resource-id="n" class="fc-timeline-lane fc-resource">
-                                                            <div class="fc-timeline-lane-frame" style="height: 33px;">
-                                                                <div class="fc-timeline-lane-misc"></div>
-                                                                <div class="fc-timeline-bg"></div>
-                                                                <div class="fc-timeline-events fc-scrollgrid-sync-inner"
-                                                                    style="height: 0px;"></div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="fc-timeline-lane fc-resource-group fc-cell-shaded">
-                                                            <div class="" style="height: 32px;"></div>
-                                                        </td>
-                                                    </tr>
+    <script>
+        var today = DayPilot.Date.today();
+        const dp3 = new DayPilot.Month("dp3", {
+            locale: "en-us",
+            timeRangeSelectedHandling: "Enabled",
+            onTimeRangeSelected: async (args) => {
+                const modal = await DayPilot.Modal.prompt("Create a new event:", "Event 1");
+                const dp3 = args.control;
+                dp3.clearSelection();
+                if (modal.canceled) { return; }
+                dp3.events.add({
+                    start: args.start,
+                    end: args.end,
+                    id: DayPilot.guid(),
+                    text: modal.result
+                });
+            },
+            eventDeleteHandling: "Update",
+            onEventDeleted: (args) => {
+                console.log("Event deleted: " + args.e.text());
+            },
+            eventMoveHandling: "Update",
+            onEventMoved: (args) => {
+                console.log("Event moved: " + args.e.text());
+            },
+            eventResizeHandling: "Update",
+            onEventResized: (args) => {
+                console.log("Event resized: " + args.e.text());
+            },
+            eventClickHandling: "Disabled",
+            contextMenu: new DayPilot.Menu({
+                items: [
+                    { text: "Delete", onClick: (args) => { const dp3 = args.source.calendar; dp3.events.remove(args.source); } }
+                ]
+            }),
+        });
+        dp3.events.list = [];
+        dp3.init();
+        var picker = new DayPilot.DatePicker({
+            target: 'start',
+            pattern: 'yyyy-MM-dd',
+            onTimeRangeSelected: function (args) {
+                dp3.startDate = args.date;
+                dp3.update();
+            }
+        });
+    </script>
 
 
+    <script>
+        $(document).ready(function () {
+            $('#daybtn').click(function () {
+              
+                $('#dp').show()
+                $('#dp1').hide()
+                $('#dp3').hide()
+                $('.space2').hide()
+                $('.space3').hide()
+                $('.space').show()
+
+                
+
+            });
+            $('#weekbtn').click(function () {
+             
+                $('#dp').hide()
+                $('#dp3').hide()
+                $('#dp1').show()
+                
+                $('.space').hide()
+                $('.space3').hide()
+                $('.space2').show()
+            });
+            $('#monthbtn').click(function () {
+              
+                $('#dp').hide()
+                $('#dp1').hide()
+                $('#dp3').show()
+                $('.space2').hide()
+                $('.space').hide()
+                $('.space3').show()
+               
+            });
+        });
 
 
-
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
+    </script>
 
 </body>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            timeZone: 'UTC',
-            slotDuration: '01:00',
-            initialView: 'resourceTimelineDay',
-            aspectRatio: 1,
-            slotMinWidth: 0.9,
-            headerToolbar: {
-                left: 'prev,next',
-                center: 'title',
-                right: 'resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth'
-            },
-            editable: true,
-            resourceAreaHeaderContent: 'Provider',
-            resources: 'provider.json',
-            events: 'https://fullcalendar.io/api/demo-feeds/events.json?single-day&for-resource-timeline',
-            customButtons: {
-    addEventButton: {
-      text: 'Add new event',
-      click: function () {
-        var dateStr = prompt('Enter date in YYYY-MM-DD format');
-        var date = moment(dateStr);
-
-        if (date.isValid()) {
-          $('#calendar').fullCalendar('renderEvent', {
-            title: 'Dynamic event',
-            start: date,
-            allDay: true
-          });
-        } else {
-          alert('Invalid Date');
-        }
-
-      }
-    }
-  },
-        });
-
-        calendar.render();
-    });
-</script>
-<script src='fullcalendar/dist/index.global.js'></script>
- <script>
-
-var calendar = new FullCalendar.Calendar(calendarEl, {
-  themeSystem: 'bootstrap5',
-  customButtons: {
-    addEventButton: {
-      text: 'Add new event',
-      click: function () {
-        var dateStr = prompt('Enter date in YYYY-MM-DD format');
-        var date = moment(dateStr);
-
-        if (date.isValid()) {
-          $('#calendar').fullCalendar('renderEvent', {
-            title: 'Dynamic event',
-            start: date,
-            allDay: true
-          });
-        } else {
-          alert('Invalid Date');
-        }
-
-      }
-    }
-  },
-});
-
-
-
-$('#calendar').fullCalendar({
-  header: {
-    left: 'prev,next today',
-    center: 'addEventButton',
-    right: 'month,agendaWeek,agendaDay,listWeek'
-  },
-  defaultDate: '2018-11-16',
-  navLinks: true,
-  editable: true,
-  eventLimit: true,
-  events: [{
-      title: 'Simple static event',
-      start: '2018-11-16',
-      description: 'Super cool event'
-    },
-
-  ],
-  customButtons: {
-    addEventButton: {
-      text: 'Add new event',
-      click: function () {
-        var dateStr = prompt('Enter date in YYYY-MM-DD format');
-        var date = moment(dateStr);
-
-        if (date.isValid()) {
-          $('#calendar').fullCalendar('renderEvent', {
-            title: 'Dynamic event',
-            start: date,
-            allDay: true
-          });
-        } else {
-          alert('Invalid Date');
-        }
-
-      }
-    }
-  },
-  dayClick: function (date, jsEvent, view) {
-    var date = moment(date);
-
-    if (date.isValid()) {
-      $('#calendar').fullCalendar('renderEvent', {
-        title: 'Dynamic event from date click',
-        start: date,
-        allDay: true
-      });
-    } else {
-      alert('Invalid');
-    }
-  },
-});
-</script>
 
 </html>
