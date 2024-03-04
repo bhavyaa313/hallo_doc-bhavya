@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dasdhboard New</title>
-
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+
     <script src="js/custom.js"></script>
     <script src="daypilot-all.min.js"></script>
     <script src="js/daypilot/daypilot-all.min.js"></script>
@@ -59,8 +59,27 @@
             position: absolute;
         }
 
+        .hide1 {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .hide2 {
+            opacity: 0;
+            position: absolute;
+        }
+
         .header a {
             color: white;
+        }
+
+        .btn22 {
+            white-space: normal;
+            word-wrap: break-word;
+        }
+
+        .month_default_loading+div {
+            display: none;
         }
 
         .header h1 a {
@@ -86,6 +105,27 @@
         }
 
 
+        .abs {
+            width: 50px;
+            height: 30px;
+            border-radius: 10%;
+            background-color: rgb(243, 243, 243);
+            position: absolute;
+            top: 416px;
+            left: 136px;
+        }
+
+        .scheduler_default_corner>div {
+            display: none;
+        }
+
+        .navigator_default_main {
+    position: relative;
+    top: 40px;
+    left: -60vh;
+    
+}
+
 
 
         .circle {
@@ -93,7 +133,7 @@
             height: 30px;
             border-radius: 30%;
             background-color: #ffc0cb;
-            /* This is the hex code for pink */
+
         }
 
         .circle2 {
@@ -101,7 +141,7 @@
             height: 30px;
             border-radius: 30%;
             background-color: #c0e4ff;
-            /* This is the hex code for pink */
+
         }
 
         body {
@@ -161,7 +201,7 @@
 
                     <span class="wlcm">Welcome <span style="font-weight: 500;">Admin admin2</span></span>
 
-                    <button type="button" class="btn btn-outline-info mx-2 lo">Logout</button>
+                    <!-- <button type="button" class="btn btn-outline-info mx-2 lo d-sm-none">Logout</button> -->
 
                     <button type="button" class="btn btn-outline-info mx-2 lo-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -359,8 +399,8 @@
         </div>
 
 
-        <div class="d-flex  ">
-            <div class="input-group border me-2 rounded-0 mb-2 form-control col-md-3">
+        <div class="d-flex flex-row flex-wrap">
+            <div class="input-group border  rounded-0 mb-2 form-control col-md-4 col-12">
                 <div class="input-group-append">
                     <button class="btn text-secondary border border-0 bg-white" type="button">
                         <i class="bi bi-search"></i>
@@ -375,24 +415,37 @@
                     <option value="banglore"></option>
                 </datalist>
             </div>
-            <div class="d-flex ms-auto">
-                <div class=" "> <a href="" type="button" class="btn btn-info mx-2  ">
-                        Add New Event</a>
+            <div class=" ms-auto d-flex">
+                <div class=" "> <button data-bs-toggle="modal" data-bs-target="#create" type="button"
+                        class="btn btn-info mx-2  btn22 ">
+                        Add New Shift</button>
                 </div>
-                <div class=" "> <a href="Req_shift.html" type="button" class="btn btn-info mx-2   ">
+                <div class=""> <a href="Req_shift.html" type="button" class="btn btn-info mx-2 flex-wrap btn22  ">
                         Shifts For Review</a>
                 </div>
-                <div class=" "> <a href="providers_oncall.html" type="button" class="btn btn-info mx-2   ">
+                <div class=" "> <a href="providers_oncall.html" type="button"
+                        class="btn btn-info mx-2 flex-wrap btn22 ">
                         Providers On call</a>
                 </div>
             </div>
+            <!-- <div class="d-sm-flex ms-auto flex-row  d-flex   d-lg-none" >
+                <div class=" "> <button data-bs-toggle="modal" data-bs-target="#create" type="button" class="btn btn-info mx-1 btn-sm btn22  ">
+                       Add New Shift</button>
+                </div>
+                <div class=""> <a href="Req_shift.html" type="button" class="btn btn-info mx-1 flex-wrap btn-sm  ">
+                        Shifts For Review</a>
+                </div>
+                <div class=" "> <a href="providers_oncall.html" type="button" class="btn btn-info mx-1 flex-wrap btn-sm  ">
+                        Providers On call</a>
+                </div>
+            </div> -->
 
 
         </div>
 
         <div class="d-flex">
             <div class="fc-toolbar-chunk">
-                <h2 class="fc-toolbar-title" id="fc-dom-1"></h2>
+                <h2 id="x"></h2>
             </div>
         </div>
 
@@ -408,13 +461,13 @@
 
 
 
-        <div class="  d-flex p-3  ">
+        <div class="  d-flex p-3 flex-row flex-wrap justify-content-center ">
             <div class="space">
 
                 <a href="javascript:dp.startDate = dp.startDate.addDays(-1); dp.update();"
                     class="btn btn-info  rounded-circle">
                     < </a>
-                        <span id="start" class="hide" style=""></span><button class="btn"
+                      <button class="btn"
                             onclick="picker.show(); return false;"><i class="bi bi-calendar2-x h3"></i></button>
 
                         <a href="javascript:dp.startDate = dp.startDate.addDays(1); dp.update();"
@@ -429,8 +482,8 @@
                 <a href="javascript:dp1.startDate = dp1.startDate.addDays(-7); dp1.update();"
                     class="btn btn-info  rounded-circle">
                     < </a>
-                        <span id="start" class="hide" style="opacity: 0;"></span><button class="btn"
-                            onclick="picker.show(); return false;"><i class="bi bi-calendar2-x h3"></i></button>
+                        <button class="btn"
+                            onclick="picker2.show(); return false;"><i class="bi bi-calendar2-x h3"></i></button>
                         <a href="javascript:dp1.startDate = dp1.startDate.addDays(7); dp1.update();"
                             class="btn btn-info  rounded-circle">></a>
 
@@ -443,8 +496,8 @@
                 <a href="javascript:dp3.startDate = dp3.startDate.addMonths(-1); dp3.update();"
                     class="btn btn-info  rounded-circle">
                     < </a>
-                        <span id="start" class="hide"></span><button class="btn"
-                            onclick="picker.show(); return false;"><i class="bi bi-calendar2-x h3"></i></button>
+                       <button class="btn"
+                            onclick="picker3.show(); return false;"><i class="bi bi-calendar2-x h3"></i></button>
                         <a href="javascript:dp3.startDate = dp3.startDate.addMonths(1); dp3.update();"
                             class="btn btn-info rounded-circle">></a>
 
@@ -453,6 +506,7 @@
             </div>
 
 
+            <span id="start" class="hide" style=""></span>
 
 
 
@@ -462,8 +516,7 @@
 
 
 
-
-            <div class=" d-flex ms-auto mt-3">
+            <div class=" d-flex ml-auto mt-3  flex-row flex-wrap justify-content-center ">
                 <span>
                     <button type="button" class="btn btn-outline-info mx-2   " id="daybtn">
                         Day</button>
@@ -488,7 +541,9 @@
 
 
 
+
             </div>
+
 
 
 
@@ -512,8 +567,99 @@
 
             <div id="dp3" style="display: none;"></div>
 
-
+            <!-- <div class="abs mx-2"></div> -->
         </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnn" hidden>
+            View Shift
+        </button>
+        <!--   
+       Modal  -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h1 class="modal-title fs-5 " id="exampleModalLabel">View Shift</h1>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+    
+    
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                <option selected>Maryland</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="floatingSelect">Region</label>
+                        </div>
+    
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                                <option selected>Nikunj</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <label for="floatingSelect">Physician</label>
+                        </div>
+    
+                        <div class="form-floating mb-3">
+                            <!-- <input type="date" class="form-control" id="floatingInput"
+                        mailto:placeholder="name@example.com">
+                    <label for="floatingInput">Date of Birth</label> -->
+                            <input type="text" id="uname" class="form-control" placeholder="Date Of Birth"
+                                onfocus="(this.type='date')"></input>
+                            <label for="floatingInput" class="dm">Date of Birth</label>
+                        </div>
+    
+                        <div class="row g-2">
+                            <div class="col-md col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="time" class="form-control" id="floatingInput" placeholder="rttttttth">
+                                    <label for="floatingInput" class="dm">Start</label>
+                                </div>
+                            </div>
+                            <div class="col-md col-12">
+                                <div class="form-floating mb-3">
+                                    <input type="time" class="form-control" id="floatingInput" placeholder="trr">
+                                    <label for="floatingInput" class="dm">End</label>
+                                </div>
+                            </div>
+                        </div>
+                      
+    
+    
+    
+    
+                        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+                      
+    
+    
+    
+                    </div>
+                    <div class="modal-footer">
+    
+                        <button type="button" class="btn btn-info">Edit</button>
+                        <button type="button" class="btn btn-info" data-bs-dismiss="modal">Return</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
 
 
 
@@ -526,8 +672,11 @@
     </div>
 
 
-
     <script>
+        var x = DayPilot.Date.toString(pattern[locale]);
+    </script>
+    <script>
+
         const dp = new DayPilot.Scheduler("dp", {
             timeHeaders: [{ "groupBy": "Day", "format": "dddd, MMM dd, yyyy" }, { "groupBy": "Hour" }],
             cellWidthSpec: "Auto",
@@ -655,7 +804,7 @@
         ];
         dp1.events.list = [];
         dp1.init();
-        var picker = new DayPilot.DatePicker({
+        var picker2 = new DayPilot.DatePicker({
             target: 'start',
             pattern: 'yyyy-MM-dd',
             onTimeRangeSelected: function (args) {
@@ -694,16 +843,26 @@
             onEventResized: (args) => {
                 console.log("Event resized: " + args.e.text());
             },
-            eventClickHandling: "Disabled",
+            eventClickHandling: "Enabled",
             contextMenu: new DayPilot.Menu({
                 items: [
                     { text: "Delete", onClick: (args) => { const dp3 = args.source.calendar; dp3.events.remove(args.source); } }
                 ]
             }),
+            bubble: new DayPilot.Bubble({
+    onLoad: (args) => {
+      // if the event object doesn't specify "bubbleHtml" property
+      // this onLoad handler will be called to provide the bubble HTML
+      args.html = "html";
+    }
+  }),
         });
+        dp3.onEventClicked = function (args) {
+                $("#btnn").trigger("click");
+            };
         dp3.events.list = [];
         dp3.init();
-        var picker = new DayPilot.DatePicker({
+        var picker3 = new DayPilot.DatePicker({
             target: 'start',
             pattern: 'yyyy-MM-dd',
             onTimeRangeSelected: function (args) {
@@ -717,7 +876,9 @@
     <script>
         $(document).ready(function () {
             $('#daybtn').click(function () {
-              
+                $('#daybtn').css({ "background-color": "#00BCE7", "color": "white" });
+                $('#monthbtn').css({ "background-color": "white", "color": "#00BCE7" });
+                $('#weekbtn').css({ "background-color": "white", "color": "#00BCE7" });
                 $('#dp').show()
                 $('#dp1').hide()
                 $('#dp3').hide()
@@ -725,36 +886,260 @@
                 $('.space3').hide()
                 $('.space').show()
 
-                
+
 
             });
             $('#weekbtn').click(function () {
-             
+                $('#weekbtn').css({ "background-color": "#00BCE7", "color": "white" });
+                $('#daybtn').css({ "background-color": "white", "color": "#00BCE7" });
+                $('#monthbtn').css({ "background-color": "white", "color": "#00BCE7" });
                 $('#dp').hide()
                 $('#dp3').hide()
                 $('#dp1').show()
-                
+
                 $('.space').hide()
                 $('.space3').hide()
                 $('.space2').show()
             });
             $('#monthbtn').click(function () {
-              
+                $('#monthbtn').css({ "background-color": "#00BCE7", "color": "white" });
+                $('#daybtn').css({ "background-color": "white", "color": "#00BCE7" });
+                $('#weekbtn').css({ "background-color": "white", "color": "#00BCE7" });
+
                 $('#dp').hide()
                 $('#dp1').hide()
                 $('#dp3').show()
                 $('.space2').hide()
                 $('.space').hide()
                 $('.space3').show()
-               
+
             });
         });
 
 
     </script>
+    <div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Create Shift</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <p mb-3>To assign this request search and select another Physician </p>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>Maryland</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Region</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected></option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Physician</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <!-- <input type="date" class="form-control" id="floatingInput"
+                    mailto:placeholder="name@example.com">
+                <label for="floatingInput">Date of Birth</label> -->
+                        <input type="text" id="uname" class="form-control" placeholder="Date Of Birth"
+                            onfocus="(this.type='date')"></input>
+                        <label for="floatingInput" class="dm">Date of Birth</label>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col-md col-12">
+                            <div class="form-floating mb-3">
+                                <input type="time" class="form-control" id="floatingInput" placeholder="rttttttth">
+                                <label for="floatingInput" class="dm">Start</label>
+                            </div>
+                        </div>
+                        <div class="col-md col-12">
+                            <div class="form-floating mb-3">
+                                <input type="time" class="form-control" id="floatingInput" placeholder="trr">
+                                <label for="floatingInput" class="dm">End</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-check form-switch mb-2 ">
+
+                        <label class="form-check-label" for="flexSwitchCheckChecked">Repeat
+                        </label>
+                        <input class="form-check-input mx-3 check" type="checkbox" role="switch"
+                            id="flexSwitchCheckChecked" checked>
+                    </div>
+
+
+
+
+                    <div id="days" class="mt-2 mb-2">
+                        <p class="mx-3">Repeat Days</p>
+                        <div class="d-flex flex-row  ">
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Sunday
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Monday
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Tuesday
+                                    </label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex flex-row  ">
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Wednesday
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Thursday
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Friday
+                                    </label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex flex-row  ">
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Saturday
+                                    </label>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>2-times</option>
+                            <option value="1">3-times</option>
+                            <option value="2">3-times</option>
+                            <option value="3">4-times</option>
+                        </select>
+                        <label for="floatingSelect">Repeat End</label>
+                    </div>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-info">Save</button>
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
+<script>
+    $(document).ready(function () {
+        $('.check').click(function () {
+            var isChecked = $(this).prop('checked');
+            if (isChecked) {
+                $('#days').show();
+            } else {
+                $('#days').hide();
+            }
+        });
+    });
 
 
+</script>
+
+
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnn" hidden>
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </html>
