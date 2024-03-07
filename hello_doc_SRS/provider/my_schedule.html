@@ -306,7 +306,7 @@
 
         <div class="main">
 
-            <div id="dp3" style=""></div>
+            <div id="dp3" ></div>
 
 
         </div>
@@ -324,52 +324,62 @@
 
 
     <script>
-        var today = DayPilot.Date.today();
-        const dp3 = new DayPilot.Month("dp3", {
-            locale: "en-us",
-            timeRangeSelectedHandling: "Enabled",
-            onTimeRangeSelected: async (args) => {
-                const modal = await DayPilot.Modal.prompt("Create a new event:", "Event 1");
-                const dp3 = args.control;
-                dp3.clearSelection();
-                if (modal.canceled) { return; }
-                dp3.events.add({
-                    start: args.start,
-                    end: args.end,
-                    id: DayPilot.guid(),
-                    text: modal.result
-                });
-            },
-            eventDeleteHandling: "Update",
-            onEventDeleted: (args) => {
-                console.log("Event deleted: " + args.e.text());
-            },
-            eventMoveHandling: "Update",
-            onEventMoved: (args) => {
-                console.log("Event moved: " + args.e.text());
-            },
-            eventResizeHandling: "Update",
-            onEventResized: (args) => {
-                console.log("Event resized: " + args.e.text());
-            },
-            eventClickHandling: "Disabled",
-            contextMenu: new DayPilot.Menu({
-                items: [
-                    { text: "Delete", onClick: (args) => { const dp3 = args.source.calendar; dp3.events.remove(args.source); } }
-                ]
-            }),
-        });
-        dp3.events.list = [];
-        dp3.init();
-        var picker = new DayPilot.DatePicker({
-            target: 'start',
-            pattern: 'yyyy-MM-dd',
-            onTimeRangeSelected: function (args) {
-                dp3.startDate = args.date;
-                dp3.update();
-            }
-        });
-    </script>
+      
+      const dp3 = new DayPilot.Month("dp3", {
+          locale: "en-us",
+          timeRangeSelectedHandling: "Enabled",
+          onTimeRangeSelected: async (args) => {
+              const modal = await DayPilot.Modal.prompt("Create a new event:", "Event 1");
+              const dp3 = args.control;
+              dp3.clearSelection();
+              if (modal.canceled) { return; }
+              dp3.events.add({
+                  start: args.start,
+                  end: args.end,
+                  id: DayPilot.guid(),
+                  text: modal.result
+              });
+          },
+          eventDeleteHandling: "Update",
+          onEventDeleted: (args) => {
+              console.log("Event deleted: " + args.e.text());
+          },
+          eventMoveHandling: "Update",
+          onEventMoved: (args) => {
+              console.log("Event moved: " + args.e.text());
+          },
+          eventResizeHandling: "Update",
+          onEventResized: (args) => {
+              console.log("Event resized: " + args.e.text());
+          },
+          eventClickHandling: "Enabled",
+          contextMenu: new DayPilot.Menu({
+              items: [
+                  { text: "Delete", onClick: (args) => { const dp3 = args.source.calendar; dp3.events.remove(args.source); } }
+              ]
+          }),
+          bubble: new DayPilot.Bubble({
+  onLoad: (args) => {
+    // if the event object doesn't specify "bubbleHtml" property
+    // this onLoad handler will be called to provide the bubble HTML
+    args.html = "html";
+  }
+}),
+      });
+      dp3.onEventClicked = function (args) {
+              $("#btnn").trigger("click");
+          };
+      dp3.events.list = [];
+      dp3.init();
+      var picker3 = new DayPilot.DatePicker({
+          target: 'start',
+          pattern: 'yyyy-MM-dd',
+          onTimeRangeSelected: function (args) {
+              dp3.startDate = args.date;
+              dp3.update();
+          }
+      });
+  </script>
 
 
 

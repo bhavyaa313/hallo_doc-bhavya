@@ -35,6 +35,11 @@
       color: #f5f0f0 !important;
 
     }
+
+    .hide {
+
+display: none;
+}
   </style>
 </head>
 
@@ -369,13 +374,13 @@
         <div class="row g-2 p-1 bg-light">
           <div class="col-md">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingInput" placeholder="name">
+              <input type="text" class="form-control enable" id="floatingInput" placeholder="name" disabled>
               <label for="floatingInput" class="dm">First Name</label>
             </div>
           </div>
           <div class="col-md">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingInput" placeholder="name">
+              <input type="text" class="form-control enable" id="floatingInput" placeholder="name" disabled>
               <label for="floatingInput" class="dm">Last Name</label>
             </div>
           </div>
@@ -386,8 +391,8 @@
               <!-- <input type="date" class="form-control" id="floatingInput"
                             mailto:placeholder="name@example.com">
                         <label for="floatingInput">Date of Birth</label> -->
-              <input type="text" id="uname" class="form-control" placeholder="Date Of Birth"
-                onfocus="(this.type='date')"></input>
+              <input type="text" id="uname" class="form-control enable" placeholder="Date Of Birth"
+                onfocus="(this.type='date')" disabled></input>
               <label for="floatingInput" class="dm">Date of Birth</label>
             </div>
 
@@ -396,7 +401,7 @@
 
           <div class="col-md-5 col-9">
             <div class="form-floating mb-3">
-              <input type="tel" class="form-control " id="phone" placeholder="phone">
+              <input type="tel" class="form-control enable " id="phone" placeholder="phone" disabled>
               <label for="floatingInput" class="dm">Phone Number</label>
             </div>
           </div>
@@ -419,7 +424,7 @@
         <div class="row g-2 bg-light">
           <div class="col-md ">
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingInput" placeholder="email">
+              <input type="email" class="form-control enable" id="floatingInput" placeholder="email" disabled>
               <label for="floatingInput" class="dm">Email</label>
             </div>
           </div>
@@ -441,8 +446,10 @@
 
         <div class="mt-4 d-flex flex-row-reverse mb-5 ">
 
-          <button type="submit" class="btn btn-outline-info btn-lg">cancel</button>
-          <button type="submit" class="btn btn-info mx-2 btn-lg">Edit</button>
+          
+          <button type="submit" class="btn btn-info btn-lg mx-3 random  " onclick="show()">Edit</button>
+          <button type="submit" class="btn btn-danger btn-lg mx-2 hide see"  onclick="show2()">Cancel</button>
+          <button type="submit" class="btn btn-success btn-lg mx-2 hide see " onclick="show2()">Save</button>
 
 
         </div>
@@ -461,6 +468,7 @@
     </div>
 
   </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
   <script>
     function myFunctions() {
       var element = document.body;
@@ -494,6 +502,25 @@
 
 
   </script>
+  <script>
+    function show()
+    {
+        $('.hide').removeClass("hide");
+        $('.random').addClass("hide");
+        $('.enable').removeAttr("disabled");
+
+    }
+
+    function show2()
+    {
+        $('.hide').removeClass("hide");
+        $('.see').addClass("hide");
+        $('.enable').attr("disabled" ,"disabled" );
+
+    }
+
+
+</script>
 
 </body>
 

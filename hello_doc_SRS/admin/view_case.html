@@ -74,6 +74,11 @@
     }
 </style>
 <style>
+
+.hide {
+
+display: none;
+}
     img.highlight:hover {
         color: #fbfbfb !important;
 
@@ -276,22 +281,22 @@
                     <p class="text-muted">Confirmation Number</p>
                     <h4 class="text-info mb-3">MDI28394774439</h4>
                     <div class="form-floating mb-3">
-                        <textarea class="form-control " placeholder="Leave a comment here" id="floatingTextarea2"
-                            style="height: 100px"></textarea>
+                        <textarea class="form-control enable " placeholder="Leave a comment here" id="floatingTextarea2"
+                            style="height: 100px" disabled></textarea>
                         <label for="floatingTextarea2" class="dm"> Patient Notes</label>
                         <hr>
                     </div>
                     <div class="row g-2">
                         <div class="col-md">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control enable" id="floatingInput" placeholder="name" disabled>
                                 <label for="floatingInput" class="dm">First Name</label>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
-                                <label for="floatingInput" class="dm">Last Name</label>
+                                <input type="text" class="form-control enable" id="floatingInput" placeholder="name" disabled>
+                                <label for="floatingInput" class="dm" >Last Name</label>
                             </div>
                         </div>
                     </div>
@@ -301,8 +306,8 @@
                                 <!-- <input type="date" class="form-control" id="floatingInput"
                                     mailto:placeholder="name@example.com">
                                 <label for="floatingInput">Date of Birth</label> -->
-                                <input type="text" id="uname" class="form-control" placeholder="Date Of Birth"
-                                    onfocus="(this.type='date')"></input>
+                                <input type="text" id="uname" class="form-control enable" placeholder="Date Of Birth"
+                                    onfocus="(this.type='date')" disabled></input>
                                 <label for="floatingInput" class="dm">Date of Birth</label>
                             </div>
 
@@ -311,7 +316,7 @@
 
                         <div class="col-md-5">
                             <div class="form-floating mb-3">
-                                <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list" id="phone">
+                                <input type="tel" class="form-control pt-3 pb-3 enable  iti iti__country-list" id="phone" disabled>
 
                             </div>
                         </div>
@@ -321,7 +326,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-telephone-fill" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
-                                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+                                            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"  />
                                     </svg>
                                 </a>
                             </div>
@@ -335,13 +340,15 @@
                     <div class="row g-2">
                         <div class="col-md ">
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
-                                    placeholder="name@example.com">
+                                <input type="email" class="form-control enable" id="floatingInput"
+                                    placeholder="name@example.com" disabled>
                                 <label for="floatingInput" class="dm">Email</label>
                             </div>
                         </div>
                         <div class="col-md">
-                            <button type="submit" class="btn btn-outline-info mx-1   btn-lg">Edit</button>
+                            <button type="submit" class="btn btn-info btn-lg mx-3 random  " onclick="show()">Edit</button>
+                            <button type="submit" class="btn btn-danger btn-lg mx-2 hide see"  onclick="show2()">Cancel</button>
+                            <button type="submit" class="btn btn-success btn-lg mx-2 hide see " onclick="show2()">Save</button>
                         </div>
 
 
@@ -448,6 +455,25 @@
                 });
             </script>
 
+            </script>
+            <script>
+                function show()
+                {
+                    $('.hide').removeClass("hide");
+                    $('.random').addClass("hide");
+                    $('.enable').removeAttr("disabled");
+    
+                }
+    
+                function show2()
+                {
+                    $('.hide').removeClass("hide");
+                    $('.see').addClass("hide");
+                    $('.enable').attr("disabled" ,"disabled" );
+    
+                }
+    
+    
             </script>
 
 

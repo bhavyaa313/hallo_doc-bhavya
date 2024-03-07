@@ -36,6 +36,29 @@
 
 <body>
     <style>
+        .hide {
+
+            display: none;
+        }
+
+        .hide1 {
+
+display: none;
+}
+
+
+.hide2 {
+
+display: none;
+}
+
+.hide3 {
+
+display: none;
+}
+
+
+
         body {
 
             background-color: white;
@@ -283,13 +306,13 @@
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <input type="text" class="form-control enable1" id="floatingInput" placeholder="name" disabled>
                                     <label for="floatingInput" class="dm">User Name</label>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingInput" placeholder="name">
+                                    <input type="password" class="form-control " id="floatingInput" placeholder="name" >
                                     <label for="floatingInput" class="dm">Password</label>
                                 </div>
                             </div>
@@ -297,8 +320,8 @@
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="form-floating">
-                                    <select class="form-select" id="floatingSelect"
-                                        aria-label="Floating label select example">
+                                    <select class="form-select enable1" id="floatingSelect"
+                                        aria-label="Floating label select example" disabled>
                                         <option selected>Active</option>
                                         <option value="1">Pending</option>
                                         <option value="2">Closed</option>
@@ -310,8 +333,8 @@
 
                             <div class="col-md">
                                 <div class="form-floating">
-                                    <select class="form-select" id="floatingSelect"
-                                        aria-label="Floating label select example">
+                                    <select class="form-select enable1" id="floatingSelect"
+                                        aria-label="Floating label select example" disabled>
                                         <option selected>Mater Admin</option>
                                         <option value="1">Admin</option>
                                         <option value="2">Provider</option>
@@ -324,7 +347,9 @@
                         <div class="mt-4 d-flex flex-row-reverse mb-3 ">
 
                             <button type="submit" class="btn btn-outline-info btn-lg mx-2">Reset Password</button>
-                            <button type="submit" class="btn btn-info btn-lg">Edit</button>
+                            <button type="submit" class="btn btn-info btn-lg mx-2 random1" onclick="show3()">Edit</button>
+                            <button type="submit" class="btn btn-danger btn-lg mx-2 hide1 see1" onclick="show4()">Cancel</button>
+                            <button type="submit" class="btn btn-success btn-lg mx-2 hide1 see1" onclick="show4()">Save</button>
 
 
                         </div>
@@ -340,13 +365,13 @@
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <input type="text" class="form-control enable" id="floatingInput" placeholder="name" disabled>
                                     <label for="floatingInput" class="dm">First Name</label>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <input type="text" class="form-control enable" id="floatingInput" placeholder="name" disabled>
                                     <label for="floatingInput" class="dm">Last Name</label>
                                 </div>
                             </div>
@@ -356,8 +381,8 @@
                         <div class="row g-2">
                             <div class="col-md ">
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput"
-                                        placeholder="name@example.com">
+                                    <input type="email" class="form-control enable" id="floatingInput"
+                                        placeholder="name@example.com" disabled>
                                     <label for="floatingInput" class="dm">Email</label>
                                 </div>
                             </div>
@@ -365,7 +390,7 @@
 
                             <div class="col-md ">
                                 <div class="form-floating mb-3">
-                                    <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list" id="phone">
+                                    <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list enable" id="phone" disabled>
 
                                 </div>
                             </div>
@@ -376,14 +401,14 @@
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <input type="text" class="form-control enable" id="floatingInput" placeholder="name" disabled>
                                     <label for="floatingInput" class="dm">Medical License #</label>
                                 </div>
                             </div>
 
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <input type="text" class="form-control enable" id="floatingInput" placeholder="name" disabled>
                                     <label for="floatingInput" class="dm">NPI Number</label>
                                 </div>
                             </div>
@@ -391,7 +416,7 @@
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <input type="text" class="form-control enable" id="floatingInput" placeholder="name" disabled>
                                     <label for="floatingInput" class="dm">Synchronization Email Address </label>
                                 </div>
                             </div>
@@ -399,8 +424,8 @@
                                 <div class="d-flex flex-row  ">
                                     <div class="p-2 mx-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
+                                            <input class="form-check-input enable" type="checkbox" value=""
+                                                id="flexCheckDefault" disabled >
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 District Of Columbia
                                             </label>
@@ -409,8 +434,8 @@
                                     </div>
                                     <div class="p-2 mx-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked" checked>
+                                            <input class="form-check-input enable" type="checkbox" value=""
+                                                id="flexCheckChecked" checked disabled >
                                             <label class="form-check-label" for="flexCheckChecked">
                                                 New York
                                             </label>
@@ -418,8 +443,8 @@
                                     </div>
                                     <div class="p-2 mx-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckChecked" checked>
+                                            <input class="form-check-input enable" type="checkbox" value=""
+                                                id="flexCheckChecked" checked disabled >
                                             <label class="form-check-label" for="flexCheckChecked">
                                                 Virginia
                                             </label>
@@ -431,8 +456,8 @@
                                 <div class="d-flex flex-row mb-3 ">
                                     <div class="p-2 mx-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="flexCheckDefault">
+                                            <input class="form-check-input enable" type="checkbox" value=""
+                                                id="flexCheckDefault" disabled >
                                             <label class="form-check-label" for="flexCheckDefault">
                                                 Maryland
                                             </label>
@@ -464,7 +489,9 @@
 
                         <div class="mt-4 d-flex flex-row-reverse mb-3 ">
 
-                            <button type="submit" class="btn btn-info btn-lg">Edit</button>
+                            <button type="submit" class="btn btn-info btn-lg mx-3 random  " onclick="show()">Edit</button>
+                            <button type="submit" class="btn btn-danger btn-lg mx-2 hide see"  onclick="show2()">Cancel</button>
+                            <button type="submit" class="btn btn-success btn-lg mx-2 hide see " onclick="show2()">Save</button>
 
 
                         </div>
@@ -484,13 +511,13 @@
                     <div class="row g-2">
                         <div class="col-md">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control enable2" id="floatingInput" placeholder="name" disabled>
                                 <label for="floatingInput" class="dm">Address 1</label>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control enable2" id="floatingInput" placeholder="name" disabled>
                                 <label for="floatingInput" class="dm">Address 2</label>
                             </div>
                         </div>
@@ -499,13 +526,13 @@
                     <div class="row g-2">
                         <div class="col-md">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control enable2" id="floatingInput" placeholder="name" disabled>
                                 <label for="floatingInput" class="dm">City</label>
                             </div>
                         </div>
                         <div class="col-md">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control enable2" id="floatingInput" placeholder="name" disabled>
                                 <label for="floatingInput" class="dm">State</label>
                             </div>
                         </div>
@@ -514,7 +541,7 @@
                     <div class="row g-2">
                         <div class="col-md">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control enable2" id="floatingInput" placeholder="name" disabled>
                                 <label for="floatingInput" class="dm">Zip</label>
                             </div>
                         </div>
@@ -522,7 +549,7 @@
 
 
                             <div class="form-floating mb-3">
-                                <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list" id="phone1">
+                                <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list enable2" id="phone1" disabled>
 
                             </div>
 
@@ -532,7 +559,9 @@
 
                     <div class="mt-4 d-flex flex-row-reverse mb-3 ">
 
-                        <button type="submit" class="btn btn-info btn-lg">Edit</button>
+                        <button type="submit" class="btn btn-info btn-lg random2" onclick="show5()">Edit</button>
+                        <button type="submit" class="btn btn-danger btn-lg mx-2 hide2 see2" onclick="show6()">Cancel</button>
+                        <button type="submit" class="btn btn-success btn-lg mx-2 hide2 see2" onclick="show6()">Save</button>
 
 
                     </div>
@@ -541,14 +570,14 @@
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <input type="text" class="form-control enable3" id="floatingInput" placeholder="name" disabled>
                                     <label for="floatingInput" class="dm">Business Name</label>
                                 </div>
                             </div>
 
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <input type="text" class="form-control enable3" id="floatingInput" placeholder="name" disabled>
                                     <label for="floatingInput" class="dm">Business Website</label>
                                 </div>
                             </div>
@@ -558,13 +587,13 @@
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="input-group mb-3 drill_cursor mt-3">
-                                    <input type="file" name="" id="input_file" hidden>
-                                    <input type="text" class="form-control col-form-label-lg " id="txt" onclick="open_file"
-                                        placeholder="Upload " aria-label="Upload" aria-describedby="button-addon2">
-                                    <button class="btn btn-outline-info bg-info " type="button" onclick="open_file()"
-                                        id="button-addon2">
+                                    <input type="file" name="" id="input_file" hidden >
+                                    <input type="text" class="form-control col-form-label-lg enable3" id="txt" onclick="open_file"
+                                        placeholder="Upload " aria-label="Upload" aria-describedby="button-addon2" disabled>
+                                    <button class="btn btn-outline-info bg-info enable3" type="button" onclick="open_file()"
+                                        id="button-addon2" disabled>
                                         <img src="images/cloud-arrow-up.svg" alt="">
-                                        <span style="color: white;" class="lo">Select Photo</span>
+                                        <span    style="color: white;" class="lo enable3"  >Select Photo</span>
                                     </button>
             
                                 </div>
@@ -575,12 +604,12 @@
                             <div class="col-md-4 col-9">
                                 <div class="input-group mb-3 drill_cursor mt-3">
                                     <input type="file" name="" id="input_file1" hidden>
-                                    <input type="text" class="form-control col-form-label-lg " id="txt" onclick="open_file"
-                                        placeholder="Upload " aria-label="Upload" aria-describedby="button-addon2">
-                                    <button class="btn btn-outline-info bg-info " type="button" onclick="open_file()"
-                                        id="button-addon2">
+                                    <input type="text" class="form-control col-form-label-lg enable3 " id="txt" onclick="open_file"
+                                        placeholder="Upload " aria-label="Upload" aria-describedby="button-addon2" disabled>
+                                    <button class="btn btn-outline-info bg-info enable3" type="button" onclick="open_file()"
+                                        id="button-addon2" disabled>
                                         <img src="images/cloud-arrow-up.svg" alt="">
-                                        <span style="color: white;" class="lo">Select Signature</span>
+                                        <span style="color: white;" class="lo enable3" enable3>Select Signature</span>
                                     </button>
             
                                 </div>
@@ -589,7 +618,7 @@
                             <div class="col-md-2 col-3">
                                 
 
-                                <button type="submit" class="btn btn-info p-2 mt-3">Create</button>
+                                <button type="submit" class="btn btn-info p-2 mt-3 enable3" disabled>Create</button>
 
 
 
@@ -598,14 +627,17 @@
                         </div>
 
                         <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
+                            <textarea class="form-control enable3" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px" disabled></textarea>
                             <label for="floatingTextarea2">Comments</label>
                           </div>
 
 
                           <div class="mt-4 d-flex flex-row-reverse mb-3 ">
 
-                            <button type="submit" class="btn btn-info btn-lg ">Edit</button>
+                            <button type="submit" class="btn btn-info btn-lg random3" onclick="show7()">Edit</button>
+                        <button type="submit" class="btn btn-danger btn-lg mx-2 hide3 see3" onclick="show8()">Cancel</button>
+                        <button type="submit" class="btn btn-success btn-lg mx-2 hide3 see3" onclick="show8()">Save</button>
+
     
     
                         </div>
@@ -806,6 +838,87 @@
                 });
             } 
         </script>
+
+        <script>
+            function show()
+            {
+                $('.hide').removeClass("hide");
+                $('.random').addClass("hide");
+                $('.enable').removeAttr("disabled");
+
+            }
+
+            function show2()
+            {
+                $('.hide').removeClass("hide");
+                $('.see').addClass("hide");
+                $('.enable').attr("disabled" ,"disabled" );
+
+            }
+
+
+        </script>
+
+<script>
+    function show3()
+    {
+        $('.hide1').removeClass("hide1");
+        $('.random1').addClass("hide1");
+        $('.enable1').removeAttr("disabled");
+
+    }
+
+    function show4()
+    {
+        $('.hide1').removeClass("hide1");
+        $('.see1').addClass("hide1");
+        $('.enable1').attr("disabled" ,"disabled" );
+
+    }
+
+
+</script>
+
+<script>
+    function show5()
+    {
+        $('.hide2').removeClass("hide2");
+        $('.random2').addClass("hide2");
+        $('.enable2').removeAttr("disabled");
+
+    }
+
+    function show6()
+    {
+        $('.hide2').removeClass("hide2");
+        $('.see2').addClass("hide2");
+        $('.enable2').attr("disabled" ,"disabled" );
+
+    }
+
+
+</script>
+
+
+<script>
+    function show7()
+    {
+        $('.hide3').removeClass("hide3");
+        $('.random3').addClass("hide3");
+        $('.enable3').removeAttr("disabled");
+
+    }
+
+    function show8()
+    {
+        $('.hide3').removeClass("hide3");
+        $('.see3').addClass("hide3");
+        $('.enable3').attr("disabled" ,"disabled" );
+
+    }
+
+
+</script>
 
 
     </body>

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dasdhboard New</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/custom.js"></script>
+    <script src="daypilot-all.min.js"></script>
+    <script src="js/daypilot/daypilot-all.min.js"></script>
+    <script src="https://javascript.daypilot.org/demo/lite/helpers/v2/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <style>
+        p,
+        body,
+        td,
+        input,
+        select,
+        button {
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        body {
+            padding: 0px;
+            margin: 0px;
+            background-color: #ffffff;
+        }
+
+        a {
+            color: #1155a3;
+        }
+
+        .space .space1 .space2 {
+            margin: 10px 0px 10px 0px;
+        }
+
+        .header {
+            background: #003267;
+            background: linear-gradient(to right, #011329 0%, #00639e 44%, #011329 100%);
+            padding: 20px 10px;
+            color: white;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75);
+        }
+
+        .hide {
+            opacity: 0;
+            position: absolute;
+        }
+
+        .header a {
+            color: white;
+        }
+
+        .header h1 a {
+            text-decoration: none;
+        }
+
+        .header h1 {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .main {
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .generated {
+            color: #999;
+        }
+
+        .generated a {
+            color: #999;
+        }
+
+
+
+
+        .circle {
+            width: 40px;
+            height: 30px;
+            border-radius: 30%;
+            background-color: #ffc0cb;
+            /* This is the hex code for pink */
+        }
+
+        .circle2 {
+            width: 40px;
+            height: 30px;
+            border-radius: 30%;
+            background-color: #c0e4ff;
+            /* This is the hex code for pink */
+        }
+
+        body {
+
+            background-color: white;
+            color: black;
+
+        }
+
+
+        .dark-mode {
+            background-color: black !important;
+            color: white !important;
+        }
+
+        .text-dark {
+            color: #f5f0f0 !important;
+
+        }
+    </style>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.11/index.global.min.js"></script>
+
+
+    <script src="/docs/dist/demo-to-codepen.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-toggler">
+
+        <div class="container-fluid flex-column">
+  
+          <ul class="navbar-nav w-100 flex-row">
+  
+  
+  
+            <button class="btn btn-outline-info d-lg-none d-inline" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+              <img src="images/icons8-menu.svg" alt="">
+            </button>
+  
+            <li class="nav-item">
+              <img class="hello-logo1 m-2" src="images/hellodoc-logo.png" alt="">
+            </li>
+  
+            <li class="nav-item navbar-right ml-auto">
+  
+              <span class="wlcm lo">Welcome <span style="font-weight: 500;">provider p</span></span>
+  
+              <button type="button" class="btn btn-outline-info mx-2 lo">Logout</button>
+  
+              <button type="button" class="btn btn-outline-info mx-2 lo-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd"
+                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                  <path fill-rule="evenodd"
+                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                </svg>
+              </button>
+  
+              <button type="button" class="btn btn-outline-info px-0 moon-img" onclick="myFunctions()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
+                </svg>
+              </button>
+            </li>
+          </ul>
+  
+          <!-- <hr class="bg-dark"> -->
+  
+          <div class="collapse navbar-collapse w-100 d-none d-lg-inline" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-underline">
+              <li class="nav-item mx-2">
+                <a href="provider_dashboard.html" class="nav-link ">Dashboard</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a href="" class="nav-link">Invoicing</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a href="my_schedule.html" class="nav-link active  text-info">My Schedule</a>
+              </li>
+  
+              <li class="nav-item mx-2">
+                <a href="my_profile.html" class="nav-link">My Profile</a>
+              </li>
+  
+            </ul>
+          </div>
+  
+  
+          <div class=" offcanvas offcanvas-start d-sm-block d-lg-none bg-white" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-body">
+              <span class="wlcm lo-btn mb-5">Welcome <span style="font-weight: 500;">provider p</span></span>
+              <ul class="navbar-nav nav-underline mt-3">
+                <li class="nav-item mx-2">
+                  <a href="provider_dashboard.html" class="nav-link ">Dashboard</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a href="" class="nav-link">Invoicing</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a href="my_schedule.html" class="nav-link active  text-info">My Schedule</a>
+                </li>
+                <li class="nav-item mx-2">
+                  <a href="my_profile.html" class="nav-link">My Profile</a>
+                </li>
+  
+              </ul>
+            </div>
+          </div>
+  
+  
+  
+        </div>
+  
+      </nav>
+
+
+
+    <div class="container ">
+        <div class="  d-flex p-4  ">
+            <h4 class="mx-2 mb-4">My Schedule</h4>
+            <div class="ms-auto mt-0 mb-4 "> <a href="javascript: history.go(-1)" type="button" class="btn btn-info mx-2  ">
+                    < Back</a>
+            </div>
+
+        </div>
+
+        
+        <div class="d-flex flex-row flex-wrap">
+           
+            <div class=" ms-auto d-flex">
+                <div class=" "> <button data-bs-toggle="modal" data-bs-target="#create" type="button"
+                        class="btn btn-success mx-2  btn22 ">
+                        Add New Shift</button>
+                </div>
+              
+            </div>
+            <!-- <div class="d-sm-flex ms-auto flex-row  d-flex   d-lg-none" >
+                <div class=" "> <button data-bs-toggle="modal" data-bs-target="#create" type="button" class="btn btn-info mx-1 btn-sm btn22  ">
+                       Add New Shift</button>
+                </div>
+                <div class=""> <a href="Req_shift.html" type="button" class="btn btn-info mx-1 flex-wrap btn-sm  ">
+                        Shifts For Review</a>
+                </div>
+                <div class=" "> <a href="providers_oncall.html" type="button" class="btn btn-info mx-1 flex-wrap btn-sm  ">
+                        Providers On call</a>
+                </div>
+            </div> -->
+
+
+        </div>
+
+        <div class="d-flex flex-row-reverse mt-3">
+
+            <div class="mx-2">Approved Shift</div>
+            <div class="circle2 mx-2"></div>
+            <div class="mx-2">Pending Shift</div>
+            <div class="circle mx-2"></div>
+        </div>
+
+        <div class="  d-flex p-3 flex-row flex-wrap justify-content-center ">
+            <div class="space">
+
+                <a href="javascript:dp.startDate = dp.startDate.addDays(-1); dp.update();"
+                    class="btn btn-info  rounded-circle">
+                    < </a>
+                      <button class="btn"
+                            onclick="picker.show(); return false;"><i class="bi bi-calendar2-x h3"></i></button>
+
+                        <a href="javascript:dp.startDate = dp.startDate.addDays(1); dp.update();"
+                            class="btn btn-info  rounded-circle">></a>
+
+
+
+            </div>
+
+            <div class="space2" style="display: none;">
+
+                <a href="javascript:dp1.startDate = dp1.startDate.addDays(-7); dp1.update();"
+                    class="btn btn-info  rounded-circle">
+                    < </a>
+                        <button class="btn"
+                            onclick="picker2.show(); return false;"><i class="bi bi-calendar2-x h3"></i></button>
+                        <a href="javascript:dp1.startDate = dp1.startDate.addDays(7); dp1.update();"
+                            class="btn btn-info  rounded-circle">></a>
+
+
+
+            </div>
+
+            <div class="space3" style="display: none;">
+
+                <a href="javascript:dp3.startDate = dp3.startDate.addMonths(-1); dp3.update();"
+                    class="btn btn-info  rounded-circle">
+                    < </a>
+                       <button class="btn"
+                            onclick="picker3.show(); return false;"><i class="bi bi-calendar2-x h3"></i></button>
+                        <a href="javascript:dp3.startDate = dp3.startDate.addMonths(1); dp3.update();"
+                            class="btn btn-info rounded-circle">></a>
+
+
+
+            </div>
+
+
+            <span id="start" class="hide" style=""></span>
+
+
+
+
+
+
+
+
+
+            <div class=" d-flex ml-auto mt-3  flex-row flex-wrap justify-content-center ">
+             
+                <span>
+                    <button href="create_shift.html" type="button" class="btn btn-outline-info mx-2  " id="monthbtn">
+                        Month</button>
+                </span>
+
+
+            </div>
+
+        </div>
+      
+    
+
+
+        <div class="main">
+
+            <div id="dp3" ></div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <div class="modal fade" id="create" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Create Shift</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <p mb-3>To assign this request search and select another Physician </p>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>Maryland</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Region</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected></option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Physician</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <!-- <input type="date" class="form-control" id="floatingInput"
+                    mailto:placeholder="name@example.com">
+                <label for="floatingInput">Date of Birth</label> -->
+                        <input type="text" id="uname" class="form-control" placeholder="Date Of Birth"
+                            onfocus="(this.type='date')"></input>
+                        <label for="floatingInput" class="dm">Date of Birth</label>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col-md col-12">
+                            <div class="form-floating mb-3">
+                                <input type="time" class="form-control" id="floatingInput" placeholder="rttttttth">
+                                <label for="floatingInput" class="dm">Start</label>
+                            </div>
+                        </div>
+                        <div class="col-md col-12">
+                            <div class="form-floating mb-3">
+                                <input type="time" class="form-control" id="floatingInput" placeholder="trr">
+                                <label for="floatingInput" class="dm">End</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-check form-switch mb-2 ">
+
+                        <label class="form-check-label" for="flexSwitchCheckChecked">Repeat
+                        </label>
+                        <input class="form-check-input mx-3 check" type="checkbox" role="switch"
+                            id="flexSwitchCheckChecked" checked>
+                    </div>
+
+
+
+
+                    <div id="days" class="mt-2 mb-2">
+                        <p class="mx-3">Repeat Days</p>
+                        <div class="d-flex flex-row  ">
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Sunday
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Monday
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Tuesday
+                                    </label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex flex-row  ">
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Wednesday
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Thursday
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Friday
+                                    </label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="d-flex flex-row  ">
+                            <div class="p-2 mx-1">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        Every Saturday
+                                    </label>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                            <option selected>2-times</option>
+                            <option value="1">3-times</option>
+                            <option value="2">3-times</option>
+                            <option value="3">4-times</option>
+                        </select>
+                        <label for="floatingSelect">Repeat End</label>
+                    </div>
+
+
+
+
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-info">Save</button>
+                    <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var today = DayPilot.Date.today();
+        const dp3 = new DayPilot.Month("dp3", {
+            locale: "en-us",
+            timeRangeSelectedHandling: "Enabled",
+            onTimeRangeSelected: async (args) => {
+                const modal = await DayPilot.Modal.prompt("Create a new event:", "Event 1");
+                const dp3 = args.control;
+                dp3.clearSelection();
+                if (modal.canceled) { return; }
+                dp3.events.add({
+                    start: args.start,
+                    end: args.end,
+                    id: DayPilot.guid(),
+                    text: modal.result
+                });
+            },
+            eventDeleteHandling: "Update",
+            onEventDeleted: (args) => {
+                console.log("Event deleted: " + args.e.text());
+            },
+            eventMoveHandling: "Update",
+            onEventMoved: (args) => {
+                console.log("Event moved: " + args.e.text());
+            },
+            eventResizeHandling: "Update",
+            onEventResized: (args) => {
+                console.log("Event resized: " + args.e.text());
+            },
+            eventClickHandling: "Enabled",
+            contextMenu: new DayPilot.Menu({
+                items: [
+                    { text: "Delete", onClick: (args) => { const dp3 = args.source.calendar; dp3.events.remove(args.source); } }
+                ]
+            }),
+            bubble: new DayPilot.Bubble({
+    onLoad: (args) => {
+      // if the event object doesn't specify "bubbleHtml" property
+      // this onLoad handler will be called to provide the bubble HTML
+      args.html = "html";
+    }
+  }),
+        });
+        dp3.onEventClicked = function (args) {
+                $("#btnn").trigger("click");
+            };
+        dp3.events.list = [];
+        dp3.init();
+        var picker3 = new DayPilot.DatePicker({
+            target: 'start',
+            pattern: 'yyyy-MM-dd',
+            onTimeRangeSelected: function (args) {
+                dp3.startDate = args.date;
+                dp3.update();
+            }
+        });
+    </script>
+
+<script>
+    $(document).ready(function () {
+        $('.check').click(function () {
+            var isChecked = $(this).prop('checked');
+            if (isChecked) {
+                $('#days').show();
+            } else {
+                $('#days').hide();
+            }
+        });
+    });
+
+
+</script>
+    
+
+
+</body>
+
+
+
+</html>
