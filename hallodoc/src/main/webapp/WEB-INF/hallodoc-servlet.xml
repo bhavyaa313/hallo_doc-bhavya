@@ -58,8 +58,37 @@
 	  <property name="annotatedClasses">
 		  <list>
 			  <value>
-				hallodoc.model.asp_net_users
+				hallodoc.model.AspNetUsers
 			  </value>
+			    <value>
+				hallodoc.model.User
+			  </value>
+			      <value>
+				hallodoc.model.Request
+			  </value>
+			   <value>
+				hallodoc.model.RequestClient
+			  </value>
+			   <value>
+				hallodoc.model.Region
+			  </value>
+			   <value>
+				hallodoc.model.RequestWiseFile
+			  </value>
+			  <value>
+				hallodoc.model.Admin
+			  </value>
+			     <value>
+				hallodoc.model.Physician
+			  </value>
+			      <value>
+				hallodoc.model.Concierge
+			  </value>
+			  
+			  
+			  
+			  
+			  
 		  </list>
 	  </property>
 	   
@@ -74,6 +103,8 @@
 	  <property name="sessionFactory" ref="factory"></property>
 	  
   </bean>
+  
+
   
   
   </beans>

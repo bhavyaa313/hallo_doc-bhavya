@@ -4,6 +4,7 @@
         <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+<%@page isELIgnored="false" %>
 <html lang="en">
 
 <head>
@@ -58,21 +59,24 @@
                 </div>
 
                 <h2>Reset Your Password</h2>
-                <form class="w-100" action="">
+                <form class="w-100" action="passwordHandler" method="post">
                        <div class="form-group form-floating my-4 uname">
-                        <input class="form-control" type="password" name="UserPassword" id="pswd" placeholder="Password">
+                        <input class="form-control" type="password" name="password" id="pswd" placeholder="Password">
                         <label for="pswd">Password</label>
                         <img class="bg-white uicon" src="<c:url value="/resources/images/eye.svg"/>" alt=""></img>
                     </div>
                   <div class="form-group form-floating my-4 uname">
-                        <input class="form-control" type="password" name="UserPassword" id="pswd" placeholder="Password">
+                        <input class="form-control" type="password" name="confirm_password" id="pswd" placeholder="Password">
                         <label for="pswd"> Confirm Password</label>
                         <img class="bg-white uicon" src="<c:url value="/resources/images/eye.svg"/>" alt=""></img>
                     </div>
+                    
+                    <h6>${success }</h6>
+                     <h6>${invalid }</h6>
                    
 
                     <button style="height: 50px; background-color: rgb(81, 188, 230); text-decoration: none;"
-                        type="button" class="btn btn-link w-100 text-white my-3">Reset Your Password</button>
+                        type="submit" class="btn btn-link w-100 text-white my-3">Reset Your Password</button>
 
                   
 

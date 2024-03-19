@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@page isELIgnored="false" %>  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,6 +49,8 @@
 
     <div class="container " >
         <div class="row w-100">
+        
+    
             <div class="col-md-4"></div>
             <div class="col-md-4  col-12" style="">
                 <img src="<c:url value="/resources/images/Hallo Doc-Photoroom.png-Photoroom.svg" />" class="img-fluid" alt="">
@@ -72,6 +75,7 @@
                         <label for="pswd">Password</label>
                         <img class="bg-white uicon" src="<c:url value="/resources/images/eye.svg"/>" alt=""></img>
                     </div>
+                    <h6 class="text-danger text-center">${message }</h6>
 
                     <button style="height: 50px; background-color: rgb(81, 188, 230); text-decoration: none;"
                         type="submit" class="btn btn-link w-100 text-white my-3">Log In</button>
@@ -112,6 +116,18 @@
           }  
         }  
         </script>  
+        
+        <script>
+    const toastTrigger = document.getElementById('liveToastBtn')
+const toastLiveExample = document.getElementById('liveToast')
+
+if (toastTrigger) {
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+  toastTrigger.addEventListener('click', () => {
+    toastBootstrap.show()
+  })
+}
+</script>
 
 </body>
 

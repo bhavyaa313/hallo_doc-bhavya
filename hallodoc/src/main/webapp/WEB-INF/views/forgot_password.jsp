@@ -59,10 +59,10 @@
                 </div>
 
                 <h2>Reset Your Password</h2>
-                <form class="w-100" action="">
+                <form class="w-100" action="sendEmail" method="post">
                     <div class="form-group form-floating mt-3 uname">
-                        <input class="form-control" type="text" name="Username" id="uname" placeholder="Username">
-                        <label class="lab" for="uname">Username</label>
+                        <input class="form-control" type="email" name="recipient" id="uname" placeholder="Username">
+                        <label class="lab" for="uname">Email</label>
                         <img style="border: 1px solid rgb(68, 59, 59);  border-radius: 5rem;" class="bg-white uicon1"
                                 src="<c:url value="/resources/images/person-circle.svg"/>" alt="">
                     </div>
@@ -70,7 +70,7 @@
                    
 
                     <button style="height: 50px; background-color: rgb(81, 188, 230); text-decoration: none;"
-                        type="button" class="btn btn-link w-100 text-white my-3">Reset Your Password</button>
+                        type="submit" class="btn btn-link w-100 text-white my-3">Reset Your Password</button>
 
                     <a href="patient_login.html" style="color: rgb(81, 188, 230); font-weight: 500; text-decoration: none;"
                         class="btn btn-link w-100 ">< Back to Login
