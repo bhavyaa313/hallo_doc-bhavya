@@ -11,8 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+
+
 public class PatientInfoDto {
 
+	public CommonsMultipartFile file2;
 	
 private int id;
 	
@@ -60,7 +65,7 @@ private String username;
 	
 	private int admin_id;
 	private int physician_id;
-	private String file_name;
+	private CommonsMultipartFile file_name;
 	private int created_by;
 
 	private int declined_by;
@@ -103,11 +108,12 @@ private String username;
 		this.physician_id = physician_id;
 	}
 
-	public String getFile_name() {
+	
+	public CommonsMultipartFile getFile_name() {
 		return file_name;
 	}
 
-	public void setFile_name(String file_name) {
+	public void setFile_name(CommonsMultipartFile file_name) {
 		this.file_name = file_name;
 	}
 
@@ -267,7 +273,7 @@ private String username;
 	public PatientInfoDto(int id, String sympton, String firstName, String lastName, String dOB, String email,
 			String password, String mobile, String street, String city, String state, int physicianId, int status,
 			LocalDateTime created_date, String username, String zipcode, String room, String file, int admin_id,
-			int physician_id, String file_name, int created_by, int declined_by) {
+			int physician_id, CommonsMultipartFile file_name, int created_by, int declined_by) {
 		super();
 		this.id = id;
 		this.sympton = sympton;

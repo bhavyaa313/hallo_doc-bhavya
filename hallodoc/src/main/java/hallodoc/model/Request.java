@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -95,8 +96,9 @@ public class Request {
 	@OneToOne(mappedBy = "requestId")
 	private RequestWiseFile requestWiseFile;
 	
+	
 	@OneToOne(mappedBy = "requestId")
-	private Concierge concierge;
+	private RequestConcierge requestConcierge;
 	
 	
 
@@ -313,11 +315,45 @@ public class Request {
 
 	
 	
+	public RequestClient getRequestClient() {
+		return requestClient;
+	}
+
+
+	public void setRequestClient(RequestClient requestClient) {
+		this.requestClient = requestClient;
+	}
+
+
+	public RequestWiseFile getRequestWiseFile() {
+		return requestWiseFile;
+	}
+
+
+	public void setRequestWiseFile(RequestWiseFile requestWiseFile) {
+		this.requestWiseFile = requestWiseFile;
+	}
+
+
+
+	public RequestConcierge getRequestConcierge() {
+		return requestConcierge;
+	}
+
+
+	public void setRequestConcierge(RequestConcierge requestConcierge) {
+		this.requestConcierge = requestConcierge;
+	}
+
+
+
+
 	public Request(int requestId, int requestTypeId, User userId, String firstName, String lastName, String phoneNumber,
 			String email, int status, int physicianId, int confirmationNumber, LocalDateTime createdDate,
 			boolean isDeleted, Date modifieDate, AspNetUsers declinedBy, Date lastWellnessDate, int callType,
 			boolean completedByPhysician, Date lastReservationDate, Date acceptedDate, String relationName,
-			String caseNumber) {
+			String caseNumber, RequestClient requestClient, RequestWiseFile requestWiseFile, Concierge concierge,
+			RequestConcierge requestConcierge) {
 		super();
 		this.requestId = requestId;
 		this.requestTypeId = requestTypeId;
@@ -340,6 +376,25 @@ public class Request {
 		this.acceptedDate = acceptedDate;
 		this.relationName = relationName;
 		this.caseNumber = caseNumber;
+		this.requestClient = requestClient;
+		this.requestWiseFile = requestWiseFile;
+		
+		this.requestConcierge = requestConcierge;
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "Request [requestId=" + requestId + ", requestTypeId=" + requestTypeId + ", userId=" + userId
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", email="
+				+ email + ", status=" + status + ", physicianId=" + physicianId + ", confirmationNumber="
+				+ confirmationNumber + ", createdDate=" + createdDate + ", isDeleted=" + isDeleted + ", modifieDate="
+				+ modifieDate + ", declinedBy=" + declinedBy + ", lastWellnessDate=" + lastWellnessDate + ", callType="
+				+ callType + ", completedByPhysician=" + completedByPhysician + ", lastReservationDate="
+				+ lastReservationDate + ", acceptedDate=" + acceptedDate + ", relationName=" + relationName
+				+ ", caseNumber=" + caseNumber + ", requestClient=" + requestClient + ", requestWiseFile="
+				+ requestWiseFile + ", requestConcierge=" + requestConcierge + "]";
 	}
 
 

@@ -140,18 +140,19 @@
                                 < Back</a>
                         </div>
                     </div>
+                    <form action="business" method="post">
                     <h4>Business Information</h4>
 
                     <div class="row g-2">
                         <div class="col-md col-10">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="firstName" name="firstName">
                                 <label for="floatingInput" class="dm">First Name</label>
                             </div>
                         </div>
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="lastName" name="lastName">
                                 <label for="floatingInput" class="dm">Last Name</label>
                             </div>
                         </div>
@@ -159,13 +160,13 @@
                     <div class="row g-2">
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
-                                <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list " id="phone">
+                                <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list " name="mobile" id="phone">
 
                             </div>
                         </div>
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
+                                <input type="email" class="form-control" id="floatingInput" name="email"
                                     mailto:placeholder="name@example.com">
                                 <label for="floatingInput" class="dm">Email</label>
                             </div>
@@ -176,13 +177,13 @@
                     <div class="row g-2">
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="name" name="businessName">
                                 <label for="floatingInput" class="dm">Business/Property Name</label>
                             </div>
                         </div>
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="">
                                 <label for="floatingInput" class="dm">Case Number (Optional)</label>
                             </div>
                         </div>
@@ -202,13 +203,13 @@
                     <div class="row g-2">
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="name" name="pFirstName">
                                 <label for="floatingInput" class="dm">First Name</label>
                             </div>
                         </div>
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="name" name="pLastName">
                                 <label for="floatingInput" class="dm">Last Name</label>
                             </div>
                         </div>
@@ -220,7 +221,7 @@
                                     mailto:placeholder="name@example.com">
                                 <label for="floatingInput">Date of Birth</label> -->
                                 <input type="text" id="uname" class="form-control" placeholder="Date Of Birth"
-                                    onfocus="(this.type='date')"></input>
+                                    onfocus="(this.type='date')" name="dob"></input>
                                 <label for="floatingInput" class="dm">Date of Birth</label>
                             </div>
                         </div>
@@ -231,13 +232,13 @@
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput"
-                                    placeholder="name@example.com">
+                                    placeholder="name@example.com" name="pEmail">
                                 <label for="floatingInput" class="dm">Email</label>
                             </div>
                         </div>
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
-                                <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list " id="phone1">
+                                <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list " id="phone1" name="pMobile">
 
                             </div>
                         </div>
@@ -247,28 +248,35 @@
                     <div class="row g-2">
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="rttttttth">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="rttttttth" name="street">
                                 <label for="floatingInput" class="dm">Street</label>
                             </div>
                         </div>
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="trr">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="trr" name="city">
                                 <label for="floatingInput" class="dm">City</label>
                             </div>
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col-md col-12">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="yhht">
-                                <label for="floatingInput" class="dm">State</label>
-                            </div>
+                           <div class="form-floating mb-3">
+                                    <select class="form-select" aria-label="Default select example" placeholder="tre">
+                                        <!-- <option selected>State</option> -->
+                                        <option value="1">Gujarat</option>
+                                        <option value="2">Maharashtra</option>
+                                        <option value="3">Rajasthan</option>
+                                        <option value="3">Madhya Pradesh</option>
+
+                                    </select>
+                                    <label for="floatingInput" class="dm" >State</label>
+                                </div>
                         </div>
                         <div class="col-md col-12">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingInput" placeholder="tre">
-                                <label for="floatingInput" class="dm">Zip Code</label>
+                                <label for="floatingInput" class="dm" name="zipcode">Zip Code</label>
                             </div>
                         </div>
                     </div>
@@ -290,9 +298,9 @@
                     <div class="mt-4 d-flex flex-row-reverse mb-5">
 
                         <button type="submit" class="btn btn-outline-info btn-lg mb-3">cancel</button>
-                        <!-- <button type="submit" class="btn btn-info mx-2 btn-lg">Submit</button> -->
-                        <button type="button" class="btn btn-primary btn-lg mx-2 mb-3" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">
+                      
+                        <button type="submit" class="btn btn-primary btn-lg mx-2 mb-3" 
+                          >
                             Submit
                         </button>
                         
@@ -302,7 +310,7 @@
 
 
 
-
+</form>
 
 
 

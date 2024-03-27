@@ -2,6 +2,8 @@ package hallodoc.dto;
 
 import java.time.LocalDateTime;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class CoincergeDto {
 
 	
@@ -44,7 +46,7 @@ public class CoincergeDto {
 		private int status;
 
 		private LocalDateTime created_date = LocalDateTime.now();   
-
+		private CommonsMultipartFile file_name;
 		public int getId() {
 			return id;
 		}
@@ -95,6 +97,14 @@ public class CoincergeDto {
 
 		
 		
+		public CommonsMultipartFile getFile_name() {
+			return file_name;
+		}
+
+		public void setFile_name(CommonsMultipartFile file_name) {
+			this.file_name = file_name;
+		}
+
 		public LocalDateTime getCreated_date() {
 			return created_date;
 		}
@@ -193,9 +203,13 @@ public class CoincergeDto {
 
 		
 		
+	
+		
+		
 		public CoincergeDto(int id, String firstName, String lastName, String pFirstName, String plastName,
 				String pMobile, String pEmail, String address, String dOB, String email, String mobile, String zipcode,
-				String street, String city, String state, int physicianId, int status, LocalDateTime created_date) {
+				String street, String city, String state, int physicianId, int status, LocalDateTime created_date,
+				CommonsMultipartFile file_name) {
 			super();
 			this.id = id;
 			this.firstName = firstName;
@@ -215,6 +229,7 @@ public class CoincergeDto {
 			this.physicianId = physicianId;
 			this.status = status;
 			this.created_date = created_date;
+			this.file_name = file_name;
 		}
 
 		public CoincergeDto() {

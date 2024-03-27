@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
         <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,15 +62,15 @@
                 </div>
 
                 <h2>Reset Your Password</h2>
-                <form class="w-100" action="sendEmail" method="post">
+                <form class="w-100" action="forgothandle" method="post">
                     <div class="form-group form-floating mt-3 uname">
-                        <input class="form-control" type="email" name="recipient" id="uname" placeholder="Username">
+                        <input class="form-control" type="email" name="UserEmail" id="uname" placeholder="Username">
                         <label class="lab" for="uname">Email</label>
                         <img style="border: 1px solid rgb(68, 59, 59);  border-radius: 5rem;" class="bg-white uicon1"
                                 src="<c:url value="/resources/images/person-circle.svg"/>" alt="">
                     </div>
 
-                   
+                     <h6 class="text-danger text-center">${message }</h6>
 
                     <button style="height: 50px; background-color: rgb(81, 188, 230); text-decoration: none;"
                         type="submit" class="btn btn-link w-100 text-white my-3">Reset Your Password</button>

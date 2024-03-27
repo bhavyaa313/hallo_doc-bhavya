@@ -2,6 +2,8 @@ package hallodoc.dto;
 
 import java.time.LocalDateTime;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class FamilyInfoDto {
 
 	
@@ -41,6 +43,8 @@ public class FamilyInfoDto {
 		private int physicianId;
 		
 		private int status;
+		private CommonsMultipartFile file_name;
+		private int created_by;
 		
 		
 	private LocalDateTime created_date = LocalDateTime.now();   
@@ -53,6 +57,19 @@ public class FamilyInfoDto {
 	}
 	public String getSympton() {
 		return sympton;
+	}
+	
+	public CommonsMultipartFile getFile_name() {
+		return file_name;
+	}
+	public void setFile_name(CommonsMultipartFile file_name) {
+		this.file_name = file_name;
+	}
+	public int getCreated_by() {
+		return created_by;
+	}
+	public void setCreated_by(int created_by) {
+		this.created_by = created_by;
 	}
 	public void setSympton(String sympton) {
 		this.sympton = sympton;
@@ -175,10 +192,13 @@ public class FamilyInfoDto {
 	
 	
 	
+	
+	
+	
 	public FamilyInfoDto(int id, String sympton, String firstName, String lastName, String pFirstName, String plastName,
 			String pMobile, String pEmail, String dOB, String email, String password, String mobile, String zipcode,
-			String street, String city, String state, int physicianId, int status, LocalDateTime created_date,
-			String username) {
+			String street, String city, String state, int physicianId, int status, CommonsMultipartFile file_name,
+			int created_by, LocalDateTime created_date, String username) {
 		super();
 		this.id = id;
 		this.sympton = sympton;
@@ -198,11 +218,11 @@ public class FamilyInfoDto {
 		this.state = state;
 		this.physicianId = physicianId;
 		this.status = status;
+		this.file_name = file_name;
+		this.created_by = created_by;
 		this.created_date = created_date;
 		this.username = username;
 	}
-	
-	
 	public FamilyInfoDto() {
 		super();
 		// TODO Auto-generated constructor stub

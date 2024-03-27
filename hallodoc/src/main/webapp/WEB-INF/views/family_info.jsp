@@ -155,7 +155,7 @@ body {
 								class="btn btn-outline-info mx-2 lo"> < Back</a>
 						</div>
 					</div>
-					<form action="familyInfo" method="post">
+					<form action="familyInfo" method="post" enctype="multipart/form-data">
 						<h4>Family/Friend Information</h4>
 
 						<div class="row g-2">
@@ -283,11 +283,17 @@ body {
 						</div>
 						<div class="row g-2">
 							<div class="col-md col-12">
-								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="floatingInput" name="state"
-										placeholder="yhht"> <label for="floatingInput"
-										class="dm">State</label>
-								</div>
+								 <div class="form-floating mb-3">
+                                    <select class="form-select" aria-label="Default select example" placeholder="tre">
+                                        <!-- <option selected>State</option> -->
+                                        <option value="1">Gujarat</option>
+                                        <option value="2">Maharashtra</option>
+                                        <option value="3">Rajasthan</option>
+                                        <option value="3">Madhya Pradesh</option>
+
+                                    </select>
+                                    <label for="floatingInput" class="dm">State</label>
+                                </div>
 							</div>
 							<div class="col-md col-12">
 								<div class="form-floating mb-3">
@@ -314,7 +320,7 @@ body {
 						<div class="row">
 							<div class="col-md col-12">
 								<div class="input-group mb-3 drill_cursor mt-3">
-									<input type="file" name="" id="input_file" hidden> <input
+									<input type="file" name="file_name" id="input_file" hidden> <input
 										type="text" class="form-control col-form-label-lg " id="txt"
 										onclick="open_file" placeholder="Upload " aria-label="Upload"
 										aria-describedby="button-addon2">

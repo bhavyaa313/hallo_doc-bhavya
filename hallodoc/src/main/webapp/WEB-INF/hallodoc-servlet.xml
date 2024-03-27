@@ -84,6 +84,24 @@
 			      <value>
 				hallodoc.model.Concierge
 			  </value>
+			 
+			      <value>
+				hallodoc.model.RequestConcierge
+			  </value>
+			
+			
+			      <value>
+				hallodoc.model.RequestBusiness
+			  </value>
+			      <value>
+				hallodoc.model.VerificationToken
+			  </value>
+			  
+			      <value>
+				hallodoc.model.Business
+			  </value>
+			  
+			  
 			  
 			  
 			  

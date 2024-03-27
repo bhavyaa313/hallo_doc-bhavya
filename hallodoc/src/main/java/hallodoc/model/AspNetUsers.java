@@ -31,7 +31,7 @@ public class AspNetUsers {
 	private String phoneNumber;
 	
 	@Column(name = "modified_date")
-	private Date modifiedDate;
+	private LocalDateTime modifiedDate;
 	
 	@Column(name = "created_date")
 	private LocalDateTime createdDate=LocalDateTime.now();
@@ -56,7 +56,7 @@ public class AspNetUsers {
 
 
 	public AspNetUsers(int id, String userName, String passwordHash, String email, String phoneNumber,
-			Date modifiedDate, LocalDateTime createdDate, User user) {
+			LocalDateTime modifiedDate, LocalDateTime createdDate, User user) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -109,13 +109,12 @@ public class AspNetUsers {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Date getModifiedDate() {
+	
+
+	public LocalDateTime getModifiedDate() {
 		return modifiedDate;
 	}
 
-	public void setModifiedDate(Date modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
 
 	public LocalDateTime getCreatedDate() {
 		return createdDate;
@@ -123,6 +122,12 @@ public class AspNetUsers {
 
 	public void setCreatedDate(LocalDateTime cdate) {
 		this.createdDate = cdate;
+	}
+
+
+	public void setModifiedDate(LocalDateTime now) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -2,148 +2,220 @@ package hallodoc.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Business {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int business_id;
-	private String name;
-	private String address_one;
-	private String address_two;
-	private String city;
-	private int region_id;
-	private String zip_code;
-	private String phone_number;
-	private String fax_number;
-	private int created_by;
-	private LocalDateTime created_date;
-	private int modified_by;
-	private LocalDateTime modified_date;
-	private boolean is_deleted;
+	@Column(name = "business_id")
+	private int businessId;
 	
-	public int getBusiness_id() {
-		return business_id;
+	private String name;
+	
+	@Column(name = "address_one")
+	private String addressOne;
+	
+	@Column(name = "address_two")
+	private String addressTwo;
+	
+	private String city;
+	
+	@ManyToOne
+	@JoinColumn(name = "region_id")
+	private Region regionId;
+	
+	@Column(name = "zip_code")
+	private String zipCode;
+	
+	@Column(name = "phone_number")
+	private String phoneNumber;
+	
+	@Column(name = "fax_number")
+	private String faxNumber;
+	
+	@ManyToOne
+	@JoinColumn(name = "created_by")
+	private AspNetUsers createdBy;
+	
+	@Column(name = "created_date")
+	private LocalDateTime createdDate;
+	
+	@ManyToOne
+	@JoinColumn(name = "modified_by")
+	private AspNetUsers modifiedBy;
+	
+	@Column(name = "modified_date")
+	private LocalDateTime modifiedDate;
+	
+	@Column(name = "is_deleted")
+	private boolean isDeleted;
+	
+	private String email;
+
+	public int getBusinessId() {
+		return businessId;
 	}
-	public void setBusiness_id(int business_id) {
-		this.business_id = business_id;
+
+	public void setBusinessId(int businessId) {
+		this.businessId = businessId;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getAddress_one() {
-		return address_one;
+		return addressOne;
 	}
+
 	public void setAddress_one(String address_one) {
-		this.address_one = address_one;
+		this.addressOne = address_one;
 	}
-	public String getAddress_two() {
-		return address_two;
+
+	public String getAddressTwo() {
+		return addressTwo;
 	}
-	public void setAddress_two(String address_two) {
-		this.address_two = address_two;
+
+	public void setAddressTwo(String addressTwo) {
+		this.addressTwo = addressTwo;
 	}
+
 	public String getCity() {
 		return city;
 	}
+
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public int getRegion_id() {
-		return region_id;
+
+	public Region getRegionId() {
+		return regionId;
 	}
-	public void setRegion_id(int region_id) {
-		this.region_id = region_id;
+
+	public void setRegionId(Region regionId) {
+		this.regionId = regionId;
 	}
-	public String getZip_code() {
-		return zip_code;
+
+	public String getZipCode() {
+		return zipCode;
 	}
-	public void setZip_code(String zip_code) {
-		this.zip_code = zip_code;
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
-	public String getPhone_number() {
-		return phone_number;
+
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
-	public void setPhone_number(String phone_number) {
-		this.phone_number = phone_number;
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
-	public String getFax_number() {
-		return fax_number;
+
+	public String getFaxNumber() {
+		return faxNumber;
 	}
-	public void setFax_number(String fax_number) {
-		this.fax_number = fax_number;
+
+	public void setFaxNumber(String faxNumber) {
+		this.faxNumber = faxNumber;
 	}
-	public int getCreated_by() {
-		return created_by;
+
+	public AspNetUsers getCreatedBy() {
+		return createdBy;
 	}
-	public void setCreated_by(int created_by) {
-		this.created_by = created_by;
+
+	public void setCreatedBy(AspNetUsers createdBy) {
+		this.createdBy = createdBy;
 	}
-	public LocalDateTime getCreated_date() {
-		return created_date;
+
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
 	}
-	public void setCreated_date(LocalDateTime created_date) {
-		this.created_date = created_date;
+
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
 	}
-	public int getModified_by() {
-		return modified_by;
+
+	public AspNetUsers getModifiedBy() {
+		return modifiedBy;
 	}
-	public void setModified_by(int modified_by) {
-		this.modified_by = modified_by;
+
+	public void setModifiedBy(AspNetUsers modifiedBy) {
+		this.modifiedBy = modifiedBy;
 	}
-	public LocalDateTime getModified_date() {
-		return modified_date;
+
+	public LocalDateTime getModifiedDate() {
+		return modifiedDate;
 	}
-	public void setModified_date(LocalDateTime modified_date) {
-		this.modified_date = modified_date;
+
+	public void setModifiedDate(LocalDateTime modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
-	public boolean isIs_deleted() {
-		return is_deleted;
+
+	public boolean isDeleted() {
+		return isDeleted;
 	}
-	public void setIs_deleted(boolean is_deleted) {
-		this.is_deleted = is_deleted;
+
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
-	
-	public Business(int business_id, String name, String address_one, String address_two, String city, int region_id,
-			String zip_code, String phone_number, String fax_number, int created_by, LocalDateTime created_date,
-			int modified_by, LocalDateTime modified_date, boolean is_deleted) {
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Business(int businessId, String name, String addressOne, String addressTwo, String city, Region regionId,
+			String zipCode, String phoneNumber, String faxNumber, AspNetUsers createdBy, LocalDateTime createdDate,
+			AspNetUsers modifiedBy, LocalDateTime modifiedDate, boolean isDeleted, String email) {
 		super();
-		this.business_id = business_id;
+		this.businessId = businessId;
 		this.name = name;
-		this.address_one = address_one;
-		this.address_two = address_two;
+		this.addressOne = addressOne;
+		this.addressTwo = addressTwo;
 		this.city = city;
-		this.region_id = region_id;
-		this.zip_code = zip_code;
-		this.phone_number = phone_number;
-		this.fax_number = fax_number;
-		this.created_by = created_by;
-		this.created_date = created_date;
-		this.modified_by = modified_by;
-		this.modified_date = modified_date;
-		this.is_deleted = is_deleted;
+		this.regionId = regionId;
+		this.zipCode = zipCode;
+		this.phoneNumber = phoneNumber;
+		this.faxNumber = faxNumber;
+		this.createdBy = createdBy;
+		this.createdDate = createdDate;
+		this.modifiedBy = modifiedBy;
+		this.modifiedDate = modifiedDate;
+		this.isDeleted = isDeleted;
+		this.email = email;
 	}
-	
+
 	public Business() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Business [business_id=" + business_id + ", name=" + name + ", address_one=" + address_one
-				+ ", address_two=" + address_two + ", city=" + city + ", region_id=" + region_id + ", zip_code="
-				+ zip_code + ", phone_number=" + phone_number + ", fax_number=" + fax_number + ", created_by="
-				+ created_by + ", created_date=" + created_date + ", modified_by=" + modified_by + ", modified_date="
-				+ modified_date + ", is_deleted=" + is_deleted + "]";
+		return "Business [businessId=" + businessId + ", name=" + name + ", addressOne=" + addressOne
+				+ ", addressTwo=" + addressTwo + ", city=" + city + ", regionId=" + regionId + ", zipCode=" + zipCode
+				+ ", phoneNumber=" + phoneNumber + ", faxNumber=" + faxNumber + ", createdBy=" + createdBy
+				+ ", createdDate=" + createdDate + ", modifiedBy=" + modifiedBy + ", modifiedDate=" + modifiedDate
+				+ ", isDeleted=" + isDeleted + ", email=" + email + "]";
 	}
+	
+	
+	
 	
 }

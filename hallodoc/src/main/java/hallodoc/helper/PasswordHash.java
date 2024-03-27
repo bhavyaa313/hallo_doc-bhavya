@@ -11,7 +11,7 @@ public class PasswordHash {
 
 		Hash hash = Password.hash(password).with(bcrypt);
 
-		//boolean verified = Password.check(password, hash).with(bcrypt);
+	
 
 		return hash.getResult();
 	}

@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    
-      <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+   
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@page isELIgnored="false" %>  	
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,10 +14,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootstrap Example</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+   <link href="<c:url value="/resources/css/bootstrap.min.css"/> "  rel="stylesheet">
+  <link href="<c:url value="/resources/css/style.css"/> "  rel="stylesheet">
+<script src="<c:url value="/resources/js/script.js"/>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
       <link href="<c:url value="/resources/css/bootstrap.min.css"/> "  rel="stylesheet">
   <link href="<c:url value="/resources/css/style.css"/> "  rel="stylesheet">
@@ -52,7 +63,7 @@
 
                 <button class="btn btn-outline-info d-lg-none d-inline" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    <img src="images/icons8-menu.svg" alt="">
+                    <img src="<c:url value="/resources/images/Hallo Doc-Photoroom.png-Photoroom.svg" />" alt="">
                 </button>
 
                 <li class="nav-item">
@@ -61,7 +72,7 @@
 
                 <li class="nav-item navbar-right ml-auto">
 
-                    <span class="wlcm lo">Welcome <span style="font-weight: 500;">Patient P</span></span>
+                    <span class="wlcm lo">Welcome <span style="font-weight: 500;">${uname }</span></span>
 
                     <button type="button" class="btn btn-outline-info mx-2 lo">Logout</button>
 
@@ -107,7 +118,7 @@
             <div class=" offcanvas offcanvas-start d-sm-block d-lg-none bg-white" tabindex="-1" id="offcanvasExample"
                 aria-labelledby="offcanvasExampleLabel">
                 <div class="offcanvas-body">
-                  <span class="wlcm lo-btn">Welcome <span style="font-weight: 500;">Patient P</span></span>
+                  <span class="wlcm lo-btn">Welcome <span style="font-weight: 500;">${uname }</span></span>
                     <ul class="navbar-nav nav-underline mt-3">
                         <li class="nav-item mx-2">
                             <a href="patient_dashboard.html" class="nav-link active  text-info">Dashboard</a>
@@ -171,44 +182,47 @@
                 </div>
             </div>
         </div>
+        
+        
 
 
-        <div class="lo">
+
+
+        <div class="">
+       <%--         <c:forEach var="item" items="${requestsList }">
+<h1>${item }</h1>
+</c:forEach>  --%>
+        
             <table class="table">
-                <thead class="bg-light">
+               <thead class="bg-light">
                   <tr>
                     <th  scope="col">Created Date</th>
-                    <th  scope="col">Provider</th>
+                   
                     <th scope="col">Current Status</th>
                     <th scope="col" class="col-md-2"></th>
                    
                    
                   </tr>
                 </thead>
+                
+          
+                
                 <tbody>
+               <c:forEach var="r" items="${requestsList }">
+                  
                   <tr>
-                    
-                    <td>Aug 1, 2023</td>
-                    <td>ABC</td>
-                    <td>Accepted</td>
+                     <td>${r.createdDate }</td>
                    
-                  </tr>
-                  <tr>
-                    <td>Aug 1, 2023</td>
-                    <td>ABC</td>
-                    <td>Accepted</td>
+                    <td>${r.firstName }</td>
                     <td>  <a  href="document_view.html" type="button" class="btn btn-outline-info mx-2  " >
                       View Uploads </a></td>
                   
                    
                   </tr>
-                  <tr>
-                    <td>Aug 1, 2023</td>
-                    <td>ABC</td>
-                    <td>Accepted</td>
-                   
-                  </tr>
+                  
+             </c:forEach> 
                 </tbody>
+                   
               </table>
 
 
@@ -292,9 +306,9 @@
 
     </div>
 
-    <div class="footer d-flex  align-items-center justify-content-end mt-3 ">
+    <!-- <div class="footer d-flex  align-items-center justify-content-end mt-3 ">
         <p class="mx-3 text-center mb-2 mt-2  ">Terms & conditions | privacy policy</p>
-      </div>
+      </div> -->
     <script src="accordian.js"></script>
     <script>
         function myFunctions() {

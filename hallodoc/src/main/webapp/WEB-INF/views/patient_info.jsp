@@ -115,145 +115,154 @@ body {
 								class="btn btn-outline-info mx-2 lo"> < Back</a>
 						</div>
 					</div>
-					<form action="insert" method="post">
-					<h4>Patient Information</h4>
-					<div class="form-floating mb-3">
-						<textarea class="form-control " placeholder="Leave a comment here"
-							id="floatingTextarea2" name="sympton" style="height: 100px"></textarea>
-						<label for="floatingTextarea2" class="dm"> Enter brief
-							details of symptons (optional)</label>
-					</div>
-					<div class="row g-2">
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="floatingInput" name="firstName"
-									placeholder="name"> <label for="floatingInput"
-									class="dm">First Name</label>
+					<form action="insert" method="post" enctype="multipart/form-data">
+						<h4>Patient Information</h4>
+						<div class="form-floating mb-3">
+							<textarea class="form-control "
+								placeholder="Leave a comment here" id="floatingTextarea2"
+								name="sympton" style="height: 100px"></textarea>
+							<label for="floatingTextarea2" class="dm"> Enter brief
+								details of symptons (optional)</label>
+						</div>
+						<div class="row g-2">
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="floatingInput"
+										name="firstName" placeholder="name"> <label
+										for="floatingInput" class="dm">First Name</label>
+								</div>
+							</div>
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="floatingInput"
+										name="lastName" placeholder="name"> <label
+										for="floatingInput" class="dm">Last Name</label>
+								</div>
 							</div>
 						</div>
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="floatingInput" name="lastName"
-									placeholder="name"> <label for="floatingInput"
-									class="dm">Last Name</label>
-							</div>
-						</div>
-					</div>
-					<div class="row g-2">
-						<div class="col-md-6">
-							<div class="form-floating mb-3">
+						<div class="row g-2">
+							<div class="col-md-6">
+								<div class="form-floating mb-3">
 
-								<input type="date" id="" class="form-control"
-									placeholder="Date Of Birth" onfocus="(this.type='date')" name="DOB"></input>
-								<label for="floatingInput" class="dm">Date of Birth</label>
+									<input type="date" id="" class="form-control"
+										placeholder="Date Of Birth" onfocus="(this.type='date')"
+										name="DOB"></input> <label for="floatingInput" class="dm">Date
+										of Birth</label>
+								</div>
 							</div>
 						</div>
-					</div>
-					<!-- <input type="tel" class="form-control pt-3 pb-3  " id="phone"> -->
-					<h4>Patient Contact Information</h4>
-					<div class="row g-2">
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input type="email" class="form-control" id="emailCheck" name="email"
-									placeholder=""> <label
-									for="floatingInput" class="dm">Email</label>
+						<!-- <input type="tel" class="form-control pt-3 pb-3  " id="phone"> -->
+						<h4>Patient Contact Information</h4>
+						<div class="row g-2">
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="email" class="form-control" id="emailCheck"
+										name="email" placeholder=""> <label
+										for="floatingInput" class="dm">Email</label>
+								</div>
 							</div>
-						</div>
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input type="tel"
-									class="form-control pt-3 pb-3  iti iti__country-list" name="mobile"
-									id="phone">
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="tel"
+										class="form-control pt-3 pb-3  iti iti__country-list"
+										name="mobile" id="phone">
 
+								</div>
+							</div>
+
+						</div>
+						<div class="row g-2 d-none" id="temp">
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="password" class="form-control pc" id="p"
+										placeholder="" name="password"> <label
+										for="floatingInput" class="dm">Password</label>
+								</div>
+							</div>
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="password" class="form-control pc" id="confirmp"
+										placeholder=""> <label for="floatingInput" class="dm">Confirm
+										Password</label>
+								</div>
+							</div>
+						</div>
+						<h4>Patient Location</h4>
+						<div class="row g-2">
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="floatingInput"
+										name="street" placeholder="rttttttth"> <label
+										for="floatingInput" class="dm">Street</label>
+								</div>
+							</div>
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="floatingInput"
+										name="city" placeholder="trr"> <label
+										for="floatingInput" class="dm">City</label>
+								</div>
+							</div>
+						</div>
+						<div class="row g-2">
+							<div class="col-md">
+								 <div class="form-floating mb-3">
+                                    <select class="form-select" aria-label="Default select example" placeholder="tre">
+                                        <!-- <option selected>State</option> -->
+                                        <option value="1">Gujarat</option>
+                                        <option value="2">Maharashtra</option>
+                                        <option value="3">Rajasthan</option>
+                                        <option value="4">Madhya Pradesh</option>
+
+                                    </select>
+                                    <label for="floatingInput" class="dm">State</label>
+                                </div>
+							</div>
+							<div class="col-md">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="floatingInput"
+										name="zipcode" placeholder="tre"> <label
+										for="floatingInput" class="dm">Zip Code</label>
+								</div>
 							</div>
 						</div>
 
-					</div>
-					<div class="row g-2 d-none" id="temp">
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input type="password" class="form-control pc" id="p"
-									placeholder="" name="password"> <label for="floatingInput"
-									class="dm">Password</label>
+						<div class="row g-2">
+							<div class="col-md-6">
+								<div class="form-floating mb-3">
+									<input type="text" class="form-control" id="floatingInput"
+										name="room" placeholder="trrrrrrrrrr"> <label
+										for="floatingInput" class="dm">Room #/ Suite
+										(Optional)</label>
+								</div>
 							</div>
 						</div>
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input type="password" class="form-control pc" id="confirmp"
-									placeholder=""> <label for="floatingInput"
-									class="dm">Confirm Password</label>
-							</div>
-						</div>
-					</div>
-					<h4>Patient Location</h4>
-					<div class="row g-2">
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="floatingInput" name="street"
-									placeholder="rttttttth"> <label for="floatingInput"
-									class="dm">Street</label>
-							</div>
-						</div>
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="floatingInput" name="city"
-									placeholder="trr"> <label for="floatingInput"
-									class="dm">City</label>
-							</div>
-						</div>
-					</div>
-					<div class="row g-2">
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="floatingInput" name="state"
-									placeholder="yhht"> <label for="floatingInput"
-									class="dm">State</label>
-							</div>
-						</div>
-						<div class="col-md">
-							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="floatingInput" name="zipcode"
-									placeholder="tre"> <label for="floatingInput"
-									class="dm">Zip Code</label>
-							</div>
-						</div>
-					</div>
-
-					<div class="row g-2">
-						<div class="col-md-6">
-							<div class="form-floating mb-3">
-								<input type="text" class="form-control" id="floatingInput" name="room"
-									placeholder="trrrrrrrrrr"> <label for="floatingInput"
-									class="dm">Room #/ Suite (Optional)</label>
-							</div>
-						</div>
-					</div>
-					<h4>(Optional) Upload Photo or Document</h4>
-
-
-
-					<div class="row">
-						<div class="col">
-							<div class="input-group mb-3 drill_cursor mt-3">
-								<input type="file" name="fileName" id="input_file" hidden> <input
-									type="text" class="form-control col-form-label-lg " id="txt"
-									onclick="open_file" placeholder="Upload " aria-label="Upload"
-									aria-describedby="button-addon2">
-								<button class="btn btn-outline-info bg-info" type="button"
-									onclick="open_file()" id="button-addon2">
-									<img src="images/cloud-arrow-up.svg" alt=""> <span
-										style="color: white;">Upload</span>
-								</button>
-							</div>
-						</div>
-					</div>
+						<h4>(Optional) Upload Photo or Document</h4>
 
 
-					<div class="mt-4 d-flex flex-row-reverse mb-5 ">
 
-						<button type="submit" class="btn btn-outline-info btn-lg">cancel</button>
-						<button type="submit" class="btn btn-info mx-2 btn-lg">Submit</button>
-						<!-- <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+						<div class="row">
+							<div class="col">
+								<div class="input-group mb-3 drill_cursor mt-3">
+									<input type="file" name="file_name" id="input_file" hidden>
+									<input type="text" class="form-control col-form-label-lg "
+										id="txt" onclick="open_file" placeholder="Upload "
+										aria-label="Upload" aria-describedby="button-addon2">
+									<button class="btn btn-outline-info bg-info" type="button"
+										onclick="open_file()" id="button-addon2">
+										<img src="images/cloud-arrow-up.svg" alt=""> <span
+											style="color: white;">Upload</span>
+									</button>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="mt-4 d-flex flex-row-reverse mb-5 ">
+
+							<button type="submit" class="btn btn-outline-info btn-lg">cancel</button>
+							<button type="submit" class="btn btn-info mx-2 btn-lg">Submit</button>
+							<!-- <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                            Submit
                           </button>
                           <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -274,8 +283,8 @@ body {
                             </div>
                           </div>
                         -->
-					</div>
-						</form>
+						</div>
+					</form>
 
 
 
@@ -285,7 +294,7 @@ body {
 
 
 				</div>
-			
+
 
 
 
@@ -312,7 +321,7 @@ body {
 		<script
 			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-		
+
 
 
 
@@ -403,7 +412,7 @@ myModal.addEventListener('shown.bs.modal', () => {
 
 </script>
 
-<script>
+		<script>
 
 			console.log("dcds")
 		    $(".pc").blur(function(){
