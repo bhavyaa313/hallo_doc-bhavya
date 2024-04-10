@@ -2,6 +2,8 @@ package hallodoc.service;
 
 import java.util.List;
 
+import javax.security.auth.x500.X500Principal;
+
 import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,6 +13,9 @@ import com.password4j.Password;
 import com.password4j.types.Bcrypt;
 
 import hallodoc.helper.PasswordHash;
+import hallodoc.model.AspNetUsers;
+import hallodoc.model.User;
+import hallodoc.repo.UserDao;
 import hallodoc.repo.UsersDao;
 
 @Component
@@ -18,6 +23,9 @@ public class UsersService {
 
 	@Autowired
 	private UsersDao dao;
+	
+	@Autowired
+	private UserDao userDao;
 
 	public boolean checkEmail5(String mail, String password) {
 		// TODO Auto-generated method stub
@@ -63,14 +71,54 @@ public class UsersService {
 
 	}
 	
-	public int getId(String mail) {
-		List uIdList = dao.checkEmail1(mail);
-		int uid = (int)uIdList.get(0);
-		return uid;
+	public User getId(String mail) {
+		List<User> uIdList = dao.checkEmail1(mail);
+		User user = uIdList.get(0);
+		return user;
+		
+	}
+	
+	
+	
+	
+	public boolean checkPasswordHash(String mail) {
+		
+		List<AspNetUsers> list = dao.checkEmail(mail);
+		if (list.size()>0) {
+			AspNetUsers aspNetUsers = list.get(0);
+			
+			String pswd = aspNetUsers.getPasswordHash();
+		
+			System.out.println(pswd);
+			
+			return pswd==null;
+		}
+		
+		return false;
+		
+		
 		
 	}
 	
 	
 
+	public List<User> getUserIdUser(String mail) {
+		List<User> userList = userDao.getUser(mail);
+		User xList =   userList.get(0);
+		return userList;
+	
+		
+		
+	}
+	
+	
+		
+		
+		
+	}
+	
+	
+	
 
-}
+
+

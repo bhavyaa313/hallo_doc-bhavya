@@ -22,6 +22,14 @@
 
 <body>
     <style>
+
+        
+.hide1 {
+
+display: none;
+}
+
+
         body {
 
             background-color: white;
@@ -171,7 +179,7 @@
         <div class="container-fluid  kok bg-light">
 
         </div>
-
+<form action="" method="">
         <div class="container-fluid bg-light">
             <div class="row">
                 <div class=" col-md-3"></div>
@@ -193,13 +201,13 @@
                         <div class="row g-2 bg-white">
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <input type="text" class="form-control enable1" id="floatingInput" placeholder="name" disabled>
                                     <label for="floatingInput" class="dm">First Name</label>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <input type="text" class="form-control enable1" id="floatingInput" placeholder="name" disabled>
                                     <label for="floatingInput" class="dm">Last Name</label>
                                 </div>
                             </div>
@@ -210,9 +218,9 @@
                                     <!-- <input type="date" class="form-control" id="floatingInput"
                                     mailto:placeholder="name@example.com">
                                 <label for="floatingInput">Date of Birth</label> -->
-                                    <input type="text" id="uname" class="form-control" placeholder="Date Of Birth"
-                                        onfocus="(this.type='date')"></input>
-                                    <label for="floatingInput" class="dm">Date of Birth</label>
+                                    <input type="text" id="uname" class="form-control" placeholder="Date Of Birth" disabled
+                                        onfocus="(this.type='date')" ></input>
+                                    <label for="floatingInput" class="dm" >Date of Birth</label>
                                 </div>
                             </div>
                         </div>
@@ -221,8 +229,8 @@
                         <div class="row g-2 bg-white">
                             <div class="col-md-2 col-4">
                                 <div class="form-floating">
-                                    <select class="form-select" id="floatingSelect"
-                                        aria-label="Floating label select example">
+                                    <select class="form-select enable1" id="floatingSelect"
+                                        aria-label="Floating label select example" disabled>
                                         <option selected>Mobile</option>
                                         <option value="1">Phone</option>
                                         <option value="2">Landline</option>
@@ -233,14 +241,14 @@
                             </div>
                             <div class="col-md col-8">
                                 <div class="form-floating mb-3">
-                                    <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list" id="phone">
+                                    <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list enable1" id="phone" disabled>
 
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput"
-                                        placeholder="name@example.com">
+                                    <input type="email" class="form-control enable1" id="floatingInput"
+                                        placeholder="name@example.com" disabled>
                                     <label for="floatingInput" class="dm">Email</label>
                                 </div>
                             </div>
@@ -251,13 +259,13 @@
                         <div class="row g-2 bg-white">
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="street" placeholder="rttttttth">
+                                    <input type="text" class="form-control enable1" id="street" placeholder="rttttttth" disabled>
                                     <label for="floatingInput" class="dm">Street</label>
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="city" placeholder="trr">
+                                    <input type="text" class="form-control enable1" id="city" placeholder="trr" disabled>
                                     <label for="floatingInput" class="dm">City</label>
                                 </div>
                             </div>
@@ -265,19 +273,19 @@
                         <div class="row g-2 bg-white">
                             <div class="col-md">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="state" placeholder="yhht">
+                                    <input type="text" class="form-control enable1" id="state" placeholder="yhht" disabled>
                                     <label for="floatingInput" class="dm">State</label>
                                 </div>
                             </div>
                             <div class="col-md-3 col-9">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="map" placeholder="tre" >
+                                    <input type="text" class="form-control enable1" id="map" placeholder="tre" disabled >
                                     <label for="floatingInput" class="dm">Zip Code</label>
                                 </div>
                             </div>
                             <div class="col-md-3 col-3">
                                 <div class="mb-3 mt-2 highlight"> <button type="button"
-                                        class="btn btn-outline-info mx-2 p-2 highlight btn-lg" onclick="searchAddress()">
+                                        class="btn btn-outline-info mx-2 p-2 highlight btn-lg" data-bs-toggle="modal" data-bs-target="#block">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
                                             <path
@@ -309,7 +317,9 @@
                         <div class="mt-4 d-flex flex-row-reverse mb-3 bg-white">
 
 
-                            <button type="submit" class="btn btn-info mx-2 btn-lg">Edit</button>
+                            <button type="button" class="btn btn-info btn-lg mx-2 random1" onclick="show3()">Edit</button>
+                            <button type="reset" class="btn btn-danger btn-lg mx-2 hide1 " onclick="show4()">Cancel</button>
+                            <button type="submit" class="btn btn-success btn-lg mx-2 hide1 " onclick="show4()">Save</button>
 
                         </div>
                     </div>
@@ -323,15 +333,10 @@
                 </div>
 
 
-
-
-
-
-
                 <div class="col-md-3"></div>
             </div>
             </div>
-
+        </form>
             <div class="footer d-flex  align-items-center justify-content-end mt-3 ">
                 <p class="mx-3 text-center mb-2 mt-2  ">Terms & conditions | privacy policy</p>
               </div>
@@ -340,7 +345,25 @@
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+            <script>
+                function show3()
+                {
+                    $('.hide1').removeClass("hide1");
+                    $('.random1').addClass("hide1");
+                    $('.enable1').removeAttr("disabled");
+            
+                }
+            
+                function show4()
+                {
+                    $('.hide1').removeClass("hide1");
+                    $('.see1').addClass("hide1");
+                    $('.enable1').attr("disabled" ,"disabled" );
+            
+                }
+            
+            
+            </script>
             <script>
                 $(document).ready(function () {
                     $('#yourModalId').modal('show');
@@ -396,7 +419,33 @@
     }
   </script>
 
+<div class="modal fade" id="block" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-info text-white">
+          <h1 class="modal-title fs-5 " id="exampleModalLabel">Assign Case</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
 
+          <p mb-3>Patient Name: <span class="text-info">test test</span> </p>
+
+
+          <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+              style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Reason for Block Request</label>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+
+          
+          <button type="button" class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
     </body>
 

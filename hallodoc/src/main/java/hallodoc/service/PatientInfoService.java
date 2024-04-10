@@ -6,12 +6,15 @@ import java.time.LocalDateTime;
 
 import java.util.List;
 
+import javax.servlet.ServletRequestListener;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import hallodoc.dto.PatientInfoDto;
+import hallodoc.enums.RegionEnum;
+import hallodoc.helper.ConfirmationNumber;
 import hallodoc.helper.DateModifier;
 import hallodoc.helper.PasswordHash;
 
@@ -50,6 +53,14 @@ public class PatientInfoService {
 	@Autowired
 	private RequestWiseFileDao requestWiseFileDao;
 	
+	@Autowired
+	private RequestService requestService;
+	
+	@Autowired
+	private ConfirmationNumber confirmationNumber;
+	
+	
+	
 	public boolean checkEmail(String mail) {
 		// TODO Auto-generated method stub
 
@@ -76,15 +87,53 @@ public class PatientInfoService {
 		String zipcode = patientInfoDto.getZipcode();
 		String room = patientInfoDto.getRoom();
 		
+		
 		LocalDateTime cdate = patientInfoDto.getCreated_date();
 		String dob = patientInfoDto.getDOB();
 		int id = patientInfoDto.getId();
 		int status = patientInfoDto.getStatus();
 		int phyid = patientInfoDto.getPhysicianId();
 		int admin_id = patientInfoDto.getAdmin_id();
+		
 		CommonsMultipartFile file_name = patientInfoDto.getFile_name();
-
+		String creString = LocalDateTime.now().toLocalDate().toString();
+		LocalDate date = LocalDate.now();
+		String forString = date.getDayOfMonth() + "" + date.getMonthValue()+ "" + date.getYear();
+		System.out.println(forString);
+		String abbrString;
+		try {
+			 abbrString = RegionEnum.valueOf(state.toUpperCase()).getAbbr();
+			  System.out.println("Abbreviation for " + state + ": " + abbrString);
+			} catch (IllegalArgumentException e) {
+			  System.out.println("State not found: " + state);
+			   abbrString = ""; // Or handle the exception differently if needed
+			}
+		
+	
+		
+		
+		List<Request> requests = requestService.getRequests();
+		int count =1;
+		for (int i = 0; i < requests.size(); i++) {
+			
+			Request request =  requests.get(i);
+			 String xString =  request.getCreatedDate().toLocalDate().toString();
+			 if (xString.equals(creString)) {
+				count+=1;
+			}
+			 
+			
+		}
+		String confirString = abbrString + fname.toUpperCase().substring(0, 2) + lname.toUpperCase().substring(0, 2) + forString.substring(0, 4)+ count; 
+				
+				
+				
 		String password = patientInfoDto.getPassword();
+		
+		int regionId = RegionEnum.valueOf(state.toUpperCase()).getid();
+		System.out.println("------------------------------------------------------------------");
+		System.out.println(regionId);
+		System.out.println("------------------------------------------------------------------");
 
 		if (test) {
 			AspNetUsers aspNetUsers = new AspNetUsers();
@@ -105,7 +154,9 @@ public class PatientInfoService {
 			user.setCity(city);
 			user.setState(state);
 			user.setZipcode(zipcode);
+			user.setRegionId(regionId);
 			user.setModifiedDate(LocalDateTime.now());
+			
 
 			userDao.userUpdate(user);
 
@@ -117,7 +168,10 @@ public class PatientInfoService {
 			request.setStatus(status);
 			request.setPhysicianId(phyid);
 			request.setCreatedDate(cdate);
+			request.setConfirmationNumber(confirString);
+			request.setRequestTypeId(2);
 			request.setDeclinedBy(aspNetUsers);
+			request.setUserId(user);
 
 			RequestClient requestClient = new RequestClient();
 			requestClient.setFirstName(fname);
@@ -129,6 +183,10 @@ public class PatientInfoService {
 			requestClient.setState(state);
 			requestClient.setRequestId(request);
 			requestClient.setZipcode(zipcode);
+			requestClient.setRegionId(regionId);
+			System.out.println("------------------------------------------------------------------");
+			System.out.println(requestClient.getRegionId());
+			System.out.println("------------------------------------------------------------------");
 
 			LocalDate curreDate1 = LocalDate.parse(dob);
 			requestClient.setIntDate(new DateModifier().getDay(curreDate1));
@@ -147,6 +205,7 @@ public class PatientInfoService {
 			RequestWiseFile requestWiseFile = new RequestWiseFile();
 			requestWiseFile.setRequestId(request);
 			requestWiseFile.setCreatedDate(LocalDateTime.now());
+			requestWiseFile.setUploader(fname + lname);
 
 			requestWiseFile.setFileName(file_name.getOriginalFilename());
 
@@ -164,6 +223,8 @@ public class PatientInfoService {
 			aspNetUsers.setPasswordHash(new PasswordHash().encryptPassword(password));
 			aspNetUsers.setPhoneNumber(mobile);
 			aspNetUsers.setCreatedDate(cdate);
+			aspNetUsersDao.aspSave(aspNetUsers);
+
 		
 
 			User user = new User();
@@ -175,8 +236,11 @@ public class PatientInfoService {
 			user.setCity(city);
 			user.setState(state);
 			user.setZipcode(zipcode);
+			user.setRegionId(regionId);
 			user.setAspnetUserId(aspNetUsers);
 			user.setCreatedBy(aspNetUsers.getId());
+			
+			
 
 			if (dob == null || dob.isEmpty()) {
 
@@ -186,7 +250,8 @@ public class PatientInfoService {
 				user.setStrMonth(new DateModifier().getMonth(currentDate));
 				user.setIntYear(new DateModifier().getYear(currentDate));
 			}
-
+			userDao.userSave(user);
+ 
 			Request request = new Request();
 			request.setFirstName(fname);
 			request.setLastName(lname);
@@ -196,6 +261,9 @@ public class PatientInfoService {
 			request.setPhysicianId(phyid);
 			request.setCreatedDate(cdate);
 			request.setDeclinedBy(aspNetUsers);
+			request.setUserId(user);
+			request.setRequestTypeId(2);
+			request.setConfirmationNumber(confirString);
 
 			RequestClient requestClient = new RequestClient();
 			requestClient.setFirstName(fname);
@@ -207,6 +275,10 @@ public class PatientInfoService {
 			requestClient.setState(state);
 			requestClient.setRequestId(request);
 			requestClient.setZipcode(zipcode);
+			requestClient.setRegionId(regionId);
+			System.out.println("------------------------------------------------------------------");
+			System.out.println(requestClient.getRegionId());
+			System.out.println("------------------------------------------------------------------");
 			
 
 			if (dob == null || dob.isEmpty()) {
@@ -220,11 +292,12 @@ public class PatientInfoService {
 
 			RequestWiseFile requestWiseFile = new RequestWiseFile();
 			requestWiseFile.setRequestId(request);
+			requestWiseFile.setUploader(fname + lname);
+			
 			requestWiseFile.setCreatedDate(LocalDateTime.now());
 
 			requestWiseFile.setFileName(file_name.getOriginalFilename());
-			aspNetUsersDao.aspSave(aspNetUsers);
-			/* userDao.userSave(user); */
+		
 			requestDao.requestSave(request);
 			requestClientDao.requestClientSave(requestClient);
 			requestWiseFileDao.requestWiseFileSave(requestWiseFile);

@@ -23,7 +23,7 @@ public class RequestClient {
 	private int requestClientId;
 	
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "request_id")
 
 	private Request requestId;
@@ -41,9 +41,8 @@ public class RequestClient {
 	
 	private String address;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "region_id")
-	private Region regionId;
+	
+	private int regionId;
 	
 	@Column(name = "noti_mobile")
 	private String notiMobile;
@@ -162,13 +161,13 @@ public class RequestClient {
 
 
 
-	public Region getRegionId() {
+	public int getRegionId() {
 		return regionId;
 	}
 
 
 
-	public void setRegionId(Region regionId) {
+	public void setRegionId(int regionId) {
 		this.regionId = regionId;
 	}
 
@@ -331,7 +330,7 @@ public class RequestClient {
 
 
 	public RequestClient(int requestClientId, Request requestId, String firstName, String lastName, String phoneNumber,
-			String location, String address, Region regionId, String notiMobile, String notiEmail, String notes,
+			String location, String address, int regionId, String notiMobile, String notiEmail, String notes,
 			String email, String strMonth, int intYear, int intDate, String street, String city, String state,
 			String zipcode, float latitude, float longitude) {
 		super();

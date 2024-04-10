@@ -30,7 +30,7 @@ public class UsersDao {
 		org.hibernate.Query query = session.createQuery(hqlString);
 		query.setParameter("mail", mail);
 		List<AspNetUsers> list = query.list();
-
+		session.close();
 		return list;
 
 	}
@@ -45,7 +45,7 @@ public class UsersDao {
 		org.hibernate.Query query = session.createQuery(hqlString);
 		query.setParameter("mail", mail);
 		List list = query.list();
-
+		session.close();
 		return list;
 
 	}
@@ -60,7 +60,7 @@ public class UsersDao {
 		org.hibernate.Query query = session.createQuery(hqlString);
 		query.setParameter("mail", mail);
 		List<User> list = query.list();
-
+		session.close();
 		return list;
 
 	}
@@ -75,7 +75,7 @@ public class UsersDao {
 		org.hibernate.Query query = session.createQuery(hqlString);
 		query.setParameter("mail", mail);
 		List<Concierge> list = query.list();
-
+session.close();
 		return list;
 	}
 
@@ -89,7 +89,7 @@ public class UsersDao {
 		org.hibernate.Query query = session.createQuery(hqlString);
 		query.setParameter("mail", mail);
 		List<Business> list = query.list();
-
+		session.close();
 		return list;
 	}
 	
@@ -103,11 +103,13 @@ public class UsersDao {
 		Query query = session.createQuery(hqlString);
 		query.setParameter("mail", mail);
 		List list = query.list();
-		
+		session.close();
 		return list;
 
 	}
 	
+
+
 	
 
 }

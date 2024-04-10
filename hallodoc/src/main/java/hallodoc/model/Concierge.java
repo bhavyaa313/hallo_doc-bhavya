@@ -38,8 +38,7 @@ public class Concierge {
 
 	private int role_id;
 //
-//	@OneToOne(mappedBy = "conciergeId")
-//	private RequestConcierge requestConcierge;
+
 
 
 

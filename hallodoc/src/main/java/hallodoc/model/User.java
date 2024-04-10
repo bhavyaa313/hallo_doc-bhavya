@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -30,7 +31,7 @@ public class User {
 	
 	
 	
-	@OneToOne (cascade = CascadeType.ALL)
+	@OneToOne 
 	@JoinColumn(name = "aspnet_user_id", referencedColumnName = "id")
 	private AspNetUsers aspnetUserId;
 	
@@ -86,9 +87,20 @@ public class User {
 	@Column(name="is_request_with_email")
 	private boolean isRequestWithEmail;
 	
-@OneToOne(mappedBy = "userId")
 	
-	private Request request;
+	@Column(name = "role_id")
+	private int roleId;
+	
+
+	
+
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
 
 	public int getUserID() {
 		return userID;
@@ -262,14 +274,16 @@ public class User {
 	public void setRequestWithEmail(boolean isRequestWithEmail) {
 		this.isRequestWithEmail = isRequestWithEmail;
 	}
+	
 
 
 	
 
+
 	public User(int userID, AspNetUsers aspnetUserId, String firstName, String lastName, String email, String mobile,
 			String street, String city, String state, int regionId, String zipcode, String strMonth, int intYear,
-			int intDate, int createdBy, LocalDateTime createdDate, int modifiedBy, LocalDateTime modifiedDate, int status,
-			boolean isDeleted, boolean isRequestWithEmail) {
+			int intDate, int createdBy, LocalDateTime createdDate, int modifiedBy, LocalDateTime modifiedDate,
+			int status, boolean isDeleted, boolean isRequestWithEmail, int roleId) {
 		super();
 		this.userID = userID;
 		this.aspnetUserId = aspnetUserId;
@@ -292,6 +306,7 @@ public class User {
 		this.status = status;
 		this.isDeleted = isDeleted;
 		this.isRequestWithEmail = isRequestWithEmail;
+		this.roleId = roleId;
 	}
 
 	public User() {

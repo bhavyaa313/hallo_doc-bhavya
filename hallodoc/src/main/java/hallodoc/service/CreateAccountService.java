@@ -38,7 +38,7 @@ public void Service(CreateAccountDto createAccountDto) {
 
 	aspNetUsers.setPasswordHash(passwordString);
 	
-	aspNetUsersDao.aspSave(aspNetUsers);
+	aspNetUsersDao.aspUpdate(aspNetUsers);
 	
 	
 	
@@ -46,6 +46,6 @@ public void Service(CreateAccountDto createAccountDto) {
 	user.setEmail(emailString);
 	user.setCreatedBy(aspNetUsers.getId());
 	user.setRequestWithEmail(true);
-	userDao.userSave(user);
+	userDao.userUpdate(user);
 }
 }

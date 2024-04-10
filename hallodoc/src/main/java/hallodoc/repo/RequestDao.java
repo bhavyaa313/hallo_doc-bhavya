@@ -11,6 +11,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import hallodoc.model.Request;
+import hallodoc.model.User;
 
 
 @Repository
@@ -27,21 +28,75 @@ public class RequestDao {
 		template.save(request);
 	}
 	
-	public List getRequests(int uId) {
+	@Transactional
+	public void requestUpdate(Request request) {
+		template.update(request);
+	}
+	
+	
+	public List getRequests(User uId) {
 
 		Session session = sessionFactory.openSession();
 
 		System.out.println("requestsssssssssssss");
 		System.out.println(uId);
-		String hqlString = "SELECT A.createdDate, A.firstName from hallodoc.model.Request A where A.userId=:uId";
+		String hqlString = "from hallodoc.model.Request A where A.userId=:uId";
 		Query query = session.createQuery(hqlString);
-		query.setParameter("uID", uId);
+		query.setParameter("uId", uId);
 		List list = query.list();
 		System.out.println(list);
 		
 		return list;
 
 	}
+	
+	public List getRequestss(User uId) {
+
+		Session session = sessionFactory.openSession();
+
+		System.out.println("requestsssssssssssss");
+		System.out.println(uId);
+		String hqlString = "from hallodoc.model.Request A where A.userId=:uId and A.requestTypeId=2";
+		Query query = session.createQuery(hqlString);
+		query.setParameter("uId", uId);
+		List list = query.list();
+		System.out.println(list);
+		
+		return list;
+
+	}
+	
+	public List<Request> getRequests(int rId) {
+
+		Session session = sessionFactory.openSession();
+
+	
+		String hqlString = "from hallodoc.model.Request A where A.requestId=:rId";
+		Query query = session.createQuery(hqlString);
+		query.setParameter("rId", rId);
+		List<Request> list = query.list();
+		System.out.println(list);
+		
+		return list;
+
+	}
+	
+	public List<Request> getRequests() {
+
+		Session session = sessionFactory.openSession();
+
+	
+		String hqlString = "from hallodoc.model.Request ";
+		Query query = session.createQuery(hqlString);
+	
+		List<Request> list = query.list();
+		System.out.println(list);
+		
+		return list;
+
+	}
+	
+	
 
 	
 

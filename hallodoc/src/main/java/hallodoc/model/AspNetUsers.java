@@ -36,27 +36,17 @@ public class AspNetUsers {
 	@Column(name = "created_date")
 	private LocalDateTime createdDate=LocalDateTime.now();
 
-	@OneToOne(mappedBy = "aspnetUserId")
 	
-	private User user;
 	public AspNetUsers() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public User getUser() {
-		return user;
-	}
-
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 
 	public AspNetUsers(int id, String userName, String passwordHash, String email, String phoneNumber,
-			LocalDateTime modifiedDate, LocalDateTime createdDate, User user) {
+			LocalDateTime modifiedDate, LocalDateTime createdDate) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -65,7 +55,7 @@ public class AspNetUsers {
 		this.phoneNumber = phoneNumber;
 		this.modifiedDate = modifiedDate;
 		this.createdDate = createdDate;
-		this.user = user;
+		
 	}
 
 

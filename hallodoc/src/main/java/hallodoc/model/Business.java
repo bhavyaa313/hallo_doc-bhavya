@@ -28,9 +28,8 @@ public class Business {
 	
 	private String city;
 	
-	@ManyToOne
-	@JoinColumn(name = "region_id")
-	private Region regionId;
+	
+	private int regionId;
 	
 	@Column(name = "zip_code")
 	private String zipCode;
@@ -100,11 +99,11 @@ public class Business {
 		this.city = city;
 	}
 
-	public Region getRegionId() {
+	public int getRegionId() {
 		return regionId;
 	}
 
-	public void setRegionId(Region regionId) {
+	public void setRegionId (int regionId) {
 		this.regionId = regionId;
 	}
 
@@ -180,7 +179,7 @@ public class Business {
 		this.email = email;
 	}
 
-	public Business(int businessId, String name, String addressOne, String addressTwo, String city, Region regionId,
+	public Business(int businessId, String name, String addressOne, String addressTwo, String city, int regionId,
 			String zipCode, String phoneNumber, String faxNumber, AspNetUsers createdBy, LocalDateTime createdDate,
 			AspNetUsers modifiedBy, LocalDateTime modifiedDate, boolean isDeleted, String email) {
 		super();
@@ -206,14 +205,7 @@ public class Business {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public String toString() {
-		return "Business [businessId=" + businessId + ", name=" + name + ", addressOne=" + addressOne
-				+ ", addressTwo=" + addressTwo + ", city=" + city + ", regionId=" + regionId + ", zipCode=" + zipCode
-				+ ", phoneNumber=" + phoneNumber + ", faxNumber=" + faxNumber + ", createdBy=" + createdBy
-				+ ", createdDate=" + createdDate + ", modifiedBy=" + modifiedBy + ", modifiedDate=" + modifiedDate
-				+ ", isDeleted=" + isDeleted + ", email=" + email + "]";
-	}
+	
 	
 	
 	
