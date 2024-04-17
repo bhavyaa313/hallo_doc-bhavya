@@ -32,9 +32,7 @@
             myInput.focus()
         })
     </script>
-</head>
 
-<body>
     <style>
         body {
 
@@ -82,327 +80,175 @@
             }
         }
     </style>
-    </head>
+</head>
 
 
 
 
 
-    <body>
+<body>
 
-        <nav class="navbar navbar-expand-lg navbar-toggler">
 
-            <div class="container-fluid flex-column">
-    
-                <ul class="navbar-nav w-100 flex-row">
-    
-                   
-    
-                    <button class="btn btn-outline-info d-lg-none d-inline" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                    <img src="images/icons8-menu.svg" alt="">
-                </button>
-    
-                    <li class="nav-item">
-                        <img class="hello-logo1 m-2" src="images/hellodoc-logo.png" alt="">
-                    </li>
-    
-                    <li class="nav-item navbar-right ml-auto">
-    
-                        <span class="wlcm">Welcome <span style="font-weight: 500;">Admin admin2</span></span>
-    
-                        <button type="button" class="btn btn-outline-info mx-2 lo">Logout</button>
-    
-                        <button type="button" class="btn btn-outline-info mx-2 lo-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
-                                <path fill-rule="evenodd"
-                                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
-                            </svg>
-                        </button>
-    
-                        <button type="button" class="btn btn-outline-info px-0 moon-img" onclick="myFunctions()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-moon" viewBox="0 0 16 16">
-                                <path
-                                    d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
-                            </svg>
-                        </button>
-                    </li>
-                </ul>
-    
-                <!-- <hr class="bg-dark"> -->
-    
-                <div class="collapse navbar-collapse w-100 d-none d-lg-inline" id="navbarSupportedContent">
-                    <ul class="navbar-nav nav-underline">
-                        <li class="nav-item mx-2">
-                            <a href="dashboard.html" class="nav-link active  text-info ">Dashboard</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a href="provider_location.html" class="nav-link">Provider Location</a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a href="my_profile.html" class="nav-link ">My Profile</a>
-                        </li>
-                        <li class="nav-item dropdown mx-2">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                             providers
-                            </a>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
-                              <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item" href="#">Invoicing</a></li>
-                            </ul>
-                          </li>
-                        <li class="nav-item mx-2">
-                            <a href="vendor.html" class="nav-link">Partners</a>
-                        </li>
-                        <li class="nav-item dropdown mx-2">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Access
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
-                         
-                          </ul>
-                        </li>
-                        <li class="nav-item dropdown mx-2">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Records
-                          </a>
-                          <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
-                          </ul>
-                        </li>
-                    </ul>
-                </div>
-    
-    
-                <div class=" offcanvas offcanvas-start d-sm-block d-lg-none bg-white" tabindex="-1" id="offcanvasExample"
-                    aria-labelledby="offcanvasExampleLabel">
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav nav-underline">
-                            <li class="nav-item mx-2">
-                                <a href="dashboard.html" class="nav-link active  text-info">Dashboard</a>
-                            </li>
-                            <li class="nav-item mx-2">
-                                <a href="" class="nav-link">Provider Location</a>
-                            </li>
-                            <li class="nav-item mx-2">
-                                <a href="my_profile.html" class="nav-link ">My Profile</a>
-                            </li>
-                            <li class="nav-item dropdown mx-2">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Providers
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="day_wise_scheduling.html">Scheduling</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Invoicing</a></li>
-                              </ul>
-                            </li>
-                            <li class="nav-item mx-2">
-                                <a href="vendor.html" class="nav-link">Partners</a>
-                            </li>
-                            <li class="nav-item dropdown mx-2">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Access
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
-                             
-                              </ul>
-                            </li>
-                            <li class="nav-item dropdown mx-2">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              Records
-                              </a>
-                              <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="patient_history.html">Block History</a></li>
-                                
-                              </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-    
-    
-    
-            </div>
-    
-        </nav>
 
-<div class="foot">
+    <div class="foot">
 
-    <div class="container-fluid ">
-        <div class="row">
-            <div class=" col-md-2"></div>
-            <div class="col-12 col-md-8 ">
-                <div class="container-fluid bg-light">
-                    <div class="d-flex mb-3">
-                        <h3 class="mt-3">Submit Information
-                          </h3>
-                        <div class="ms-auto p-3"> <a href="javascript: history.go(-1)" type="button"
-                                class="btn btn-outline-info mx-2 ">
-                                < Back</a>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="bg-white p-3">
-
-                    <h4 class="mb-2">Patient </h4>
-
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control " placeholder="Leave a comment here" id="floatingTextarea2"
-                            style="height: 100px"></textarea>
-                        <label for="floatingTextarea2" class="dm"> Patient Notes</label>
-                        <hr>
-                    </div>
-                    <div class="row g-2">
-                        <div class="col-md">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
-                                <label for="floatingInput" class="dm">First Name</label>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="name">
-                                <label for="floatingInput" class="dm">Last Name</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row g-2">
-                        <div class="col-md-6 col-6">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
-                                    placeholder="name@example.com">
-                                <label for="floatingInput" class="dm">Email</label>
+        <div class="container-fluid ">
+            <div class="row">
+                <div class=" col-md-2"></div>
+                <div class="col-12 col-md-8 ">
+                    <div class="container-fluid bg-light">
+                        <div class="d-flex mb-3">
+                            <h3 class="mt-3">Submit Information
+                            </h3>
+                            <div class="ms-auto p-3"> <a href="javascript: history.go(-1)" type="button"
+                                    class="btn btn-outline-info mx-2 ">
+                                    < Back</a>
                             </div>
                         </div>
 
+                    </div>
+                    <div class="bg-white p-3">
 
-                        <div class="col-md">
-                            <div class="form-floating mb-3">
-                                <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list" id="phone">
+                        <h4 class="mb-2">Patient </h4>
 
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control " placeholder="Leave a comment here" id="floatingTextarea2"
+                                style="height: 100px"></textarea>
+                            <label for="floatingTextarea2" class="dm"> Patient Notes</label>
+                            <hr>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <label for="floatingInput" class="dm">First Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="name">
+                                    <label for="floatingInput" class="dm">Last Name</label>
+                                </div>
                             </div>
                         </div>
 
+                        <div class="row g-2">
+                            <div class="col-md-6 col-6">
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="floatingInput"
+                                        placeholder="name@example.com">
+                                    <label for="floatingInput" class="dm">Email</label>
+                                </div>
+                            </div>
 
 
-                    </div>
-                    <!-- <input type="tel" class="form-control pt-3 pb-3  " id="phone"> -->
-                    <h4>Patient Contact Information</h4>
-                    <div class="row g-2">
-                        <div class="col-md-6 ">
-                            <div class="form-floating mb-3">
-                                <!-- <input type="date" class="form-control" id="floatingInput"
+                            <div class="col-md">
+                                <div class="form-floating mb-3">
+                                    <input type="tel" class="form-control pt-3 pb-3  iti iti__country-list" id="phone">
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <!-- <input type="tel" class="form-control pt-3 pb-3  " id="phone"> -->
+                        <h4>Patient Contact Information</h4>
+                        <div class="row g-2">
+                            <div class="col-md-6 ">
+                                <div class="form-floating mb-3">
+                                    <!-- <input type="date" class="form-control" id="floatingInput"
                                     mailto:placeholder="name@example.com">
                                 <label for="floatingInput">Date of Birth</label> -->
-                                <input type="text" id="uname" class="form-control" placeholder="Date Of Birth"
-                                    onfocus="(this.type='date')"></input>
-                                <label for="floatingInput" class="dm">Date of Birth</label>
+                                    <input type="text" id="uname" class="form-control" placeholder="Date Of Birth"
+                                        onfocus="(this.type='date')"></input>
+                                    <label for="floatingInput" class="dm">Date of Birth</label>
+                                </div>
+
+
                             </div>
 
+                        </div>
+                        <h4> Location </h4>
+                        <div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="street" placeholder="rttttttth">
+                                    <label for="floatingInput" class="dm">Street</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="city" placeholder="trr">
+                                    <label for="floatingInput" class="dm">City</label>
+                                </div>
+                            </div>
 
                         </div>
 
-                    </div>
-                    <h4> Location </h4>
-                    <div class="row g-2">
-                        <div class="col-md">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="street" placeholder="rttttttth">
-                                <label for="floatingInput" class="dm">Street</label>
+                        <div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="state" placeholder="rttttttth">
+                                    <label for="floatingInput" class="dm">State</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="map" placeholder="trr">
+                                    <label for="floatingInput" class="dm">Zip Code</label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row g-2">
+                            <div class="col-md-6 col-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="yhht">
+                                    <label for="floatingInput" class="dm">Room #</label>
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <button type="submit" class="btn btn-info mx-2 btn-lg ">Verify</button>
+                                <button type="button" class="btn btn-outline-info mx-2 p-2 highlight btn-lg"
+                                    onclick="searchAddress()">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                        <path
+                                            d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
+                                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                                    </svg>
+                                    Map</button>
                             </div>
                         </div>
-                        <div class="col-md">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="city" placeholder="trr">
-                                <label for="floatingInput" class="dm">City</label>
-                            </div>
+
+
+                        <h4 class="mb-2">Notes </h4>
+
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control " placeholder="Leave a comment here" id="floatingTextarea2"
+                                style="height: 100px"></textarea>
+                            <label for="floatingTextarea2" class="dm"> Admin Notes <span
+                                    class="text-muted">(optional)</span></label>
+                            <hr>
                         </div>
 
-                    </div>
 
-                    <div class="row g-2">
-                        <div class="col-md">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="state" placeholder="rttttttth">
-                                <label for="floatingInput" class="dm">State</label>
-                            </div>
+
+
+
+
+
+
+
+
+                        <div class="mt-4 d-flex flex-row-reverse mb-3 ">
+
+                            <button type="submit" class="btn btn-outline-info btn-lg mb-5">Cancel</button>
+
+                            <button type="submit" class="btn btn-info mx-2 btn-lg mb-5">Save</button>
+
                         </div>
-                        <div class="col-md">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="map" placeholder="trr">
-                                <label for="floatingInput" class="dm">Zip Code</label>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row g-2">
-                        <div class="col-md-6 col-6">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInput" placeholder="yhht">
-                                <label for="floatingInput" class="dm">Room #</label>
-                            </div>
-                        </div>
-                        <div class="col-md">
-                            <button type="submit" class="btn btn-info mx-2 btn-lg ">Verify</button>
-                            <button type="button"
-                            class="btn btn-outline-info mx-2 p-2 highlight btn-lg" onclick="searchAddress()">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                                <path
-                                    d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
-                                <path
-                                    d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                            </svg>
-                            Map</button>
-                        </div>
-                    </div>
-
-
-                    <h4 class="mb-2">Notes </h4>
-
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control " placeholder="Leave a comment here" id="floatingTextarea2"
-                            style="height: 100px"></textarea>
-                        <label for="floatingTextarea2" class="dm"> Admin Notes <span
-                                class="text-muted">(optional)</span></label>
-                        <hr>
-                    </div>
 
 
 
@@ -410,14 +256,6 @@
 
 
 
-
-
-
-                    <div class="mt-4 d-flex flex-row-reverse mb-3 ">
-
-                        <button type="submit" class="btn btn-outline-info btn-lg mb-5">Cancel</button>
-
-                        <button type="submit" class="btn btn-info mx-2 btn-lg mb-5">Save</button>
 
                     </div>
 
@@ -427,59 +265,52 @@
 
 
 
-
+                    <div class="col-md-2"></div>
                 </div>
-
-
-
-
-
-
-
-                <div class="col-md-2"></div>
+                <div class="footer d-flex  align-items-center justify-content-end mt-3 ">
+                    <p class="mx-3 text-center mb-2 mt-2  ">Terms & conditions | privacy policy</p>
+                </div>
             </div>
-            <div class="footer d-flex  align-items-center justify-content-end mt-3 ">
-                <p class="mx-3 text-center mb-2 mt-2  ">Terms & conditions | privacy policy</p>
-              </div> </div>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-            <script>
-                $(document).ready(function () {
-                    $('#yourModalId').modal('show');
-                });
-            </script>
-            <script>
-                const phoneInputField = document.querySelector("#phone");
-                const phoneInput = window.intlTelInput(phoneInputField, {
-                    utilsScript:
-                        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-                });
-            </script>
-            <script>
-                const phoneInputField1 = document.querySelector("#phone1");
-                const phoneInput1 = window.intlTelInput(phoneInputField1, {
-                    utilsScript:
-                        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-                });
-            </script>
+        </div>
+    </div>
 
-            </script>
 
-            <script>
-   
-                function searchAddress() {
-                  const Street = document.getElementById('street').value;
-                  const City = document.getElementById('city').value;
-                  const State = document.getElementById('state').value;
-                  const Zip = document.getElementById('map').value;
-                  const address = Street + " " + City  + " " + State  + " " + Zip;
-                  window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
-                }
-              </script>
-            
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    
+    <script>
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            utilsScript:
+                "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+    </script>
+    <script>
+        const phoneInputField1 = document.querySelector("#phone1");
+        const phoneInput1 = window.intlTelInput(phoneInputField1, {
+            utilsScript:
+                "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+    </script>
+
+    
+
+    <script>
+
+        function searchAddress() {
+            const Street = document.getElementById('street').value;
+            const City = document.getElementById('city').value;
+            const State = document.getElementById('state').value;
+            const Zip = document.getElementById('map').value;
+            const address = Street + " " + City + " " + State + " " + Zip;
+            window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank');
+        }
+    </script>
+
 
 </body>
 

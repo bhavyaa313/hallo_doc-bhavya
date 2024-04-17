@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
 <beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:c="http://www.springframework.org/schema/c"
-    xmlns:mvc="http://www.springframework.org/schema/mvc"
-  xmlns:p="http://www.springframework.org/schema/p"
-   xmlns:tx="http://www.springframework.org/schema/tx"
-  xmlns:context="http://www.springframework.org/schema/context"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
   http://www.springframework.org/schema/beans/spring-beans.xsd
   http://www.springframework.org/schema/context
   http://www.springframework.org/schema/context/spring-context.xsd
@@ -15,114 +15,139 @@
   http://www.springframework.org/schema/tx/spring-tx.xsd
    http://www.springframework.org/schema/mvc
   http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-  
-    <tx:annotation-driven />
-  <context:component-scan base-package="hallodoc"></context:component-scan>
-    <mvc:annotation-driven />
-  <mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"/>
-  <bean  class="org.springframework.web.servlet.view.InternalResourceViewResolver" name="viewResolver">
-	  
-	  <property name="prefix" value="/WEB-INF/views/"></property>
-	  <property name="suffix" value=".jsp"></property>
-	  
-  </bean>
-  
-  
- <bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
-  
-  
-  <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" name="ds">
-	  <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-	  <property name="url" value="jdbc:mysql://Localhost:3306/hallodoc"></property>
-	  <property name="username" value="root"></property>
-	   <property name="password" value="root"></property>
-	  
-  </bean>
-  
-<!--  <mvc:interceptors>
-	  <mvc:interceptor>
-		  <mvc:mapping path="" />
-	  </mvc:interceptor>
-  </mvc:interceptors>-->
-  
-  <bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" name="factory">
-	  <property name="dataSource" ref="ds"></property>
-	  <property name="hibernateProperties">
-		  <props>
-		
-		<prop key="hibernate.show_sql"> true</prop>
-		<prop key="hibernate.hbm2ddl.auto">update</prop>
-		</props>
-	  </property>
-	  
-	  <property name="annotatedClasses">
-		  <list>
-			  <value>
-				hallodoc.model.AspNetUsers
-			  </value>
-			    <value>
-				hallodoc.model.User
-			  </value>
-			      <value>
-				hallodoc.model.Request
-			  </value>
-			   <value>
-				hallodoc.model.RequestClient
-			  </value>
-			   <value>
-				hallodoc.model.Region
-			  </value>
-			   <value>
-				hallodoc.model.RequestWiseFile
-			  </value>
-			  <value>
-				hallodoc.model.Admin
-			  </value>
-			     <value>
-				hallodoc.model.Physician
-			  </value>
-			      <value>
-				hallodoc.model.Concierge
-			  </value>
-			 
-			      <value>
-				hallodoc.model.RequestConcierge
-			  </value>
-			
-			
-			      <value>
-				hallodoc.model.RequestBusiness
-			  </value>
-			      <value>
-				hallodoc.model.VerificationToken
-			  </value>
-			  
-			      <value>
-				hallodoc.model.Business
-			  </value>
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-		  </list>
-	  </property>
-	   
 
-	  
-  </bean>
-    <bean class="org.springframework.orm.hibernate5.HibernateTemplate" name="hibernateTemplate">
-	  <property name="sessionFactory" ref="factory"></property>
-  </bean>
-  
-  <bean class="org.springframework.orm.hibernate5.HibernateTransactionManager" name="transactionManager">
-	  <property name="sessionFactory" ref="factory"></property>
-	  
-  </bean>
-  
+	<tx:annotation-driven />
+	<context:component-scan base-package="hallodoc"></context:component-scan>
+	<mvc:annotation-driven />
+	<mvc:resources location="/WEB-INF/resources/"
+		mapping="/resources/**" />
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		name="viewResolver">
 
-  
-  
-  </beans>
+		<property name="prefix" value="/WEB-INF/views/"></property>
+		<property name="suffix" value=".jsp"></property>
+
+	</bean>
+
+
+	<bean name="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+
+
+	<bean
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		name="ds">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://Localhost:3306/hallodoc"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+
+	</bean>
+
+	<!-- <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="" /> </mvc:interceptor> 
+		</mvc:interceptors> -->
+
+	<bean
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
+		name="factory">
+		<property name="dataSource" ref="ds"></property>
+		<property name="hibernateProperties">
+			<props>
+
+				<prop key="hibernate.show_sql"> true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+
+		<property name="annotatedClasses">
+			<list>
+				<value>
+					hallodoc.model.AspNetUsers
+				</value>
+				<value>
+					hallodoc.model.User
+				</value>
+				<value>
+					hallodoc.model.Request
+				</value>
+				<value>
+					hallodoc.model.RequestClient
+				</value>
+				<value>
+					hallodoc.model.RequestNotes
+				</value>
+				<value>
+					hallodoc.model.Region
+				</value>
+				<value>
+					hallodoc.model.RequestWiseFile
+				</value>
+				<value>
+					hallodoc.model.Admin
+				</value>
+				<value>
+					hallodoc.model.Physician
+				</value>
+				<value>
+					hallodoc.model.Concierge
+				</value>
+
+				<value>
+					hallodoc.model.RequestConcierge
+				</value>
+
+
+				<value>
+					hallodoc.model.RequestBusiness
+				</value>
+				<value>
+					hallodoc.model.VerificationToken
+				</value>
+
+				<value>
+					hallodoc.model.Business
+				</value>
+
+				<value>
+					hallodoc.model.CaseTag
+				</value>
+
+				<value>
+					hallodoc.model.RequestStatusLog
+				</value>
+
+				<value>
+					hallodoc.model.BlockRequests
+				</value>
+
+
+
+
+
+
+
+			</list>
+		</property>
+
+
+
+	</bean>
+	<bean class="org.springframework.orm.hibernate5.HibernateTemplate"
+		name="hibernateTemplate">
+		<property name="sessionFactory" ref="factory"></property>
+	</bean>
+
+	<bean
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+		name="transactionManager">
+		<property name="sessionFactory" ref="factory"></property>
+
+	</bean>
+
+
+
+
+</beans>

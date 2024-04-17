@@ -201,7 +201,11 @@ public class PatientInfoService {
 				requestClient.setStrMonth(new DateModifier().getMonth(currentDate));
 				requestClient.setIntYear(new DateModifier().getYear(currentDate));
 			}
+			
+			requestDao.requestSave(request);
+			requestClientDao.requestClientSave(requestClient);
 
+			if(!file_name.isEmpty()) {
 			RequestWiseFile requestWiseFile = new RequestWiseFile();
 			requestWiseFile.setRequestId(request);
 			requestWiseFile.setCreatedDate(LocalDateTime.now());
@@ -209,9 +213,11 @@ public class PatientInfoService {
 
 			requestWiseFile.setFileName(file_name.getOriginalFilename());
 
-			requestDao.requestSave(request);
-			requestClientDao.requestClientSave(requestClient);
+			
 			requestWiseFileDao.requestWiseFileSave(requestWiseFile);
+			
+			}
+			
 
 		}
 
@@ -265,6 +271,8 @@ public class PatientInfoService {
 			request.setRequestTypeId(2);
 			request.setConfirmationNumber(confirString);
 
+			
+			
 			RequestClient requestClient = new RequestClient();
 			requestClient.setFirstName(fname);
 			requestClient.setLastName(lname);
@@ -289,7 +297,11 @@ public class PatientInfoService {
 				requestClient.setStrMonth(new DateModifier().getMonth(currentDate));
 				requestClient.setIntYear(new DateModifier().getYear(currentDate));
 			}
-
+			
+			requestDao.requestSave(request);
+			requestClientDao.requestClientSave(requestClient);
+			
+			if(!file_name.isEmpty()) {
 			RequestWiseFile requestWiseFile = new RequestWiseFile();
 			requestWiseFile.setRequestId(request);
 			requestWiseFile.setUploader(fname + lname);
@@ -298,10 +310,11 @@ public class PatientInfoService {
 
 			requestWiseFile.setFileName(file_name.getOriginalFilename());
 		
-			requestDao.requestSave(request);
-			requestClientDao.requestClientSave(requestClient);
 			requestWiseFileDao.requestWiseFileSave(requestWiseFile);
+			}
+			
 
+			
 		}
 
 	}

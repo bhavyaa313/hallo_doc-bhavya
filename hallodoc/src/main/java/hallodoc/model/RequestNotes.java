@@ -2,138 +2,192 @@ package hallodoc.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "request_notes")
 public class RequestNotes {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int request_notes_id;
-	private int request_id;
-	private String str_month;
-	private int int_year;
-	private int int_date;
-	private String physican_notes;
-	private String admin_notes;
-	private int created_by;
-	private LocalDateTime created_date;
-	private int modified_by;
-	private LocalDateTime modified_date;
-	private String administrative_notes;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "request_notes_id")
+	private int reqeustNotesId;
+
+	@OneToOne
+	@JoinColumn(name = "request_id")
+	private Request requestId;
+
+	@Column(name = "str_month")
+	private String strMonth;
+
+	@Column(name = "int_year")
+	private int intYear;
+
+	@Column(name = "int_date")
+	private int intDate;
+
+	@Column(name = "physician_notes")
+	private String physicianNotes;
+
+	@Column(name = "admin_notes")
+	private String adminNotes;
+
+	@OneToOne
+	@JoinColumn(name = "created_by")
+	private AspNetUsers createdBy;
+
+	@Column(name = "created_date")
+	private LocalDateTime createdDate;
+
+	@OneToOne
+	@JoinColumn(name = "modified_by")
+	private AspNetUsers modifiedBy;
+
+	@Column(name = "modified_date")
+	private LocalDateTime modifiedDate;
+
+	@Column(name = "administrative_notes")
+	private String administrativeNotes;
+
 	private String note;
+
 	public RequestNotes() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public RequestNotes(int request_notes_id, int request_id, String str_month, int int_year, int int_date,
-			String physican_notes, String admin_notes, int created_by, LocalDateTime created_date, int modified_by,
-			LocalDateTime modified_date, String administrative_notes, String note) {
-		super();
-		this.request_notes_id = request_notes_id;
-		this.request_id = request_id;
-		this.str_month = str_month;
-		this.int_year = int_year;
-		this.int_date = int_date;
-		this.physican_notes = physican_notes;
-		this.admin_notes = admin_notes;
-		this.created_by = created_by;
-		this.created_date = created_date;
-		this.modified_by = modified_by;
-		this.modified_date = modified_date;
-		this.administrative_notes = administrative_notes;
-		this.note = note;
+
+	public int getReqeustNotesId() {
+		return reqeustNotesId;
 	}
-	@Override
-	public String toString() {
-		return "RequestNotes [request_notes_id=" + request_notes_id + ", request_id=" + request_id + ", str_month="
-				+ str_month + ", int_year=" + int_year + ", int_date=" + int_date + ", physican_notes=" + physican_notes
-				+ ", admin_notes=" + admin_notes + ", created_by=" + created_by + ", created_date=" + created_date
-				+ ", modified_by=" + modified_by + ", modified_date=" + modified_date + ", administrative_notes="
-				+ administrative_notes + ", note=" + note + "]";
+
+	public void setReqeustNotesId(int reqeustNotesId) {
+		this.reqeustNotesId = reqeustNotesId;
 	}
-	public int getRequest_notes_id() {
-		return request_notes_id;
+
+	public Request getRequestId() {
+		return requestId;
 	}
-	public void setRequest_notes_id(int request_notes_id) {
-		this.request_notes_id = request_notes_id;
+
+	public void setRequestId(Request requestId) {
+		this.requestId = requestId;
 	}
-	public int getRequest_id() {
-		return request_id;
+
+	public String getStrMonth() {
+		return strMonth;
 	}
-	public void setRequest_id(int request_id) {
-		this.request_id = request_id;
+
+	public void setStrMonth(String strMonth) {
+		this.strMonth = strMonth;
 	}
-	public String getStr_month() {
-		return str_month;
+
+	public int getIntYear() {
+		return intYear;
 	}
-	public void setStr_month(String str_month) {
-		this.str_month = str_month;
+
+	public void setIntYear(int intYear) {
+		this.intYear = intYear;
 	}
-	public int getInt_year() {
-		return int_year;
+
+	public int getIntDate() {
+		return intDate;
 	}
-	public void setInt_year(int int_year) {
-		this.int_year = int_year;
+
+	public void setIntDate(int intDate) {
+		this.intDate = intDate;
 	}
-	public int getInt_date() {
-		return int_date;
+
+	public String getPhysicianNotes() {
+		return physicianNotes;
 	}
-	public void setInt_date(int int_date) {
-		this.int_date = int_date;
+
+	public void setPhysicianNotes(String physicianNotes) {
+		this.physicianNotes = physicianNotes;
 	}
-	public String getPhysican_notes() {
-		return physican_notes;
+
+	public String getAdminNotes() {
+		return adminNotes;
 	}
-	public void setPhysican_notes(String physican_notes) {
-		this.physican_notes = physican_notes;
+
+	public void setAdminNotes(String adminNotes) {
+		this.adminNotes = adminNotes;
 	}
-	public String getAdmin_notes() {
-		return admin_notes;
+
+	public AspNetUsers getCreatedBy() {
+		return createdBy;
 	}
-	public void setAdmin_notes(String admin_notes) {
-		this.admin_notes = admin_notes;
+
+	public void setCreatedBy(AspNetUsers createdBy) {
+		this.createdBy = createdBy;
 	}
-	public int getCreated_by() {
-		return created_by;
+
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
 	}
-	public void setCreated_by(int created_by) {
-		this.created_by = created_by;
+
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
 	}
-	public LocalDateTime getCreated_date() {
-		return created_date;
+
+	public AspNetUsers getModifiedBy() {
+		return modifiedBy;
 	}
-	public void setCreated_date(LocalDateTime created_date) {
-		this.created_date = created_date;
+
+	public void setModifiedBy(AspNetUsers modifiedBy) {
+		this.modifiedBy = modifiedBy;
 	}
-	public int getModified_by() {
-		return modified_by;
+
+	public LocalDateTime getModifiedDate() {
+		return modifiedDate;
 	}
-	public void setModified_by(int modified_by) {
-		this.modified_by = modified_by;
+
+	public void setModifiedDate(LocalDateTime modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
-	public LocalDateTime getModified_date() {
-		return modified_date;
+
+	public String getAdministrativeNotes() {
+		return administrativeNotes;
 	}
-	public void setModified_date(LocalDateTime modified_date) {
-		this.modified_date = modified_date;
+
+	public void setAdministrativeNotes(String administrativeNotes) {
+		this.administrativeNotes = administrativeNotes;
 	}
-	public String getAdministrative_notes() {
-		return administrative_notes;
-	}
-	public void setAdministrative_notes(String administrative_notes) {
-		this.administrative_notes = administrative_notes;
-	}
+
 	public String getNote() {
 		return note;
 	}
+
 	public void setNote(String note) {
 		this.note = note;
 	}
-	
+
+	public RequestNotes(int reqeustNotesId, Request requestId, String strMonth, int intYear, int intDate,
+			String physicianNotes, String adminNotes, AspNetUsers createdBy, LocalDateTime createdDate,
+			AspNetUsers modifiedBy, LocalDateTime modifiedDate, String administrativeNotes, String note) {
+		super();
+		this.reqeustNotesId = reqeustNotesId;
+		this.requestId = requestId;
+		this.strMonth = strMonth;
+		this.intYear = intYear;
+		this.intDate = intDate;
+		this.physicianNotes = physicianNotes;
+		this.adminNotes = adminNotes;
+		this.createdBy = createdBy;
+		this.createdDate = createdDate;
+		this.modifiedBy = modifiedBy;
+		this.modifiedDate = modifiedDate;
+		this.administrativeNotes = administrativeNotes;
+		this.note = note;
+	}
+
+
 }

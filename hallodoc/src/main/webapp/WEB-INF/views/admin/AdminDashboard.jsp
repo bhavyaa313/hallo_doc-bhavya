@@ -38,8 +38,8 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 	crossorigin="anonymous"></script>
-	
-	
+
+
 
 
 
@@ -162,6 +162,7 @@ body {
 			</div>
 
 			<div class="d-flex flex-row mt-4">
+
 				<span class="h3 fs-6-sm lo">Patients <span>(New)</span></span> <span
 					class="h6 lo-btn">Patients <span>(New)</span></span>
 				<button type="button" class="btn btn-info ml-auto mx-2"
@@ -169,7 +170,7 @@ body {
 					<img src="<c:url value="/resources/images/link.svg" />" alt="">
 					<span class="btn-span">Send Link</span>
 				</button>
-				<a href="create_req_final.html" type="button"
+				<a href="createReq/${userList[0].userID}" type="button"
 					class="btn btn-info mr-2"> <img
 					src="<c:url value="/resources/images/req.svg" />" alt=""> <span
 					class="btn-span text-white">Create Requests</span>
@@ -194,7 +195,7 @@ body {
 			<div class="row m-0 p-2 bg-white">
 
 				<div class="col-lg-4 d-md-flex d-block">
-	
+
 					<div class="input-group border me-2 rounded-0 mb-2 form-control">
 						<div class="input-group-append">
 							<button class="btn text-secondary border border-0 bg-white"
@@ -202,15 +203,15 @@ body {
 								<i class="bi bi-search"></i>
 							</button>
 						</div>
-						
+
 						<input type="text" id="myInput" onkeydown="search()"
 							class="form-control border-0  shadow-none"
 							placeholder="Search Patients">
-							
-							
+
+
 					</div>
-					
-					
+
+
 
 					<div class="input-group border me-2 rounded-0 mb-2 form-control">
 						<div class="input-group-append">
@@ -225,78 +226,75 @@ body {
 							aria-label="Default select example" id="data">
 
 							<option value="mumbai">
-
-
-
-								<option value="kolkata"></option>
-                <option value="banglore"></option>
-              </datalist>
-            </div>
-          </div>
-			<div class="col-lg-8 pt-2">
-									<div
-										class="d-lg-flex d-none justify-content-end align-items-center">
-							<div class="me-4">
-								<button class="btn btn-outline-secondary">All</button>
-							</div>
-							<div class="me-2 d-sm-flex align-items-center">
-								<div class="rounded-circle me-1"
-												style="height: 15px; width: 15px; background-color: rgb(15, 189, 64);">
-								</div>
-								<p class="my-auto">Patients</p>
-							</div>
-							<div class="me-2 d-sm-flex align-items-center">
-								<div class="rounded-circle me-1"
-												style="height: 15px; width: 15px; background-color: rgb(212, 107, 21);">
-								</div>
-								<p class="my-auto">Family/Friend</p>
-							</div>
-							<div class="me-2 d-sm-flex align-items-center">
-								<div class="rounded-circle me-1"
-												style="height: 15px; width: 15px; background-color: rgb(203, 22, 134);">
-								</div>
-								<p class="my-auto">Business</p>
-							</div>
-							<div class="me-2 d-sm-flex align-items-center">
-								<div class="rounded-circle me-1"
-												style="height: 15px; width: 15px; background-color: rgb(65, 65, 232);">
-								</div>
-								<p class="my-auto">Concierge</p>
-							</div>
-
-						</div>
-
-
-						<div
-										class="d-lg-none d-flex align-items-center justify-content-around">
-							<div class="me-4 d-sm-block d-none">
-								<button class="btn btn-outline-secondary">All</button>
-							</div>
-							<div class="me-1 d-sm-flex align-items-center">
-								<div class="rounded-circle mx-auto"
-												style="height: 12px; width: 12px; background-color: rgb(15, 189, 64);"></div>
-								<p class="my-auto ps-1" style="font-size: small;">Patients</p>
-							</div>
-							<div class="me-1 d-sm-flex align-items-center">
-								<div class="rounded-circle mx-auto"
-												style="height: 12px; width: 12px; background-color: rgb(212, 107, 21);"></div>
-								<p class="my-auto ps-1" style="font-size: small;">Family/Friend</p>
-							</div>
-							<div class="me-1 d-sm-flex align-items-center">
-								<div class="rounded-circle mx-auto"
-												style="height: 12px; width: 12px; background-color: rgb(203, 22, 134);"></div>
-								<p class="my-auto ps-1" style="font-size: small;">Business</p>
-							</div>
-							<div class="me-1 d-sm-flex align-items-center">
-								<div class="rounded-circle mx-auto"
-												style="height: 12px; width: 12px; background-color: rgb(65, 65, 232);"></div>
-								<p class="my-auto ps-1" style="font-size: small;">Concierge</p>
-							</div>
-
-						</div>
+							<option value="kolkata"></option>
+							<option value="banglore"></option>
+						</datalist>
 					</div>
-				
+				</div>
+				<div class="col-lg-8 pt-2">
+					<div
+						class="d-lg-flex d-none justify-content-end align-items-center">
+						<div class="me-4">
+							<button class="btn btn-outline-secondary">All</button>
+						</div>
+						<div class="me-2 d-sm-flex align-items-center">
+							<div class="rounded-circle me-1"
+								style="height: 15px; width: 15px; background-color: rgb(15, 189, 64);">
 							</div>
+							<p class="my-auto">Patients</p>
+						</div>
+						<div class="me-2 d-sm-flex align-items-center">
+							<div class="rounded-circle me-1"
+								style="height: 15px; width: 15px; background-color: rgb(212, 107, 21);">
+							</div>
+							<p class="my-auto">Family/Friend</p>
+						</div>
+						<div class="me-2 d-sm-flex align-items-center">
+							<div class="rounded-circle me-1"
+								style="height: 15px; width: 15px; background-color: rgb(203, 22, 134);">
+							</div>
+							<p class="my-auto">Business</p>
+						</div>
+						<div class="me-2 d-sm-flex align-items-center">
+							<div class="rounded-circle me-1"
+								style="height: 15px; width: 15px; background-color: rgb(65, 65, 232);">
+							</div>
+							<p class="my-auto">Concierge</p>
+						</div>
+
+					</div>
+
+
+					<div
+						class="d-lg-none d-flex align-items-center justify-content-around">
+						<div class="me-4 d-sm-block d-none">
+							<button class="btn btn-outline-secondary">All</button>
+						</div>
+						<div class="me-1 d-sm-flex align-items-center">
+							<div class="rounded-circle mx-auto"
+								style="height: 12px; width: 12px; background-color: rgb(15, 189, 64);"></div>
+							<p class="my-auto ps-1" style="font-size: small;">Patients</p>
+						</div>
+						<div class="me-1 d-sm-flex align-items-center">
+							<div class="rounded-circle mx-auto"
+								style="height: 12px; width: 12px; background-color: rgb(212, 107, 21);"></div>
+							<p class="my-auto ps-1" style="font-size: small;">Family/Friend</p>
+						</div>
+						<div class="me-1 d-sm-flex align-items-center">
+							<div class="rounded-circle mx-auto"
+								style="height: 12px; width: 12px; background-color: rgb(203, 22, 134);"></div>
+							<p class="my-auto ps-1" style="font-size: small;">Business</p>
+						</div>
+						<div class="me-1 d-sm-flex align-items-center">
+							<div class="rounded-circle mx-auto"
+								style="height: 12px; width: 12px; background-color: rgb(65, 65, 232);"></div>
+							<p class="my-auto ps-1" style="font-size: small;">Concierge</p>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
 			</form>
 
 
@@ -311,9 +309,9 @@ body {
 
 
 
-
-					<tr class="table-secondary t-header">
-						<th scope="col"
+					<thead class="table-secondary t-header">
+						<!-- <tr > -->
+						<!-- <th scope="col"
 							class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">Name</th>
 						<th scope="col"
 							class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction"></th>
@@ -338,13 +336,14 @@ body {
 							class="NewAction PendingAction ActiveAction ToCloseAction">Notes</th>
 
 						<th scope="col"
-							class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">Actions</th>
-					</tr>
+							class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">Actions</th> -->
+						<!-- </tr> -->
+					</thead>
 
 					<%-- <c:forEach items="${adminDashboardDtos}" var="r"> --%>
 
-
-					<tr class="table-success t-data">
+					<tbody class="table-success t-data">
+						<!-- <tr > -->
 						<%-- <td class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction"> ${r.name}</td>
 						<td class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">E</td>
 						
@@ -406,7 +405,8 @@ body {
 						</ul>
 						</td> --%>
 
-					</tr>
+						<!-- </tr> -->
+					</tbody>
 					<%-- </c:forEach> --%>
 
 
@@ -567,50 +567,58 @@ body {
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog  modal-dialog-centered">
 				<div class="modal-content">
-					<div class="modal-header bg-info text-white">
-						<h1 class="modal-title fs-5 " id="exampleModalLabel">Assign
-							Case</h1>
-						<button type="button" class="btn-close btn-close-white"
-							data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
+					<form action="assignCaseAction/${userList[0].userID}" method="post">
 
-						<p mb-3>To assign this request search and select another
-							Physician</p>
-
-						<div class="form-floating mb-3">
-							<select class="form-select" id="floatingSelect"
-								aria-label="Floating label select example">
-								<option selected>Maryland</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
-							</select> <label for="floatingSelect">Narrow Search By region</label>
+						<div class="modal-header bg-info text-white">
+							<h1 class="modal-title fs-5 " id="exampleModalLabel">Assign
+								Case</h1>
+							<button type="button" class="btn-close btn-close-white"
+								data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
+						<div class="modal-body">
 
-						<div class="form-floating mb-3">
-							<select class="form-select" id="floatingSelect"
-								aria-label="Floating label select example">
-								<option selected></option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
-							</select> <label for="floatingSelect">Select Physician</label>
+							<p mb-3>To assign this request search and select another
+								Physician</p>
+
+
+							<div class="form-floating mb-3">
+								<select class="form-select" id="regionSelector"
+									aria-label="Floating label select example">
+									<option value="1">GUJARAT</option>
+									<option value="2">MAHARASHTRA</option>
+									<option value="3">MADHYA PRADESH</option>
+									<option value="4">RAJASTHAN</option>
+								</select> <label for="floatingSelect">Narrow Search By region</label>
+							</div>
+
+							<div class="form-floating mb-3">
+								<select class="form-select" id="physicians"
+									aria-label="Floating label select example">
+
+
+
+
+								</select> <label for="floatingSelect">Select Physician</label>
+							</div>
+
+							<div class="form-floating mb-3">
+								<textarea class="form-control"
+									placeholder="Leave a comment here" id="floatingTextarea2"
+									style="height: 100px" name="notes"></textarea>
+								<label for="floatingTextarea2">Description</label>
+							</div>
+							<input type="text" id="reqId33" name="reqId3" hidden>
+							 <input
+								type="text" name="phyId" id="phyId" hidden>
+
 						</div>
+						<div class="modal-footer">
 
-						<div class="form-floating mb-3">
-							<textarea class="form-control" placeholder="Leave a comment here"
-								id="floatingTextarea2" style="height: 100px"></textarea>
-							<label for="floatingTextarea2">Description</label>
+							<button type="submit" class="btn btn-info">Submit</button>
+							<button type="button" class="btn btn-outline-info"
+								data-bs-dismiss="modal">Close</button>
 						</div>
-
-					</div>
-					<div class="modal-footer">
-
-						<button type="button" class="btn btn-info">Submit</button>
-						<button type="button" class="btn btn-outline-info"
-							data-bs-dismiss="modal">Close</button>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -619,43 +627,50 @@ body {
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog  modal-dialog-centered">
 				<div class="modal-content">
-					<div class="modal-header bg-info text-white">
-						<h1 class="modal-title fs-5 " id="exampleModalLabel">Confirm
-							Cancellation</h1>
-						<button type="button" class="btn-close btn-close-white"
-							data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-
-						<p mb-3>
-							Patient Name: <span class="text-info">test test</span>
-						</p>
-
-
-
-						<div class="form-floating mb-3">
-							<select class="form-select" id="floatingSelect"
-								aria-label="Floating label select example">
-								<option selected></option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
-							</select> <label for="floatingSelect">Reasons for Cancellation</label>
+					<form action="cancelCaseAction/${userList[0].userID}" method="post">
+						<div class="modal-header bg-info text-white">
+							<h1 class="modal-title fs-5 " id="exampleModalLabel">Confirm
+								Cancellation</h1>
+							<button type="button" class="btn-close btn-close-white"
+								data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
+						<div class="modal-body">
 
-						<div class="form-floating mb-3">
-							<textarea class="form-control" placeholder="Leave a comment here"
-								id="floatingTextarea2" style="height: 100px"></textarea>
-							<label for="floatingTextarea2">Provide Additional Notes</label>
+							<p mb-3>
+								Patient Name: <span class="text-info " id="pname"></span>
+							</p>
+
+
+
+							<div class="form-floating mb-3">
+
+								<select class="form-select" id="floatingSelect"
+									aria-label="Floating label select example" name="reasonString">
+									<c:forEach items="${reasonsList}" var="r">
+
+										<option value="${r.id }">${r.reason}</option>
+
+									</c:forEach>
+								</select> <label for="floatingSelect">Reasons for Cancellation</label>
+							</div>
+
+							<div class="form-floating mb-3">
+								<textarea class="form-control"
+									placeholder="Leave a comment here" id="floatingTextarea2"
+									style="height: 100px" name="additionalNoteString"></textarea>
+								<label for="floatingTextarea2">Provide Additional Notes</label>
+							</div>
+
+
 						</div>
+						<input type="text" id="reqId" name="reqId" hidden>
+						<div class="modal-footer">
 
-					</div>
-					<div class="modal-footer">
-
-						<button type="button" class="btn btn-info">Confirm</button>
-						<button type="button" class="btn btn-outline-info"
-							data-bs-dismiss="modal">Close</button>
-					</div>
+							<button type="submit" class="btn btn-info">Confirm</button>
+							<button type="button" class="btn btn-outline-info"
+								data-bs-dismiss="modal">Close</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -695,32 +710,36 @@ body {
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog  modal-dialog-centered">
 				<div class="modal-content">
-					<div class="modal-header bg-info text-white">
-						<h1 class="modal-title fs-5 " id="exampleModalLabel">Assign
-							Case</h1>
-						<button type="button" class="btn-close btn-close-white"
-							data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-
-						<p mb-3>
-							Patient Name: <span class="text-info">test test</span>
-						</p>
-
-
-						<div class="form-floating mb-3">
-							<textarea class="form-control" placeholder="Leave a comment here"
-								id="floatingTextarea2" style="height: 100px"></textarea>
-							<label for="floatingTextarea2">Reason for Block Request</label>
+					<form action="blockCaseAction/${userList[0].userID}" method="post">
+						<div class="modal-header bg-info text-white">
+							<h1 class="modal-title fs-5 " id="exampleModalLabel">Block
+								Case</h1>
+							<button type="button" class="btn-close btn-close-white"
+								data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
+						<div class="modal-body">
 
-					</div>
-					<div class="modal-footer">
+							<p mb-3>
+								Patient Name: <span class="text-info" id="pname2"></span>
+							</p>
 
-						<button type="button" class="btn btn-info">Confirm</button>
-						<button type="button" class="btn btn-outline-info"
-							data-bs-dismiss="modal">Close</button>
-					</div>
+
+							<div class="form-floating mb-3">
+								<textarea class="form-control"
+									placeholder="Leave a comment here" id="floatingTextarea2"
+									style="height: 100px" name="additionalNoteString2"></textarea>
+								<label for="floatingTextarea2">Reason for Block Request</label>
+							</div>
+							<input type="text" id="reqId2" name="reqId2">
+
+						</div>
+						<div class="modal-footer">
+
+							<button type="submit" class="btn btn-info">Confirm</button>
+							<button type="button" class="btn btn-outline-info"
+								data-bs-dismiss="modal">Close</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -865,52 +884,55 @@ body {
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog  modal-dialog-centered">
 				<div class="modal-content">
-					<div class="modal-header bg-info text-white">
-						<h3 class="modal-title fs-5 " id="exampleModalLabel">Send
-							mail to patient for submitting request</h3>
-						<button type="button" class="btn-close btn-close-white"
-							data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-
-
-						<div class="form-floating mb-3">
-							<input type="text" class="form-control" id="floatingPassword"
-								placeholder="name"> <label for="floatingInput">First
-								Name</label>
+					<form action="send" method="POST">
+						<div class="modal-header bg-info text-white">
+							<h3 class="modal-title fs-5 " id="exampleModalLabel">Send
+								mail to patient for submitting request</h3>
+							<button type="button" class="btn-close btn-close-white"
+								data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
-						<div class="form-floating mb-3">
-							<input type="text" class="form-control" id="floatingPassword"
-								placeholder="name"> <label for="floatingInput">last
-								Name</label>
+						<div class="modal-body">
+
+
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="floatingPassword"
+									placeholder="name"> <label for="floatingInput">First
+									Name</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="text" class="form-control" id="floatingPassword"
+									placeholder="name"> <label for="floatingInput">last
+									Name</label>
+							</div>
+
+
+
+							<div class="form-floating mb-3">
+								<input type="tel"
+									class="form-control pt-3 pb-3  iti iti__country-list"
+									placeholder="Mobile Number" id="phone2">
+
+							</div>
+
+							<div class="form-floating mb-3">
+								<input type="email" class="form-control" id="floatingInput"
+									placeholder="name@example.com" name="emailsend"> <label
+									for="floatingInput">Email address</label>
+							</div>
+
+
+
+
+
+
 						</div>
+						<div class="modal-footer">
 
-
-
-						<div class="form-floating mb-3">
-							<input type="tel"
-								class="form-control pt-3 pb-3  iti iti__country-list" id="phone">
-
+							<button type="submit" class="btn btn-info">Send</button>
+							<button type="button" class="btn btn-outline-info"
+								data-bs-dismiss="modal">Cancel</button>
 						</div>
-
-						<div class="form-floating mb-3">
-							<input type="email" class="form-control" id="floatingInput"
-								placeholder="name@example.com"> <label
-								for="floatingInput">Email address</label>
-						</div>
-
-
-
-
-
-
-					</div>
-					<div class="modal-footer">
-
-						<button type="button" class="btn btn-info">Send</button>
-						<button type="button" class="btn btn-outline-info"
-							data-bs-dismiss="modal">Cancel</button>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -920,6 +942,7 @@ body {
 				privacy policy</p>
 		</div>
 	</div>
+
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
@@ -927,36 +950,86 @@ body {
 		crossorigin="anonymous"></script>
 
 
+
 	<script>
+	
+	
+	
+	</script>
+	<script>
+	console.log("assign case")
+	$('#regionSelector').change(function () {
+	    console.log(this);
+	    let region = this.value;
+	    console.log(region)
+		$.ajax({
+			
+			
+			
+			url: "ajaxForAssignCase",
+			type: "get",
+			data: {
+				region:region
+			},
+			success: function(data) {
+				
+				$("#physicians").empty();
+				for(var i=0; i<data.length; i++){
+					console.log(data);
+					var row = `<option>`+data[i][0]+`</option>`
+					$("#phyId").attr('value' , data[i][2]);
+					$("#physicians").append(row);
+				}
+				
+			}
+				
+			})
+		
+	})
+	</script>
+
+	<script type="text/javascript">
+	
 	console.log("docss");
 
 	$(document).ready(function() {
 		  $("#new").click();  
 		
 		});
-		</script>
-		
 	
-		
-		
+	</script>
+
+
+
+
+
+
+
+
 
 
 
 	<script>
-		function myFunctions() {
-			var element = document.body;
+	
+	console.log("yeahhhhhh")
+	function cancelCase(pname, reqId) {
+  console.log("Success!"); 
 
-			element.classList.toggle("dark-mode");
 
-			var navbarElements = document
-					.querySelectorAll('.navbar-nav a.nav-link, .navbar-nav .btn');
-			navbarElements.forEach(function(element) {
-				element.classList.toggle("text-dark");
-			});
-		}
+  $('#pname').text(pname);
+  $('#pname2').text(pname);
+  console.log(pname)
+
+  
+  $('#reqId').attr('value' , reqId);
+  $('#reqId2').attr('value' , reqId);
+  $('#reqId33').attr('value' , reqId);
+  
+  console.log(reqId)
+}
 	</script>
-	
-	
+
+
 
 
 	<script>
@@ -996,6 +1069,15 @@ body {
 		 
 		
 	</script>
+	<script>
+		 console.log("cisdfsrfchsdefuo")
+                const phoneInputField = document.querySelector("#phone2");
+                const phoneInput = window.intlTelInput(phoneInputField, {
+                    utilsScript:
+                        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                });
+            </script>
+
 	<script>
 		$(".bt-badge").click(function() {
 			
@@ -1079,24 +1161,16 @@ function onBadgeClick() {
 			  console.log(data);
 			  console.log("jii")
 			
-			var header = $(".t-header");
-			  header.empty();
+			$(".t-header").empty();
 			  
 			  console.log("hearder-empty");
 			  
-			 var datalist = $(".t-data");
-			 datalist.empty();
+			 $(".t-data").empty();
 			 
 			 var accbody = $("#a-data");
 			 accbody.empty();
-			 
-			 var th = `
-			 
-			 
-				 <div class="d-md-block d-none">
-				 <table class="table" id="">
-			 <tr class="table-secondary t-header ">
-					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">Name</th>
+			 var th = `<tr>
+			 <th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">Name</th>
 					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction"></th>
 					
 					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction">Date of Birth</th>
@@ -1110,11 +1184,9 @@ function onBadgeClick() {
 					<th scope="col" class="NewAction PendingAction ActiveAction ToCloseAction">Notes</th>
 
 					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">Actions</th>
-				</tr>
-				</table>
-				</div>`
+				</tr>`
 				
-				$(header).append(th);
+				$(".t-header").append(th);
 				
 				
 				for(let i =0 ; i<data.length ; i++ )
@@ -1127,10 +1199,7 @@ function onBadgeClick() {
 					console.log(id);
 					
 				
-			var rows = `<div class="d-md-block d-none">
-					<table class="table" id="myTable">
-			<tr class="table-success t-data">
-				<td class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">`+ dataset.name+`</td>
+			var rows = `<tr><td class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">`+ dataset.name+`</td>
 				<td class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">e</td>
 				
 				<td class="NewAction ActiveAction ConcludeAction ToCloseAction PendingAction">`+ dataset.dob+`</td>
@@ -1149,11 +1218,11 @@ function onBadgeClick() {
 
 
 				<ul class="dropdown-menu text-muted">
-					<li class="NewAction"><a class="dropdown-item " data-bs-toggle="modal"
+					<li class="NewAction"><a class="dropdown-item " onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-toggle="modal"
 						data-bs-target="#assign"><i
 							class="bi bi-card-checklist mx-2"></i>assign Case</a></li>
-					<li class="NewAction"><a class="dropdown-item" data-bs-toggle="modal"
-						data-bs-target="#cancel"><i class="bi bi-x-circle mx-2"></i>cancel
+					<li class="NewAction"><a class="dropdown-item" onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-toggle="modal"
+						data-bs-target="#cancel" ><i class="bi bi-x-circle mx-2" ></i>cancel
 							case </a></li>
 					<li class="PendingAction NewAction ActiveAction ConcludeAction ToCloseAction UnpaidAction"><a class="dropdown-item text-secondary"
 						href="viewCase/`+id+`"><i class="bi bi-card-heading mx-2"></i>view
@@ -1167,7 +1236,7 @@ function onBadgeClick() {
 					<li class="PendingAction NewAction ActiveAction ConcludeAction ToCloseAction UnpaidAction"><a class="dropdown-item text-secondary"
 						href="viewNotes/`+id+`"><i class="bi bi-journal-medical mx-2 "></i>view
 							notes</a></li>
-					<li class="NewAction"><a class="dropdown-item text-secondary"
+					<li class="NewAction"><a class="dropdown-item text-secondary" onclick="cancelCase('`+dataset.name+`', `+id+`)"
 						data-bs-toggle="modal" data-bs-target="#block"><i
 							class="bi bi-ban mx-2"></i>Block Patients</a></li>
 					<li class="PendingAction ActiveAction ConcludeAction"><a class="dropdown-item text-secondary"
@@ -1189,11 +1258,8 @@ function onBadgeClick() {
 					<li class="ActiveAction ConcludeAction ToCloseAction"><a class="dropdown-item text-secondary" href="#"><i
 							class="bi bi-file-earmark-richtext mx-2"></i>encounter</a></li>
 				</ul>
-				</td>
+				</td></tr>`
 				
-			</tr>
-			</table>
-			</div>`
 			let id1 = "id" + i;
 			var accordian = `<div class="accordion-item">
 				<h2 class="accordion-header">
@@ -1320,11 +1386,17 @@ function onBadgeClick() {
 				</div>
 			</div>
 		</div>` 
+		
+	
 			
-				if(class1 == "blue" && dataset.status==1){
+	
+	
+
+if(class1 == "blue" && dataset.status==1){
 					console.log("iffff")
-					$(datalist).append(rows);
+					$(".t-data").append(rows);
 					$(accbody).append(accordian);
+					
 					
 					if(dataset.requestTypeId==1){
 						$('table tr:last td').css({"background-color": "#DC143C","color": "#ffffff"
@@ -1355,7 +1427,7 @@ function onBadgeClick() {
 			
 				else if(class1 == "sky" && dataset.status==2){
 						console.log("iffff")
-						$(datalist).append(rows);
+						$(".t-data").append(rows);
 						$(accbody).append(accordian);
 						
 						if(dataset.requestTypeId==1){
@@ -1387,7 +1459,7 @@ function onBadgeClick() {
 			
 				else if(class1 == "green" && (dataset.status==4 || dataset.status==5)){
 					console.log("iffff")
-					$(datalist).append(rows);
+					$(".t-data").append(rows);
 					$(accbody).append(accordian);
 					
 					if(dataset.requestTypeId==1){
@@ -1419,7 +1491,7 @@ function onBadgeClick() {
 			
 				else if(class1 == "pink" && dataset.status==6){
 					console.log("iffff")
-					$(datalist).append(rows);
+					$(".t-data").append(rows);
 					$(accbody).append(accordian);
 					
 					if(dataset.requestTypeId==1){
@@ -1451,7 +1523,7 @@ function onBadgeClick() {
 			
 				else if(class1 == "light-blue" && (dataset.status==3 || dataset.status==7 || dataset.status==8)){
 					console.log("iffff")
-					$(datalist).append(rows);
+					$(".t-data").append(rows);
 					$(accbody).append(accordian);
 					
 					if(dataset.requestTypeId==1){
@@ -1483,7 +1555,7 @@ function onBadgeClick() {
 			
 				else if(class1 == "purple" && dataset.status==9){
 					console.log("iffff")
-					$(datalist).append(rows);
+					$(".t-data").append(rows);
 					$(accbody).append(accordian);
 					
 					if(dataset.requestTypeId==1){

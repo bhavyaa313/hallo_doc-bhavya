@@ -23,7 +23,7 @@ public class RequestClient {
 	private int requestClientId;
 	
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "request_id")
 
 	private Request requestId;

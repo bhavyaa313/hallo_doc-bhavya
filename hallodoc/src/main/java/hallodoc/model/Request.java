@@ -38,6 +38,9 @@ public class Request {
 
 	@Column(name = "last_name")
 	private String lastName;
+	
+	@Column(name = "case_tag_id")
+	private int caseTagId;
 
 	@Column(name = "phone_number")
 	private String phoneNumber;
@@ -154,6 +157,16 @@ public class Request {
 
 	public int getPhysicianId() {
 		return physicianId;
+	}
+
+	
+	
+	public int getCaseTagId() {
+		return caseTagId;
+	}
+
+	public void setCaseTagId(int caseTagId) {
+		this.caseTagId = caseTagId;
 	}
 
 	public void setPhysicianId(int physicianId) {
@@ -276,17 +289,22 @@ public class Request {
 		this.requestConcierge = requestConcierge;
 	}
 
-	public Request(int requestId, int requestTypeId, User userId, String firstName, String lastName, String phoneNumber,
-			String email, int status, int physicianId, String confirmationNumber, LocalDateTime createdDate,
-			boolean isDeleted, LocalDateTime modifiedDate, AspNetUsers declinedBy, Date lastWellnessDate, int callType,
-			boolean completedByPhysician, Date lastReservationDate, Date acceptedDate, String relationName,
-			String caseNumber, RequestClient requestClient, RequestConcierge requestConcierge) {
+
+	
+	
+	public Request(int requestId, int requestTypeId, User userId, String firstName, String lastName, int caseTagId,
+			String phoneNumber, String email, int status, int physicianId, String confirmationNumber,
+			LocalDateTime createdDate, boolean isDeleted, LocalDateTime modifiedDate, AspNetUsers declinedBy,
+			Date lastWellnessDate, int callType, boolean completedByPhysician, Date lastReservationDate,
+			Date acceptedDate, String relationName, String caseNumber, RequestClient requestClient,
+			RequestConcierge requestConcierge) {
 		super();
 		this.requestId = requestId;
 		this.requestTypeId = requestTypeId;
 		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.caseTagId = caseTagId;
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.status = status;

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -20,8 +21,9 @@ public class Physician {
 	
 	private int physicianId;
 	
-	@Column(name = "aspnet_user_id")
-	private int aspnetUserId;
+	@OneToOne
+	@JoinColumn(name = "aspnet_user_id")
+	private AspNetUsers aspnetUserId;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -113,11 +115,12 @@ public void setPhysicianId(int physicianId) {
 	this.physicianId = physicianId;
 }
 
-public int getAspnetUserId() {
+
+public AspNetUsers getAspnetUserId() {
 	return aspnetUserId;
 }
 
-public void setAspnetUserId(int aspnetUserId) {
+public void setAspnetUserId(AspNetUsers aspnetUserId) {
 	this.aspnetUserId = aspnetUserId;
 }
 
@@ -354,12 +357,14 @@ public void setSyncEmailAddress(String syncEmailAddress) {
 }
 
 
-public Physician(int physicianId, int aspnetUserId, String firstName, String lastName, String email, String mobile,
-		String medicalLiscense, String photo, String adminNotes, boolean isAgreementDoc, boolean isBackgroundDoc,
-		boolean isNonDisclosureDoc, String addressOne, String addressTwo, String city, int regionId, String zip,
-		String altPhone, int createdBy, Date createdDate, int modifiedBy, Date modifiedDate, int status,
-		String businessName, String businessWebsite, boolean isDeleted, int roleId, String npiNumber,
-		boolean isLicenseDoc, String signature, String syncEmailAddress, RequestWiseFile requestWiseFile) {
+
+
+public Physician(int physicianId, AspNetUsers aspnetUserId, String firstName, String lastName, String email,
+		String mobile, String medicalLiscense, String photo, String adminNotes, boolean isAgreementDoc,
+		boolean isBackgroundDoc, boolean isNonDisclosureDoc, String addressOne, String addressTwo, String city,
+		int regionId, String zip, String altPhone, int createdBy, Date createdDate, int modifiedBy, Date modifiedDate,
+		int status, String businessName, String businessWebsite, boolean isDeleted, int roleId, String npiNumber,
+		boolean isLicenseDoc, String signature, String syncEmailAddress) {
 	super();
 	this.physicianId = physicianId;
 	this.aspnetUserId = aspnetUserId;
@@ -392,7 +397,6 @@ public Physician(int physicianId, int aspnetUserId, String firstName, String las
 	this.isLicenseDoc = isLicenseDoc;
 	this.signature = signature;
 	this.syncEmailAddress = syncEmailAddress;
-
 }
 
 public Physician() {

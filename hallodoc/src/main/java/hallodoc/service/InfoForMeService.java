@@ -172,17 +172,21 @@ public class InfoForMeService {
 			requestClient.setStrMonth(new DateModifier().getMonth(currentDate));
 			requestClient.setIntYear(new DateModifier().getYear(currentDate));
 		}
-
+		
+		requestDao.requestSave(request);
+		requestClientDao.requestClientSave(requestClient);
+	
+		if(!file_name.isEmpty()) {
 		RequestWiseFile requestWiseFile = new RequestWiseFile();
 		requestWiseFile.setRequestId(request);
 		requestWiseFile.setCreatedDate(LocalDateTime.now());
 		requestWiseFile.setUploader(fname + lname);
 
 		requestWiseFile.setFileName(file_name.getOriginalFilename());
-
-		requestDao.requestSave(request);
-		requestClientDao.requestClientSave(requestClient);
 		requestWiseFileDao.requestWiseFileSave(requestWiseFile);
+		}
+
+	
 
 		
 

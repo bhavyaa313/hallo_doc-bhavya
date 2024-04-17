@@ -1,38 +1,49 @@
 package hallodoc.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "request_status_log")
 public class RequestStatusLog {
 	
+	@Id
 	@Column(name = "request_status_log_id")
 	private int request_status_log_id;
 	
-	@Column(name = "request_id")
-	private int requestId;
+	
+	@ManyToOne
+	@JoinColumn(name = "request_id")
+	private Request requestId;
 	
 	private int status;
 	
-	@Column(name = "physician_id")
-	private int physicianId;
+	@ManyToOne
+	@JoinColumn(name = "physician_id")
+	private Physician physicianId;
 	
 	@Column(name = "admin_id")
 	private int adminId;
 	
-	@Column(name = "trans_to_physician_id")
-	private int transToPhysicianId;
+	@ManyToOne
+	@JoinColumn(name = "trans_to_physician_id")
+	private Physician transToPhysicianId;
 	
 	private String notes;
 	
 	@Column(name = "created_date")
-	private Date createdDate;
+	private LocalDateTime createdDate;
 	
-	@Column(name = "created_date")
+	
 	private boolean transToAdmin;
 
 	public int getRequest_status_log_id() {
@@ -43,11 +54,12 @@ public class RequestStatusLog {
 		this.request_status_log_id = request_status_log_id;
 	}
 
-	public int getRequestId() {
+	
+	public Request getRequestId() {
 		return requestId;
 	}
 
-	public void setRequestId(int requestId) {
+	public void setRequestId(Request requestId) {
 		this.requestId = requestId;
 	}
 
@@ -58,12 +70,14 @@ public class RequestStatusLog {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
-	public int getPhysicianId() {
+	
+	
+	
+	public Physician getPhysicianId() {
 		return physicianId;
 	}
 
-	public void setPhysicianId(int physicianId) {
+	public void setPhysicianId(Physician physicianId) {
 		this.physicianId = physicianId;
 	}
 
@@ -75,11 +89,13 @@ public class RequestStatusLog {
 		this.adminId = adminId;
 	}
 
-	public int getTransToPhysicianId() {
+
+
+	public Physician getTransToPhysicianId() {
 		return transToPhysicianId;
 	}
 
-	public void setTransToPhysicianId(int transToPhysicianId) {
+	public void setTransToPhysicianId(Physician transToPhysicianId) {
 		this.transToPhysicianId = transToPhysicianId;
 	}
 
@@ -91,12 +107,12 @@ public class RequestStatusLog {
 		this.notes = notes;
 	}
 
-	public Date getCreatedDate() {
+	public LocalDateTime getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setCreatedDate(LocalDateTime localDateTime) {
+		this.createdDate = localDateTime;
 	}
 
 	public boolean isTransToAdmin() {
@@ -107,16 +123,10 @@ public class RequestStatusLog {
 		this.transToAdmin = transToAdmin;
 	}
 
-	@Override
-	public String toString() {
-		return "RequestStatusLog [request_status_log_id=" + request_status_log_id + ", requestId=" + requestId
-				+ ", status=" + status + ", physicianId=" + physicianId + ", adminId=" + adminId
-				+ ", transToPhysicianId=" + transToPhysicianId + ", notes=" + notes + ", createdDate=" + createdDate
-				+ ", transToAdmin=" + transToAdmin + "]";
-	}
+	
 
-	public RequestStatusLog(int request_status_log_id, int requestId, int status, int physicianId, int adminId,
-			int transToPhysicianId, String notes, Date createdDate, boolean transToAdmin) {
+	public RequestStatusLog(int request_status_log_id, Request requestId, int status, Physician physicianId, int adminId,
+			Physician transToPhysicianId, String notes, LocalDateTime createdDate, boolean transToAdmin) {
 		super();
 		this.request_status_log_id = request_status_log_id;
 		this.requestId = requestId;

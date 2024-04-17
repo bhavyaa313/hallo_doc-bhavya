@@ -104,7 +104,7 @@ public class UsersService {
 
 	public List<User> getUserIdUser(String mail) {
 		List<User> userList = userDao.getUser(mail);
-		User xList =   userList.get(0);
+		
 		return userList;
 	
 		

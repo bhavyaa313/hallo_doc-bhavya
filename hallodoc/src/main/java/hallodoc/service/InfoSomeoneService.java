@@ -196,13 +196,13 @@ public class InfoSomeoneService {
 			requestClient.setState(pState);
 			requestClient.setZipcode(pZipCode);
 			requestClientDao.requestClientSave(requestClient);
-
+			if(!file.isEmpty()) {
 			requestWiseFile.setRequestId(request);
 			requestWiseFile.setFileName(file.getOriginalFilename());
 			requestWiseFile.setCreatedDate(LocalDateTime.now());
 			requestWiseFile.setUploader(pFname + " " + pLname);
 			reqWiseFileDao.requestWiseFileSave(requestWiseFile);
-			
+			}
 	
 		} else {
 			
@@ -290,12 +290,13 @@ public class InfoSomeoneService {
 			requestClient.setRegionId(regionId);
 //			requestClient.setRegionId(1);
 			requestClientDao.requestClientSave(requestClient);
-
+			if(!file.isEmpty()) {
 			requestWiseFile.setRequestId(request);
 			requestWiseFile.setFileName(file.getOriginalFilename());
 			requestWiseFile.setCreatedDate(LocalDateTime.now());
 			requestWiseFile.setUploader(userRequestor.getFirstName() + " " + userRequestor.getLastName());
 			reqWiseFileDao.requestWiseFileSave(requestWiseFile);
+			}
 			
 		}
 		
