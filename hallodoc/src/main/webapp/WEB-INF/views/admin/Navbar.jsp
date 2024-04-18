@@ -67,7 +67,7 @@
 
           <span class="wlcm lo">Welcome <span style="font-weight: 500;">${userList[0].firstName} ${userList[0].lastName}</span></span>
 
-          <button type="button" class="btn btn-outline-info mx-2 lo">Logout</button>
+          <a type="button" href="logout" class="btn btn-outline-info mx-2 lo">Logout</a>
 
           <button type="button" class="btn btn-outline-info mx-2 lo-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

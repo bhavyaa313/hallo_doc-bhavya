@@ -1,15 +1,25 @@
 package hallodoc.controller;
 
+import java.io.ByteArrayInputStream;
+
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.sql.Template;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +28,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.support.RequestContextUtils;
+
+
+import com.mysql.cj.Session;
 
 import hallodoc.dto.AdminDashboardDto;
 import hallodoc.dto.AdminLoginDto;
@@ -28,6 +39,7 @@ import hallodoc.dto.BlockCaseDto;
 import hallodoc.dto.CancelCaseDto;
 import hallodoc.dto.CreateNewRequestDto;
 import hallodoc.dto.SendLinkDto;
+import hallodoc.dto.TransferCaseDto;
 import hallodoc.dto.ViewCaseDto;
 import hallodoc.dto.ViewNotesDto;
 import hallodoc.helper.DobHelper;
@@ -45,9 +57,11 @@ import hallodoc.service.BlockCaseService;
 import hallodoc.service.CancelCaseService;
 import hallodoc.service.CreateNewRequestService;
 import hallodoc.service.CreateService;
+import hallodoc.service.ExportAllService;
 import hallodoc.service.RequestClientService;
 import hallodoc.service.RequestService;
 import hallodoc.service.SendLinkService;
+import hallodoc.service.TransferCaseService;
 import hallodoc.service.UsersService;
 import hallodoc.service.ViewCaseService;
 import hallodoc.service.ViewNotesService;
@@ -101,32 +115,67 @@ public class AdminController {
 	@Autowired
 	private AssignCaseService assignCaseService;
 	
+	@Autowired
+	private TransferCaseService transferCaseService;
 	
+	@Autowired
+	private ExportAllService exportAllService;
+	
+
 	@RequestMapping("/admin")
-	public String dashboard(Model model, HttpServletRequest request) {
+	public String dashboard(Model model, HttpServletRequest request, @CookieValue(value = "emailId", defaultValue = "error")String emailId) {
 		
 		List requestList = adminDashboardDao.getRequests();
-		System.out.println("00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		
+		
+	
+	
 		List<CaseTag> reasonsList = cancelCaseService.getReasons();
 		HttpSession session = request.getSession();
-		session.getAttribute("userList");
-		System.out.println("00000000000000000000000000000000");
-	
-		System.out.println(reasonsList);
+		String sessionIdString = session.getId();
 		
-		String activeString = "active  text-info";
-		model.addAttribute("activeString", activeString);
-		model.addAttribute("reasonsList",reasonsList);
-		System.out.println("bhavyaa");
+		String emailString = (String) session.getAttribute("email");
+		/*
+		 * Cookie[] cookies = request.getCookies();
+		 * 
+		 * Cookie cookie = cookies[cookies.length-1]; System.out.println(
+		 * "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+		 * ); System.out.println(sessionIdString); System.out.println(cookie.getName());
+		 * System.out.println(cookie.getValue());
+		 */
+		System.out.println(emailId);
 		
-		List<AdminDashboardDto> adminDashboardDtos =  adminDashboardService.service();
-		Integer[] counts = adminDashboardService.count();
-		session.setAttribute("adminDashboardDtos", adminDashboardDtos);
-		session.setAttribute("counts", counts);
-		model.addAttribute("reasonsList",reasonsList);
-		System.out.println(adminDashboardDtos);
+		
+		
+		if (emailId.equals(emailString)  ) {
+			
+			
+			session.getAttribute("userList");
+			System.out.println("00000000000000000000000000000000");
+			
+			System.out.println(reasonsList);
+			
+			String activeString = "active  text-info";
+			model.addAttribute("activeString", activeString);
+			model.addAttribute("reasonsList",reasonsList);
+			System.out.println("bhavyaa");
+			
+			List<AdminDashboardDto> adminDashboardDtos =  adminDashboardService.service();
+			Integer[] counts = adminDashboardService.count();
+			session.setAttribute("adminDashboardDtos", adminDashboardDtos);
+			session.setAttribute("counts", counts);
+			model.addAttribute("reasonsList",reasonsList);
+			System.out.println(adminDashboardDtos);
 
-		return "/admin/AdminDashboard";
+			return "/admin/AdminDashboard";
+		} 
+		/*
+		 * else if(cookies==null) { return "/admin/error"; }
+		 */
+		else{
+			return "/admin/error";
+		}
+		
 
 	}
 	
@@ -260,6 +309,14 @@ public class AdminController {
 		return physicians;
 	}	
 	
+	@GetMapping(path = "/ajaxForTransferCase")
+	@ResponseBody
+	public List<TransferCaseDto> ajaxForTransferCase(@RequestParam("region")int region) {
+
+		List<TransferCaseDto> physicians =transferCaseService.servicePhysicians(region);
+		return physicians;
+	}
+	
 	
 	@RequestMapping(path="/assignCaseAction/{userID}", method = RequestMethod.POST)
 	public String assignCaseAction(@ModelAttribute AssignCaseDto assignCaseDto, @PathVariable("userID") int userID)
@@ -272,9 +329,38 @@ public class AdminController {
 		
 	}
 	
+	@RequestMapping(path="/transferCaseAction/{userID}", method = RequestMethod.POST)
+	public String transferCaseAction(@ModelAttribute TransferCaseDto transferCaseDto, @PathVariable("userID") int userID)
+	{
 	
+		System.out.println("h8***********************************************************************");
 	
+		transferCaseService.service(transferCaseDto, userID);
+		return "redirect:/admin";
+		
+	}
 	
+	@RequestMapping(path = "exportAll", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<Resource> exportAll(HttpServletResponse response) {
+
+		ByteArrayInputStream actualData = exportAllService.allRequests();
+		InputStreamResource file = new InputStreamResource(actualData);
+		ResponseEntity<Resource> body = ResponseEntity.ok()
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=allrequest.xlsx")
+				.contentType(MediaType.parseMediaType("application/vnd.ms-excel")).body(file);
+		return body;
+
+	}
+	
+	@RequestMapping(path = "logout")
+	public String logout(HttpServletRequest request) {
+		
+		request.getSession(false).invalidate();
+		return "/patient/patient_login";
+		
+	
+	}
 
 
 }

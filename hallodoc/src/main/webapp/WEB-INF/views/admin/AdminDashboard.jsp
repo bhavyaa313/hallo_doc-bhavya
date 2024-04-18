@@ -179,7 +179,7 @@ body {
 					<img src="<c:url value="/resources/images/export 1.svg" />" alt="">
 					<span class="btn-span">Export</span>
 				</button>
-				<button type="button" class="btn btn-info mr-2">
+				<button type="button" class="btn btn-info mr-2 exportAll">
 					<img src="<c:url value="/resources/images/exxport.svg" />" alt="">
 					<span class="btn-span">Export All</span>
 				</button>
@@ -607,8 +607,7 @@ body {
 									style="height: 100px" name="notes"></textarea>
 								<label for="floatingTextarea2">Description</label>
 							</div>
-							<input type="text" id="reqId33" name="reqId3" hidden>
-							 <input
+							<input type="text" id="reqId33" name="reqId3" hidden> <input
 								type="text" name="phyId" id="phyId" hidden>
 
 						</div>
@@ -749,50 +748,56 @@ body {
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog  modal-dialog-centered">
 				<div class="modal-content">
-					<div class="modal-header bg-info text-white">
-						<h1 class="modal-title fs-5 " id="exampleModalLabel">Transfer
-							Request</h1>
-						<button type="button" class="btn-close btn-close-white"
-							data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-
-						<p mb-3>To transfer this request, search and select another
-							Physician.</p>
-
-						<div class="form-floating mb-3">
-							<select class="form-select" id="floatingSelect"
-								aria-label="Floating label select example">
-								<option selected>Maryland</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
-							</select> <label for="floatingSelect">Narrow Search By region</label>
+					<form action="transferCaseAction/${userList[0].userID}"
+						method="post">
+						<div class="modal-header bg-info text-white">
+							<h1 class="modal-title fs-5 " id="exampleModalLabel">Transfer
+								Request</h1>
+							<button type="button" class="btn-close btn-close-white"
+								data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
+						<div class="modal-body">
 
-						<div class="form-floating mb-3">
-							<select class="form-select" id="floatingSelect"
-								aria-label="Floating label select example">
-								<option selected></option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
-							</select> <label for="floatingSelect">Select Physician</label>
+							<p mb-3>To transfer this request, search and select another
+								Physician.</p>
+
+							<div class="form-floating mb-3">
+								<select class="form-select" id="regionSelector1"
+									aria-label="Floating label select example">
+									<option value="1">GUJARAT</option>
+									<option value="2">MAHARASHTRA</option>
+									<option value="3">MADHYA PRADESH</option>
+									<option value="4">RAJASTHAN</option>
+								</select> <label for="floatingSelect">Narrow Search By region</label>
+							</div>
+
+							<div class="form-floating mb-3">
+								<select class="form-select" id="physicians1"
+									aria-label="Floating label select example">
+
+
+
+
+								</select> <label for="floatingSelect">Select Physician</label>
+							</div>
+
+							<div class="form-floating mb-3">
+								<textarea class="form-control"
+									placeholder="Leave a comment here" id="floatingTextarea2"
+									style="height: 100px" name="notes1"></textarea>
+								<label for="floatingTextarea2">Description</label>
+							</div>
+							<input type="text" id="reqId4" name="reqId4" hidden> <input
+								type="text" name="phyId1" id="phyId4" hidden>
+
 						</div>
+						<div class="modal-footer">
 
-						<div class="form-floating mb-3">
-							<textarea class="form-control" placeholder="Leave a comment here"
-								id="floatingTextarea2" style="height: 100px"></textarea>
-							<label for="floatingTextarea2">Description</label>
+							<button type="submit" class="btn btn-info">Submit</button>
+							<button type="button" class="btn btn-outline-info"
+								data-bs-dismiss="modal">Close</button>
 						</div>
-
-					</div>
-					<div class="modal-footer">
-
-						<button type="button" class="btn btn-info">Submit</button>
-						<button type="button" class="btn btn-outline-info"
-							data-bs-dismiss="modal">Close</button>
-					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -987,6 +992,93 @@ body {
 		
 	})
 	</script>
+		<script>
+	console.log("transfer case")
+	$('#regionSelector1').change(function () {
+	    console.log(this);
+	    let region = this.value;
+	    console.log(region)
+		$.ajax({
+			
+			
+			
+			url: "ajaxForTransferCase",
+			type: "get",
+			data: {
+				region:region
+			},
+			success: function(data) {
+				
+				$("#physicians1").empty();
+				for(var i=0; i<data.length; i++){
+					console.log(data);
+					var row = `<option>`+data[i][0]+`</option>`
+					$("#phyId4").attr('value' , data[i][2]);
+					$("#physicians1").append(row);
+				}
+				
+			}
+				
+			})
+		
+	})
+	</script>
+	
+	<script>
+	<script>
+	$(".exportajax").click(function(){
+		
+		let table = $('.maintable').clone();
+		table.find(".no-export").each(function(){
+			$(this).remove();
+		});
+		table.find(".d-none").each(function(){
+			$(this).remove();
+		})
+
+		  TableToExcel.convert(table[0], { // html code may contain multiple tables so here we are refering to 1st table tag
+		    name: $('#stateInfo').text()+`State.xlsx`, // fileName you could use any name
+		    sheet: {
+		      name: 'Sheet 1' // sheetName
+		    }
+		  });
+		
+	});
+
+
+	</script>
+	
+	<script type="text/javascript">
+	console.log("eportt")
+	$(".exportAll").click(function(){
+		console.log("export all")
+		
+		$.ajax({
+			url:"exportAll",
+			method:"post",
+			xhrFields: {
+				responseType: 'blob'
+			},
+	 	 	contentType:"application/json",
+			success:function(data){
+				 var blob = new Blob([data]);
+			      var url = window.URL.createObjectURL(blob);
+			      var a = document.createElement('a');
+			      a.href = url;
+			      a.download = "export.xlsx"; // Set your desired filename
+			      a.click();
+			      window.URL.revokeObjectURL(url);
+			},
+		 error: function(error) {
+		      console.error("Error exporting data:", error);
+		      // Handle the error here, like displaying an error message to the user
+		    }
+			
+		});
+		
+	});
+	</script>
+	</script>
 
 	<script type="text/javascript">
 	
@@ -1024,6 +1116,7 @@ body {
   $('#reqId').attr('value' , reqId);
   $('#reqId2').attr('value' , reqId);
   $('#reqId33').attr('value' , reqId);
+  $('#reqId4').attr('value' , reqId);
   
   console.log(reqId)
 }
@@ -1243,7 +1336,7 @@ function onBadgeClick() {
 						href="View_uploads.html"><i
 							class="bi bi-file-earmark-arrow-up mx-2 ToCloseAction UnpaidAction"></i> view uploads</a></li>
 					<li class="PendingAction"><a class="dropdown-item" data-bs-toggle="modal"
-						data-bs-target="#transfer"><i
+						data-bs-target="#transfer" onclick="cancelCase('`+dataset.name+`', `+id+`)"><i
 							class="bi bi-card-checklist mx-2"></i>transfer</a></li>
 					<li class="PendingAction"><a class="dropdown-item" data-bs-toggle="modal"
 						data-bs-target="#send"> <i

@@ -214,11 +214,31 @@
 
 
 
-                    <div class="form-floating mb-3">
-                        <textarea class="form-control " placeholder="Leave a comment here" id="floatingTextarea2"
-                            style="height: 200px"></textarea>
-                        <label for="floatingTextarea2" class="dm"> Enter Additional Notes <label>
-                    </div>
+                 <form action="/hallodoc/admin/viewNotes/${status }/${requestId }" method="post">
+			<div style="border: 5px solid #edf4f4;"
+				class="bg-white px-3 pb-3 border-4 rounded-3">
+
+				<div class="row pt-2 mt-2 mb-3">
+
+					<div class="col-md-12">
+						<div class="form-group form-floating mt-2">
+							<textarea style="height: 150px;" class="form-control"
+								name="adminNotes" placeholder="Patient Notes"></textarea>
+							<label>Admin Notes</label>
+						</div>
+					</div>
+
+					<div class="d-flex pt-2 justify-content-end">
+
+						<button type="submit" class="btn btn-info mr-2">Save
+							Changes</button>
+
+					</div>
+
+				</div>
+
+			</div>
+		</form>
                 </div>
 
                 <div class="col-md-3">

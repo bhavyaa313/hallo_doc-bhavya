@@ -7,11 +7,13 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.objenesis.instantiator.basic.NewInstanceInstantiator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -242,12 +244,14 @@ public class MainController {
 
 		boolean status = login.checkEmail5(users.getUserEmail(), users.getUserPassword());
 		String xString = users.getUserEmail();
+		String passwordString =  users.getUserPassword();
 		User uId = login.getId(xString);
 		int roleId =   uId.getRoleId();
 		
 		
 		List requestsList = requestService.getRequest(uId);
 		List userList = login.getUserIdUser(xString);
+		String emailIdString = xString.replace("@", "a");
 		
 		
 		
@@ -259,6 +263,11 @@ public class MainController {
 		HttpSession session = request.getSession();
 
 		String uname = login.getUser(xString);
+		
+		Cookie cookie = new Cookie("emailId",emailIdString );
+		cookie.setMaxAge(60*60);
+		respons.addCookie(cookie);
+		System.out.println(cookie.getName());
 
 		String message;
 		System.out.println(status);
@@ -268,6 +277,7 @@ public class MainController {
 			if (roleId==1) {
 				
 				session.setAttribute("userList", userList);
+				session.setAttribute("email", emailIdString);
 				
 				
 				
