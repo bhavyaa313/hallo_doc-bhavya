@@ -680,10 +680,11 @@ body {
 			<div class="modal-dialog  modal-dialog-centered">
 
 				<div class="modal-content rounded-4">
+				<form action="clearCaseAction" method="post">
 					<div class="modal-body">
 						<div class="mb-2 pt-3 pb-3">
-							<img src="images/modal.svg"
-								class="border img-fluid border-warning p-1 rounded-circle d-block m-auto "
+							<img src="<c:url value="/resources/images/modal.svg"/>"
+								class="border img-fluid border-warning p-1 rounded-circle d-block m-auto"
 								alt="...">
 						</div>
 						<h5 class=" d-flex justify-content-center ms-auto">Confirmation
@@ -691,15 +692,17 @@ body {
 						<p class=" d-flex justify-content-center text-center">Are sure
 							you want to clear this request? Once clear this request then you
 							are not able to see this request.</p>
+							<input type="text" id="reqId5" name="reqId5">
 					</div>
 					<div
 						class="modal-footer border-top-0 pb-5 d-flex justify-content-center">
 
-						<button type="button" class="btn btn-info  text-white btn-lg "
+						<button type="submit" class="btn btn-info  text-white btn-lg "
 							data-bs-dismiss="modal">clear</button>
 						<button type="button" class="btn btn-info  text-white btn-lg "
 							data-bs-dismiss="modal">cancel</button>
 					</div>
+					</form>
 				</div>
 
 			</div>
@@ -1117,6 +1120,7 @@ body {
   $('#reqId2').attr('value' , reqId);
   $('#reqId33').attr('value' , reqId);
   $('#reqId4').attr('value' , reqId);
+  $('#reqId5').attr('value' , reqId);
   
   console.log(reqId)
 }
@@ -1320,7 +1324,7 @@ function onBadgeClick() {
 					<li class="PendingAction NewAction ActiveAction ConcludeAction ToCloseAction UnpaidAction"><a class="dropdown-item text-secondary"
 						href="viewCase/`+id+`"><i class="bi bi-card-heading mx-2"></i>view
 							case</a></li>
-					<li class="PendingAction ToCloseAction"><a class="dropdown-item" data-bs-toggle="modal"
+					<li class="PendingAction ToCloseAction"><a class="dropdown-item" onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-toggle="modal"
 						data-bs-target="#clear"><i class="bi bi-x-circle mx-2"></i>clear
 							case</a></li>
 					<li class="ToCloseAction"><a class="dropdown-item text-secondary"
@@ -1333,7 +1337,7 @@ function onBadgeClick() {
 						data-bs-toggle="modal" data-bs-target="#block"><i
 							class="bi bi-ban mx-2"></i>Block Patients</a></li>
 					<li class="PendingAction ActiveAction ConcludeAction"><a class="dropdown-item text-secondary"
-						href="View_uploads.html"><i
+						href="viewDocs/`+id+`""><i
 							class="bi bi-file-earmark-arrow-up mx-2 ToCloseAction UnpaidAction"></i> view uploads</a></li>
 					<li class="PendingAction"><a class="dropdown-item" data-bs-toggle="modal"
 						data-bs-target="#transfer" onclick="cancelCase('`+dataset.name+`', `+id+`)"><i

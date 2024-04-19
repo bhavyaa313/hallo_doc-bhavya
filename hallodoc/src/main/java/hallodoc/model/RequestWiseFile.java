@@ -39,11 +39,10 @@ public class RequestWiseFile {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "physician_id")
 
-	private Physician physicianId;
+	private int physicianId;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "admin_id")
-	private Admin adminId;
+
+	private int adminId;
 
 	@Column(name = "doc_type")
 	private int docType;
@@ -98,19 +97,19 @@ public class RequestWiseFile {
 		this.createdDate = createdDate;
 	}
 
-	public Physician getPhysicianId() {
+	public int getPhysicianId() {
 		return physicianId;
 	}
 
-	public void setPhysicianId(Physician physicianId) {
-		this.physicianId = physicianId;
+	public void setPhysicianId(int i) {
+		this.physicianId = i;
 	}
 
-	public Admin getAdminId() {
+	public int getAdminId() {
 		return adminId;
 	}
 
-	public void setAdminId(Admin adminId) {
+	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
 
@@ -152,7 +151,7 @@ public class RequestWiseFile {
 	}
 
 	public RequestWiseFile(int requestWiseFileId, Request requestId, String fileName, String uploader,
-			LocalDateTime createdDate, Physician physicianId, Admin adminId, int docType, boolean isFinalize,
+			LocalDateTime createdDate, int physicianId, int adminId, int docType, boolean isFinalize,
 			boolean isDeleted, boolean isPatientRecords) {
 		super();
 		this.requestWiseFileId = requestWiseFileId;

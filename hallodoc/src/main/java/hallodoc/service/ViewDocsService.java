@@ -17,8 +17,11 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import hallodoc.dto.ViewDocumentsDTO;
 import hallodoc.model.Request;
 import hallodoc.model.RequestWiseFile;
+import hallodoc.model.User;
 import hallodoc.repo.RequestDao;
 import hallodoc.repo.RequestWiseFileDao;
+import hallodoc.repo.UserDao;
+import hallodoc.repo.UsersDao;
 
 @Service 
 public class ViewDocsService {
@@ -28,6 +31,12 @@ public class ViewDocsService {
 	
 	@Autowired
 	private RequestDao requestDao;
+	
+	@Autowired
+	private UsersDao usersDao;
+	
+	@Autowired
+	private UserDao userDao;
 	
 public List<ViewDocumentsDTO> getRequestWiseFiles(int id,HttpServletRequest request) {
 		
@@ -60,7 +69,7 @@ public List<ViewDocumentsDTO> getRequestWiseFiles(int id,HttpServletRequest requ
 public void reqWiseFileforsave(String reqId, CommonsMultipartFile uploadedFile) {
 	
 	int reqid = Integer.parseInt(reqId);
-
+	
 	List<Request> reqList = requestDao.getRequests(reqid);
 	Request request1 = reqList.get(0);
 
@@ -74,6 +83,36 @@ public void reqWiseFileforsave(String reqId, CommonsMultipartFile uploadedFile) 
 	
 	requestWiseFileDao.requestWiseFileSave(requestWiseFile);
 	
+}
+
+@Transactional
+public void reqWiseFileforsaveadmin(String reqId, CommonsMultipartFile uploadedFile, int userID) {
+	
+	int reqid = Integer.parseInt(reqId);
+	List<User> users = userDao.getUserIDList(userID);
+	User user = users.get(0);
+	List<Request> reqList = requestDao.getRequests(reqid);
+	Request request1 = reqList.get(0);
+
+	System.out.println("In else part........................");
+	
+	RequestWiseFile requestWiseFile = new RequestWiseFile();
+	requestWiseFile.setRequestId(request1);
+	requestWiseFile.setFileName(uploadedFile.getOriginalFilename());
+	requestWiseFile.setCreatedDate(LocalDateTime.now());
+	requestWiseFile.setUploader(user.getFirstName() + " " + user.getLastName());
+	requestWiseFile.setAdminId(1);
+	requestWiseFile.setPhysicianId(request1.getPhysicianId());
+	
+	requestWiseFileDao.requestWiseFileSave(requestWiseFile);
+	
+}
+
+
+public void delete(int reqId)
+
+{
+	List<Request> reqList = requestDao.getRequests(reqId);
 }
 	
 }
