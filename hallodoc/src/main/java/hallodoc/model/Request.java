@@ -94,6 +94,8 @@ public class Request {
 
 	@OneToOne(mappedBy = "requestId")
 	private RequestConcierge requestConcierge;
+	
+	
 
 	public int getRequestId() {
 		return requestId;

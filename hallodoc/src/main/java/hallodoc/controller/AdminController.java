@@ -70,6 +70,7 @@ import hallodoc.service.UsersService;
 import hallodoc.service.ViewCaseService;
 import hallodoc.service.ViewDocsService;
 import hallodoc.service.ViewNotesService;
+import hallodoc.service.searchService;
 
 @Controller
 public class AdminController {
@@ -115,6 +116,9 @@ public class AdminController {
 
 	@Autowired
 	private BlockCaseService blockCaseService;
+	
+	@Autowired
+	private searchService searchService;
 
 	@Autowired
 	private AssignCaseService assignCaseService;
@@ -249,11 +253,13 @@ public class AdminController {
 		return "redirect:/viewCase/{requestId}";
 	}
 
-	@GetMapping(path = "/ajaxcall")
+	@GetMapping(path = "/ajaxcall/{class1}/{roleWiseId}/{valueofInput}/{regionWiseSearch}")
 	@ResponseBody
-	public List ajaxcalldemo(Model model, HttpServletRequest request) {
+	public List ajaxcalldemo(Model model, HttpServletRequest request, @PathVariable("class1") String class1,
+			@PathVariable("valueofInput") String input, @PathVariable("roleWiseId") String roString, @PathVariable("regionWiseSearch")String region ) {
 		System.out.println("this is ajax call");
 		List<AdminDashboardDto> adminDashboardDtos = adminDashboardService.service();
+		searchService.search(class1, input, roString, region);
 		return adminDashboardDtos;
 
 	}
@@ -355,7 +361,8 @@ public class AdminController {
 	}
 
 	@RequestMapping("/viewDocs/{requestId}")
-	public String viewDocs(@PathVariable("requestId") int requestId, Model model, HttpServletRequest request1, HttpSession session) {
+	public String viewDocs(@PathVariable("requestId") int requestId, Model model, HttpServletRequest request1,
+			HttpSession session) {
 
 		List<Request> requests = requestService.getRequestByReqId(requestId);
 		Request request = requests.get(0);
@@ -375,29 +382,37 @@ public class AdminController {
 
 	@RequestMapping(path = "/viewDocs/{requestId}/{userID}/uploadFile", method = RequestMethod.POST)
 	public String uploadFile(@RequestParam("file_name") CommonsMultipartFile filename, HttpSession s,
-			@PathVariable("requestId") String rId,  @PathVariable("userID") int userID ) {
-		
-		if(!(filename.equals("")))
-		{
-		viewDocsService.reqWiseFileforsaveadmin(rId, filename, userID);
-		byte[] data = filename.getBytes();
-		String p = s.getServletContext().getRealPath("/") + "WEB-INF" + File.separator + "resources" + File.separator
-				+ "docs" + File.separator + filename.getOriginalFilename();
-		System.out.println(p);
-		FileOutputStream fileOutputStream;
-		try {
-			fileOutputStream = new FileOutputStream(p);
-			fileOutputStream.write(data);
-			fileOutputStream.close();
+			@PathVariable("requestId") String rId, @PathVariable("userID") int userID) {
 
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("error");
+		if (!(filename.getOriginalFilename().equals(""))) {
+			viewDocsService.reqWiseFileforsaveadmin(rId, filename, userID);
+			byte[] data = filename.getBytes();
+			String p = s.getServletContext().getRealPath("/") + "WEB-INF" + File.separator + "resources"
+					+ File.separator + "docs" + File.separator + filename.getOriginalFilename();
+			System.out.println(p);
+			FileOutputStream fileOutputStream;
+			try {
+				fileOutputStream = new FileOutputStream(p);
+				fileOutputStream.write(data);
+				fileOutputStream.close();
 
-		}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("error");
+
+			}
 		}
 		return "redirect:/viewDocs/{requestId}";
 	}
+
+	@RequestMapping("/viewDocs/{requestId}/{id}/delete")
+	public String deleteFile(@PathVariable("id") int id, @PathVariable("requestId") String rId) {
+		viewDocsService.delete(id);
+		return "redirect:/viewDocs/{requestId}";
+
+	}
+
+	
 
 }

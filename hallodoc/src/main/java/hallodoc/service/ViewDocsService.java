@@ -52,13 +52,18 @@ public List<ViewDocumentsDTO> getRequestWiseFiles(int id,HttpServletRequest requ
 			String fileContent=String.format("/%s/%s/","resources","docs");
 			String path=request.getContextPath()+fileContent+requestWiseFileList.get(i).getFileName();
 			ViewDocumentsDTO viewDocuments=new ViewDocumentsDTO();
+			if(!(requestWiseFileList.get(i).isDeleted()))
+			{
 			viewDocuments.setFileName(requestWiseFileList.get(i).getFileName());
 			viewDocuments.setUploader(requestWiseFileList.get(i).getUploader());
-			
+			viewDocuments.setFileId(requestWiseFileList.get(i).getRequestWiseFileId());
 			viewDocuments.setCreateDate(dateText);
+			viewDocuments.setId(requestWiseFileList.get(i).getRequestWiseFileId());
 			viewDocuments.setFilePath(path);
 			
 			viewDocumentsDTO.add(viewDocuments);
+			}
+			
 		}
 //String pathString=session.getServletContext()		
 		//
@@ -88,6 +93,7 @@ public void reqWiseFileforsave(String reqId, CommonsMultipartFile uploadedFile) 
 @Transactional
 public void reqWiseFileforsaveadmin(String reqId, CommonsMultipartFile uploadedFile, int userID) {
 	
+	
 	int reqid = Integer.parseInt(reqId);
 	List<User> users = userDao.getUserIDList(userID);
 	User user = users.get(0);
@@ -109,10 +115,13 @@ public void reqWiseFileforsaveadmin(String reqId, CommonsMultipartFile uploadedF
 }
 
 
-public void delete(int reqId)
+public void delete(int fid)
 
 {
-	List<Request> reqList = requestDao.getRequests(reqId);
+	List<RequestWiseFile> requestWiseFiles = requestWiseFileDao.getRequestsWiseFileList(fid);
+	RequestWiseFile requestWiseFile = requestWiseFiles.get(0);
+	requestWiseFile.setDeleted(true);
+	requestWiseFileDao.requestWiseFileUpdate(requestWiseFile);
 }
 	
 }

@@ -47,6 +47,22 @@ public class RequestWiseFileDao {
 		return list;
 
 	}
+	
+	public List getRequestsWiseFileList(int fId) {
+
+		Session session = sessionFactory.openSession();
+
+		System.out.println("requestsssssssssssss");
+	
+		String hqlString = "from hallodoc.model.RequestWiseFile A where A.requestWiseFileId=:fId";
+		Query query = session.createQuery(hqlString);
+		query.setParameter("fId", fId);
+		List list = query.list();
+		System.out.println(list);
+		
+		return list;
+
+	}
 
 	
 

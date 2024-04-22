@@ -36,8 +36,7 @@ public class RequestWiseFile {
 	@Column(name = "created_date")
 	private LocalDateTime createdDate;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "physician_id")
+	
 
 	private int physicianId;
 
