@@ -1,6 +1,7 @@
 package hallodoc.controller;
 
 import java.io.ByteArrayInputStream;
+import java.io.Console;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -45,6 +46,7 @@ import hallodoc.dto.TransferCaseDto;
 import hallodoc.dto.ViewCaseDto;
 import hallodoc.dto.ViewDocumentsDTO;
 import hallodoc.dto.ViewNotesDto;
+import hallodoc.dto.ordersDto;
 import hallodoc.helper.DobHelper;
 import hallodoc.model.CaseTag;
 import hallodoc.model.Physician;
@@ -64,12 +66,14 @@ import hallodoc.service.CreateService;
 import hallodoc.service.ExportAllService;
 import hallodoc.service.RequestClientService;
 import hallodoc.service.RequestService;
+import hallodoc.service.SendAgreementService;
 import hallodoc.service.SendLinkService;
 import hallodoc.service.TransferCaseService;
 import hallodoc.service.UsersService;
 import hallodoc.service.ViewCaseService;
 import hallodoc.service.ViewDocsService;
 import hallodoc.service.ViewNotesService;
+import hallodoc.service.ordersService;
 import hallodoc.service.searchService;
 
 @Controller
@@ -80,6 +84,9 @@ public class AdminController {
 
 	@Autowired
 	private AdminDashboardDao adminDashboardDao;
+	
+	@Autowired
+	private ordersService ordersService;
 
 	@Autowired
 	private AdminDashboardService adminDashboardService;
@@ -95,6 +102,9 @@ public class AdminController {
 
 	@Autowired
 	private DobHelper dobHelper;
+
+	@Autowired
+	private SendAgreementService sendAgreementService;
 
 	@Autowired
 	private CreateService create;
@@ -116,7 +126,7 @@ public class AdminController {
 
 	@Autowired
 	private BlockCaseService blockCaseService;
-	
+
 	@Autowired
 	private searchService searchService;
 
@@ -168,12 +178,15 @@ public class AdminController {
 			model.addAttribute("reasonsList", reasonsList);
 			System.out.println("bhavyaa");
 
-			List<AdminDashboardDto> adminDashboardDtos = adminDashboardService.service();
+			/*
+			 * List<AdminDashboardDto> adminDashboardDtos =
+			 * adminDashboardService.service(class1, roString, input, region);
+			 */
 			Integer[] counts = adminDashboardService.count();
-			session.setAttribute("adminDashboardDtos", adminDashboardDtos);
+			/* session.setAttribute("adminDashboardDtos", adminDashboardDtos); */
 			session.setAttribute("counts", counts);
 			model.addAttribute("reasonsList", reasonsList);
-			System.out.println(adminDashboardDtos);
+			/* System.out.println(adminDashboardDtos); */
 
 			return "/admin/AdminDashboard";
 		}
@@ -256,10 +269,11 @@ public class AdminController {
 	@GetMapping(path = "/ajaxcall/{class1}/{roleWiseId}/{valueofInput}/{regionWiseSearch}")
 	@ResponseBody
 	public List ajaxcalldemo(Model model, HttpServletRequest request, @PathVariable("class1") String class1,
-			@PathVariable("valueofInput") String input, @PathVariable("roleWiseId") String roString, @PathVariable("regionWiseSearch")String region ) {
+			@PathVariable("roleWiseId") String roString, @PathVariable("valueofInput") String input,
+			@PathVariable("regionWiseSearch") String region) {
 		System.out.println("this is ajax call");
-		List<AdminDashboardDto> adminDashboardDtos = adminDashboardService.service();
-		searchService.search(class1, input, roString, region);
+		List<AdminDashboardDto> adminDashboardDtos = adminDashboardService.service(class1, roString, input, region);
+
 		return adminDashboardDtos;
 
 	}
@@ -277,6 +291,13 @@ public class AdminController {
 	@RequestMapping(path = "/send", method = RequestMethod.POST)
 	public String SendMail(@ModelAttribute SendLinkDto sendLinkDto) {
 		sendLinkService.service(sendLinkDto);
+		return "redirect:/admin";
+
+	}
+
+	@RequestMapping(path = "/sendAgreementAction", method = RequestMethod.POST)
+	public String sendAgreementAction(@RequestParam("email23") String email, @RequestParam("reqId6") int reqId) {
+		sendLinkService.sendAgreementService(email, reqId);
 		return "redirect:/admin";
 
 	}
@@ -306,10 +327,20 @@ public class AdminController {
 		List<AssignCaseDto> physicians = assignCaseService.servicePhysicians(region);
 		return physicians;
 	}
+	
+	@GetMapping(path = "/ajaxForOrders")
+	@ResponseBody
+	public List<ordersDto> ajaxForOrders(@RequestParam("profession") int professionals) {
+
+		List<ordersDto> ordersDtos = ordersService.serviceOrder(professionals);
+		return ordersDtos;
+	}
 
 	@GetMapping(path = "/ajaxForTransferCase")
 	@ResponseBody
 	public List<TransferCaseDto> ajaxForTransferCase(@RequestParam("region") int region) {
+		
+		
 
 		List<TransferCaseDto> physicians = transferCaseService.servicePhysicians(region);
 		return physicians;
@@ -413,6 +444,66 @@ public class AdminController {
 
 	}
 
+	@RequestMapping(path = "/agreement/{requestId}")
+	public String sendAgreement(@PathVariable("requestId") int requestId, Model model) {
+
+		System.out.println();
+		model.addAttribute("requestId", requestId);
+		List<Request> requests = requestService.getRequestByReqId(requestId);
+		Request request = requests.get(0);
+		String name = request.getRequestClient().getFirstName() + request.getRequestClient().getLastName();
+		model.addAttribute("name", name);
+		return "/admin/agreement";
+
+	}
+
+	@RequestMapping(path = "/agreement/reviewAgreementAction/{requestId}", method = RequestMethod.POST)
+
+	public String reviewAgreementAction(@PathVariable("requestId") int requestId)
+
+	{
+
+		sendAgreementService.acceptAgreement(requestId);
+		return ("/admin/thankyou");
+
+	}
+
+	@RequestMapping(path = "/agreement/cancelAgreementAction/{requestId}", method = RequestMethod.POST)
+	public String rejectAgreementAction(@PathVariable("requestId") int requestId, @RequestParam("notes") String notes)
+
+	{
+
+		sendAgreementService.declineAgreement(requestId, notes);
+		return ("/admin/thankyou");
+
+	}
+
+	@RequestMapping(path = "thankyou")
+	public String thankyou()
+
+	{
+
+		return ("/admin/thankyou");
+
+	}
 	
+	@RequestMapping(path = "orders/{requestId}")
+	public String orders(@PathVariable("requestId") int reqId, Model model)
+
+	{
+		model.addAttribute("reqId", reqId);
+		return ("/admin/orders");
+
+	}
+	
+	@RequestMapping(path = "/orders/{requestId}/sendOrders", method = RequestMethod.POST)
+	public String rejectAgreementAction(@ModelAttribute ordersDto ordersDto)
+
+	{
+		ordersService.sendOrders(ordersDto);
+		return "redirect:/admin";
+
+	}
+
 
 }

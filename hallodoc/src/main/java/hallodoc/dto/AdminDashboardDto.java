@@ -15,6 +15,7 @@ public class AdminDashboardDto {
 	private String requestedDate;
 	private String phone;
 	private String address;
+	private String email;
 	private String notes;
 	private int status;
 	private int requestTypeId;
@@ -44,6 +45,16 @@ public class AdminDashboardDto {
 
 	public void setRequestId(int requestId) {
 		this.requestId = requestId;
+	}
+	
+	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPhyNameString() {
@@ -127,9 +138,10 @@ public class AdminDashboardDto {
 	}
 
 
+
 	public AdminDashboardDto(String name, String dob, String phyNameString, LocalDateTime dateOfService, String region,
-			String requestor, String requestedDate, String phone, String address, String notes, int status,
-			int requestTypeId, int requestId) {
+			String requestor, String requestedDate, String phone, String address, String email, String notes,
+			int status, int requestTypeId, int requestId) {
 		super();
 		this.name = name;
 		this.dob = dob;
@@ -140,6 +152,7 @@ public class AdminDashboardDto {
 		this.requestedDate = requestedDate;
 		this.phone = phone;
 		this.address = address;
+		this.email = email;
 		this.notes = notes;
 		this.status = status;
 		this.requestTypeId = requestTypeId;

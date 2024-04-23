@@ -122,6 +122,17 @@
 				<value>
 					hallodoc.model.BlockRequests
 				</value>
+				
+				<value>
+					hallodoc.model.EmailLog
+				</value>
+				
+					<value>
+					hallodoc.model.HealthProfessionals
+				</value>
+					<value>
+					hallodoc.model.HealthProfessionalType
+				</value>
 
 
 

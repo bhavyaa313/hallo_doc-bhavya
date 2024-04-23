@@ -16,8 +16,7 @@ public class searchService {
 	@Autowired
 	private RequestDao requestDao;
 
-	public void search(String status, String searchText, String role, String region)
-
+	public void search(String status, String role, String searchText, String region)
 	{
 		int mainStatus1 = 0;
 		int mainStatus2 = 0;
@@ -88,14 +87,14 @@ public class searchService {
 			sqlfinalString = sqlString + sqlString2;
 		}
 
-		else if (!searchText.equals("undefined")) {
+		else if (!searchText.equals("undefined") && region.equals("0")) {
 //			String subString = searchText.substring(0, 4);
 			String sqlString1 = " AND (upper(CONCAT(r.firstName,r.lastName)) LIKE CONCAT('%','"+searchText+"','%') OR upper(CONCAT(r.requestClient.firstName,r.requestClient.lastName)) LIKE CONCAT('%','"+searchText+"','%') )";
 
 			sqlfinalString = sqlString + sqlString1;
 		}
 
-		else if (!region.equals("undefined"))
+		else if (searchText.equals("undefined") && !region.equals("0"))
 
 		{
 
@@ -104,7 +103,7 @@ public class searchService {
 			sqlfinalString = sqlString + sqlString2;
 		}
 
-		else if (!searchText.equals("undefined") && !region.equals("undefined"))
+		else if (!searchText.equals("undefined") && !region.equals("0"))
 
 		{
 

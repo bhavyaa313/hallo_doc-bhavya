@@ -2,6 +2,7 @@ package hallodoc.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,63 +15,60 @@ public class HealthProfessionalType {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int health_professional_id;
-	private String profession_name;
-	private LocalDateTime created_date;
-	private boolean is_active;
-	private boolean is_deleted;
-	
-	public int getHealth_professional_id() {
-		return health_professional_id;
+	@Column(name = "health_professional_id")
+	private int healthProfessionalId;
+	@Column(name="profession_name")
+	private String professionName;
+	@Column(name = "created_date")
+	private LocalDateTime createdDate;
+	@Column(name = "is_active")
+	private boolean isActive;
+	@Column(name = "is_deleted")
+	private boolean isDeleted;
+	public int getHealthProfessionalId() {
+		return healthProfessionalId;
 	}
-	public void setHealth_professional_id(int health_professional_id) {
-		this.health_professional_id = health_professional_id;
+	public void setHealthProfessionalId(int healthProfessionalId) {
+		this.healthProfessionalId = healthProfessionalId;
 	}
-	public String getProfession_name() {
-		return profession_name;
+	public String getProfessionName() {
+		return professionName;
 	}
-	public void setProfession_name(String profession_name) {
-		this.profession_name = profession_name;
+	public void setProfessionName(String professionName) {
+		this.professionName = professionName;
 	}
-	public LocalDateTime getCreated_date() {
-		return created_date;
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
 	}
-	public void setCreated_date(LocalDateTime created_date) {
-		this.created_date = created_date;
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
 	}
-	public boolean isIs_active() {
-		return is_active;
+	public boolean isActive() {
+		return isActive;
 	}
-	public void setIs_active(boolean is_active) {
-		this.is_active = is_active;
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
 	}
-	public boolean isIs_deleted() {
-		return is_deleted;
+	public boolean isDeleted() {
+		return isDeleted;
 	}
-	public void setIs_deleted(boolean is_deleted) {
-		this.is_deleted = is_deleted;
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
-	
-	public HealthProfessionalType(int health_professional_id, String profession_name, LocalDateTime created_date,
-			boolean is_active, boolean is_deleted) {
+	public HealthProfessionalType(int healthProfessionalId, String professionName, LocalDateTime createdDate,
+			boolean isActive, boolean isDeleted) {
 		super();
-		this.health_professional_id = health_professional_id;
-		this.profession_name = profession_name;
-		this.created_date = created_date;
-		this.is_active = is_active;
-		this.is_deleted = is_deleted;
+		this.healthProfessionalId = healthProfessionalId;
+		this.professionName = professionName;
+		this.createdDate = createdDate;
+		this.isActive = isActive;
+		this.isDeleted = isDeleted;
 	}
-	
 	public HealthProfessionalType() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public String toString() {
-		return "HealthProfessionalType [health_professional_id=" + health_professional_id + ", profession_name="
-				+ profession_name + ", created_date=" + created_date + ", is_active=" + is_active + ", is_deleted="
-				+ is_deleted + "]";
-	}
+	
 	
 }

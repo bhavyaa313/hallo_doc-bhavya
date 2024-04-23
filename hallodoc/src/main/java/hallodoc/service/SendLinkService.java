@@ -33,5 +33,20 @@ public class SendLinkService {
 		emailLogDao.emailLogSave(emailLog);
 	}
 	
+public void sendAgreementService(String email, int reqId)
+	
+	{
+	
+		String mailUrl = "http://localhost:8080/hallodoc/agreement/"+reqId;
+		mailService.send(email, "Please read the following agreement properly", mailUrl);
+		EmailLog emailLog = new EmailLog();
+		emailLog.setCreated_date(LocalDateTime.now());
+		emailLog.setAdmin_id(1);
+		emailLog.setEmail_id(email);
+		emailLog.setSubject_name("Submit Request");
+		emailLogDao.emailLogSave(emailLog);
+	}
+	
+	
 
 }

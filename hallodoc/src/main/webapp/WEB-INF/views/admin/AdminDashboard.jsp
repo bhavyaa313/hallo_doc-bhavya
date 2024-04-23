@@ -38,7 +38,9 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 	crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+	crossorigin="anonymous"></script>
 
 
 
@@ -212,9 +214,6 @@ body {
 							<input type="text" id="search-input"
 								class="form-control border-0  shadow-none"
 								placeholder="Search Patients">
-							<button type="submit" class="searchFunction" hidden>enter</button>
-						</form>
-
 					</div>
 
 
@@ -225,14 +224,15 @@ body {
 								type="button">
 								<i class="bi bi-search"></i>
 							</button>
-						
-						<select class="form-select bt-badge " 
-							aria-label="Floating label select example">
-							<option value="1">GUJARAT</option>
-							<option value="2">MAHARASHTRA</option>
-							<option value="3">MADHYA PRADESH</option>
-							<option value="4">RAJASTHAN</option>
-						</select> 
+
+							<select class="form-select bt-badge "
+								aria-label="Floating label select example">
+								<option value="0">ALL</option>
+								<option value="1">GUJARAT</option>
+								<option value="2">MAHARASHTRA</option>
+								<option value="3">MADHYA PRADESH</option>
+								<option value="4">RAJASTHAN</option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -417,6 +417,9 @@ body {
 									class="bi bi-file-earmark-richtext mx-2"></i>encounter</a></li>
 						</ul>
 						</td> --%>
+						
+						
+						
 
 						<!-- </tr> -->
 					</tbody>
@@ -829,38 +832,44 @@ body {
 						<button type="button" class="btn-close btn-close-white"
 							data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
+					<form action="sendAgreementAction" method="post">
 					<div class="modal-body">
 
-
-						<div class="form-check mb-3">
-							<input class="form-check-input" type="radio"
-								name="flexRadioDefault" id="flexRadioDefault2" checked>
-							<label class="form-check-label" for="flexRadioDefault2">
-								Patient </label>
-						</div>
-						<p>To Send Agreement please make sure you are updating the
-							current contact information below for the responsible party.</p>
-						<div class="form-floating mb-3">
-							<input type="number" class="form-control" placeholder="Number">
-							<label for="floatingPassword">Phone Number</label>
-						</div>
-						<div class="form-floating mb-3">
-							<input type="email" class="form-control" id="floatingInput"
-								placeholder="name@example.com"> <label
-								for="floatingInput">Email address</label>
-						</div>
+						
+							<div class="form-check mb-3">
+								<input class="form-check-input" type="radio"
+									name="flexRadioDefault" id="flexRadioDefault2" checked>
+								<label class="form-check-label" for="flexRadioDefault2">
+									Patient </label>
+							</div>
+							<p>To Send Agreement please make sure you are updating the
+								current contact information below for the responsible party.</p>
 
 
+							<div class="form-floating mb-3">
+								<input type="number" class="form-control" placeholder="Number"
+									id="phone1"> <label for="floatingPassword">Phone
+									Number</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input type="email" class="form-control" id="email1"
+									placeholder="name@example.com" name="email23"> <label
+									for="floatingInput">Email address</label>
+							</div>
+							<input type="text" id="reqId6" name="reqId6">
 
 
+
+						
 
 					</div>
 					<div class="modal-footer">
 
-						<button type="button" class="btn btn-info">Send</button>
+						<button type="submit" class="btn btn-info">Send</button>
 						<button type="button" class="btn btn-outline-info"
 							data-bs-dismiss="modal">Cancel</button>
 					</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -1097,28 +1106,17 @@ body {
 
 
 </script>
-	</script>
+
 
 	<script type="text/javascript">
 	
-	console.log("docss");
 
 	$(document).ready(function() {
-		  $("#new").click();  
-		
-		});
+		console.log("docss-----------");
+	  	$("#new").click();  
+	});
 	
 	</script>
-
-
-
-
-
-
-
-
-
-
 
 	<script>
 	
@@ -1137,8 +1135,27 @@ body {
   $('#reqId33').attr('value' , reqId);
   $('#reqId4').attr('value' , reqId);
   $('#reqId5').attr('value' , reqId);
+  $('#reqId6').attr('value' , reqId);
   
   console.log(reqId)
+}
+	</script>
+
+	<script>
+	
+	console.log("yeahhhhhh")
+	function sendAgreement(email, phone, reqId) {
+  console.log("Success!"); 
+
+
+  
+
+  
+  $('#email1').attr('value' , email);
+  $('#phone1').attr('value' , phone);
+  $('#reqId6').attr('value' , reqId);
+  
+
 }
 	</script>
 
@@ -1256,13 +1273,14 @@ body {
 	
 	console.log("jdisujo")
 	$(".bt-badge").on('click', onBadgeClick);
+	$("#search-input").on('keyup', onBadgeClick); 
 	
 	
 	
 	var qForclas1 =[];
 function onBadgeClick(event) {
-	debugger
-		event.preventDefault();
+	/* debugger */
+		
 		console.log("hii");
 		
 		var class1 = $(this).children('span').attr('id');
@@ -1281,6 +1299,7 @@ function onBadgeClick(event) {
 			{
 			valueofInput="undefined";
 			}
+		 //console.log(valueofInput + " =====")
 		
 		else if(valueofInput!=undefined){
 			class1 = qForclas1.at(qForclas1.length-1);
@@ -1293,10 +1312,12 @@ function onBadgeClick(event) {
 		  
 		  dataType: "json", // Expected data type of the response (optional)
 		  success: function(data) {
+			  debugger
 			  console.log(data);
 			  console.log("jii")
 			
 			$(".t-header").empty();
+			  
 			  
 			  console.log("hearder-empty");
 			  
@@ -1330,6 +1351,8 @@ function onBadgeClick(event) {
 					var dataset = data[i];
 					console.log(dataset)
 					var id = dataset.requestId;
+					var email = dataset.email;
+					var phone = dataset.phone;
 					console.log("hello")
 					console.log(id);
 					
@@ -1380,12 +1403,12 @@ function onBadgeClick(event) {
 					<li class="PendingAction"><a class="dropdown-item" data-bs-toggle="modal"
 						data-bs-target="#transfer" onclick="cancelCase('`+dataset.name+`', `+id+`)"><i
 							class="bi bi-card-checklist mx-2"></i>transfer</a></li>
-					<li class="PendingAction"><a class="dropdown-item" data-bs-toggle="modal"
+					<li class="PendingAction"><a class="dropdown-item" onclick="sendAgreement('`+email+`', '`+phone+`',  `+id+`)" data-bs-toggle="modal"
 						data-bs-target="#send"> <i
 							class="bi bi-file-earmark-slides mx-2 "></i>send agreement
 					</a></li>
 					<li class="ActiveAction ConcludeAction ToCloseAction"><a class="dropdown-item text-secondary"
-						href="orders.html"><i
+						href="orders/`+id+`""><i
 							class="bi bi-clipboard-check-fill mx-2"></i>orders</a></li>
 					<li class="ActiveAction ConcludeAction ToCloseAction"><a class="dropdown-item text-secondary" href="#"><i
 							class="bi bi-file-earmark-richtext mx-2"></i>doctors notes</a></li>
