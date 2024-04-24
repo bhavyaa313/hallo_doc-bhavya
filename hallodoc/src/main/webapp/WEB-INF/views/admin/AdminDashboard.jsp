@@ -1389,7 +1389,7 @@ function onBadgeClick(event) {
 						data-bs-target="#clear"><i class="bi bi-x-circle mx-2"></i>clear
 							case</a></li>
 					<li class="ToCloseAction"><a class="dropdown-item text-secondary"
-						href="close_case.html"><i class="bi bi-x-circle mx-2"></i>close
+						href="closeCase/`+id+`"><i class="bi bi-x-circle mx-2"></i>close
 							case</a></li>
 					<li class="PendingAction NewAction ActiveAction ConcludeAction ToCloseAction UnpaidAction"><a class="dropdown-item text-secondary"
 						href="viewNotes/`+id+`"><i class="bi bi-journal-medical mx-2 "></i>view
@@ -1410,8 +1410,7 @@ function onBadgeClick(event) {
 					<li class="ActiveAction ConcludeAction ToCloseAction"><a class="dropdown-item text-secondary"
 						href="orders/`+id+`""><i
 							class="bi bi-clipboard-check-fill mx-2"></i>orders</a></li>
-					<li class="ActiveAction ConcludeAction ToCloseAction"><a class="dropdown-item text-secondary" href="#"><i
-							class="bi bi-file-earmark-richtext mx-2"></i>doctors notes</a></li>
+					
 
 					<li class="ActiveAction ConcludeAction ToCloseAction"><a class="dropdown-item text-secondary" href="#"><i
 							class="bi bi-file-earmark-richtext mx-2"></i>encounter</a></li>

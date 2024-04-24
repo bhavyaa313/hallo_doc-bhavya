@@ -51,7 +51,7 @@
 
 					</div>
 					<div class="bg-white p-3">
-						<form action="sendOrders" method="post">
+						<form action="sendOrders/${reqId }" method="post">
 							<div class="row g-2 mb-3">
 								<div class="col-md ">
 									<div class="form-floating mb-2">

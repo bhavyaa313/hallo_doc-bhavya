@@ -328,7 +328,7 @@ public class AdminController {
 		return physicians;
 	}
 	
-	@GetMapping(path = "/ajaxForOrders")
+	@GetMapping(path = "/orders/ajaxForOrders")
 	@ResponseBody
 	public List<ordersDto> ajaxForOrders(@RequestParam("profession") int professionals) {
 
@@ -496,13 +496,59 @@ public class AdminController {
 
 	}
 	
-	@RequestMapping(path = "/orders/{requestId}/sendOrders", method = RequestMethod.POST)
-	public String rejectAgreementAction(@ModelAttribute ordersDto ordersDto)
+	@RequestMapping(path = "/orders/sendOrders/{requestId}", method = RequestMethod.POST)
+	public String sendOrders(@ModelAttribute ordersDto ordersDto)
 
 	{
 		ordersService.sendOrders(ordersDto);
 		return "redirect:/admin";
 
+	}
+	
+	@RequestMapping(path = "/closeCase/{requestId}")
+	public String closecase(@PathVariable("requestId") int requestId, Model model, HttpServletRequest request1)
+
+	{
+		
+		List<Request> requests = requestService.getRequestByReqId(requestId);
+		Request request = requests.get(0);
+		String confirmString = request.getConfirmationNumber();
+		int status = request.getStatus();
+		List<RequestClient> requestClients = requestClientService.getRequestClientByReqId(request);
+		RequestClient requestClient = requestClients.get(0);
+		int date = requestClient.getIntDate();
+		int year = requestClient.getIntYear();
+		String monthString = requestClient.getStrMonth();
+		String fullDate = dobHelper.getWholeDate(date, monthString, year);
+		System.out.println(fullDate);
+		model.addAttribute("fullDate", fullDate);
+		model.addAttribute("requestClients", requestClients);
+		model.addAttribute("confirmString", confirmString);
+		model.addAttribute("status", status);
+		model.addAttribute("requestId", requestId);
+		List<ViewDocumentsDTO> viewDocumentsDTO = viewDocsService.getRequestWiseFiles(requestId, request1);
+		model.addAttribute("requestWiseFiles", viewDocumentsDTO);
+		/*
+		 * HttpSession session = request1.getSession();
+		 * session.getAttribute("userList");
+		 */
+
+
+		return ("/admin/CLoseCase");
+		
+		
+
+	}
+	
+
+	@RequestMapping(path = "/closeCase/update/{requestId}", method = RequestMethod.POST)
+	public String UpdateCase(@PathVariable("requestId") int requestId, @ModelAttribute ViewCaseDto viewCaseDto) {
+
+		List<Request> requests = requestService.getRequestByReqId(requestId);
+		Request request = requests.get(0);
+
+		viewCaseService.service(viewCaseDto, request);
+		return "redirect:/closeCase/{requestId}";
 	}
 
 

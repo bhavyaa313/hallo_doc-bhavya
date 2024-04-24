@@ -23,6 +23,7 @@ public class OrderDetailsDao {
 		template.update(orderDetails);
 	}
 	
+	@Transactional
 	public void orderDetailsSave(OrderDetails orderDetails) {
 		template.save(orderDetails);
 	}
