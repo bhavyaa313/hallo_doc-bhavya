@@ -79,6 +79,7 @@ public class AssignCaseService {
 	
 	request.setModifiedDate(LocalDateTime.now());
 	request.setDeclinedBy(user.getAspnetUserId());
+	request.setPhysicianId(phyInteger);
 	request.setStatus(2);
 	
 	requestDao.requestUpdate(request);

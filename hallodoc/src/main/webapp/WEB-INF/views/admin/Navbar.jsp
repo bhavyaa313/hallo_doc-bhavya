@@ -94,20 +94,20 @@
       <div class="collapse navbar-collapse w-100 d-none d-lg-inline" id="navbarSupportedContent">
         <ul class="navbar-nav nav-underline">
           <li class="nav-item mx-2">
-            <a href="dashboard.html" class="nav-link ${activeString }">Dashboard</a>
+            <a href="admin" class="nav-link ${activeString }">Dashboard</a>
           </li>
           <li class="nav-item mx-2">
             <a href="provider_location.html" class="nav-link">Provider Location</a>
           </li>
           <li class="nav-item mx-2">
-            <a href="my_profile.html" class="nav-link">My Profile</a>
+            <a href="myProfile/${userList[0].userID}" class="nav-link ${activeString1 }">My Profile</a>
           </li>
           <li class="nav-item dropdown mx-2">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle ${active }" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               providers
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="provider_menu.html">Provider</a></li>
+              <li><a class="dropdown-item" href="providerMenu">Provider</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -115,47 +115,47 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Invoicing</a></li>
+             
             </ul>
           </li>
           <li class="nav-item mx-2">
-            <a href="vendor.html" class="nav-link">Partners</a>
+            <a href="partners" class="nav-link ${active2 } ">Partners</a>
           </li>
           <li class="nav-item dropdown mx-2">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle ${active3 }" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Access
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="account_access.html">Account Access</a></li>
+              <li><a class="dropdown-item" href="accountAccess">Account Access</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="user_access.html">User Access</a></li>
+              <li><a class="dropdown-item" href="userAccess">User Access</a></li>
 
             </ul>
           </li>
           <li class="nav-item dropdown mx-2">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle ${active4 }" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Records
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="search_records.html">Search Records</a></li>
+              <li><a class="dropdown-item" href="searchRecords">Search Records</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="email_logs.html">Email Logs</a></li>
+              <li><a class="dropdown-item" href="emailLogs">Email Logs</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="sms_logs.html">SMS Logs</a></li>
+              <li><a class="dropdown-item" href="smsLogs">SMS Logs</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="patient_record.html">Patient Records</a></li>
+              <li><a class="dropdown-item" href="patientRecords">Patient Records</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="block_history.html">Block History</a></li>
+              <li><a class="dropdown-item" href="blockHistory">Block History</a></li>
             </ul>
           </li>
         </ul>

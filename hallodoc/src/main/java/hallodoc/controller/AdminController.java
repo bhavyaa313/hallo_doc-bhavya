@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.annotations.common.util.StringHelper;
 import org.hibernate.sql.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -40,7 +41,9 @@ import hallodoc.dto.AdminLoginDto;
 import hallodoc.dto.AssignCaseDto;
 import hallodoc.dto.BlockCaseDto;
 import hallodoc.dto.CancelCaseDto;
+import hallodoc.dto.CloseCaseDto;
 import hallodoc.dto.CreateNewRequestDto;
+import hallodoc.dto.EncounterDto;
 import hallodoc.dto.SendLinkDto;
 import hallodoc.dto.TransferCaseDto;
 import hallodoc.dto.ViewCaseDto;
@@ -49,20 +52,24 @@ import hallodoc.dto.ViewNotesDto;
 import hallodoc.dto.ordersDto;
 import hallodoc.helper.DobHelper;
 import hallodoc.model.CaseTag;
+import hallodoc.model.EncounterForm;
 import hallodoc.model.Physician;
 import hallodoc.model.Request;
 import hallodoc.model.RequestClient;
 import hallodoc.model.User;
 import hallodoc.model.Users;
 import hallodoc.repo.AdminDashboardDao;
+import hallodoc.repo.EncounterDao;
 import hallodoc.repo.UserDao;
 import hallodoc.service.AdminDashboardService;
 import hallodoc.service.AssignCaseService;
 import hallodoc.service.BlockCaseService;
 import hallodoc.service.CancelCaseService;
 import hallodoc.service.ClearCaseService;
+import hallodoc.service.CloseCaseService;
 import hallodoc.service.CreateNewRequestService;
 import hallodoc.service.CreateService;
+import hallodoc.service.EncounterService;
 import hallodoc.service.ExportAllService;
 import hallodoc.service.RequestClientService;
 import hallodoc.service.RequestService;
@@ -87,12 +94,21 @@ public class AdminController {
 	
 	@Autowired
 	private ordersService ordersService;
+	
+	@Autowired
+	private EncounterService encounterService;
 
 	@Autowired
 	private AdminDashboardService adminDashboardService;
+	
+	@Autowired
+	private CloseCaseService closeCaseService;
 
 	@Autowired
 	private RequestService requestService;
+	
+	@Autowired
+	private EncounterDao encounterDao;
 
 	@Autowired
 	private ViewNotesService viewNotesService;
@@ -542,14 +558,181 @@ public class AdminController {
 	
 
 	@RequestMapping(path = "/closeCase/update/{requestId}", method = RequestMethod.POST)
-	public String UpdateCase(@PathVariable("requestId") int requestId, @ModelAttribute ViewCaseDto viewCaseDto) {
+	public String UpdateCase(@PathVariable("requestId") int requestId, @ModelAttribute CloseCaseDto closeCaseDto) {
 
 		List<Request> requests = requestService.getRequestByReqId(requestId);
 		Request request = requests.get(0);
 
-		viewCaseService.service(viewCaseDto, request);
+		closeCaseService.service(closeCaseDto, request);
 		return "redirect:/closeCase/{requestId}";
 	}
+	
+	@RequestMapping("/closeCase/closed/{requestId}")
+	public String caseClosed(@PathVariable("requestId")int reqId)
+	{
+		closeCaseService.caseClosed(reqId);
+		return "redirect:/admin";
+		
+	}
+	
+	@RequestMapping("/encounter/{requestId}")
+	public String encounter(@PathVariable("requestId") int reqId, Model model)
+	{
+	List<Request> requests = requestService.getRequestByReqId(reqId);
+	Request request = requests.get(0);
+	List<RequestClient> requestClients = requestClientService.getRequestClientByReqId(request);
+	RequestClient requestClient = requestClients.get(0);
+	int date = requestClient.getIntDate();
+	int year = requestClient.getIntYear();
+	String monthString = requestClient.getStrMonth();
+	String fullDate = dobHelper.getWholeDate(date, monthString, year);
+	System.out.println(fullDate);
+	model.addAttribute("fullDate", fullDate);
+	model.addAttribute("requestClients", requestClients);
+	model.addAttribute("reqId", reqId);
+	List<EncounterForm> encounterList = encounterDao.getformList(request);
+	if(encounterList.size()>0) {
+	
+	model.addAttribute("encounterList", encounterList);
+	}
+	return "/admin/encounterForm";
+	}
+	
+	@PostMapping("/encounter/submitEncounter/{reqId}")
+	public String submitEncounter(@PathVariable("reqId")int reqId, @ModelAttribute EncounterDto encounterDto) {
+		encounterService.service(reqId, encounterDto);
+		return "redirect:/encounter/{reqId}";
+	}
+	
+	@RequestMapping("/myProfile/{userID}")
+	public String myProfile(@PathVariable("userID") int userID, Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("activeString1", activeString);
+		return "/admin/MyProfile";
+	}
+	
+	@RequestMapping("/providerMenu")
+	public String providerMenu( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active", activeString);
+		return "/admin/providerMenu";
+	}
+
+	@RequestMapping("/providerMenu/addProvider")
+	public String addProvider( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active", activeString);
+		return "/admin/addProvider";
+	}
+	
+	@RequestMapping("/editProvider")
+	public String editProvider( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active", activeString);
+		return "/admin/editProvider";
+	}
+	
+	@RequestMapping("/partners")
+	public String partners( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active2", activeString);
+		return "/admin/partners";
+	}
+	
+	@RequestMapping("/addBusiness")
+	public String addBusiness( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active2", activeString);
+		return "/admin/addBusiness";
+	}
+	
+	@RequestMapping("/editBusiness")
+	public String editBusiness( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active2", activeString);
+		return "/admin/editBusiness";
+	}
+	
+	@RequestMapping("/accountAccess")
+	public String accountAccess( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active3", activeString);
+		return "/admin/accountAccess";
+	}
+	
+	@RequestMapping("/createRole")
+	public String createRole( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active3", activeString);
+		return "/admin/createRole";
+	}
+	
+	@RequestMapping("/editRole")
+	public String editRole( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active3", activeString);
+		return "/admin/editRole";
+	}
+	
+	@RequestMapping("/userAccess")
+	public String userAccess( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active3", activeString);
+		return "/admin/userAccess";
+	}
+	
+	@RequestMapping("/searchRecords")
+	public String searchRecords( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active4", activeString);
+		return "/admin/searchRecords";
+	}
+	
+	@RequestMapping("/patientRecords")
+	public String patientRecords( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active4", activeString);
+		return "/admin/patientRecords";
+	}
+	
+	@RequestMapping("/emailLogs")
+	public String emailLogs( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active4", activeString);
+		return "/admin/emailLogs";
+	}
+	
+	@RequestMapping("/smsLogs")
+	public String smsLogs( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active4", activeString);
+		return "/admin/smsLogs";
+	}
+	
+	@RequestMapping("/blockHistory")
+	public String blockHistory( Model model)
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("active4", activeString);
+		return "/admin/blockHistory";
+	}
+	
+	
 
 
 }

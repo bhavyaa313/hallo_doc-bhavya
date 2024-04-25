@@ -85,6 +85,7 @@ public void service(TransferCaseDto transferCaseDto, int userID)
 	request.setModifiedDate(LocalDateTime.now());
 
 	request.setStatus(1);
+	request.setPhysicianId(phyInteger);
 	
 	requestDao.requestUpdate(request);
 	

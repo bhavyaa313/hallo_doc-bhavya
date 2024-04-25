@@ -240,40 +240,48 @@ body {
 					<div
 						class="d-lg-flex d-none justify-content-end align-items-center">
 						<div class="me-4">
-							<button class="btn btn-outline-secondary searchFunction">All</button>
+							<button type="button" class="btn btn-outline-secondary bt-badge-role ">All</button>
 						</div>
-						<div class="me-2 d-sm-flex align-items-center">
-							<button class="bt-badge">
-								<div class="rounded-circle me-1"
+							<button type="button" class="bt-badge-role border-0 bg-white" >
+						<div class="me-2 d-sm-flex align-items-center" id="Patient">
+						
+								<div class="rounded-circle me-1" 
 									style="height: 15px; width: 15px; background-color: rgb(15, 189, 64);">
 								</div>
 								<p class="my-auto">Patients</p>
-							</button>
+							
 						</div>
-						<div class="me-2 d-sm-flex align-items-center">
-							<button class="bt-badge">
-								<div class="rounded-circle me-1"
+						</button>
+							<button type="button" class="bt-badge-role border-0 bg-white">
+						<div class="me-2 d-sm-flex align-items-center" id="Family">
+						
+								<div class="rounded-circle me-1" 
 									style="height: 15px; width: 15px; background-color: rgb(212, 107, 21);">
 								</div>
 								<p class="my-auto">Family/Friend</p>
-							</button>
+							
 						</div>
-						<div class="me-2 d-sm-flex align-items-center">
-							<button class="bt-badge">
-								<div class="rounded-circle me-1"
+						</button>
+							<button type="button" class="bt-badge-role border-0 bg-white">
+						<div class="me-2 d-sm-flex align-items-center" id="Business">
+						
+								<div class="rounded-circle me-1" 
 									style="height: 15px; width: 15px; background-color: rgb(203, 22, 134);">
 								</div>
 								<p class="my-auto">Business</p>
-							</button>
+							
 						</div>
-						<div class="me-2 d-sm-flex align-items-center">
-							<button class="bt-badge">
-								<div class="rounded-circle me-1"
+						</button>
+							<button type="button" class="bt-badge-role border-0 bg-white">
+						<div class="me-2 d-sm-flex align-items-center" id="Concierge">
+						
+								<div class="rounded-circle me-1" 
 									style="height: 15px; width: 15px; background-color: rgb(65, 65, 232);">
 								</div>
 								<p class="my-auto">Concierge</p>
-							</button>
+						
 						</div>
+							</button>
 
 					</div>
 
@@ -417,9 +425,9 @@ body {
 									class="bi bi-file-earmark-richtext mx-2"></i>encounter</a></li>
 						</ul>
 						</td> --%>
-						
-						
-						
+
+
+
 
 						<!-- </tr> -->
 					</tbody>
@@ -833,9 +841,9 @@ body {
 							data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<form action="sendAgreementAction" method="post">
-					<div class="modal-body">
+						<div class="modal-body">
 
-						
+
 							<div class="form-check mb-3">
 								<input class="form-check-input" type="radio"
 									name="flexRadioDefault" id="flexRadioDefault2" checked>
@@ -860,15 +868,15 @@ body {
 
 
 
-						
 
-					</div>
-					<div class="modal-footer">
 
-						<button type="submit" class="btn btn-info">Send</button>
-						<button type="button" class="btn btn-outline-info"
-							data-bs-dismiss="modal">Cancel</button>
-					</div>
+						</div>
+						<div class="modal-footer">
+
+							<button type="submit" class="btn btn-info">Send</button>
+							<button type="button" class="btn btn-outline-info"
+								data-bs-dismiss="modal">Cancel</button>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -1273,22 +1281,47 @@ body {
 	
 	console.log("jdisujo")
 	$(".bt-badge").on('click', onBadgeClick);
+	$(".bt-badge-role").on('click', onBadgeClick);
 	$("#search-input").on('keyup', onBadgeClick); 
 	
 	
 	
 	var qForclas1 =[];
 function onBadgeClick(event) {
-	/* debugger */
+	debugger 
 		
 		console.log("hii");
 		
 		var class1 = $(this).children('span').attr('id');
+		if(typeof(class1) == "undefined")
+		{
+				if(typeof($(".bt-badge span.bluecol")[0]) != "undefined"){
+		console.log("blueeeee")
+		class1 = "blue";
+		}
+		else if(typeof($(".bt-badge span.skycol")[0]) != "undefined"){
+		console.log("skyyyy")
+		class1="sky";
+		}
+		else if(typeof($(".bt-badge span.grncol")[0]) != "undefined"){
+		class1="green";
+		}
+		else if(typeof($(".bt-badge span.pinkcol")[0]) != "undefined"){
+		class1="pink";
+		}
+		else if(typeof($(".bt-badge span.l-bluecol")[0]) != "undefined"){
+		class1="light-blue";
+		}
+		else if(typeof($(".bt-badge span.purplecol")[0]) != "undefined"){
+		class1="purple";
+		}
+				}
 		
 		
 		var valueofInput = $('#search-input').val();
 		console.log(valueofInput);
-		var roleWiseId = $(this).children('div').attr('id');
+		var check = $(this).children('div').attr('id');
+		var roleWiseId = (($(this).children('div').attr('id')!= "" ? ($(this).children('div').attr('id')) : "undefined"));
 		var regionWiseSearch = $(".bt-badge :selected").val().toUpperCase();
 
 		if(class1!=undefined){
@@ -1305,8 +1338,9 @@ function onBadgeClick(event) {
 			class1 = qForclas1.at(qForclas1.length-1);
 		}
 		console.log(class1);
-	
+	debugger
 	$.ajax({
+		
 		  url: "ajaxcall/"+class1+"/"+roleWiseId+"/"+valueofInput+"/"+regionWiseSearch, // URL to make the request to
 		  type: "GET",    // HTTP method (GET, POST, etc.) 
 		  
@@ -1412,7 +1446,7 @@ function onBadgeClick(event) {
 							class="bi bi-clipboard-check-fill mx-2"></i>orders</a></li>
 					
 
-					<li class="ActiveAction ConcludeAction ToCloseAction"><a class="dropdown-item text-secondary" href="#"><i
+					<li class="ActiveAction ConcludeAction ToCloseAction"><a class="dropdown-item text-secondary" href="encounter/`+id+`"><i
 							class="bi bi-file-earmark-richtext mx-2"></i>encounter</a></li>
 				</ul>
 				</td></tr>`
@@ -1771,7 +1805,7 @@ if(class1 == "blue" && dataset.status==1){
 
 
 
-	-->
+
 
 
 

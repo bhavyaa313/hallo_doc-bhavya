@@ -264,9 +264,9 @@
 
 						<!-- <button type="submit" class="btn btn-info btn-lg mx-3 random  "
 						onclick="show()">Edit</button> -->
-						<button type="button"
+						<a type="button" href="closed/${requestId }"
 							class="btn btn-outline-info btn-lg mx-3 random xx ">Close
-							Case</button>
+							Case</a>
 						<!-- <button type="submit" class="btn btn-danger btn-lg mx-2 hide "
 						onclick="show2()" >Cancel</button>
 					<button type="submit" class="btn btn-success btn-lg mx-2 hide "
@@ -370,6 +370,14 @@
 
 		}
 	</script>
+	
+		<script>
+				$('form').submit(function(e) {
+					$(':disabled').each(function(e) {
+						$(this).removeAttr('disabled');
+					})
+				});
+			</script>
 
 </body>
 
