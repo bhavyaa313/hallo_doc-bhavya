@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +21,9 @@ public class BlockRequests {
 	private String email;
 	private boolean is_active;
 	private String reason;
-	private int request_id;
+	@OneToOne
+	@JoinColumn(name = "request_id")
+	private Request request_id;
 	private LocalDateTime created_date;
 	private LocalDateTime modified_date;
 	
@@ -53,10 +57,11 @@ public class BlockRequests {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-	public int getRequest_id() {
+	
+	public Request getRequest_id() {
 		return request_id;
 	}
-	public void setRequest_id(int request_id) {
+	public void setRequest_id(Request request_id) {
 		this.request_id = request_id;
 	}
 	public LocalDateTime getCreated_date() {
@@ -72,8 +77,10 @@ public class BlockRequests {
 		this.modified_date = modified_date;
 	}
 	
+	
+	
 	public BlockRequests(int block_request_id, String phone_number, String email, boolean is_active, String reason,
-			int request_id, LocalDateTime created_date, LocalDateTime modified_date) {
+			Request request_id, LocalDateTime created_date, LocalDateTime modified_date) {
 		super();
 		this.block_request_id = block_request_id;
 		this.phone_number = phone_number;
@@ -84,7 +91,6 @@ public class BlockRequests {
 		this.created_date = created_date;
 		this.modified_date = modified_date;
 	}
-	
 	public BlockRequests() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -3,6 +3,7 @@ package hallodoc.model;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,6 +34,13 @@ public class AspNetUsers {
 	@Column(name = "modified_date")
 	private LocalDateTime modifiedDate;
 	
+	/*
+	 * @OneToOne(mappedBy = "aspnetUserId", cascade = CascadeType.ALL, orphanRemoval
+	 * = true)
+	 * 
+	 * private Admin admin;
+	 */
+	
 	@Column(name = "created_date")
 	private LocalDateTime createdDate=LocalDateTime.now();
 
@@ -45,8 +53,11 @@ public class AspNetUsers {
 
 
 
+
+
+
 	public AspNetUsers(int id, String userName, String passwordHash, String email, String phoneNumber,
-			LocalDateTime modifiedDate, LocalDateTime createdDate) {
+			LocalDateTime modifiedDate,  LocalDateTime createdDate) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -54,9 +65,14 @@ public class AspNetUsers {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.modifiedDate = modifiedDate;
+	
 		this.createdDate = createdDate;
-		
 	}
+
+
+
+
+
 
 
 	public int getId() {
@@ -104,6 +120,11 @@ public class AspNetUsers {
 	public LocalDateTime getModifiedDate() {
 		return modifiedDate;
 	}
+	
+	
+
+
+
 
 
 	public LocalDateTime getCreatedDate() {

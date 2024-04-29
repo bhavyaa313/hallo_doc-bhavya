@@ -1,12 +1,18 @@
 package hallodoc.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,8 +24,9 @@ public class Admin {
 	@Column(name="admin_id")
 	private int adminId;
 	
-	@Column(name="aspnet_userid")
-	private int aspnetUserId;
+	@OneToOne
+	@JoinColumn(name="aspnet_userid")
+	private AspNetUsers aspnetUserId;
 	
 	@Column(name="first_name")
 	private String firsName;
@@ -55,7 +62,7 @@ public class Admin {
 	private int modifiedBy;
 	
 	@Column(name="modified_date")
-	private Date modifiedDate;
+	private LocalDateTime modifiedDate;
 	
 	@Column(name="is_deleted")
 	private boolean isDeleted;
@@ -71,11 +78,13 @@ public class Admin {
 		this.adminId = adminId;
 	}
 
-	public int getAspnetUserId() {
+	
+
+	public AspNetUsers getAspnetUserId() {
 		return aspnetUserId;
 	}
 
-	public void setAspnetUserId(int aspnetUserId) {
+	public void setAspnetUserId(AspNetUsers aspnetUserId) {
 		this.aspnetUserId = aspnetUserId;
 	}
 
@@ -167,12 +176,12 @@ public class Admin {
 		this.modifiedBy = modifiedBy;
 	}
 
-	public Date getModifiedDate() {
+	public LocalDateTime getModifiedDate() {
 		return modifiedDate;
 	}
 
-	public void setModifiedDate(Date modifiedDate) {
-		this.modifiedDate = modifiedDate;
+	public void setModifiedDate(LocalDateTime localDateTime) {
+		this.modifiedDate = localDateTime;
 	}
 
 	public boolean isDeleted() {
@@ -191,9 +200,10 @@ public class Admin {
 		this.roleId = roleId;
 	}
 
-	public Admin(int adminId, int aspnetUserId, String firsName, String lastName, String addressOne, String addressTwo,
-			String city, int regionId, String zip, String altPhone, int createdBy, Date createdDate, int modifiedBy,
-			Date modifiedDate, boolean isDeleted, int roleId) {
+	
+	public Admin(int adminId, AspNetUsers aspnetUserId, String firsName, String lastName, String addressOne,
+			String addressTwo, String city, int regionId, String zip, String altPhone, int createdBy, Date createdDate,
+			int modifiedBy, LocalDateTime modifiedDate, boolean isDeleted, int roleId) {
 		super();
 		this.adminId = adminId;
 		this.aspnetUserId = aspnetUserId;
