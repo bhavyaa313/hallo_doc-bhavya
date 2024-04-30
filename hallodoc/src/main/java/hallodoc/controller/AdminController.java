@@ -42,11 +42,16 @@ import hallodoc.dto.AdminDashboardDto;
 import hallodoc.dto.AdminLoginDto;
 import hallodoc.dto.AssignCaseDto;
 import hallodoc.dto.BlockCaseDto;
+import hallodoc.dto.BlockRecordsDto;
 import hallodoc.dto.CancelCaseDto;
 import hallodoc.dto.CloseCaseDto;
 import hallodoc.dto.CreateNewRequestDto;
 import hallodoc.dto.CreateProviderDto;
+import hallodoc.dto.EmailLogsDto;
 import hallodoc.dto.EncounterDto;
+import hallodoc.dto.PatientHistoryDto;
+import hallodoc.dto.PatientRecordsDto;
+import hallodoc.dto.SMSLogDto;
 import hallodoc.dto.SendLinkDto;
 import hallodoc.dto.TransferCaseDto;
 import hallodoc.dto.ViewCaseDto;
@@ -82,9 +87,12 @@ import hallodoc.service.CreateService;
 import hallodoc.service.EncounterService;
 import hallodoc.service.ExportAllService;
 import hallodoc.service.PartnerService;
+import hallodoc.service.PatientHistoryService;
+import hallodoc.service.PatientRecordsService;
 import hallodoc.service.ProviderService;
 import hallodoc.service.RequestClientService;
 import hallodoc.service.RequestService;
+import hallodoc.service.SMSRecordsService;
 import hallodoc.service.SendAgreementService;
 import hallodoc.service.SendLinkService;
 import hallodoc.service.TransferCaseService;
@@ -105,7 +113,7 @@ public class AdminController {
 
 	@Autowired
 	private AdminDashboardDao adminDashboardDao;
-	
+
 	@Autowired
 	private emailRecordsService emailRecordsService;
 
@@ -120,6 +128,9 @@ public class AdminController {
 
 	@Autowired
 	private ordersService ordersService;
+
+	@Autowired
+	private PatientHistoryService patientHistoryService;
 
 	@Autowired
 	private EncounterService encounterService;
@@ -146,6 +157,9 @@ public class AdminController {
 	private EncounterDao encounterDao;
 
 	@Autowired
+	private SMSRecordsService smsRecordsService;
+
+	@Autowired
 	private ViewNotesService viewNotesService;
 
 	@Autowired
@@ -168,6 +182,9 @@ public class AdminController {
 
 	@Autowired
 	private SendLinkService sendLinkService;
+
+	@Autowired
+	private PatientRecordsService patientRecordsService;
 
 	@Autowired
 	private CreateNewRequestService createNewRequestService;
@@ -722,7 +739,7 @@ public class AdminController {
 		return "redirect:/editProvider/{physicianId}";
 
 	}
-	
+
 	@PostMapping("/resetPhy1/{physicianId}/{id}")
 	public String resetString1(@ModelAttribute CreateProviderDto createProviderDto,
 			@PathVariable("physicianId") int physicianId, @PathVariable("id") int id) {
@@ -730,7 +747,7 @@ public class AdminController {
 		return "redirect:/editProvider/{physicianId}";
 
 	}
-	
+
 	@PostMapping("/resetPhy2/{physicianId}/{id}")
 	public String resetString2(@ModelAttribute CreateProviderDto createProviderDto,
 			@PathVariable("physicianId") int physicianId, @PathVariable("id") int id) {
@@ -738,7 +755,7 @@ public class AdminController {
 		return "redirect:/editProvider/{physicianId}";
 
 	}
-	
+
 	@PostMapping("/resetPhy3/{physicianId}/{id}")
 	public String resetString3(@ModelAttribute CreateProviderDto createProviderDto,
 			@PathVariable("physicianId") int physicianId, @PathVariable("id") int id) {
@@ -746,10 +763,6 @@ public class AdminController {
 		return "redirect:/editProvider/{physicianId}";
 
 	}
-	
-	
-	
-	
 
 	@RequestMapping("/partners")
 	public String partners(Model model) {
@@ -839,15 +852,47 @@ public class AdminController {
 	public String patientRecords(Model model) {
 		String activeString = "active  text-info";
 		model.addAttribute("active4", activeString);
+
+		return "/admin/patientHistory1";
+	}
+
+	@RequestMapping("/patientRecords1/{uId}")
+	public String patientRecords1(Model model, @PathVariable("uId") int uId) {
+		String activeString = "active  text-info";
+		model.addAttribute("active4", activeString);
+		List<PatientRecordsDto> patientRecordsDtos = patientRecordsService.pRecords(uId);
+		model.addAttribute("patientRecords", patientRecordsDtos);
+
 		return "/admin/patientRecords";
+	}
+
+	@PostMapping(path = "/ajaxforPatientHistory")
+	@ResponseBody
+	public List<PatientHistoryDto> ajaxforPatientHistory(Model model, HttpServletRequest request,
+			@RequestParam("fName") String fName, @RequestParam("lName") String lName,
+			@RequestParam("email") String email, @RequestParam("phone") String phone) {
+		List<PatientHistoryDto> patientHistoryDtos = patientHistoryService.PatientHistory(fName, lName, email, phone);
+
+		return patientHistoryDtos;
+
+	}
+
+	@PostMapping(path = "/ajaxforEmailLogs")
+	@ResponseBody
+	public List<EmailLogsDto> ajaxforEmailLogs(Model model, HttpServletRequest request,
+			@RequestParam("role") String role, @RequestParam("name") String name, @RequestParam("email") String email,
+			@RequestParam("createdDate") String createdDate, @RequestParam("sentDate") String sentDate) {
+		List<EmailLogsDto> emailLogsDtos = emailRecordsService.emailLogs(role, name, email, createdDate, sentDate);
+
+		return emailLogsDtos;
+
 	}
 
 	@RequestMapping("/emailLogs")
 	public String emailLogs(Model model) {
 		String activeString = "active  text-info";
 		model.addAttribute("active4", activeString);
-		emailRecordsService.emailLogs();
-		
+
 		return "/admin/emailLogs";
 	}
 
@@ -855,16 +900,38 @@ public class AdminController {
 	public String smsLogs(Model model) {
 		String activeString = "active  text-info";
 		model.addAttribute("active4", activeString);
+
 		return "/admin/smsLogs";
+	}
+
+	@PostMapping(path = "/ajaxforSMSLogs")
+	@ResponseBody
+	public List<SMSLogDto> ajaxforSMSLogs(Model model, HttpServletRequest request, @RequestParam("role") String role,
+			@RequestParam("name") String name, @RequestParam("email") String email,
+			@RequestParam("createdDate") String createdDate, @RequestParam("sentDate") String sentDate) {
+		List<SMSLogDto> smsLogDtos = smsRecordsService.SMSLogs(role, name, email, createdDate, sentDate);
+
+		return smsLogDtos;
+
 	}
 
 	@RequestMapping("/blockHistory")
 	public String blockHistory(Model model) {
 		String activeString = "active  text-info";
-		List<BlockRequests> blockRequests = blockRecordsService.showReq();
-		model.addAttribute("block", blockRequests);
+
 		model.addAttribute("active4", activeString);
 		return "/admin/blockHistory";
+	}
+
+	@PostMapping(path = "/ajaxforBlock")
+	@ResponseBody
+	public List<BlockRecordsDto> ajaxforSMSLogs(Model model, HttpServletRequest request,
+			@RequestParam("name") String name, @RequestParam("date") String createdDate,
+			@RequestParam("email") String email, @RequestParam("phone") String phone) {
+		List<BlockRecordsDto> blockRequests = blockRecordsService.showReq(name, createdDate, email, phone);
+
+		return blockRequests;
+
 	}
 
 	@RequestMapping("unblock/{request_id}/{block_request_id}")

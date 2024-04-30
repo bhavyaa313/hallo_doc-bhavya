@@ -2,6 +2,7 @@ package hallodoc.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,8 @@ public class BlockRequests {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int block_request_id;
+	@Column(name = "block_request_id")
+	private int  blockRequestId;
 	private String phone_number;
 	private String email;
 	private boolean is_active;
@@ -27,11 +29,12 @@ public class BlockRequests {
 	private LocalDateTime created_date;
 	private LocalDateTime modified_date;
 	
-	public int getBlock_request_id() {
-		return block_request_id;
+	
+	public int getBlockRequestId() {
+		return blockRequestId;
 	}
-	public void setBlock_request_id(int block_request_id) {
-		this.block_request_id = block_request_id;
+	public void setBlockRequestId(int blockRequestId) {
+		this.blockRequestId = blockRequestId;
 	}
 	public String getPhone_number() {
 		return phone_number;
@@ -79,10 +82,11 @@ public class BlockRequests {
 	
 	
 	
-	public BlockRequests(int block_request_id, String phone_number, String email, boolean is_active, String reason,
+	
+	public BlockRequests(int blockRequestId, String phone_number, String email, boolean is_active, String reason,
 			Request request_id, LocalDateTime created_date, LocalDateTime modified_date) {
 		super();
-		this.block_request_id = block_request_id;
+		this.blockRequestId = blockRequestId;
 		this.phone_number = phone_number;
 		this.email = email;
 		this.is_active = is_active;
@@ -96,11 +100,5 @@ public class BlockRequests {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@Override
-	public String toString() {
-		return "BlockRequests [block_request_id=" + block_request_id + ", phone_number=" + phone_number + ", email="
-				+ email + ", is_active=" + is_active + ", reason=" + reason + ", request_id=" + request_id
-				+ ", created_date=" + created_date + ", modified_date=" + modified_date + "]";
-	}
 	
 }
