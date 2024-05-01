@@ -142,6 +142,16 @@
 				<value>
 					hallodoc.model.SMSLog
 				</value>
+				<value>
+					hallodoc.model.Role
+				</value>
+				<value>
+					hallodoc.model.Menu
+				</value>
+				<value>
+					hallodoc.model.RoleMenu
+				</value>
+				
 				
 				
 

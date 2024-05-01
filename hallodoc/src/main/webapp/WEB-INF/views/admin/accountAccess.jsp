@@ -49,7 +49,7 @@
             <div class="  d-flex p-4  ">
                 <h3 class="mx-2 mt-3">Account Access</h3>
                 <div class="ms-auto mt-3"> <a href="createRole" type="button"
-                        class="btn btn-outline-info mx-2 ">
+                        class="btn btn-outline-info mx-2 " >
                         create</a>
                 </div>
 
@@ -194,6 +194,8 @@
                 $('#txt').attr('placeholder', names);
             });
         } 
+        
+        
     </script>
 
 

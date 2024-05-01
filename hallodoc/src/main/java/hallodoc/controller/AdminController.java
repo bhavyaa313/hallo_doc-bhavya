@@ -52,6 +52,7 @@ import hallodoc.dto.EncounterDto;
 import hallodoc.dto.PatientHistoryDto;
 import hallodoc.dto.PatientRecordsDto;
 import hallodoc.dto.SMSLogDto;
+import hallodoc.dto.SearchRecordsDto;
 import hallodoc.dto.SendLinkDto;
 import hallodoc.dto.TransferCaseDto;
 import hallodoc.dto.ViewCaseDto;
@@ -65,6 +66,7 @@ import hallodoc.model.CaseTag;
 import hallodoc.model.EncounterForm;
 import hallodoc.model.HealthProfessionalType;
 import hallodoc.model.HealthProfessionals;
+import hallodoc.model.Menu;
 import hallodoc.model.Physician;
 import hallodoc.model.Request;
 import hallodoc.model.RequestClient;
@@ -83,6 +85,7 @@ import hallodoc.service.CancelCaseService;
 import hallodoc.service.ClearCaseService;
 import hallodoc.service.CloseCaseService;
 import hallodoc.service.CreateNewRequestService;
+import hallodoc.service.CreateRoleService;
 import hallodoc.service.CreateService;
 import hallodoc.service.EncounterService;
 import hallodoc.service.ExportAllService;
@@ -93,6 +96,7 @@ import hallodoc.service.ProviderService;
 import hallodoc.service.RequestClientService;
 import hallodoc.service.RequestService;
 import hallodoc.service.SMSRecordsService;
+import hallodoc.service.SearchHistoryService;
 import hallodoc.service.SendAgreementService;
 import hallodoc.service.SendLinkService;
 import hallodoc.service.TransferCaseService;
@@ -149,6 +153,9 @@ public class AdminController {
 
 	@Autowired
 	private CloseCaseService closeCaseService;
+	
+	@Autowired
+	private SearchHistoryService searchHistoryService;
 
 	@Autowired
 	private RequestService requestService;
@@ -212,6 +219,17 @@ public class AdminController {
 
 	@Autowired
 	private ViewDocsService viewDocsService;
+	@Autowired
+	private CreateRoleService createRoleService;
+	
+	@GetMapping("GetFilteredMenus/{accountType}")
+	@ResponseBody
+	public List<Menu> GetFilteredMenus(@PathVariable("accountType") int accountType){
+		 
+
+		List<Menu> dataList = createRoleService.createRole(accountType);
+		return dataList;
+	}
 
 	@RequestMapping("/admin")
 	public String dashboard(Model model, HttpServletRequest request,
@@ -823,6 +841,9 @@ public class AdminController {
 	@RequestMapping("/createRole")
 	public String createRole(Model model) {
 		String activeString = "active  text-info";
+		int accountType = 0;
+		List<Menu> dataList = createRoleService.createRole(accountType);
+		model.addAttribute("role", dataList);
 		model.addAttribute("active3", activeString);
 		return "/admin/createRole";
 	}
@@ -925,12 +946,25 @@ public class AdminController {
 
 	@PostMapping(path = "/ajaxforBlock")
 	@ResponseBody
-	public List<BlockRecordsDto> ajaxforSMSLogs(Model model, HttpServletRequest request,
+	public List<BlockRecordsDto> ajaxforBlock(Model model, HttpServletRequest request,
 			@RequestParam("name") String name, @RequestParam("date") String createdDate,
 			@RequestParam("email") String email, @RequestParam("phone") String phone) {
 		List<BlockRecordsDto> blockRequests = blockRecordsService.showReq(name, createdDate, email, phone);
 
 		return blockRequests;
+
+	}
+	
+	@PostMapping(path = "/ajaxforSearchHistory")
+	@ResponseBody
+	public List<SearchRecordsDto> ajaxforSearchHIstory(Model model, HttpServletRequest request,
+			@RequestParam("status") String status, @RequestParam("name") String name,
+			 @RequestParam("reqType") String reqType,  @RequestParam("DOS") String DOS,
+			 @RequestParam("TDOS") String TDOS, @RequestParam("phy") String phy,
+			@RequestParam("email") String email, @RequestParam("phone") String phone) {
+		List<SearchRecordsDto> searchRecordsDtos = searchHistoryService.showReq(status, name, reqType, DOS, TDOS, phy, email, phone);
+
+		return searchRecordsDtos;
 
 	}
 

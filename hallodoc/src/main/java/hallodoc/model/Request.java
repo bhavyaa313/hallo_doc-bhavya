@@ -82,7 +82,7 @@ public class Request {
 	private Date lastReservationDate;
 
 	@Column(name = "accepted_date")
-	private Date acceptedDate;
+	private LocalDateTime acceptedDate;
 
 	@Column(name = "relation_name")
 	private String relationName;
@@ -96,7 +96,20 @@ public class Request {
 	@OneToOne(mappedBy = "requestId")
 	private RequestConcierge requestConcierge;
 	
+	@OneToOne(mappedBy = "requestId")
+	private RequestNotes requestNotes;
 	
+	
+	
+	
+
+	public RequestNotes getRequestNotes() {
+		return requestNotes;
+	}
+
+	public void setRequestNotes(RequestNotes requestNotes) {
+		this.requestNotes = requestNotes;
+	}
 
 	public int getRequestId() {
 		return requestId;
@@ -251,13 +264,7 @@ public class Request {
 		this.lastReservationDate = lastReservationDate;
 	}
 
-	public Date getAcceptedDate() {
-		return acceptedDate;
-	}
-
-	public void setAcceptedDate(Date acceptedDate) {
-		this.acceptedDate = acceptedDate;
-	}
+	
 
 	public String getRelationName() {
 		return relationName;
@@ -273,6 +280,16 @@ public class Request {
 
 	public void setCaseNumber(String caseNumber) {
 		this.caseNumber = caseNumber;
+	}
+	
+	
+
+	public LocalDateTime getAcceptedDate() {
+		return acceptedDate;
+	}
+
+	public void setAcceptedDate(LocalDateTime acceptedDate) {
+		this.acceptedDate = acceptedDate;
 	}
 
 	public void setRequestId(int requestId) {
@@ -299,11 +316,13 @@ public class Request {
 	
 	
 
+	
+
 	public Request(int requestId, int requestTypeId, User userId, String firstName, String lastName, int caseTagId,
 			String phoneNumber, String email, int status, Physician physicianId, String confirmationNumber,
 			LocalDateTime createdDate, boolean isDeleted, LocalDateTime modifiedDate, AspNetUsers declinedBy,
 			Date lastWellnessDate, int callType, boolean completedByPhysician, Date lastReservationDate,
-			Date acceptedDate, String relationName, String caseNumber, RequestClient requestClient,
+			LocalDateTime acceptedDate, String relationName, String caseNumber, RequestClient requestClient,
 			RequestConcierge requestConcierge) {
 		super();
 		this.requestId = requestId;

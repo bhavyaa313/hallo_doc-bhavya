@@ -1,62 +1,98 @@
 package hallodoc.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "menu")
 public class Menu {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int menu_id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "menu_id")
+	private int menuId;
+
 	private String name;
-	private int account_type;
-	private int sort_order;
-	public int getMenu_id() {
-		return menu_id;
+
+	@Column(name = "account_type")
+	private int accountType;
+
+	@Column(name = "sort_order")
+	private int sortOrder;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "role_menu", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "menu_id") })
+	private List<Role> roles;
+
+	public List<Role> getRoles() {
+		return roles;
 	}
-	public void setMenu_id(int menu_id) {
-		this.menu_id = menu_id;
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
+
+	public int getMenuId() {
+		return menuId;
+	}
+
+	public void setMenuId(int menuId) {
+		this.menuId = menuId;
+	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getAccount_type() {
-		return account_type;
+
+	public int getAccountType() {
+		return accountType;
 	}
-	public void setAccount_type(int account_type) {
-		this.account_type = account_type;
+
+	public void setAccountType(int accountType) {
+		this.accountType = accountType;
 	}
-	public int getSort_order() {
-		return sort_order;
+
+	public int getSortOrder() {
+		return sortOrder;
 	}
-	public void setSort_order(int sort_order) {
-		this.sort_order = sort_order;
+
+	public void setSortOrder(int sortOrder) {
+		this.sortOrder = sortOrder;
 	}
-	@Override
-	public String toString() {
-		return "Menu [menu_id=" + menu_id + ", name=" + name + ", account_type=" + account_type + ", sort_order="
-				+ sort_order + "]";
-	}
-	public Menu(int menu_id, String name, int account_type, int sort_order) {
-		super();
-		this.menu_id = menu_id;
-		this.name = name;
-		this.account_type = account_type;
-		this.sort_order = sort_order;
-	}
+
 	public Menu() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
 
-	
+	public Menu(int menuId, String name, int accountType, int sortOrder, List<Role> roles) {
+		super();
+		this.menuId = menuId;
+		this.name = name;
+		this.accountType = accountType;
+		this.sortOrder = sortOrder;
+		this.roles = roles;
+	}
+
+	@Override
+	public String toString() {
+		return "Menu [menuId=" + menuId + ", name=" + name + ", accountType=" + accountType + ", sortOrder=" + sortOrder
+				+ ", roles=" + roles + "]";
+	}
+
 }
