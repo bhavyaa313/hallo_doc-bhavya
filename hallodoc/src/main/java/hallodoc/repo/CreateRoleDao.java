@@ -31,16 +31,23 @@ public class CreateRoleDao {
 		if(accountType==0)
 		{
 			hqlString="from hallodoc.model.Menu" ;
+			Query query = session.createQuery(hqlString);
+			List<Menu> list = query.list();
+			System.out.println(list);
+
+			return list;
 		}
 		else {
-			hqlString = "from hallodoc.model.Menu where A.accountType =:accountType" ;
-		}
-		Query query = session.createQuery(hqlString);
-		query.setParameter("accountType", accountType);
-		List<Menu> list = query.list();
-		System.out.println(list);
+			hqlString = "from hallodoc.model.Menu A where A.accountType =:accountType" ;
+			Query query = session.createQuery(hqlString);
+			query.setParameter("accountType",accountType);
+			List<Menu> list = query.list();
+			System.out.println(list);
 
-		return list;
+			return list;
+		}
+		
+		
 
 	}
 

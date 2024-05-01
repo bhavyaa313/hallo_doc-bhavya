@@ -64,8 +64,8 @@
 			<div class="row g-2">
 				<div class="col-md">
 					<div class="form-floating mb-3">
-						<input type="text" class="form-control" id="floatingInput"
-							placeholder="name"> <label for="floatingInput" class="dm">First
+						<input type="text" class="form-control" id="name"
+							placeholder="name"> <label for="floatingInput" class="dm">Role
 							Name</label>
 					</div>
 				</div>
@@ -81,7 +81,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="roles"></div>
+			<div id="roles" class="d-flex flex-wrap"></div>
 
 
 
@@ -98,8 +98,9 @@
 
 		</div>
 		<div class="mt-4 d-flex flex-row-reverse mb-3 ">
+				<input type="text" id="SelectedRegionEdit" value="" />
 
-			<button type="submit" class="btn btn-info btn-lg">Save</button>
+			<button type="submit" class="btn btn-info btn-lg" id="save">Save</button>
 			<button type="submit" class="btn btn-outline-info btn-lg">Cancel</button>
 
 
@@ -142,31 +143,96 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(document).ready(function(){
+			debugger
+			
 			accountType = $("#AccountType").val();
+			AccountTypeAjax(accountType)
+			
+			$("#AccountType").on("change", function(){
+				accountType = $("#AccountType").val();
+				AccountTypeAjax(accountType)
+			
+			
+			})
+			/* $(".Change1").on("change", function() {
+				  var selectedRegions = []; // Clear any previous selections
+
+				  document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+				    selectedRegions.push(parseInt(checkbox.value));
+				    console.log(selectedRegions);
+				  });
+
+				  $('#SelectedRegionEdit').val(selectedRegions.join(','));
+				 
+				});
+ */
+			
+		
+		})
+		function AddSelectedRole() {
+			debugger
+    var selectedRoles = []; // Clear any previous selections
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+    	selectedRoles.push(parseInt(checkbox.value));
+    });
+
+    $('#SelectedRegionEdit').val(selectedRoles.join(','));
+}
+		
+		
+		function AccountTypeAjax(accountType){
+			$("#roles").empty();
 			$.ajax({
 			    method: "GET",
-			    url: "/GetFilteredMenus/"+accountType,
+			    url: "GetFilteredMenus/"+accountType,
 			    
 			    success: function (result) {
+			    	debugger
 			    	console.log(result);
-			        $("#roles").html(result);
-			        /* for (int i = 0; i < result.Count; i++)
+			  
+			        let str="";
+			         for (let i = 0; i < result.length; i++)
 			        {
-			            <div class="form-check">
-			                <input class="form-check-input Change1" type="checkbox" value="@Model.Menus[i].MenuId"
-			                       id=result[i].id name="checkbox_group" onchange="AddSelectedRegion()" 
-			                @if (Model.SeletedMenus != null && Model.SeletedMenus.Any(r => r.MenuId== Model.Menus[i].MenuId))
-			                   {
-			                   <text>checked</text>
-			                   } 
-			                   />
-			                <label class="form-check-label" for="checkbox@(i)">@Model.Menus[i].Name</label>
-			            </div>
-			        } */
+			            str = `<div class=" ms-3 form-check">
+			                <input class="form-check-input Change1 me-3" type="checkbox" value=`+result[i].menuId+`
+		                       id=`+result[i].menuId+` name="checkbox_group" onclick="AddSelectedRole()"
+		                   />
+		                <label class="form-check-label me-3" for=`+result[i].menuId+`>`+result[i].name+`</label>
+		            </div>`;
+			            $("#roles").append(str);
+			        } 
+			         
 			    }
 			})
-		})
+		}
+		
+		
+		 $("#save").click(function(e) {
+			    e.preventDefault(); // Prevent default form submission if the button is inside a form
+				
+			    var name = $("#name").val();
+			    var role = $("#AccountType").val();
+			    var list = $("#SelectedRegionEdit").val();
+			    
+			    $.ajax({
+			      url: "saveAjax", // Replace with the actual URL of your server-side script
+			      type: "POST", // Change to "GET" if your endpoint expects a GET request
+			      data: { // Optional data to send to the server
+			        name:name,
+			        role:role,
+			        list:list
+			      },
+			      success: function() {
+			     
+			        console.log("Success!");
+			     
+			      },
+	
+			    });
+			  });
 	</script>
+	
+	
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"

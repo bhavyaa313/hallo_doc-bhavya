@@ -61,6 +61,7 @@ import hallodoc.dto.ViewNotesDto;
 import hallodoc.dto.ordersDto;
 import hallodoc.helper.DobHelper;
 import hallodoc.model.Admin;
+import hallodoc.model.AspNetUsers;
 import hallodoc.model.BlockRequests;
 import hallodoc.model.CaseTag;
 import hallodoc.model.EncounterForm;
@@ -230,6 +231,17 @@ public class AdminController {
 		List<Menu> dataList = createRoleService.createRole(accountType);
 		return dataList;
 	}
+	
+	@PostMapping("saveAjax")
+	@ResponseBody
+	public void saveAjax(@RequestParam("name") String name, @RequestParam("role") int role, @RequestParam("list") String list, HttpServletRequest request )
+	{
+		HttpSession session = request.getSession();
+		List<User> list2 = (List<User>) session.getAttribute("userList");
+		AspNetUsers user = list2.get(0).getAspnetUserId();
+		createRoleService.saveRole(name, role, list, user);
+		
+	}
 
 	@RequestMapping("/admin")
 	public String dashboard(Model model, HttpServletRequest request,
@@ -242,19 +254,12 @@ public class AdminController {
 		String sessionIdString = session.getId();
 
 		String emailString = (String) session.getAttribute("email");
-		/*
-		 * Cookie[] cookies = request.getCookies();
-		 * 
-		 * Cookie cookie = cookies[cookies.length-1]; System.out.println(
-		 * "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-		 * ); System.out.println(sessionIdString); System.out.println(cookie.getName());
-		 * System.out.println(cookie.getValue());
-		 */
-		System.out.println(emailId);
+		
 
 		if (emailId.equals(emailString)) {
 
 			session.getAttribute("userList");
+			
 			System.out.println("00000000000000000000000000000000");
 
 			System.out.println(reasonsList);

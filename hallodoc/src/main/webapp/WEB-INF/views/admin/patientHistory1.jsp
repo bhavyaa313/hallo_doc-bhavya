@@ -189,23 +189,93 @@
 
 	
 
-		
+			
  	<script>
- 	$("#AccountType").on('change', function () {
- 	    accountType = $("#AccountType").val();
- 	    var roleId = document.getElementById("RoleName").getAttribute("roleid");
- 	    $.ajax({
- 	        method: "GET",
- 	        url: "/Admin/SelectMenusByRole",
- 	        data: {
- 	            AccountType: accountType,
- 	            RoleId: roleId
- 	        },
- 	        success: function (result) {
- 	            $("#rolemenu-wrapper").html(result);
- 	        }
- 	    })
- 	})
+		$(document).ready(function() {
+		console.log("searchhhhhhh")
+			$('.search').click();
+		
+		})
+	</script>
+		<script>
+		$(".search").on("click", function() {
+			
+			var fName;
+			var lName;
+			var email;
+			var phone;
+			
+			if ($("#clear").hasClass("search")) {
+				
+				fName = "";
+				email = "";
+				lName = "";
+				phone = "";
+				
+				$("#fName").attr("value","");
+				$("#email").attr("value","");
+				$("#lName").attr("value","");
+				$("#phone").attr("value","");
+				
+				$("#clear").removeClass("search"); 
+				
+			}
+			
+			else {
+				
+				fName = $("#fName").val();
+				email = $("#email").val();
+				lName = $("#lName").val();
+				phone = $("#phone").val();
+				
+			}
+			
+			console.log(fName);
+			console.log(email);
+			console.log(lName);
+			console.log(phone);
+			
+			$.ajax({
+				
+				url : "ajaxforPatientHistory",
+				type : "post",
+				data : {
+					fName:fName,
+					email:email,
+					lName:lName,
+					phone:phone
+				},
+				success : function(data) {
+					
+					$("#tableData").empty();
+					
+					for(let i=0; i<data.length; i++) {
+						
+						var patientHistory = data[i];
+						
+						var row = `<tr>
+							<td scope="row">`+patientHistory.fname+`</td>
+							<td>`+patientHistory.lname+`</td>
+							<td>`+patientHistory.emailString+`</td>
+							<td>`+patientHistory.phoneString+`</td>
+							<td>`+patientHistory.address+`</td>
+							<td><a style="text-decoration: none;"
+								href="patientRecords1/`+patientHistory.uId+`">
+									<button type="button" class="btn btn-outline-info">Explore</button>
+							</a></td>
+						</tr>`
+						
+						$("#tableData").append(row);
+						
+					}
+					
+				}
+				
+			})
+			
+		})
+		
+		
 		
 	</script>
 		

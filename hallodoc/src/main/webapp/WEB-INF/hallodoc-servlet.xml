@@ -68,6 +68,9 @@
 					hallodoc.model.AspNetUsers
 				</value>
 				<value>
+					hallodoc.model.Menu
+				</value>
+				<value>
 					hallodoc.model.User
 				</value>
 				<value>
@@ -145,12 +148,12 @@
 				<value>
 					hallodoc.model.Role
 				</value>
-				<value>
-					hallodoc.model.Menu
-				</value>
+			
 				<value>
 					hallodoc.model.RoleMenu
 				</value>
+				
+			
 				
 				
 				

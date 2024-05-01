@@ -107,7 +107,7 @@
     
                         <span class="wlcm">Welcome <span style="font-weight: 500;">Admin admin2</span></span>
     
-                        <button type="button" class="btn btn-outline-info mx-2 lo">Logout</button>
+                        <a type="button" href="logout" class="btn btn-outline-info mx-2 lo">Logout</a>
     
                         <button type="button" class="btn btn-outline-info mx-2 lo-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -134,7 +134,7 @@
                 <div class="collapse navbar-collapse w-100 d-none d-lg-inline" id="navbarSupportedContent">
                     <ul class="navbar-nav nav-underline text-info">
                         <li class="nav-item mx-2">
-                            <a href="patient_dashboard.html" class="nav-link ">Dashboard</a>
+                            <a href="handleform" class="nav-link ">Dashboard</a>
                         </li>
     
                         <li class="nav-item mx-2">

@@ -29,7 +29,7 @@ public class Menu {
 	private int accountType;
 
 	@Column(name = "sort_order")
-	private int sortOrder;
+	private String sortOrder;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "role_menu", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = {
@@ -68,11 +68,13 @@ public class Menu {
 		this.accountType = accountType;
 	}
 
-	public int getSortOrder() {
+	
+
+	public String getSortOrder() {
 		return sortOrder;
 	}
 
-	public void setSortOrder(int sortOrder) {
+	public void setSortOrder(String sortOrder) {
 		this.sortOrder = sortOrder;
 	}
 
@@ -80,7 +82,9 @@ public class Menu {
 		super();
 	}
 
-	public Menu(int menuId, String name, int accountType, int sortOrder, List<Role> roles) {
+	
+
+	public Menu(int menuId, String name, int accountType, String sortOrder, List<Role> roles) {
 		super();
 		this.menuId = menuId;
 		this.name = name;
