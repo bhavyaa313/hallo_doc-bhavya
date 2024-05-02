@@ -22,14 +22,14 @@ public class SearchHistoryService {
 	public List<SearchRecordsDto> showReq(String status, String name, String reqType, String DOS, String TDOS,
 			String phy, String email, String phone) {
 
-		String hqlString1 = "from hallodoc.model.Request r where r.requestId!=0";
-		int status1 = Integer.parseInt(status);
-		int reqType1 = Integer.parseInt(reqType);
+		String hqlString1 = "from hallodoc.model.Request r where r.requestId!=0 and r.isDeleted=0";
+
+		
 
 		String hqlMain2 = hqlString1;
 
 		if (!(status.equals("99"))) {
-			String hql2 = " AND r.status=" + status1;
+			String hql2 = " AND r.status=" + status;
 			hqlMain2 = hqlMain2.concat(hql2);
 		}
 
@@ -39,7 +39,7 @@ public class SearchHistoryService {
 		}
 
 		if (!(reqType.equals("99"))) {
-			String hql2 = " AND r.requestTypeId=" + reqType1;
+			String hql2 = " AND r.requestTypeId=" + reqType;
 			hqlMain2 = hqlMain2.concat(hql2);
 		}
 
@@ -76,8 +76,11 @@ public class SearchHistoryService {
 		for (int i = 0; i < list.size(); i++) {
 
 			Request request = list.get(i);
+			
 
 			SearchRecordsDto searchRecordsDto = new SearchRecordsDto();
+			
+			searchRecordsDto.setReqId(request.getRequestId());
 
 			if (!(request.getRequestClient().getAddress() == null)) {
 				searchRecordsDto.setAddress(request.getRequestClient().getAddress());
@@ -152,10 +155,20 @@ public class SearchHistoryService {
 			} else {
 				searchRecordsDto.setZipString("-");
 			}
+			
+			searchRecordsDtos.add(searchRecordsDto);
 
 		}
 
 		return searchRecordsDtos;
+	}
+	
+	public void deleteRecord(int rId)
+	{
+		List<Request> requests = requestDao.getRequests(rId);
+		Request request = requests.get(0);
+		request.setDeleted(true);
+		requestDao.requestUpdate(request);
 	}
 
 }

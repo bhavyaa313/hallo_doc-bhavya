@@ -54,7 +54,7 @@ public class Role {
 	@Column(name="is_deleted")
 	private boolean isDeleted;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
         name = "role_menu", 
         joinColumns = { @JoinColumn(name = "role_id") }, 

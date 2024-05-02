@@ -5,6 +5,7 @@ import java.io.Console;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 import java.util.Map;
 
@@ -47,6 +48,7 @@ import hallodoc.dto.CancelCaseDto;
 import hallodoc.dto.CloseCaseDto;
 import hallodoc.dto.CreateNewRequestDto;
 import hallodoc.dto.CreateProviderDto;
+import hallodoc.dto.EditRoleDto;
 import hallodoc.dto.EmailLogsDto;
 import hallodoc.dto.EncounterDto;
 import hallodoc.dto.PatientHistoryDto;
@@ -71,6 +73,7 @@ import hallodoc.model.Menu;
 import hallodoc.model.Physician;
 import hallodoc.model.Request;
 import hallodoc.model.RequestClient;
+import hallodoc.model.Role;
 import hallodoc.model.User;
 import hallodoc.model.Users;
 import hallodoc.repo.AdminDao;
@@ -154,7 +157,7 @@ public class AdminController {
 
 	@Autowired
 	private CloseCaseService closeCaseService;
-	
+
 	@Autowired
 	private SearchHistoryService searchHistoryService;
 
@@ -222,25 +225,35 @@ public class AdminController {
 	private ViewDocsService viewDocsService;
 	@Autowired
 	private CreateRoleService createRoleService;
-	
+
 	@GetMapping("GetFilteredMenus/{accountType}")
 	@ResponseBody
-	public List<Menu> GetFilteredMenus(@PathVariable("accountType") int accountType){
-		 
+	public List<Menu> GetFilteredMenus(@PathVariable("accountType") int accountType) {
 
 		List<Menu> dataList = createRoleService.createRole(accountType);
 		return dataList;
 	}
-	
-	@PostMapping("saveAjax")
-	@ResponseBody
-	public void saveAjax(@RequestParam("name") String name, @RequestParam("role") int role, @RequestParam("list") String list, HttpServletRequest request )
-	{
+
+	@PostMapping("/saveRole")
+	public String saveRole(@RequestParam("name") String name, @RequestParam("role") int role,
+			@RequestParam("list") List<Integer> list, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		List<User> list2 = (List<User>) session.getAttribute("userList");
 		AspNetUsers user = list2.get(0).getAspnetUserId();
 		createRoleService.saveRole(name, role, list, user);
-		
+		return "redirect:/accountAccess";
+
+	}
+
+	@PostMapping("/updateRole/{roleId}")
+	public String updateRole(@RequestParam("name") String name, @RequestParam("role") int role,
+			@RequestParam("list") List<Integer> list, HttpServletRequest request, @PathVariable("roleId") int roleId) {
+		HttpSession session = request.getSession();
+		List<User> list2 = (List<User>) session.getAttribute("userList");
+		AspNetUsers user = list2.get(0).getAspnetUserId();
+		createRoleService.updateRole(name, role, list, user, roleId);
+		return "redirect:/accountAccess";
+
 	}
 
 	@RequestMapping("/admin")
@@ -254,12 +267,11 @@ public class AdminController {
 		String sessionIdString = session.getId();
 
 		String emailString = (String) session.getAttribute("email");
-		
 
 		if (emailId.equals(emailString)) {
 
 			session.getAttribute("userList");
-			
+
 			System.out.println("00000000000000000000000000000000");
 
 			System.out.println(reasonsList);
@@ -839,6 +851,8 @@ public class AdminController {
 	@RequestMapping("/accountAccess")
 	public String accountAccess(Model model) {
 		String activeString = "active  text-info";
+		List<Role> roles = createRoleService.getRoles();
+		model.addAttribute("roles", roles);
 		model.addAttribute("active3", activeString);
 		return "/admin/accountAccess";
 	}
@@ -853,9 +867,13 @@ public class AdminController {
 		return "/admin/createRole";
 	}
 
-	@RequestMapping("/editRole")
-	public String editRole(Model model) {
+	@RequestMapping("/editRole/{roleId}")
+	public String editRole(Model model, @PathVariable("roleId") int id) {
 		String activeString = "active  text-info";
+		EditRoleDto editRoleDto = createRoleService.getExistingRoles(id);
+
+		model.addAttribute("roles", editRoleDto);
+		model.addAttribute("roleId", id);
 		model.addAttribute("active3", activeString);
 		return "/admin/editRole";
 	}
@@ -959,15 +977,15 @@ public class AdminController {
 		return blockRequests;
 
 	}
-	
+
 	@PostMapping(path = "/ajaxforSearchHistory")
 	@ResponseBody
 	public List<SearchRecordsDto> ajaxforSearchHIstory(Model model, HttpServletRequest request,
 			@RequestParam("status") String status, @RequestParam("name") String name,
-			 @RequestParam("reqType") String reqType,  @RequestParam("DOS") String DOS,
-			 @RequestParam("TDOS") String TDOS, @RequestParam("phy") String phy,
-			@RequestParam("email") String email, @RequestParam("phone") String phone) {
-		List<SearchRecordsDto> searchRecordsDtos = searchHistoryService.showReq(status, name, reqType, DOS, TDOS, phy, email, phone);
+			@RequestParam("reqType") String reqType, @RequestParam("DOS") String DOS, @RequestParam("TDOS") String TDOS,
+			@RequestParam("phy") String phy, @RequestParam("email") String email, @RequestParam("phone") String phone) {
+		List<SearchRecordsDto> searchRecordsDtos = searchHistoryService.showReq(status, name, reqType, DOS, TDOS, phy,
+				email, phone);
 
 		return searchRecordsDtos;
 
@@ -977,6 +995,18 @@ public class AdminController {
 	public String unblock(@PathVariable("request_id") int id, @PathVariable("block_request_id") int bId) {
 		blockRecordsService.unblock(id, bId);
 		return "redirect:/blockHistory";
+	}
+
+	@GetMapping("/deleteRecord/{reqId}")
+	public String deleteRecord(@PathVariable("reqId") int rId) {
+		searchHistoryService.deleteRecord(rId);
+		return "redirect:/searchRecords";
+	}
+
+	@GetMapping("/deleteRole/{roleId}")
+	public String deleteRole(@PathVariable("roleId") int roleId) {
+		createRoleService.deleteRole(roleId);
+		return "redirect:/accountAccess";
 	}
 
 }

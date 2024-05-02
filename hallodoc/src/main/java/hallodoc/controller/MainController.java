@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.objenesis.instantiator.basic.NewInstanceInstantiator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -246,11 +247,14 @@ public class MainController {
 		String xString = users.getUserEmail();
 		String passwordString =  users.getUserPassword();
 		User uId = login.getId(xString);
+		int userID =   uId.getUserID();
 		int roleId =   uId.getRoleId();
 		
 		
 		List requestsList = requestService.getRequest(uId);
 		List userList = login.getUserIdUser(xString);
+		
+		
 		String emailIdString = xString.replace("@", "a");
 		
 		
@@ -288,6 +292,8 @@ public class MainController {
 				
 			} else {
 				System.out.println(" authenticated");
+				session.setAttribute("userList", userList);
+				session.setAttribute("email", emailIdString);
 				System.out.println(userList);
 				model.addAttribute("userList", userList);
 				System.out.println(model.getAttribute("userList") + "userlist");
@@ -295,8 +301,8 @@ public class MainController {
 
 				model.addAttribute("requestsList", requestsList);
 				model.addAttribute("xString", xString);
-
-				return "/patient/patient_dashboard";
+				model.addAttribute("userID", userID);
+				return "redirect:/pdash/"+ userID;
 
 			}
 			
@@ -554,11 +560,17 @@ public class MainController {
 
 	@RequestMapping(path = "/pdash/{userID}")
 	public String patientDash(@PathVariable("userID") String userID, @ModelAttribute Users users, RedirectAttributes ra, Model model,
-			HttpServletRequest request, HttpServletResponse respons) {
+			HttpServletRequest request, HttpServletResponse respons, 	@CookieValue(value = "emailId", defaultValue = "error") String emailId) {
 
 //		String xString = users.getUserEmail();
 //		User uId = login.getId(xString);
+		HttpSession session = request.getSession();
+		String emailString = (String) session.getAttribute("email");
+		System.out.println(emailId);
+		System.out.println(emailString);
 		
+		if (emailId.equals(emailString))
+		{
 		int uID = Integer.parseInt(userID);
 		List<User> listOFuser =   userDao.getUserIDList(uID);
 		User user = listOFuser.get(0);
@@ -573,6 +585,10 @@ public class MainController {
 		model.addAttribute("requestsList", requestsList);
 
 		return "/patient/patient_dashboard";
+		}
+		else {
+			return "/admin/error";
+		}
 
 	}
 	

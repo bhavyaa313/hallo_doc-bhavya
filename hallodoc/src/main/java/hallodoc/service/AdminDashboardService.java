@@ -100,7 +100,7 @@ public class AdminDashboardService {
 			break;
 		}
 
-		String sqlString = "from hallodoc.model.Request r where (r.status="+mainStatus1+" OR r.status="+mainStatus2+" OR r.status="+mainStatus3+")";
+		String sqlString = "from hallodoc.model.Request r where (r.status="+mainStatus1+" OR r.status="+mainStatus2+" OR r.status="+mainStatus3+") AND r.isDeleted=0";
 		String sqlfinalString = sqlString;
 		if (!role.equals("undefined")) {
 			String sqlString2 = "AND requestTypeId=" + roleid;

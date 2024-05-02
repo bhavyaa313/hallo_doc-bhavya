@@ -56,22 +56,24 @@
 
 
 	</div>
-
+<form action="${pageContext.request.contextPath}/saveRole"  method="post">
 	<div class="container bg-light ">
+	
 		<div class=" p-3   ">
+		
 			<div class=" p-1 mx-2 fs-4 mb-3">Details</div>
 
 			<div class="row g-2">
 				<div class="col-md">
 					<div class="form-floating mb-3">
-						<input type="text" class="form-control" id="name"
+						<input type="text" class="form-control" id="name" name="name"
 							placeholder="name"> <label for="floatingInput" class="dm">Role
 							Name</label>
 					</div>
 				</div>
 				<div class="col-md">
 					<div class="form-floating">
-						<select class="form-select dropdwn" id="AccountType"
+						<select class="form-select dropdwn" id="AccountType" name="role"
 							aria-label="Floating label select example">
 							<option selected value="0">All</option>
 							<option  value="1">Admin</option>
@@ -89,7 +91,7 @@
 
 
 
-			<div id="roles_provider"></div>
+		
 
 
 
@@ -98,21 +100,22 @@
 
 		</div>
 		<div class="mt-4 d-flex flex-row-reverse mb-3 ">
-				<input type="text" id="SelectedRegionEdit" value="" />
+				<input type="text" name="list" id="SelectedRegionEdit" value="" />
 
 			<button type="submit" class="btn btn-info btn-lg" id="save">Save</button>
-			<button type="submit" class="btn btn-outline-info btn-lg">Cancel</button>
+			<button type="cancel" class="btn btn-outline-info btn-lg">Cancel</button>
 
 
 		</div>
 
 
-
-
+</form>
 
 
 	</div>
+
 	</div>
+		
 
 	<div
 		class="footer d-flex  align-items-center justify-content-end mt-3 ">
@@ -207,29 +210,7 @@
 		}
 		
 		
-		 $("#save").click(function(e) {
-			    e.preventDefault(); // Prevent default form submission if the button is inside a form
-				
-			    var name = $("#name").val();
-			    var role = $("#AccountType").val();
-			    var list = $("#SelectedRegionEdit").val();
-			    
-			    $.ajax({
-			      url: "saveAjax", // Replace with the actual URL of your server-side script
-			      type: "POST", // Change to "GET" if your endpoint expects a GET request
-			      data: { // Optional data to send to the server
-			        name:name,
-			        role:role,
-			        list:list
-			      },
-			      success: function() {
-			     
-			        console.log("Success!");
-			     
-			      },
 	
-			    });
-			  });
 	</script>
 	
 	
