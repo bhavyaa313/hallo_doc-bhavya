@@ -93,25 +93,7 @@
 								placeholder="Search Provider" id="myInput" onkeyup="search()">
 						</div>
 
-						<div class="input-group border me-2 rounded-0 mb-2 form-control">
-							<div class="input-group-append">
-								<button class="btn text-secondary border border-0 bg-white"
-									type="button">
-									<i class="bi bi-search"></i>
-								</button>
-							</div>
-							<input type="search" class="form-control border-0  shadow-none"
-								placeholder="Search Regions" list="data" id="myInput2"
-								onkeyup="searchRegion()">
-							<datalist class=" border-0  shadow-none "
-								aria-label="Default select example" id="data">
-
-								<option value="mumbai">
-								<option value="kolkata"></option>
-								<option value="banglore"></option>
-							</datalist>
-						</div>
-
+			
 
 
 

@@ -184,6 +184,7 @@ public class FamilyInfoService {
 			request.setLastName(lname);
 			request.setPhoneNumber(mobile);
 			request.setEmail(email);
+			request.setStatus(1);
 			request.setCreatedDate(LocalDateTime.now());
 			request.setConfirmationNumber(confirString);
 			request.setRequestTypeId(3);
@@ -238,6 +239,7 @@ public class FamilyInfoService {
 			request.setPhoneNumber(mobile);
 			request.setEmail(email);
 			request.setRequestTypeId(3);
+			request.setStatus(1);
 			request.setConfirmationNumber(confirString);
 			request.setCreatedDate(LocalDateTime.now());
 

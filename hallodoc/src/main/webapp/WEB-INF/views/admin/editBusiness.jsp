@@ -114,7 +114,7 @@
 									<div class="form-floating">
 										<select class="form-select" id="professionSelector"
 											name="profession" aria-label="Floating label select example">
-											<option selected>${health.profession.professionName }</option>
+											<%-- <option selected>${health.profession.professionName }</option> --%>
 											<option value="1">Cardiology</option>
 											<option value="2">Wound Care Nursing</option>
 											<option value="3">Pharmacy</option>

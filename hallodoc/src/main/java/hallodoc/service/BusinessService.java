@@ -213,9 +213,12 @@ public class BusinessService {
 			request.setFirstName(fname);
 			request.setLastName(lname);
 			request.setPhoneNumber(mobile);
+			request.setStatus(1);
 			request.setEmail(email);
 			request.setRequestTypeId(1);
+			request.setDeleted(false);
 			request.setConfirmationNumber(confirString);
+			request.setStatus(1);
 
 			request.setCreatedDate(LocalDateTime.now());
 			requestDao.requestSave(request);
@@ -325,9 +328,12 @@ if (usersService.checkPasswordHash(pemail)) {
 			request.setFirstName(fname);
 			request.setLastName(lname);
 			request.setPhoneNumber(mobile);
+			request.setStatus(1);
 			request.setRequestTypeId(1);
 			request.setEmail(email);
+			request.setDeleted(false);
 			request.setConfirmationNumber(confirString);
+			request.setStatus(1);
 
 			request.setCreatedDate(LocalDateTime.now());
 			requestDao.requestSave(request);

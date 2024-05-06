@@ -47,6 +47,23 @@ public class RequestDao {
 		return list;
 
 	}
+	
+	public Long countRequests(User uId) {
+
+		  Session session = sessionFactory.openSession();
+
+		  try {
+		    String hqlString = "select count(entity) from hallodoc.model.Request entity where entity.userId=:uId GROUP BY entity.userId";
+		  
+		    Query query = session.createQuery(hqlString);
+		    query.setParameter("uId", uId);
+		    Long count = (Long) query.uniqueResult();
+		    return count;
+		  } finally {
+		    session.close();
+		  }
+		}
+
 
 	public List getRequestss(User uId) {
 

@@ -57,6 +57,7 @@ import hallodoc.dto.SMSLogDto;
 import hallodoc.dto.SearchRecordsDto;
 import hallodoc.dto.SendLinkDto;
 import hallodoc.dto.TransferCaseDto;
+import hallodoc.dto.UserAccessDto;
 import hallodoc.dto.ViewCaseDto;
 import hallodoc.dto.ViewDocumentsDTO;
 import hallodoc.dto.ViewNotesDto;
@@ -104,6 +105,7 @@ import hallodoc.service.SearchHistoryService;
 import hallodoc.service.SendAgreementService;
 import hallodoc.service.SendLinkService;
 import hallodoc.service.TransferCaseService;
+import hallodoc.service.UserAccessService;
 import hallodoc.service.UsersService;
 import hallodoc.service.ViewCaseService;
 import hallodoc.service.ViewDocsService;
@@ -157,6 +159,9 @@ public class AdminController {
 
 	@Autowired
 	private CloseCaseService closeCaseService;
+	
+	@Autowired
+	private UserAccessService userAccessService;
 
 	@Autowired
 	private SearchHistoryService searchHistoryService;
@@ -399,6 +404,13 @@ public class AdminController {
 
 	@RequestMapping(path = "/send", method = RequestMethod.POST)
 	public String SendMail(@ModelAttribute SendLinkDto sendLinkDto) {
+		sendLinkService.service(sendLinkDto);
+		return "redirect:/admin";
+
+	}
+	
+	@RequestMapping(path = "/contact", method = RequestMethod.POST)
+	public String SendMailContact(@ModelAttribute SendLinkDto sendLinkDto) {
 		sendLinkService.service(sendLinkDto);
 		return "redirect:/admin";
 
@@ -881,6 +893,8 @@ public class AdminController {
 	@RequestMapping("/userAccess")
 	public String userAccess(Model model) {
 		String activeString = "active  text-info";
+		List<UserAccessDto> userAccessDtos = userAccessService.getUserData();
+		model.addAttribute("userData", userAccessDtos);
 		model.addAttribute("active3", activeString);
 		return "/admin/userAccess";
 	}

@@ -516,7 +516,7 @@ public class MainController {
 	
 	
 	
-	@RequestMapping("/me/{userID}")
+	@RequestMapping("/pdash/me/{userID}")
 	public String InfoForMe(@PathVariable("userID") String userID) {
 
 		return "/patient/InfoForMe";
@@ -524,7 +524,7 @@ public class MainController {
 	}
 
 
-	@RequestMapping("/someone/{userID}")
+	@RequestMapping("/pdash/someone/{userID}")
 	public String InfoForSomeone(@PathVariable("userID") String userID, Model model) {
 		model.addAttribute("userID", userID);
 		return "/patient/InfoForSomeone";

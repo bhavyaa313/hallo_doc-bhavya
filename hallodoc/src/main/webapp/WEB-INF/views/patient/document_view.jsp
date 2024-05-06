@@ -161,23 +161,28 @@ body {
 					review.</div>]
 					
 					<form action="${pageContext.request.contextPath}/showDocs/${rId}/${firstName}/${lastName}/uploadFile" method="post" enctype="multipart/form-data">
-				<div class="row mx-2  p-1">
-					<div class="col">
-						<div class="input-group mb-3 drill_cursor mt-3">
-							<input type="file" name="file_name" id="input_file"  hidden> <input
-								type="text" class="form-control col-form-label-lg " id="txt"
-								onclick="open_file" placeholder="Upload " aria-label="Upload"
-								aria-describedby="button-addon2">
-							
+				
+				
+					<div class="row   p-1">
+						<div class="col-md-10 col-10">
+							<div class="input-group mb-3 drill_cursor mt-3">
+								<input type="file" name="file_name" id="input_file" hidden>
+								<input type="text" class="form-control col-form-label-lg "
+									id="txt" onclick="open_file" placeholder="Upload "
+									aria-label="Upload" aria-describedby="button-addon2">
 
+
+							</div>
 						</div>
-						<button class="btn btn-outline-info bg-info " type="submit"
-								 id="button-addon2">
+						<div class="col-md-2 col-2 mt-3">
+
+							<button class="btn btn-outline-info bg-info btn-lg " type="submit"
+								id="button-addon2">
 								<img src="images/cloud-arrow-up.svg" alt=""> <span
 									style="color: white;" class="lo">Upload</span>
 							</button>
-					</div>
-				</div>
+						</div>
+						</div>
 				</form>
 				<div class="  d-flex p-4  ">
 					<h4 class="mx-2">Documents</h4>

@@ -106,69 +106,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                       <c:forEach items="${userData}" var="u">
                         <tr>
 
                             <td>
-                                Admin
+                                ${u.accounttype }
                             </td>
-                            <td>saloni</td>
-                            <td>+919426144202</td>
-                            <td>mumbai</td>
-                            <td>Active</td>
-                            <td>200</td>
+                            <td>${u.name }</td>
+                            <td>${u.phone }</td>
+                            <td>${u.city }</td>
+                            <td>${u.status }</td>
+                            <td>${u.openRequests }</td>
                             <td>
                                 <button type="button" class="btn btn-outline-info mx-2 ">
                                     Edit </button>
                             </td>
                         </tr>
-                        <tr>
-
-                            <td>
-                                Admin
-                            </td>
-                            <td>Nikunj 643</td>
-                            <td>+919426144202</td>
-                            <td>kolkata</td>
-                            <td>Active</td>
-                            <td>200</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-info mx-2 ">
-                                    Edit </button>
-                            </td>
-                        </tr>
-
-
-                        <tr>
-
-                            <td>
-                                Admin
-                            </td>
-                            <td>bhavya</td>
-                            <td>+919426144202</td>
-                            <td>banglore</td>
-                            <td>Active</td>
-                            <td>200</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-info mx-2 ">
-                                    Edit </button>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td>
-                                Admin
-                            </td>
-                            <td>sweta</td>
-                            <td>+919426144202</td>
-                            <td>mumbai</td>
-                            <td>Active</td>
-                            <td>200</td>
-                            <td>
-                                <button type="button" class="btn btn-outline-info mx-2 ">
-                                    Edit </button>
-                            </td>
-                        </tr>
-
+                        </c:forEach>
+                       
                     </tbody>
                 </table>
             </div>

@@ -24,8 +24,6 @@ public class SearchHistoryService {
 
 		String hqlString1 = "from hallodoc.model.Request r where r.requestId!=0 and r.isDeleted=0";
 
-		
-
 		String hqlMain2 = hqlString1;
 
 		if (!(status.equals("99"))) {
@@ -76,10 +74,9 @@ public class SearchHistoryService {
 		for (int i = 0; i < list.size(); i++) {
 
 			Request request = list.get(i);
-			
 
 			SearchRecordsDto searchRecordsDto = new SearchRecordsDto();
-			
+
 			searchRecordsDto.setReqId(request.getRequestId());
 
 			if (!(request.getRequestClient().getAddress() == null)) {
@@ -96,29 +93,26 @@ public class SearchHistoryService {
 					searchRecordsDto.setAdminNote("-");
 				}
 
-					if (!(request.getRequestNotes().getNote() == null)) {
-						searchRecordsDto.setPatientNote(request.getRequestNotes().getNote());
-					} else {
-						searchRecordsDto.setPatientNote("-");
-					}
+				if (!(request.getRequestNotes().getNote() == null)) {
+					searchRecordsDto.setPatientNote(request.getRequestNotes().getNote());
+				} else {
+					searchRecordsDto.setPatientNote("-");
+				}
 
-					if (!(request.getRequestNotes().getPhysicianNotes() == null)) {
-						searchRecordsDto.setPhyNote(request.getRequestNotes().getPhysicianNotes());
-					} else {
-						searchRecordsDto.setPhyNote("-");
-					}
+				if (!(request.getRequestNotes().getPhysicianNotes() == null)) {
+					searchRecordsDto.setPhyNote(request.getRequestNotes().getPhysicianNotes());
+				} else {
+					searchRecordsDto.setPhyNote("-");
+				}
 
-				
 			}
-			
+
 			else {
-				
+
 				searchRecordsDto.setAdminNote("-");
 				searchRecordsDto.setPatientNote("-");
 				searchRecordsDto.setPhyNote("-");
-				
-				
-				
+
 			}
 			if (!(request.getAcceptedDate() == null)) {
 				String month = new DateModifier().getMonth(request.getAcceptedDate().toLocalDate());
@@ -139,9 +133,13 @@ public class SearchHistoryService {
 			if (!(request.getRequestClient().getPhoneNumber() == null)) {
 				searchRecordsDto.setPhone(request.getRequestClient().getPhoneNumber());
 			}
+			if (request.getPhysicianId() != null) {
 
-			if (!(request.getPhysicianId().getFirstName() == null)) {
-				searchRecordsDto.setPhy(request.getPhysicianId().getFirstName());
+				if (!(request.getPhysicianId().getFirstName() == null)) {
+					searchRecordsDto.setPhy(request.getPhysicianId().getFirstName());
+				} else {
+					searchRecordsDto.setPhy("-");
+				}
 			} else {
 				searchRecordsDto.setPhy("-");
 			}
@@ -155,16 +153,15 @@ public class SearchHistoryService {
 			} else {
 				searchRecordsDto.setZipString("-");
 			}
-			
+
 			searchRecordsDtos.add(searchRecordsDto);
 
 		}
 
 		return searchRecordsDtos;
 	}
-	
-	public void deleteRecord(int rId)
-	{
+
+	public void deleteRecord(int rId) {
 		List<Request> requests = requestDao.getRequests(rId);
 		Request request = requests.get(0);
 		request.setDeleted(true);

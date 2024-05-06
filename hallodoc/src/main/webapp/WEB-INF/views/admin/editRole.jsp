@@ -98,7 +98,7 @@
 
 							<div class="single-role-checkbox-flex">
 								<input type="checkbox" value="${menu.menuId }"
-									class="role-type-checkbox menu-checkbox-class"
+									class="role-type-checkbox menu-checkbox-class" onclick="AddSelectedRole()"
 									<c:forEach items="${roles.selectedMenuList}" var="selmenu">
 										<c:if test = "${menu.menuId == selmenu.menuId}">checked</c:if>
 									</c:forEach>>
@@ -157,26 +157,52 @@
 
 
 
-	<script>
+ <script>
         $(document).ready(function () {
         	console.log("hii")
-        	/* function AddSelectedRole() { */
-        		console.log("hiifgd")
-    			debugger
-        		var selectedRoles = []; // Clear any previous selections
-		        document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
-		        	selectedRoles.push(parseInt(checkbox.value));
-		        });
-        		
-        		var check=selectedRoles.join(',');
-        		console.log(check);
-
-        		$('#SelectedRegionEdit').val(selectedRoles.join(','));
-    		/* } */
+        	var selectedRoles = []; // Clear any previous selections
+	        document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+	        	selectedRoles.push(parseInt(checkbox.value));
+	        });
+    		
+    		var check=selectedRoles.join(',');
     	
         });
+        function AddSelectedRole() {
+    		console.log("hiifgd")
+			debugger
+    		var selectedRoles = []; // Clear any previous selections
+	        document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+	        	selectedRoles.push(parseInt(checkbox.value));
+	        });
+    		
+    		var check=selectedRoles.join(',');
+    		console.log(check);
 
-    </script>
+    		$('#SelectedRegionEdit').val(selectedRoles.join(','));
+		 }
+    </script> 
+    
+    
+   <!--  <script>
+    
+    $(document).ready(function () {
+    	  console.log("hiiyyyyy");
+
+    	  function clickCheckbox() {
+    		  console.log("inn]")
+    	    var selectedRoles = []; // Clear any previous selections
+    	    document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+    	      selectedRoles.push(parseInt(checkbox.value));
+    	    });
+
+    	    var check = selectedRoles.join(',');
+    	    console.log(check);
+
+    	    $('#SelectedRegionEdit').val(check);
+    	  }
+    	});
+    </script> -->
 
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"

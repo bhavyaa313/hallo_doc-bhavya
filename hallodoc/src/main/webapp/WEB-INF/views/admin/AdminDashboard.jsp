@@ -210,7 +210,7 @@ body {
 								<i class="bi bi-search"></i>
 							</button>
 						</div>
-						<form>
+						
 
 							<input type="text" id="search-input"
 								class="form-control border-0  shadow-none"

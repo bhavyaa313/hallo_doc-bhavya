@@ -155,22 +155,23 @@ body {
 								class="btn btn-outline-info mx-2 lo"> < Back</a>
 						</div>
 					</div>
-					<form action="familyInfo" method="post" enctype="multipart/form-data">
+					<form action="familyInfo" method="post"
+						enctype="multipart/form-data">
 						<h4>Family/Friend Information</h4>
 
 						<div class="row g-2">
 							<div class="col-md col-10">
 								<div class="form-floating mb-3">
 									<input type="text" class="form-control" id="floatingInput"
-										placeholder="name" name="firstName"> <label for="floatingInput"
-										class="dm">First Name</label>
+										placeholder="name" name="firstName"> <label
+										for="floatingInput" class="dm">First Name</label>
 								</div>
 							</div>
 							<div class="col-md col-12">
 								<div class="form-floating mb-3">
 									<input type="text" class="form-control" id="floatingInput"
-										placeholder="name" name="lastName"> <label for="floatingInput"
-										class="dm">Last Name</label>
+										placeholder="name" name="lastName"> <label
+										for="floatingInput" class="dm">Last Name</label>
 								</div>
 							</div>
 						</div>
@@ -186,7 +187,7 @@ body {
 							<div class="col-md col-12">
 								<div class="form-floating mb-3">
 									<input type="email" class="form-control" id="floatingInput"
-										placeholder="name@example.com" name="email" > <label
+										placeholder="name@example.com" name="email"> <label
 										for="floatingInput" class="dm">Email</label>
 								</div>
 							</div>
@@ -219,16 +220,16 @@ body {
 						<div class="row g-2">
 							<div class="col-md col-12">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="floatingInput" name="pFirstName"
-										placeholder="name"> <label for="floatingInput"
-										class="dm">First Name</label>
+									<input type="text" class="form-control" id="floatingInput"
+										name="pFirstName" placeholder="name"> <label
+										for="floatingInput" class="dm">First Name</label>
 								</div>
 							</div>
 							<div class="col-md col-12">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="floatingInput" name="plastName"
-										placeholder="name"> <label for="floatingInput"
-										class="dm">Last Name</label>
+									<input type="text" class="form-control" id="floatingInput"
+										name="plastName" placeholder="name"> <label
+										for="floatingInput" class="dm">Last Name</label>
 								</div>
 							</div>
 						</div>
@@ -249,8 +250,8 @@ body {
 						<div class="row g-2">
 							<div class="col-md col-12">
 								<div class="form-floating mb-3">
-									<input type="email" class="form-control" id="floatingInput" name="pEmail"
-										mailto:placeholder="name@example.com"> <label
+									<input type="email" class="form-control" id="floatingInput"
+										name="pEmail" mailto:placeholder="name@example.com"> <label
 										for="floatingInput" class="dm">Email</label>
 								</div>
 							</div>
@@ -268,38 +269,38 @@ body {
 						<div class="row g-2">
 							<div class="col-md col-12">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="floatingInput" name="street"
-										placeholder="rttttttth"> <label for="floatingInput"
-										class="dm">Street</label>
+									<input type="text" class="form-control" id="floatingInput"
+										name="street" placeholder="rttttttth"> <label
+										for="floatingInput" class="dm">Street</label>
 								</div>
 							</div>
 							<div class="col-md col-12">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="floatingInput" name="city"
-										placeholder="trr"> <label for="floatingInput" 
-										class="dm">City</label>
+									<input type="text" class="form-control" id="floatingInput"
+										name="city" placeholder="trr"> <label
+										for="floatingInput" class="dm">City</label>
 								</div>
 							</div>
 						</div>
 						<div class="row g-2">
 							<div class="col-md col-12">
-								 <div class="form-floating mb-3">
-                                    <select class="form-select" aria-label="Default select example" placeholder="tre">
-                                        <!-- <option selected>State</option> -->
-                                        <option value="1">Gujarat</option>
-                                        <option value="2">Maharashtra</option>
-                                        <option value="3">Rajasthan</option>
-                                        <option value="3">Madhya Pradesh</option>
+								<div class="form-floating mb-3">
+									<select class="form-select" aria-label="Default select example"
+										placeholder="tre" name="state">
+										<!-- <option selected>State</option> -->
+										<option>GUJARAT</option>
+										<option>MAHARASHTRA</option>
+										<option>MADHYAPRADESH</option>
+										<option>RAJASTHAN</option>
 
-                                    </select>
-                                    <label for="floatingInput" class="dm">State</label>
-                                </div>
+									</select> <label for="floatingInput" class="dm">State</label>
+								</div>
 							</div>
 							<div class="col-md col-12">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="floatingInput" name="zipcode"
-										placeholder="tre"> <label for="floatingInput"
-										class="dm">Zip Code</label>
+									<input type="text" class="form-control" id="floatingInput"
+										name="zipcode" placeholder="tre"> <label
+										for="floatingInput" class="dm">Zip Code</label>
 								</div>
 							</div>
 						</div>
@@ -320,10 +321,10 @@ body {
 						<div class="row">
 							<div class="col-md col-12">
 								<div class="input-group mb-3 drill_cursor mt-3">
-									<input type="file" name="file_name" id="input_file" hidden> <input
-										type="text" class="form-control col-form-label-lg " id="txt"
-										onclick="open_file" placeholder="Upload " aria-label="Upload"
-										aria-describedby="button-addon2">
+									<input type="file" name="file_name" id="input_file" hidden>
+									<input type="text" class="form-control col-form-label-lg "
+										id="txt" onclick="open_file" placeholder="Upload "
+										aria-label="Upload" aria-describedby="button-addon2">
 									<button class="btn btn-outline-info bg-info" type="button"
 										onclick="open_file()" id="button-addon2">
 										<img src="images/cloud-arrow-up.svg" alt=""> <span

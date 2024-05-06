@@ -75,6 +75,9 @@ public class CreateRoleService {
 	
 	public EditRoleDto getExistingRoles(int roleId)
 	{
+		
+		
+		
 		List<Role> roles = createRoleDao.getRoleByRoleId(roleId);
 		Role role = roles.get(0);
 		EditRoleDto editRoleDto = new EditRoleDto();

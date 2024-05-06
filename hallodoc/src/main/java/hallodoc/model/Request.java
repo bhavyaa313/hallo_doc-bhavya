@@ -30,7 +30,6 @@ public class Request {
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
-
 	private User userId;
 
 	@Column(name = "first_name")

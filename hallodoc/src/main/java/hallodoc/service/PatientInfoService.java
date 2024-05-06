@@ -95,12 +95,9 @@ public class PatientInfoService {
 		String dob = patientInfoDto.getDOB();
 		int id = patientInfoDto.getId();
 		int status = patientInfoDto.getStatus();
-		int phyid = patientInfoDto.getPhysicianId();
+	
 		int admin_id = patientInfoDto.getAdmin_id();
-		
-		List<Physician> physicians = physicianDao.getPhysicians(phyid);
-		Physician physician = physicians.get(0);
-		
+
 		CommonsMultipartFile file_name = patientInfoDto.getFile_name();
 		String creString = LocalDateTime.now().toLocalDate().toString();
 		LocalDate date = LocalDate.now();
@@ -171,8 +168,9 @@ public class PatientInfoService {
 			request.setLastName(lname);
 			request.setPhoneNumber(mobile);
 			request.setEmail(email);
-			request.setStatus(status);
-			request.setPhysicianId(physician);
+			request.setStatus(1);
+			request.setDeleted(false);
+			
 			request.setCreatedDate(cdate);
 			request.setConfirmationNumber(confirString);
 			request.setRequestTypeId(2);
@@ -269,11 +267,11 @@ public class PatientInfoService {
 			request.setLastName(lname);
 			request.setPhoneNumber(mobile);
 			request.setEmail(email);
-			request.setStatus(status);
-			request.setPhysicianId(physician);
+			request.setStatus(1);
 			request.setCreatedDate(cdate);
 			request.setDeclinedBy(aspNetUsers);
 			request.setUserId(user);
+			request.setDeleted(false);
 			request.setRequestTypeId(2);
 			request.setConfirmationNumber(confirString);
 

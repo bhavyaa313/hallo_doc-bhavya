@@ -213,9 +213,12 @@ public class CoincergeService {
 			request.setFirstName(fname);
 			request.setLastName(lname);
 			request.setPhoneNumber(mobile);
+			request.setStatus(1);
 			request.setEmail(email);
 			request.setCreatedDate(LocalDateTime.now());
 			request.setRequestTypeId(4);
+			request.setDeleted(false);
+			request.setStatus(1);
 			request.setConfirmationNumber(confirString);
 			
 			requestDao.requestSave(request);
@@ -324,9 +327,12 @@ RequestClient requestClient = new RequestClient();
 			request.setLastName(lname);
 			request.setPhoneNumber(mobile);
 			request.setEmail(email);
+			request.setStatus(1);
 			request.setCreatedDate(LocalDateTime.now());
 			request.setConfirmationNumber(confirString);
 			request.setRequestTypeId(4);
+			request.setDeleted(false);
+			request.setStatus(1);
 			
 			requestDao.requestSave(request);
 			

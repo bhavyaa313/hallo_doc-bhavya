@@ -208,16 +208,16 @@ img.highlight:hover {
 							<div class="row g-2">
 								<div class="col-md">
 									<div class="form-floating mb-3">
-										<select class="form-select"
-											aria-label="Default select example" placeholder="tre">
-											<!-- <option selected>State</option> -->
-											<option value="1">Gujarat</option>
-											<option value="2">Maharashtra</option>
-											<option value="3">Rajasthan</option>
-											<option value="4">Madhya Pradesh</option>
+									<select class="form-select" aria-label="Default select example"
+										placeholder="tre" name="state">
+										<!-- <option selected>State</option> -->
+										<option>GUJARAT</option>
+										<option>MAHARASHTRA</option>
+										<option>MADHYAPRADESH</option>
+										<option>RAJASTHAN</option>
 
-										</select> <label for="floatingInput" class="dm">State</label>
-									</div>
+									</select> <label for="floatingInput" class="dm">State</label>
+								</div>
 								</div>
 								<div class="col-md">
 									<div class="form-floating mb-3">

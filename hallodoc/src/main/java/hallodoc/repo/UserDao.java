@@ -74,6 +74,19 @@ public class UserDao {
 
 	}
 	
+	public List<User> getUserstwithRoleid() {
+
+		Session session = sessionFactory.openSession();
+
+		String hqlString = "from hallodoc.model.User where roleId=2 or roleId=1 ";
+		Query query = session.createQuery(hqlString);
+
+		List<User> list = query.list();
+
+		return list;
+
+	}
+	
 	public List<User> getUserByReqType(String sql) {
 
 		Session session = sessionFactory.openSession();

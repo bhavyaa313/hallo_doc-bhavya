@@ -35,7 +35,7 @@ public class BlockRequestDao {
 
 		Session session = sessionFactory.openSession();
 
-		String hqlString = "from hallodoc.model.BlockRequests b where b.block_request_id=:bId";
+		String hqlString = "from hallodoc.model.BlockRequests b where b.blockRequestId=:bId";
 
 		Query query = session.createQuery(hqlString);
 		query.setParameter("bId", bId);

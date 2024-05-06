@@ -144,7 +144,8 @@ public class InfoForMeService {
 		request.setLastName(lname);
 		request.setPhoneNumber(mobile);
 		request.setEmail(email);
-		request.setStatus(status);
+		
+		request.setStatus(1);
 		request.setPhysicianId(physician);
 		request.setCreatedDate(cdate);
 		request.setConfirmationNumber(confirString);
