@@ -104,7 +104,7 @@
           </li>
           <li class="nav-item dropdown mx-2">
             <a class="nav-link dropdown-toggle ${active }" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              providers
+              Providers
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/providerMenu">Provider</a></li>

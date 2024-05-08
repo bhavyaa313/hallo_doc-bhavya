@@ -26,6 +26,8 @@ public class CreateNewRequestDto {
 	private String zipcode;
 	
 	private String adminNotes;
+	
+	private String providerNotes;
 
 	public String getNotes() {
 		return notes;
@@ -114,9 +116,21 @@ public class CreateNewRequestDto {
 	public void setAdminNotes(String adminNotes) {
 		this.adminNotes = adminNotes;
 	}
+	
+	
+
+	public String getProviderNotes() {
+		return providerNotes;
+	}
+
+	public void setProviderNotes(String providerNotes) {
+		this.providerNotes = providerNotes;
+	}
+
+
 
 	public CreateNewRequestDto(String notes, String firstName, String lastName, String dOB, String email, String mobile,
-			String street, String city, String state, String zipcode, String adminNotes) {
+			String street, String city, String state, String zipcode, String adminNotes, String providerNotes) {
 		super();
 		this.notes = notes;
 		this.firstName = firstName;
@@ -129,6 +143,7 @@ public class CreateNewRequestDto {
 		this.state = state;
 		this.zipcode = zipcode;
 		this.adminNotes = adminNotes;
+		this.providerNotes = providerNotes;
 	}
 
 	public CreateNewRequestDto() {

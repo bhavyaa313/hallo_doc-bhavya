@@ -53,6 +53,7 @@ import hallodoc.dto.EmailLogsDto;
 import hallodoc.dto.EncounterDto;
 import hallodoc.dto.PatientHistoryDto;
 import hallodoc.dto.PatientRecordsDto;
+import hallodoc.dto.ProviderDashboardDto;
 import hallodoc.dto.SMSLogDto;
 import hallodoc.dto.SearchRecordsDto;
 import hallodoc.dto.SendLinkDto;
@@ -97,6 +98,7 @@ import hallodoc.service.ExportAllService;
 import hallodoc.service.PartnerService;
 import hallodoc.service.PatientHistoryService;
 import hallodoc.service.PatientRecordsService;
+import hallodoc.service.ProviderDashboardService;
 import hallodoc.service.ProviderService;
 import hallodoc.service.RequestClientService;
 import hallodoc.service.RequestService;
@@ -168,6 +170,9 @@ public class AdminController {
 
 	@Autowired
 	private RequestService requestService;
+	
+	@Autowired
+	private ProviderDashboardService providerDashboardService;
 
 	@Autowired
 	private EncounterDao encounterDao;
@@ -260,7 +265,7 @@ public class AdminController {
 		return "redirect:/accountAccess";
 
 	}
-
+	
 	@RequestMapping("/admin")
 	public String dashboard(Model model, HttpServletRequest request,
 			@CookieValue(value = "emailId", defaultValue = "error") String emailId) {
@@ -307,6 +312,47 @@ public class AdminController {
 
 	}
 
+	@RequestMapping("/provider/{id}")
+	public String dashboard(Model model, HttpServletRequest request,@PathVariable("id")int id,
+			@CookieValue(value = "emailId", defaultValue = "error") String emailId) {
+
+		List requestList = adminDashboardDao.getRequests();
+
+
+		HttpSession session = request.getSession();
+		String sessionIdString = session.getId();
+
+		String emailString = (String) session.getAttribute("email");
+
+		if (emailId.equals(emailString)) {
+
+			session.getAttribute("userList");
+
+			String activeString = "active  text-info";
+			model.addAttribute("activeString", activeString);
+			model.addAttribute("id", id);
+			
+			
+
+		
+			Integer[] counts = providerDashboardService.count(id);
+			
+			session.setAttribute("counts", counts);
+	
+
+			return "/provider/providerDashboard";
+		}
+		/*
+		 * else if(cookies==null) { return "/admin/error"; }
+		 */
+		else {
+			return "/admin/error";
+		}
+
+	}
+	
+	
+
 	@RequestMapping(path = "/viewCase/{requestId}")
 	public String viewCase(@PathVariable("requestId") int requestId, Model model, HttpServletRequest request1) {
 
@@ -332,6 +378,32 @@ public class AdminController {
 
 		return "/admin/ViewCase";
 	}
+	
+	@RequestMapping(path = "/provider/viewCase/{requestId}")
+	public String viewCaseprovider(@PathVariable("requestId") int requestId, Model model, HttpServletRequest request1) {
+
+		List<Request> requests = requestService.getRequestByReqId(requestId);
+		Request request = requests.get(0);
+		String confirmString = request.getConfirmationNumber();
+		int status = request.getStatus();
+		List<RequestClient> requestClients = requestClientService.getRequestClientByReqId(request);
+		RequestClient requestClient = requestClients.get(0);
+		int date = requestClient.getIntDate();
+		int year = requestClient.getIntYear();
+		String monthString = requestClient.getStrMonth();
+		String fullDate = dobHelper.getWholeDate(date, monthString, year);
+		System.out.println(fullDate);
+		model.addAttribute("fullDate", fullDate);
+		model.addAttribute("requestClients", requestClients);
+		model.addAttribute("confirmString", confirmString);
+		model.addAttribute("status", status);
+		HttpSession session = request1.getSession();
+		String activeString = "active  text-info";
+		model.addAttribute("activeString", activeString);
+		session.getAttribute("userList");
+
+		return "/provider/viewCase";
+	}
 
 	@RequestMapping(path = "/viewNotes/{requestId}")
 	public String viewNotes(@PathVariable("requestId") int requestId, Model model,
@@ -349,6 +421,39 @@ public class AdminController {
 
 		return "/admin/ViewNotes";
 	}
+	
+	@RequestMapping(path = "/provider/viewNotes/{userID}/{requestId}")
+	public String viewNotesProvider(@PathVariable("requestId") int requestId,@PathVariable("userID") int userID, Model model,
+			@ModelAttribute ViewNotesDto viewNotesDto) {
+
+		List<Request> requests = requestService.getRequestByReqId(requestId);
+		Request request = requests.get(0);
+		String activeString = "active  text-info";
+		model.addAttribute("activeString", activeString);
+		model.addAttribute("requestId", requestId);
+		model.addAttribute("userID", userID);
+		ViewNotesDto viewNotesDtos = viewNotesService.service(requestId, viewNotesDto);
+		System.out.println(viewNotesDtos);
+		System.out.println("9999999999999999999999999999999999999999999999999999999999999999999999999999");
+		model.addAttribute("viewNotesDtos", viewNotesDtos);
+
+		return "/provider/viewNotes";
+	}
+	
+	@PostMapping("/submitNoteAdmin/{requestId}/{userID}")
+	public String submitNoteAdmin(@PathVariable("requestId") int requestId,@PathVariable("userID") int userID, @RequestParam("adminNote") String Note)
+	{
+		viewNotesService.submitAdminNote(requestId, Note, userID);
+		return "redirect:/viewNotes/" +userID +"/"+ + requestId;
+	}
+
+	
+	@PostMapping("/submitNote/{requestId}/{userID}")
+	public String submitNote(@PathVariable("requestId") int requestId,@PathVariable("userID") int userID, @RequestParam("providerNote") String Note)
+	{
+		viewNotesService.submitProviderNote(requestId, Note, userID);
+		return "redirect:/provider/viewNotes/" +userID +"/"+ + requestId;
+	}
 
 	@RequestMapping("/createReq/{userID}")
 	public String creteRequest(@PathVariable("userID") int userID, Model model) {
@@ -356,6 +461,15 @@ public class AdminController {
 		model.addAttribute("activeString", activeString);
 		return "/admin/CreateRequest";
 	}
+	
+	@RequestMapping("/provider/createReq/{userID}/{id}")
+	public String creteRequestProvider(@PathVariable("userID") int userID, Model model, @PathVariable("id") int id) {
+		String activeString = "active  text-info";
+		model.addAttribute("activeString", activeString);
+		model.addAttribute("id", id);
+		return "/provider/createNewRequest";
+	}
+
 
 	@RequestMapping(path = "/viewCase/viewNotes/{requestId}")
 	public String viewNotess(@PathVariable("requestId") int requestId, Model model,
@@ -391,6 +505,19 @@ public class AdminController {
 		return adminDashboardDtos;
 
 	}
+	
+
+	@GetMapping(path = "/provider/ajaxcallForProvider/{class1}/{roleWiseId}/{valueofInput}/{phyID}")
+	@ResponseBody
+	public List ajaxcallProvider(Model model, HttpServletRequest request, @PathVariable("class1") String class1,
+			@PathVariable("roleWiseId") String roString, @PathVariable("valueofInput") String input,
+			@PathVariable("phyID") int phyID) {
+		System.out.println("this is ajax call");
+		List<ProviderDashboardDto> providerDashboardDtos = providerDashboardService.service(class1, roString,input, phyID);
+
+		return providerDashboardDtos;
+
+	}
 
 	@RequestMapping(path = "/createReq/new/{userID}", method = RequestMethod.POST)
 	public String CreateNewRequest(@PathVariable("userID") int userID,
@@ -399,6 +526,17 @@ public class AdminController {
 		User user = users.get(0);
 		createNewRequestService.service(createNewRequestDto, userID, create.ajaxCheck(createNewRequestDto.getEmail()));
 		return "redirect:/createReq/{userID}";
+
+	}
+	
+	@RequestMapping(path = "/new/{userID}/{id}", method = RequestMethod.POST)
+	public String CreateNewRequestProvider(@PathVariable("userID") int userID, @PathVariable("id") int id,
+			@ModelAttribute CreateNewRequestDto createNewRequestDto) {
+		List<User> users = userDao.getUserIDList(userID);
+		User user = users.get(0);
+	createNewRequestService.serviceProvider(createNewRequestDto, userID, create.ajaxCheck(createNewRequestDto.getEmail()), id);
+	return "redirect:/provider/" + id;
+	
 
 	}
 
@@ -411,8 +549,8 @@ public class AdminController {
 	
 	@RequestMapping(path = "/contact", method = RequestMethod.POST)
 	public String SendMailContact(@ModelAttribute SendLinkDto sendLinkDto) {
-		sendLinkService.service(sendLinkDto);
-		return "redirect:/admin";
+		sendLinkService.contctProvider(sendLinkDto);
+		return "redirect:/providerMenu";
 
 	}
 
@@ -420,6 +558,13 @@ public class AdminController {
 	public String sendAgreementAction(@RequestParam("email23") String email, @RequestParam("reqId6") int reqId) {
 		sendLinkService.sendAgreementService(email, reqId);
 		return "redirect:/admin";
+
+	}
+	
+	@RequestMapping(path = "/provider/sendAgreementAction", method = RequestMethod.POST)
+	public String sendAgreementActionProvider(@RequestParam("email23") String email, @RequestParam("reqId6") int reqId, @RequestParam("phyId") int phyId) {
+		sendLinkService.sendAgreementService(email, reqId);
+		return "redirect:/provider/" + phyId;
 
 	}
 
@@ -431,6 +576,9 @@ public class AdminController {
 		return "redirect:/admin";
 
 	}
+	
+	
+
 
 	@RequestMapping(path = "/blockCaseAction/{userID}", method = RequestMethod.POST)
 	public String blockCaseAction(@ModelAttribute BlockCaseDto blockCaseDto, @PathVariable("userID") int userID) {
@@ -481,6 +629,15 @@ public class AdminController {
 		return "redirect:/admin";
 
 	}
+	
+	@RequestMapping(path = "/transferCaseActionProvider/{userID}/{id}", method = RequestMethod.POST)
+	public String transferCaseActionProvider(@ModelAttribute TransferCaseDto transferCaseDto,
+			@PathVariable("userID") int userID, @PathVariable("id") int id) {
+
+		transferCaseService.transferProvider(transferCaseDto, userID);
+		return "redirect:/provider/" + id;
+
+	}
 
 	@RequestMapping(path = "exportAll", method = RequestMethod.POST)
 	@ResponseBody
@@ -509,9 +666,38 @@ public class AdminController {
 		return "redirect:/admin";
 
 	}
+	
+	@PostMapping("/provider/acceptCaseAction")
+	public String AcceptCaseAction(@RequestParam("reqId5") int reqId, @RequestParam("phyId") int phyId) {
+		clearCaseService.acceptCase(reqId, phyId);
+		return "redirect:/provider/" + phyId;
+		
+
+	}
 
 	@RequestMapping("/viewDocs/{requestId}")
 	public String viewDocs(@PathVariable("requestId") int requestId, Model model, HttpServletRequest request1,
+			HttpSession session) {
+		String activeString = "active  text-info";
+		model.addAttribute("activeString", activeString);
+		List<Request> requests = requestService.getRequestByReqId(requestId);
+		Request request = requests.get(0);
+		String confirmString = request.getConfirmationNumber();
+		int status = request.getStatus();
+		List<RequestClient> requestClients = requestClientService.getRequestClientByReqId(request);
+		RequestClient requestClient = requestClients.get(0);
+
+		model.addAttribute("requestClients", requestClients);
+		model.addAttribute("confirmString", confirmString);
+		model.addAttribute("status", status);
+		List<ViewDocumentsDTO> viewDocumentsDTO = viewDocsService.getRequestWiseFiles(requestId, request1);
+		model.addAttribute("requestWiseFiles", viewDocumentsDTO);
+		session.getAttribute("userList");
+		return "/admin/ViewDocs";
+	}
+	
+	@RequestMapping("/provider/viewDocs/{requestId}")
+	public String viewDocsProvider(@PathVariable("requestId") int requestId, Model model, HttpServletRequest request1,
 			HttpSession session) {
 		String activeString = "active  text-info";
 		model.addAttribute("activeString", activeString);

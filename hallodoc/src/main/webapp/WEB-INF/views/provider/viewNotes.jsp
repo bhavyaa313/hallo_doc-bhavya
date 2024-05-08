@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
 <%@page isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -214,17 +215,18 @@
 
 
 
-                  <form action="${pageContext.request.contextPath}/submitNoteAdmin/${requestId }" method="post">
+                 <form action="${pageContext.request.contextPath}/submitNote/${requestId }/${userID }" method="post">
 			<div style="border: 5px solid #edf4f4;"
 				class="bg-white px-3 pb-3 border-4 rounded-3">
 
 				<div class="row pt-2 mt-2 mb-3">
+				
 
 					<div class="col-md-12">
 						<div class="form-group form-floating mt-2">
 							<textarea style="height: 150px;" class="form-control"
-								name="adminNote" placeholder="Patient Notes"></textarea>
-							<label>Admin Notes</label>
+								name="providerNote" placeholder="Patient Notes"></textarea>
+							<label>Provider Notes</label>
 						</div>
 					</div>
 

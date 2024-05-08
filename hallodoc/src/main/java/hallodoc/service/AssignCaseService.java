@@ -80,7 +80,7 @@ public class AssignCaseService {
 	request.setModifiedDate(LocalDateTime.now());
 	request.setDeclinedBy(user.getAspnetUserId());
 	request.setPhysicianId(physician);
-	request.setStatus(2);
+	request.setStatus(1);
 	
 	requestDao.requestUpdate(request);
 	

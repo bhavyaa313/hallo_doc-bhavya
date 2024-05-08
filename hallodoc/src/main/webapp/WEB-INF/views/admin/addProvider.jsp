@@ -193,22 +193,22 @@
 									<div class="d-flex flex-wrap mt-2">
 										<div class="form-check mr-5">
 											<input class="form-check-input part1 enable2" type="radio"
-												onclick="stateSelect()" name="state" value="1" disabled>
+												onclick="stateSelect()" name="state" value="1" >
 											<label class="form-check-label"> GUJARAT </label>
 										</div>
 										<div class="form-check mr-5">
 											<input class="form-check-input part1 enable2" type="radio"
-												onclick="stateSelect()" name="state" value="2" disabled>
+												onclick="stateSelect()" name="state" value="2" >
 											<label class="form-check-label"> MAHARASHTRA </label>
 										</div>
 										<div class="form-check mr-5">
 											<input class="form-check-input part1 enable2" type="radio"
-												onclick="stateSelect()" name="state" value="3" disabled>
+												onclick="stateSelect()" name="state" value="3" >
 											<label class="form-check-label"> MADHYAPRADESH </label>
 										</div>
 										<div class="form-check mr-4">
 											<input class="form-check-input part1 enable2" type="radio"
-												onclick="stateSelect()" name="state" value="4" disabled>
+												onclick="stateSelect()" name="state" value="4" >
 											<label class="form-check-label"> RAJASTHAN </label>
 										</div>
 										<input type="text" name="region" id="region" hidden>
@@ -246,12 +246,16 @@
 											for="floatingInput" class="dm">City</label>
 									</div>
 								</div>
-								<div class="col-md">
-									<div class="form-floating mb-3">
-										<input type="text" class="form-control" id="floatingInput"
-											placeholder="name" name="state"> <label
-											for="floatingInput" class="dm">State</label>
-									</div>
+							<div class="form-floating mb-3">
+									<select class="form-select" aria-label="Default select example"
+										placeholder="tre" name="state">
+										<!-- <option selected>State</option> -->
+										<option>GUJARAT</option>
+										<option>MAHARASHTRA</option>
+										<option>MADHYAPRADESH</option>
+										<option>RAJASTHAN</option>
+
+									</select> <label for="floatingInput" class="dm">State</label>
 								</div>
 							</div>
 

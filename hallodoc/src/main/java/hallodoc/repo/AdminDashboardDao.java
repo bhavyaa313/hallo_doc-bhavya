@@ -27,7 +27,7 @@ public class AdminDashboardDao {
 
 		System.out.println("requests");
 		
-		String hqlString = "from hallodoc.model.Request A ";
+		String hqlString = "from hallodoc.model.Request A where isDeleted=0 ";
 		Query query = session.createQuery(hqlString);
 		
 		List list = query.list();
@@ -36,6 +36,24 @@ public class AdminDashboardDao {
 		return list;
 
 	}
+	
+	
+	public List getRequestsByphyID(int phyID) {
+
+		Session session = sessionFactory.openSession();
+
+		System.out.println("requests");
+		
+		String hqlString = "from hallodoc.model.Request A where A.isDeleted=0 and A.physicianId.physicianId=:phyID ";
+		Query query = session.createQuery(hqlString);
+		query.setParameter("phyID", phyID);
+		List list = query.list();
+		System.out.println(list);
+		
+		return list;
+
+	}
+	
 	
 	
 	public List getRequestClients(Request rId ) {

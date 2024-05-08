@@ -98,6 +98,45 @@ public void service(CancelCaseDto cancelCaseDto, int userID)
 	
 }
 
+
+public void AcceptCase(CancelCaseDto cancelCaseDto, int userID)
+{
+	
+	int reqid = cancelCaseDto.getReqId();
+	
+	System.out.println(reqid);
+	
+	List<User> users = userDao.getUserIDList(userID);
+	User user = users.get(0);
+	List<Request> requests = requestService.getRequestByReqId(reqid);
+	Request request = requests.get(0);
+	
+	RequestStatusLog requestStatusLog = new RequestStatusLog();
+	requestStatusLog.setAdminId(1);
+	requestStatusLog.setCreatedDate(LocalDateTime.now());
+	requestStatusLog.setNotes("Accepted By provider");
+	requestStatusLog.setRequestId(request);
+	requestStatusLog.setStatus(2);
+	requestStatusLogDao.requestStatusLogSave(requestStatusLog);
+	
+	
+	;
+	request.setModifiedDate(LocalDateTime.now());
+
+	request.setStatus(2);
+	
+	requestDao.requestUpdate(request);
+	
+	
+
+	
+	
+	
+	
+	
+}
+
+
 	
 	
 

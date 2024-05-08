@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@page isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -14,7 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dasdhboard New</title>
+<title>Provider Dasdhboard</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -28,18 +29,18 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="<c:url value="/resources/css/bootstrap.min.css" />">
-<link
-
- rel="stylesheet" href="<c:url value="/resources/css/style.css" />">
+<link rel="stylesheet" href="<c:url value="/resources/css/style.css" />">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js">
-</script> <script src="<c:url value="/resources/js/script.js" />"></script> <script
+</script>
+<script src="<c:url value="/resources/js/script.js" />"></script>
+<script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-	crossorigin="anonymous"></script> <script
-	src="https://code.jquery.com/jquery-3.7.1.min.js"
+	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
 	crossorigin="anonymous"></script>
 
@@ -133,34 +134,9 @@ body {
 					</span>
 				</button>
 
-				<button type="button" class="btn btn-link col-md-2 col-4 bt-badge"
-					onclick="myFunction('light-blue','l-blu1','l-bluecol','l-blu1-icon-white','l-blue-icon')">
-					<img src="<c:url value="/resources/images/tri-lightblue.svg" />"
-						alt="" class="dnone" id="l-blu1"> <span
-						class="badge bdg-5 bg-primary-subtle text-primary w-100"
-						id="light-blue"> <img class="new-badge m-2"
-						src="<c:url value="/resources/images/to_close.svg" />" alt=""
-						id="l-blue-icon"> <img class="new-badge m-2 dnone"
-						src="<c:url value="/resources/images/to_close - Copy.svg" />"
-						alt="" id="l-blu1-icon-white"> <span class="h6">TO
-							CLOSE</span>
-						<p class="h4 ml-2 fw-bold">${counts[4] }</p>
-					</span>
-				</button>
 
-				<button type="button" class="btn btn-link col-md-2 col-4 bt-badge"
-					onclick="myFunction('purple','purple1','purplecol','purple1-icon-white','purple-icon')">
-					<img src="<c:url value="/resources/images/tri-purple.svg" />"
-						alt="" class="dnone" id="purple1"> <span
-						class="badge bdg-6 w-100" id="purple"> <img
-						class="new-badge m-2"
-						src="<c:url value="/resources/images/unpaid.svg" />" alt=""
-						id="purple-icon"> <img class="new-badge m-2 dnone"
-						src="<c:url value="/resources/images/unpaid - Copy.svg" />" alt=""
-						id="purple1-icon-white"> <span class="h6">UNPAID</span>
-						<p class="h4 ml-2 fw-bold">${counts[5] }</p>
-					</span>
-				</button>
+
+
 
 			</div>
 
@@ -173,24 +149,12 @@ body {
 					<img src="<c:url value="/resources/images/link.svg" />" alt="">
 					<span class="btn-span">Send Link</span>
 				</button>
-				<a href="createReq/${userList[0].userID}" type="button"
+				<a href="createReq/${userList[0].userID}/${id}" type="button"
 					class="btn btn-info mr-2"> <img
 					src="<c:url value="/resources/images/req.svg" />" alt=""> <span
 					class="btn-span text-white">Create Requests</span>
 				</a>
-				<button type="button" class="btn btn-info mr-2">
-					<img src="<c:url value="/resources/images/export 1.svg" />" alt="">
-					<span class="btn-span">Export</span>
-				</button>
-				<button type="button" class="btn btn-info mr-2 exportAll">
-					<img src="<c:url value="/resources/images/exxport.svg" />" alt="">
-					<span class="btn-span">Export All</span>
-				</button>
-				<button type="button" class="btn btn-info " data-bs-toggle="modal"
-					data-bs-target="#req">
-					<img src="<c:url value="/resources/images/person1.svg" />" alt="">
-					<span class="btn-span">Request DTY Support</span>
-				</button>
+
 			</div>
 		</div>
 		<div class="container-fluid px-3">
@@ -210,32 +174,15 @@ body {
 								<i class="bi bi-search"></i>
 							</button>
 						</div>
-						
 
-							<input type="text" id="search-input"
-								class="form-control border-0  shadow-none"
-								placeholder="Search Patients">
+
+						<input type="text" id="search-input"
+							class="form-control border-0  shadow-none"
+							placeholder="Search Patients">
 					</div>
 
 
 
-					<div class="input-group border me-2 rounded-0 mb-2 form-control">
-						<div class="input-group-append">
-							<button class="btn text-secondary border border-0 bg-white"
-								type="button">
-								<i class="bi bi-search"></i>
-							</button>
-
-							<select class="form-select bt-badge "
-								aria-label="Floating label select example">
-								<option value="0">ALL</option>
-								<option value="1">GUJARAT</option>
-								<option value="2">MAHARASHTRA</option>
-								<option value="3">MADHYA PRADESH</option>
-								<option value="4">RAJASTHAN</option>
-							</select>
-						</div>
-					</div>
 				</div>
 				<div class="col-lg-8 pt-2">
 					<div
@@ -701,32 +648,32 @@ body {
 		</div>
 
 
-		<div class="modal fade" id="clear" tabindex="-1"
+		<div class="modal fade" id="accept" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog  modal-dialog-centered">
 
 				<div class="modal-content rounded-4">
-					<form action="clearCaseAction" method="post">
-						<div class="modal-body">
-							<div class="mb-2 pt-3 pb-3">
-								<img src="<c:url value="/resources/images/modal.svg"/>"
-									class="border img-fluid border-warning p-1 rounded-circle d-block m-auto"
-									alt="...">
-							</div>
-							<h5 class=" d-flex justify-content-center ms-auto">Confirmation
-								for clear case</h5>
-							<p class=" d-flex justify-content-center text-center">Are
-								sure you want to clear this request? Once clear this request
-								then you are not able to see this request.</p>
-							<input type="text" id="reqId5" name="reqId5" hidden>
+					<form action="acceptCaseAction" method="post">
+						<div class="modal-body text-center">
+
+							<p style="margin-top: 30px;" class="fw-bold fs-4">Accept Case</p>
+
+							<p style="font-size: 13px; margin: 0;">Are you sure you want
+								to Accept this request?</p>
+
+							<p style="font-size: 13px;">Once Accept this request then you
+								are not able to Decline this request.</p>
+
+							<input type="text" id="reqId5" name="reqId5" >
+							<input type="text"  name="phyId" value="${id }" hidden>
 						</div>
 						<div
 							class="modal-footer border-top-0 pb-5 d-flex justify-content-center">
 
 							<button type="submit" class="btn btn-info  text-white btn-lg "
-								data-bs-dismiss="modal">clear</button>
+								data-bs-dismiss="modal">Accept</button>
 							<button type="button" class="btn btn-info  text-white btn-lg "
-								data-bs-dismiss="modal">cancel</button>
+								data-bs-dismiss="modal">Cancel</button>
 						</div>
 					</form>
 				</div>
@@ -777,7 +724,8 @@ body {
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog  modal-dialog-centered">
 				<div class="modal-content">
-					<form action="transferCaseAction/${userList[0].userID}"
+					<form
+						action="${pageContext.request.contextPath}/transferCaseActionProvider/${userList[0].userID}/${id }"
 						method="post">
 						<div class="modal-header bg-info text-white">
 							<h1 class="modal-title fs-5 " id="exampleModalLabel">Transfer
@@ -787,28 +735,10 @@ body {
 						</div>
 						<div class="modal-body">
 
-							<p mb-3>To transfer this request, search and select another
-								Physician.</p>
-
-							<div class="form-floating mb-3">
-								<select class="form-select" id="regionSelector1"
-									aria-label="Floating label select example">
-									<option value="1">GUJARAT</option>
-									<option value="2">MAHARASHTRA</option>
-									<option value="3">MADHYA PRADESH</option>
-									<option value="4">RAJASTHAN</option>
-								</select> <label for="floatingSelect">Narrow Search By region</label>
-							</div>
-
-							<div class="form-floating mb-3">
-								<select class="form-select" id="physicians1"
-									aria-label="Floating label select example">
+							<p mb-3>To transfer this request back to admin</p>
 
 
 
-
-								</select> <label for="floatingSelect">Select Physician</label>
-							</div>
 
 							<div class="form-floating mb-3">
 								<textarea class="form-control"
@@ -817,7 +747,7 @@ body {
 								<label for="floatingTextarea2">Description</label>
 							</div>
 							<input type="text" id="reqId4" name="reqId4" hidden> <input
-								type="text" name="phyId1" id="phyId4" hidden>
+								type="text" name="phyId1" value="${id }" hidden>
 
 						</div>
 						<div class="modal-footer">
@@ -867,6 +797,7 @@ body {
 									for="floatingInput">Email address</label>
 							</div>
 							<input type="text" id="reqId6" name="reqId6" hidden>
+								<input type="text"  name="phyId" value="${id }" hidden>
 
 
 
@@ -1324,8 +1255,8 @@ function onBadgeClick(event) {
 		console.log(valueofInput);
 		var check = $(this).children('div').attr('id');
 		var roleWiseId = (($(this).children('div').attr('id')!= "" ? ($(this).children('div').attr('id')) : "undefined"));
-		var regionWiseSearch = $(".bt-badge :selected").val().toUpperCase();
-
+		var phyID = ${id };
+		  var userID = ${userList[0].userID};
 		if(class1!=undefined){
 			qForclas1.push(class1);
 		}
@@ -1343,7 +1274,7 @@ function onBadgeClick(event) {
 	debugger
 	$.ajax({
 		
-		  url: "ajaxcall/"+class1+"/"+roleWiseId+"/"+valueofInput+"/"+regionWiseSearch, // URL to make the request to
+		  url: "ajaxcallForProvider/"+class1+"/"+roleWiseId+"/"+valueofInput+"/"+phyID,// URL to make the request to
 		  type: "GET",    // HTTP method (GET, POST, etc.) 
 		  
 		  dataType: "json", // Expected data type of the response (optional)
@@ -1354,7 +1285,7 @@ function onBadgeClick(event) {
 			
 			$(".t-header").empty();
 			  
-			  
+			
 			  console.log("hearder-empty");
 			  
 			 $(".t-data").empty();
@@ -1362,20 +1293,14 @@ function onBadgeClick(event) {
 			 var accbody = $("#a-data");
 			 accbody.empty();
 			 var th = `<tr>
-			 <th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">Name</th>
-					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction"></th>
+			 <th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ">Name</th>
+				
+				
 					
-					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction">Date of Birth</th>
-					<th scope="col" class="PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">Physician Name</th>
-					<th scope="col" class="PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">Date of Service</th>
-					<th scope="col" class="ToCloseAction">Region</th>
-					<th scope="col" class="NewAction PendingAction ActiveAction">Requestor</th>
-					<th scope="col" class="NewAction">Requested Date</th>
-					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction UnpaidAction">Phone</th>
-					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">Address</th>
-					<th scope="col" class="NewAction PendingAction ActiveAction ToCloseAction">Notes</th>
-
-					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">Actions</th>
+					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ">Phone</th>
+					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ">Address</th>
+					<th scope="col" class=" ActiveAction ">Status</th>
+					<th scope="col" class="NewAction PendingAction ActiveAction ConcludeAction ">Actions</th>
 				</tr>`
 				
 				$(".t-header").append(th);
@@ -1393,63 +1318,52 @@ function onBadgeClick(event) {
 					console.log(id);
 					
 				
-			var rows = `<tr><td class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">`+ dataset.name+`</td>
-				<td class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">e</td>
+			var rows = `<tr><td class="NewAction PendingAction ActiveAction ConcludeAction ">`+ dataset.name+`</td>
 				
-				<td class="NewAction ActiveAction ConcludeAction ToCloseAction PendingAction">`+ dataset.dob+`</td>
-				<td class="PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">docter</td>
-				<td class="PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">DOS</td>
-				<td class="ToCloseAction">`+ dataset.region+`</td>
-				<td class="NewAction PendingAction ActiveAction">`+ dataset.requestor+`</td>
-				<td class="NewAction">`+ dataset.requestedDate+`</td>
-				<td class="NewAction PendingAction ActiveAction ConcludeAction UnpaidAction">`+ dataset.phone+`</td>
-				<td class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction">`+ dataset.address+`</td>
-				<td class="NewAction PendingAction ActiveAction ToCloseAction">`+ dataset.notes+`</td>
-				<td class="NewAction PendingAction ActiveAction ConcludeAction ToCloseAction UnpaidAction"><a class=" dropdown-toggle btn-sm btn text-white border border-white "
+				<td class="NewAction PendingAction ActiveAction ConcludeAction ">`+ dataset.phone+`</td>
+				<td class="NewAction PendingAction ActiveAction ConcludeAction ">`+ dataset.address+`</td>
+				<td class="ActiveAction">`+ dataset.state+`</td>
+				<td class="NewAction PendingAction ActiveAction ConcludeAction "><a class=" dropdown-toggle btn-sm btn text-white border border-white "
 					style="border: 1px solid rgb(255, 255, 255); border-radius: 2px;"
 					href="#" role="button" data-bs-toggle="dropdown"
 					aria-expanded="false"> Actions </a>
 
 
 				<ul class="dropdown-menu text-muted">
-					<li class="NewAction"><a class="dropdown-item " onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-toggle="modal"
-						data-bs-target="#assign"><i
-							class="bi bi-card-checklist mx-2"></i>assign Case</a></li>
-					<li class="NewAction"><a class="dropdown-item" onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-toggle="modal"
-						data-bs-target="#cancel" ><i class="bi bi-x-circle mx-2" ></i>cancel
-							case </a></li>
-					<li class="PendingAction NewAction ActiveAction ConcludeAction ToCloseAction UnpaidAction"><a class="dropdown-item text-secondary"
+					
+					
+					<li class="NewAction PendingAction ActiveAction ConcludeAction "><a class="dropdown-item text-secondary"
 						href="viewCase/`+id+`"><i class="bi bi-card-heading mx-2"></i>view
 							case</a></li>
-					<li class="PendingAction ToCloseAction"><a class="dropdown-item" onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-toggle="modal"
-						data-bs-target="#clear"><i class="bi bi-x-circle mx-2"></i>clear
-							case</a></li>
-					<li class="ToCloseAction"><a class="dropdown-item text-secondary"
-						href="closeCase/`+id+`"><i class="bi bi-x-circle mx-2"></i>close
-							case</a></li>
-					<li class="PendingAction NewAction ActiveAction ConcludeAction ToCloseAction UnpaidAction"><a class="dropdown-item text-secondary"
-						href="viewNotes/`+id+`"><i class="bi bi-journal-medical mx-2 "></i>view
-							notes</a></li>
-					<li class="NewAction"><a class="dropdown-item text-secondary" onclick="cancelCase('`+dataset.name+`', `+id+`)"
-						data-bs-toggle="modal" data-bs-target="#block"><i
-							class="bi bi-ban mx-2"></i>Block Patients</a></li>
+					
+				
+					<li class="NewAction PendingAction ActiveAction ConcludeAction "><a class="dropdown-item text-secondary"
+						href="viewNotes/`+userID+`/`+id+`"><i class="bi bi-journal-medical mx-2 "></i>View
+							Notes</a></li>
+					
 					<li class="PendingAction ActiveAction ConcludeAction"><a class="dropdown-item text-secondary"
 						href="viewDocs/`+id+`""><i
-							class="bi bi-file-earmark-arrow-up mx-2 ToCloseAction UnpaidAction"></i> view uploads</a></li>
-					<li class="PendingAction"><a class="dropdown-item" data-bs-toggle="modal"
+							class="bi bi-file-earmark-arrow-up mx-2 ToCloseAction UnpaidAction"></i> View Uploads</a></li>
+							
+					<li class="NewAction PendingAction"><a class="dropdown-item" data-bs-toggle="modal"
 						data-bs-target="#transfer" onclick="cancelCase('`+dataset.name+`', `+id+`)"><i
-							class="bi bi-card-checklist mx-2"></i>transfer</a></li>
+							class="bi bi-card-checklist mx-2"></i>Transfer</a></li>
+							
 					<li class="PendingAction"><a class="dropdown-item" onclick="sendAgreement('`+email+`', '`+phone+`',  `+id+`)" data-bs-toggle="modal"
 						data-bs-target="#send"> <i
-							class="bi bi-file-earmark-slides mx-2 "></i>send agreement
+							class="bi bi-file-earmark-slides mx-2 "></i>Send Agreement
 					</a></li>
-					<li class="ActiveAction ConcludeAction ToCloseAction"><a class="dropdown-item text-secondary"
-						href="orders/`+id+`""><i
-							class="bi bi-clipboard-check-fill mx-2"></i>orders</a></li>
 					
+					<li class="ActiveAction ConcludeAction "><a class="dropdown-item text-secondary"
+						href="orders/`+id+`""><i
+							class="bi bi-clipboard-check-fill mx-2"></i>Orders</a></li>
+							
+					<li class="NewAction"><a class="dropdown-item" onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-toggle="modal"
+						data-bs-target="#accept"><i class="bi bi-x-circle mx-2"></i>Accept
+							Case</a></li>
 
-					<li class="ActiveAction ConcludeAction ToCloseAction"><a class="dropdown-item text-secondary" href="encounter/`+id+`"><i
-							class="bi bi-file-earmark-richtext mx-2"></i>encounter</a></li>
+					<li class="ActiveAction ConcludeAction "><a class="dropdown-item text-secondary" href="encounter/`+id+`"><i
+							class="bi bi-file-earmark-richtext mx-2"></i>Encounter</a></li>
 				</ul>
 				</td></tr>`
 				
@@ -1582,12 +1496,12 @@ function onBadgeClick(event) {
 		
 	
 			
-	
+		$(".t-data").append(rows);
 	
 
 if(class1 == "blue" && dataset.status==1){
 					console.log("iffff")
-					$(".t-data").append(rows);
+				
 					$(accbody).append(accordian);
 					
 					
@@ -1620,7 +1534,7 @@ if(class1 == "blue" && dataset.status==1){
 			
 				else if(class1 == "sky" && dataset.status==2){
 						console.log("iffff")
-						$(".t-data").append(rows);
+					/* 	$(".t-data").append(rows); */
 						$(accbody).append(accordian);
 						
 						if(dataset.requestTypeId==1){
@@ -1643,8 +1557,7 @@ if(class1 == "blue" && dataset.status==1){
 						$(".NewAction").hide();
 						 $(".ActiveAction").hide();
 						 $(".ConcludeAction").hide();
-						 $(".ToCloseAction").hide();
-						 $(".UnpaidAction").hide();
+						
 						 $(".PendingAction").show();
 						
 						
@@ -1652,7 +1565,7 @@ if(class1 == "blue" && dataset.status==1){
 			
 				else if(class1 == "green" && (dataset.status==4 || dataset.status==5)){
 					console.log("iffff")
-					$(".t-data").append(rows);
+			/* 		$(".t-data").append(rows); */
 					$(accbody).append(accordian);
 					
 					if(dataset.requestTypeId==1){
@@ -1684,7 +1597,7 @@ if(class1 == "blue" && dataset.status==1){
 			
 				else if(class1 == "pink" && dataset.status==6){
 					console.log("iffff")
-					$(".t-data").append(rows);
+			/* 		$(".t-data").append(rows); */
 					$(accbody).append(accordian);
 					
 					if(dataset.requestTypeId==1){
@@ -1714,68 +1627,9 @@ if(class1 == "blue" && dataset.status==1){
 					
 				}
 			
-				else if(class1 == "light-blue" && (dataset.status==3 || dataset.status==7 || dataset.status==8)){
-					console.log("iffff")
-					$(".t-data").append(rows);
-					$(accbody).append(accordian);
-					
-					if(dataset.requestTypeId==1){
-						$('table tr:last td').css({"background-color": "#DC143C","color": "#ffffff"
-                    });
-					}
-					else if(dataset.requestTypeId==2) {
-						$('table tr:last td').css({"background-color": "#228C20" , "color": "#ffffff"
-					});
-					}
-					else if(dataset.requestTypeId==3) {
-						$('table tr:last td').css({"background-color": "#FF7600" , "color": "#ffffff"
-					});
-					}
-					else if(dataset.requestTypeId==4) {
-						$('table tr:last td').css({"background-color": "#0096FF", "color": "#ffffff"
-					});
-					}
-					
-					 $(".NewAction").hide();
-					 $(".PendingAction").hide();
-					 $(".ActiveAction").hide();
-					 $(".ConcludeAction").hide();
-					 $(".UnpaidAction").hide();
-					 $(".ToCloseAction").show();
-					
-					
-				}
+				
 			
-				else if(class1 == "purple" && dataset.status==9){
-					console.log("iffff")
-					$(".t-data").append(rows);
-					$(accbody).append(accordian);
-					
-					if(dataset.requestTypeId==1){
-						$('table tr:last td').css({"background-color": "#DC143C","color": "#ffffff"
-                    });
-					}
-					else if(dataset.requestTypeId==2) {
-						$('table tr:last td').css({"background-color": "#228C20" , "color": "#ffffff"
-					});
-					}
-					else if(dataset.requestTypeId==3) {
-						$('table tr:last td').css({"background-color": "#FF7600" , "color": "#ffffff"
-					});
-					}
-					else if(dataset.requestTypeId==4) {
-						$('table tr:last td').css({"background-color": "#0096FF", "color": "#ffffff"
-					});
-					}
-					
-					 $(".NewAction").hide();
-					 $(".PendingAction").hide();
-					 $(".ActiveAction").hide();
-					 $(".ConcludeAction").hide();
-					 $(".ToCloseAction").hide();
-					 $(".UnpaidAction").show();
-					
-				}
+				
 			
 			
 			

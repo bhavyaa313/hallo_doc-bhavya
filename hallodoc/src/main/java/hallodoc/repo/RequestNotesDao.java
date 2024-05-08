@@ -30,7 +30,7 @@ public class RequestNotesDao {
 	}
 	
 	@Transactional
-	public void businessUpdate(RequestNotes requestNotes ) {
+	public void requestNotesUpdate(RequestNotes requestNotes ) {
 		template.update(requestNotes);
 	}
 	

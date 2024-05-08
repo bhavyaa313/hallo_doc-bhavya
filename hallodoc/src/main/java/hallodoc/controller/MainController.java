@@ -41,12 +41,15 @@ import hallodoc.dto.ViewDocumentsDTO;
 import hallodoc.helper.DobHelper;
 import hallodoc.helper.emailHelper;
 import hallodoc.model.AspNetRoles;
+import hallodoc.model.AspNetUsers;
 import hallodoc.model.DummyForgot;
+import hallodoc.model.Physician;
 import hallodoc.model.Request;
 import hallodoc.model.Role;
 import hallodoc.model.User;
 import hallodoc.model.Users;
 import hallodoc.repo.AdminDashboardDao;
+import hallodoc.repo.PhysicianDao;
 import hallodoc.repo.UserDao;
 import hallodoc.repo.UsersDao;
 import hallodoc.service.BusinessService;
@@ -73,9 +76,7 @@ public class MainController {
 
 	@Autowired
 	private ViewDocsService viewDocsService;
-	
 
-	
 	@Autowired
 	private AdminDashboardDao adminDashboardDao;
 
@@ -88,16 +89,19 @@ public class MainController {
 
 	@Autowired
 	private BusinessService businessService;
-	
+
 	@Autowired
 	private EditProfileService editProfileService;
 
 	@Autowired
 	private mailService mailService;
+	
+	@Autowired
+	private PhysicianDao physicianDao;
 
 	@Autowired
 	private UsersService login;
-	
+
 	@Autowired
 	private DobHelper dobHelper;
 
@@ -121,7 +125,7 @@ public class MainController {
 
 	@Autowired
 	private CreateAccountService createAccountService;
-	
+
 	@Autowired
 	private UserDao userDao;
 
@@ -195,8 +199,6 @@ public class MainController {
 
 	}
 
-	
-
 	@RequestMapping("/select")
 	public String select() {
 
@@ -245,52 +247,57 @@ public class MainController {
 
 		boolean status = login.checkEmail5(users.getUserEmail(), users.getUserPassword());
 		String xString = users.getUserEmail();
-		String passwordString =  users.getUserPassword();
+		String passwordString = users.getUserPassword();
 		User uId = login.getId(xString);
-		int userID =   uId.getUserID();
-		int roleId =   uId.getRoleId();
-		
-		
+		int userID = uId.getUserID();
+		int roleId = uId.getRoleId();
+
 		List requestsList = requestService.getRequest(uId);
 		List userList = login.getUserIdUser(xString);
-		
-		
+
 		String emailIdString = xString.replace("@", "a");
-		
-		
-		
-	
-		
-		
+
 //		System.out.println(requestsList);
 
 		HttpSession session = request.getSession();
 
 		String uname = login.getUser(xString);
-		
-		Cookie cookie = new Cookie("emailId",emailIdString );
-		cookie.setMaxAge(60*60);
+
+		Cookie cookie = new Cookie("emailId", emailIdString);
+		cookie.setMaxAge(60 * 60);
 		respons.addCookie(cookie);
 		System.out.println(cookie.getName());
 
 		String message;
 		System.out.println(status);
 		
+
 		if (status) {
-			
-			if (roleId==1) {
-				
+
+			if (roleId == 1) {
+
 				session.setAttribute("userList", userList);
 				session.setAttribute("email", emailIdString);
 				
-				
-				
-				
+
 				return "redirect:admin";
+
+			}
+			else if (roleId == 2) {
 				
-				
-				
-			} else {
+				AspNetUsers aspId = uId.getAspnetUserId();
+				List<Physician> physicians = physicianDao.getPhysiciansAll(aspId);
+				Physician physician = physicians.get(0);
+				Integer phyIdInteger = physician.getPhysicianId();
+				session.setAttribute("userList", userList);
+				session.setAttribute("email", emailIdString);
+				model.addAttribute("phyIdInteger", phyIdInteger);
+
+				return "redirect:provider/" + phyIdInteger;
+
+			}
+
+			else {
 				System.out.println(" authenticated");
 				session.setAttribute("userList", userList);
 				session.setAttribute("email", emailIdString);
@@ -302,11 +309,10 @@ public class MainController {
 				model.addAttribute("requestsList", requestsList);
 				model.addAttribute("xString", xString);
 				model.addAttribute("userID", userID);
-				return "redirect:/pdash/"+ userID;
+				return "redirect:/pdash/" + userID;
 
 			}
-			
-		
+
 		} else {
 			System.out.println(" not authenticated");
 
@@ -452,8 +458,7 @@ public class MainController {
 		model.addAttribute("requestWiseFiles", viewDocumentsDTO);
 		return "/patient/document_view";
 	}
-	
-	
+
 	@RequestMapping("pdash/showDocs/{rId}/{firstName}/{lastName}")
 	public String handleeAction1(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName,
 			@PathVariable("rId") String rId, Model model, Users users, HttpServletRequest request) {
@@ -464,7 +469,6 @@ public class MainController {
 		model.addAttribute("requestWiseFiles", viewDocumentsDTO);
 		return "/patient/document_view";
 	}
-
 
 	@RequestMapping(path = "/showDocs/{rId}/{firstName}/{lastName}/uploadFile", method = RequestMethod.POST)
 	public String uploadFile(@RequestParam("file_name") CommonsMultipartFile filename, HttpSession s,
@@ -513,16 +517,13 @@ public class MainController {
 
 		return "redirect:/pdash/{userID}";
 	}
-	
-	
-	
+
 	@RequestMapping("/pdash/me/{userID}")
 	public String InfoForMe(@PathVariable("userID") String userID) {
 
 		return "/patient/InfoForMe";
 
 	}
-
 
 	@RequestMapping("/pdash/someone/{userID}")
 	public String InfoForSomeone(@PathVariable("userID") String userID, Model model) {
@@ -559,8 +560,9 @@ public class MainController {
 	}
 
 	@RequestMapping(path = "/pdash/{userID}")
-	public String patientDash(@PathVariable("userID") String userID, @ModelAttribute Users users, RedirectAttributes ra, Model model,
-			HttpServletRequest request, HttpServletResponse respons, 	@CookieValue(value = "emailId", defaultValue = "error") String emailId) {
+	public String patientDash(@PathVariable("userID") String userID, @ModelAttribute Users users, RedirectAttributes ra,
+			Model model, HttpServletRequest request, HttpServletResponse respons,
+			@CookieValue(value = "emailId", defaultValue = "error") String emailId) {
 
 //		String xString = users.getUserEmail();
 //		User uId = login.getId(xString);
@@ -568,53 +570,47 @@ public class MainController {
 		String emailString = (String) session.getAttribute("email");
 		System.out.println(emailId);
 		System.out.println(emailString);
-		
-		if (emailId.equals(emailString))
-		{
-		int uID = Integer.parseInt(userID);
-		List<User> listOFuser =   userDao.getUserIDList(uID);
-		User user = listOFuser.get(0);
 
-		List requestsList = requestService.getRequest(user);
-		
+		if (emailId.equals(emailString)) {
+			int uID = Integer.parseInt(userID);
+			List<User> listOFuser = userDao.getUserIDList(uID);
+			User user = listOFuser.get(0);
+
+			List requestsList = requestService.getRequest(user);
+
 //	
 
 //		
 
+			model.addAttribute("requestsList", requestsList);
 
-		model.addAttribute("requestsList", requestsList);
-
-		return "/patient/patient_dashboard";
-		}
-		else {
+			return "/patient/patient_dashboard";
+		} else {
 			return "/admin/error";
 		}
 
 	}
-	
-	@RequestMapping(path = "/edit/{userID}")
-	public String editProfile(@PathVariable("userID") String userID, Model model)
-	{
+
+	@RequestMapping(path = "/pdash/edit/{userID}")
+	public String editProfile(@PathVariable("userID") String userID, Model model) {
 		int uID = Integer.parseInt(userID);
-		List<User> userList =   userDao.getUserIDList(uID);
+		List<User> userList = userDao.getUserIDList(uID);
 		User user = userList.get(0);
-		int date =   user.getIntDate();
-		int year =  user.getIntYear();
+		int date = user.getIntDate();
+		int year = user.getIntYear();
 		String monthString = user.getStrMonth();
-		String fullDate=  dobHelper.getWholeDate(date, monthString, year);
+		String fullDate = dobHelper.getWholeDate(date, monthString, year);
 		model.addAttribute("userList", userList);
 		model.addAttribute("fullDate", fullDate);
 		return "/patient/editProfile";
 	}
-	
-	@RequestMapping(path = "/edit/editProfile", method = RequestMethod.POST)
+
+	@RequestMapping(path = "/pdash/edit/editProfile", method = RequestMethod.POST)
 	public String submitInfo(@ModelAttribute EditProfileDto editProfileDto) {
-		
+
 		editProfileService.service(editProfileDto);
 		return "/patient/editProfile";
 
 	}
-	
-	
 
 }

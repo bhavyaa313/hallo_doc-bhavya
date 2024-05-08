@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import hallodoc.dto.AdminDashboardDto;
 import hallodoc.dto.PatientInfoDto;
+import hallodoc.dto.ProviderDashboardDto;
 import hallodoc.model.Request;
 import hallodoc.model.RequestClient;
 import hallodoc.repo.AdminDashboardDao;
@@ -21,7 +22,7 @@ import net.bytebuddy.dynamic.DynamicType.Builder.InnerTypeDefinition;
 import net.bytebuddy.dynamic.scaffold.MethodRegistry.Handler.ForAbstractMethod;
 
 @Service
-public class AdminDashboardService {
+public class ProviderDashboardService {
 	
 	@Autowired
 	private RequestDao requestDao;
@@ -35,9 +36,9 @@ public class AdminDashboardService {
 	
 
 	
-	public List<AdminDashboardDto> service(String status, String role, String searchText, String region) {
+	public List<ProviderDashboardDto> service(String status, String role,String searchText, int phyID) {
 		
-		List<AdminDashboardDto> listAdminDashboardDtos = new ArrayList<AdminDashboardDto>();
+		List<ProviderDashboardDto> lisProviderDashboardDtos = new ArrayList<ProviderDashboardDto>();
 		int mainStatus1 = 0;
 		int mainStatus2 = 0;
 		int mainStatus3 = 0;
@@ -100,45 +101,24 @@ public class AdminDashboardService {
 			break;
 		}
 
-		String sqlString = "from hallodoc.model.Request r where (r.status="+mainStatus1+" OR r.status="+mainStatus2+" OR r.status="+mainStatus3+") AND r.isDeleted=0";
+		String sqlString = "from hallodoc.model.Request r where (r.status="+mainStatus1+" OR r.status="+mainStatus2+" OR r.status="+mainStatus3+") AND r.isDeleted=0 AND r.physicianId.physicianId="+phyID;
 		String sqlfinalString = sqlString;
 		if (!role.equals("undefined")) {
 			String sqlString2 = "AND requestTypeId=" + roleid;
 			sqlfinalString = sqlString + sqlString2;
 		}
 
-		if (!searchText.equals("undefined") && region.equals("0")) {
-//			String subString = searchText.substring(0, 4);
+		if (!searchText.equals("undefined")) {
+
 			String sqlString1 = " AND (upper(CONCAT(r.firstName,r.lastName)) LIKE CONCAT('%','"+searchText+"','%') OR upper(CONCAT(r.requestClient.firstName,r.requestClient.lastName)) LIKE CONCAT('%','"+searchText+"','%') )";
 
 			sqlfinalString = sqlString + sqlString1;
 		}
 
-		if (searchText.equals("undefined") && !region.equals("0"))
-
-		{
-
-			Integer regionId = Integer.parseInt(region);
-			String sqlString2 = " AND r.requestClient.regionId=" + regionId;
-			sqlfinalString = sqlString + sqlString2;
-		}
-
-		 if (!searchText.equals("undefined") && !region.equals("0"))
-
-		{
-
-			Integer regionId = Integer.parseInt(region);
-			String sqlString1 = " AND (upper(CONCAT(r.firstName,r.lastName)) LIKE CONCAT('%','" + searchText
-					+ "','%') OR upper(CONCAT(r.requestClient.firstName,r.requestClient.lastName)) LIKE CONCAT('%','"
-					+ searchText + "','%') )";
-			String sqlString2 = "INNER JOIN RequestClient t2 ON regionId=" + regionId;
-
-			String sqlString3 = sqlString1 + sqlString2;
-
-			sqlfinalString = sqlString2 + sqlString3;
-		}
 		
-		System.out.println(sqlfinalString);
+
+			
+		
 		
 		List<Request> requests = requestDao.getRequestsByRequestType(sqlfinalString);
 		System.out.println("Request" + " " + requests);
@@ -150,7 +130,7 @@ public class AdminDashboardService {
 		for(int i=0; i<requests.size(); i++)
 			{
 			
-			AdminDashboardDto adminDashboardDto = new AdminDashboardDto();
+			ProviderDashboardDto providerDashboardDto = new ProviderDashboardDto();
 			
 			Request request = requests.get(i);
 			
@@ -163,27 +143,29 @@ public class AdminDashboardService {
 			System.out.println("helooo" + i);
 			
 			
-			 int d = requestClient.getIntDate(); String date = String.valueOf(d); int y =
-			 requestClient.getIntYear(); String year = String.valueOf(y);
-			 
-			 String dobString = date + requestClient.getStrMonth() +year;
-			 
+			int d = requestClient.getIntDate();
+			String date = String.valueOf(d);
+			int y = requestClient.getIntYear();
+			String year = String.valueOf(y);
+			
+			String dobString = date + requestClient.getStrMonth() +year;
 			
 			
-			adminDashboardDto.setRequestId(request.getRequestId());
-			adminDashboardDto.setName(requestClient.getFirstName()+ " " + requestClient.getLastName()); 
-			adminDashboardDto.setPhone(requestClient.getPhoneNumber());
-			adminDashboardDto.setRegion(requestClient.getState());
-			adminDashboardDto.setRequestor(request.getFirstName() + " " + request.getLastName());
-			adminDashboardDto.setAddress(requestClient.getStreet()+ " " + requestClient.getCity() + " " + requestClient.getState());
-			adminDashboardDto.setNotes(requestClient.getNotes());
-			adminDashboardDto.setRequestedDate(request.getCreatedDate().toString());
-			 adminDashboardDto.setDob(dobString); 
-			adminDashboardDto.setStatus(request.getStatus());
-			adminDashboardDto.setRequestTypeId(request.getRequestTypeId());
-			adminDashboardDto.setEmail(requestClient.getEmail());
 			
-			listAdminDashboardDtos.add(adminDashboardDto);
+			providerDashboardDto.setRequestId(request.getRequestId());
+		providerDashboardDto.setName(requestClient.getFirstName()+ " " + requestClient.getLastName()); 
+		providerDashboardDto.setPhone(requestClient.getPhoneNumber());
+		providerDashboardDto.setRegion(requestClient.getState());
+		providerDashboardDto.setRequestor(request.getFirstName() + " " + request.getLastName());
+		providerDashboardDto.setAddress(requestClient.getStreet()+ " " + requestClient.getCity() + " " + requestClient.getState());
+		providerDashboardDto.setNotes(requestClient.getNotes());
+		providerDashboardDto.setRequestedDate(request.getCreatedDate().toString());
+		providerDashboardDto.setDob(dobString);
+		providerDashboardDto.setStatus(request.getStatus());
+		providerDashboardDto.setRequestTypeId(request.getRequestTypeId());
+		providerDashboardDto.setEmail(requestClient.getEmail());
+			
+			lisProviderDashboardDtos.add(providerDashboardDto);
 			
 			
 		}
@@ -192,26 +174,24 @@ public class AdminDashboardService {
 		
 		
 		
-		return listAdminDashboardDtos;
+		return lisProviderDashboardDtos;
 		
 		
 		
 		
 	}
 	
-	public Integer[] count()
+	public Integer[] count(int phyID)
 	
 	{
 		
-		List<Request> requestList = adminDashboardDao.getRequests();
+		List<Request> requestList = adminDashboardDao.getRequestsByphyID(phyID);
 		
 		int newCount = 0;
 		int pendingCount = 0;
 		int activeCount = 0;
 		int concludeCount = 0;
-		int tocloseCount = 0;
-		int unpaidCount = 0;
-		
+	
 		
 		for(int i=0; i<requestList.size(); i++)
 		{
@@ -235,22 +215,14 @@ public class AdminDashboardService {
 				concludeCount+=1;
 			}
 			
-			else if (xInteger==3 || xInteger==7 || xInteger==8) {
-				tocloseCount+=1;
-			}
-			else if (xInteger==9) {
-				unpaidCount+=1;
-				
-			}
+		
 		}
 		
-		Integer[] countInteger = {newCount , pendingCount , activeCount, concludeCount, tocloseCount, unpaidCount};
+		Integer[] countInteger = {newCount , pendingCount , activeCount, concludeCount};
 		System.out.println("new" + countInteger[0]);
 		System.out.println("pending" +countInteger[1]);
 		System.out.println("Active" +countInteger[2]);
 		System.out.println("conclude" +countInteger[3]);
-		System.out.println("toclose" +countInteger[4]);
-		System.out.println("unpaid" +countInteger[5]);
 		
 		return countInteger;
 		

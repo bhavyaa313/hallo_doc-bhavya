@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
+import hallodoc.model.AspNetUsers;
 import hallodoc.model.Physician;
 import hallodoc.model.Request;
 
@@ -54,6 +55,22 @@ public class PhysicianDao {
 
 	}
 	
+	public List<Physician> getPhysiciansAll(AspNetUsers id) {
+
+		Session session = sessionFactory.openSession();
+
+		
+		String hqlString = "from hallodoc.model.Physician where aspnetUserId=:id";
+				
+		Query query = session.createQuery(hqlString);
+		query.setParameter("id", id);
+		List<Physician> list = query.list();
+		System.out.println(list);
+		
+		return list;
+
+	}
+	
 	public List<Physician> getPhysiciansAll(int pId) {
 
 		Session session = sessionFactory.openSession();
@@ -69,6 +86,8 @@ public class PhysicianDao {
 		return list;
 
 	}
+	
+	
 	
 	public List<Physician> getPhysiciansAll() {
 
