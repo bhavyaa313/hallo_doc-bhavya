@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <%@page isELIgnored="false"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,7 +16,7 @@
 <title>new_req</title>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script
@@ -56,26 +57,21 @@
 
 <style>
 .hide {
-
-display: none;
+	display: none;
 }
-
 
 .hide1 {
-
-display: none;
+	display: none;
 }
 
-
 .hide2 {
-
-display: none;
+	display: none;
 }
 
 .hide3 {
-
-display: none;
+	display: none;
 }
+
 body {
 	background-color: white;
 	color: black;
@@ -148,20 +144,22 @@ body {
 						<h2 class="mb-4 text-info text-center  lo-btn fs-5">Medical
 							Report Confidential</h2>
 
-						<form action="submitEncounter/${reqId }" method="post">
+						<form action="${pageContext.request.contextPath}/submitEncounterProvider/${reqId }" method="post">
 							<div class="row g-2 mt-3">
 								<div class="col-md">
 									<div class="form-floating mb-3">
 										<input type="text" class="form-control" id="floatingInput"
-											placeholder="name" value="${requestClients[0].firstName}" disabled>
-										<label for="floatingInput" class="dm">First Name</label>
+											placeholder="name" value="${requestClients[0].firstName}"
+											disabled> <label for="floatingInput" class="dm">First
+											Name</label>
 									</div>
 								</div>
 								<div class="col-md">
 									<div class="form-floating mb-3">
 										<input type="text" class="form-control" id="floatingInput"
-											placeholder="name" value="${requestClients[0].lastName}" disabled>
-										<label for="floatingInput" class="dm">Last Name</label>
+											placeholder="name" value="${requestClients[0].lastName}"
+											disabled> <label for="floatingInput" class="dm">Last
+											Name</label>
 									</div>
 								</div>
 							</div>
@@ -180,15 +178,15 @@ body {
 								<div class="col-md">
 									<div class="form-floating mb-3">
 										<input type="text" class="form-control" id="floatingInput"
-											placeholder="name" value="${fullDate }" disabled> <label for="floatingInput"
-											class="dm">Date Of Birth</label>
+											placeholder="name" value="${fullDate }" disabled> <label
+											for="floatingInput" class="dm">Date Of Birth</label>
 									</div>
 								</div>
 								<div class="col-md">
 									<div class="form-floating mb-3">
-										<input type="text" class="form-control" id="floatingInput" value="${DOS }"
-											placeholder="name" disabled> <label for="floatingInput"
-											class="dm">date</label>
+										<input type="text" class="form-control" id="floatingInput"
+											value="${DOS }" placeholder="name" disabled> <label
+											for="floatingInput" class="dm">date</label>
 									</div>
 								</div>
 							</div>
@@ -197,9 +195,9 @@ body {
 							<div class="row g-2">
 								<div class="col-md">
 									<div class="form-floating mb-3">
-										<input type="email" class="form-control" id="floatingInput" value="${requestClients[0].email}"
-											placeholder="name" disabled> <label for="floatingInput"
-											class="dm" >Email</label>
+										<input type="email" class="form-control" id="floatingInput"
+											value="${requestClients[0].email}" placeholder="name"
+											disabled> <label for="floatingInput" class="dm">Email</label>
 									</div>
 								</div>
 
@@ -216,18 +214,18 @@ body {
 							<div class="row g-2 mb-3">
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control flex-wrap"
+										<textarea class="form-control flex-wrap enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="history1">${encounterList[0].historyOfIllness}</textarea>
+											style="height: 75px" name="history1" disabled>${encounterList[0].historyOfIllness}</textarea>
 										<label for="floatingTextarea2">History Of Present
 											Illness or Injury</label>
 									</div>
 								</div>
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="" style="height: 75px"
-											name="history2">${encounterList[0].medicalHistory}</textarea>
+											name="history2" disabled>${encounterList[0].medicalHistory}</textarea>
 										<label for="floatingTextarea2">Medical History</label>
 									</div>
 								</div>
@@ -235,58 +233,58 @@ body {
 
 							<div class="row g-2">
 								<div class="col-md">
-									<div class="form-floating mb-3">
-										<input type="text" class="form-control" id="floatingInput"
+									<div class="form-floating mb-3 ">
+										<input type="text" class="form-control enable" id="floatingInput"
 											placeholder="name" name="temp"
-											value="${encounterList[0].temp} "> <label
+											value="${encounterList[0].temp} " disabled> <label
 											for="floatingInput" class="dm">Temp</label>
 									</div>
 								</div>
 								<div class="col-md">
-									<div class="form-floating mb-3">
-										<input type="text" class="form-control" id="floatingInput"
-											placeholder="name" name="hr" value="${encounterList[0].hr}">
-										<label for="floatingInput" class="dm">HR</label>
+									<div class="form-floating mb-3 ">
+										<input type="text" class="form-control enable" id="floatingInput"
+											placeholder="name" name="hr" value="${encounterList[0].hr}"
+											disabled> <label for="floatingInput" class="dm">HR</label>
 									</div>
 								</div>
 								<div class="col-md">
-									<div class="form-floating mb-3">
-										<input type="text" class="form-control" id="floatingInput"
-											placeholder="name" name="rr" value="${encounterList[0].rr}">
-										<label for="floatingInput" class="dm">RR</label>
+									<div class="form-floating mb-3 ">
+										<input type="text" class="form-control enable" id="floatingInput"
+											placeholder="name" name="rr" value="${encounterList[0].rr}"
+											disabled> <label for="floatingInput" class="dm">RR</label>
 									</div>
 								</div>
 							</div>
 
 							<div class="row g-2">
 								<div class="col-md-2">
-									<div class="form-floating mb-3">
-										<input type="text" class="form-control" id="floatingInput"
+									<div class="form-floating mb-3 ">
+										<input type="text" class="form-control enable" id="floatingInput"
 											placeholder="name" name="bloodPressurePlus"
-											value="${encounterList[0].bloodPressurePlus}"> <label
-											for="floatingInput" class="dm">BP-1</label>
+											value="${encounterList[0].bloodPressurePlus}" disabled>
+										<label for="floatingInput" class="dm">BP-1</label>
 									</div>
 								</div>
 								<div class="col-md-2">
-									<div class="form-floating mb-3">
-										<input type="text" class="form-control" id="floatingInput"
+									<div class="form-floating mb-3 ">
+										<input type="text" class="form-control enable" id="floatingInput"
 											placeholder="name" name="bloodPressureNeg"
-											value="${encounterList[0].bloodPressureNeg}"> <label
-											for="floatingInput" class="dm">BP-2</label>
+											value="${encounterList[0].bloodPressureNeg}" disabled>
+										<label for="floatingInput" class="dm">BP-2</label>
 									</div>
 								</div>
 								<div class="col-md">
-									<div class="form-floating mb-3">
-										<input type="text" class="form-control" id="floatingInput"
-											placeholder="name" name="o2" value="${encounterList[0].o2}">
-										<label for="floatingInput" class="dm">02</label>
+									<div class="form-floating mb-3 ">
+										<input type="text" class="form-control enable" id="floatingInput"
+											placeholder="name" name="o2" value="${encounterList[0].o2}"
+											disabled> <label for="floatingInput" class="dm">02</label>
 									</div>
 								</div>
 								<div class="col-md">
-									<div class="form-floating mb-3">
-										<input type="text" class="form-control" id="floatingInput"
+									<div class="form-floating mb-3 ">
+										<input type="text" class="form-control enable" id="floatingInput"
 											placeholder="name" name="pain"
-											value="${encounterList[0].pain}"> <label
+											value="${encounterList[0].pain}" disabled> <label
 											for="floatingInput" class="dm">Pain</label>
 									</div>
 								</div>
@@ -295,17 +293,17 @@ body {
 							<div class="row g-2 mb-3">
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="heent">${encounterList[0].heent}</textarea>
+											style="height: 75px" name="heent" disabled>${encounterList[0].heent}</textarea>
 										<label for="floatingTextarea2">Heent</label>
 									</div>
 								</div>
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="cv">${encounterList[0].cv}</textarea>
+											style="height: 75px" name="cv" disabled>${encounterList[0].cv}</textarea>
 										<label for="floatingTextarea2">CV</label>
 									</div>
 								</div>
@@ -314,17 +312,17 @@ body {
 							<div class="row g-2 mb-3">
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="chest">${encounterList[0].chest}</textarea>
+											style="height: 75px" name="chest" disabled>${encounterList[0].chest}</textarea>
 										<label for="floatingTextarea2">Chest</label>
 									</div>
 								</div>
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="abd">${encounterList[0].abd}</textarea>
+											style="height: 75px" name="abd" disabled>${encounterList[0].abd}</textarea>
 										<label for="floatingTextarea2">ABd</label>
 									</div>
 								</div>
@@ -334,17 +332,17 @@ body {
 							<div class="row g-2 mb-3">
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="extr">${encounterList[0].extr}</textarea>
+											style="height: 75px" name="extr" disabled>${encounterList[0].extr}</textarea>
 										<label for="floatingTextarea2">Extr</label>
 									</div>
 								</div>
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="skin">${encounterList[0].skin}</textarea>
+											style="height: 75px" name="skin" disabled>${encounterList[0].skin}</textarea>
 										<label for="floatingTextarea2">skin</label>
 									</div>
 								</div>
@@ -354,17 +352,17 @@ body {
 							<div class="row g-2 mb-3">
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="neuro">${encounterList[0].neuro}</textarea>
+											style="height: 75px" name="neuro" disabled>${encounterList[0].neuro}</textarea>
 										<label for="floatingTextarea2">Neuro</label>
 									</div>
 								</div>
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="other">${encounterList[0].other}</textarea>
+											style="height: 75px" name="other" disabled>${encounterList[0].other}</textarea>
 										<label for="floatingTextarea2">Other</label>
 									</div>
 								</div>
@@ -374,17 +372,17 @@ body {
 							<div class="row g-2 mb-3">
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="diagnosis">${encounterList[0].diagnosis}</textarea>
+											style="height: 75px" name="diagnosis" disabled>${encounterList[0].diagnosis}</textarea>
 										<label for="floatingTextarea2">Diagnosis</label>
 									</div>
 								</div>
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="treatmentPlan">${encounterList[0].treatmentPlan}</textarea>
+											style="height: 75px" name="treatmentPlan" disabled>${encounterList[0].treatmentPlan}</textarea>
 										<label for="floatingTextarea2">Treatment Plan</label>
 									</div>
 								</div>
@@ -394,17 +392,17 @@ body {
 							<div class="row g-2 mb-3">
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="medicationsDespensed">${encounterList[0].medicationsDespensed}</textarea>
+											style="height: 75px" name="medicationsDespensed" disabled>${encounterList[0].medicationsDespensed}</textarea>
 										<label for="floatingTextarea2">Medications Dispensed</label>
 									</div>
 								</div>
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="procedures">${encounterList[0].procedures}</textarea>
+											style="height: 75px" name="procedures" disabled>${encounterList[0].procedures}</textarea>
 										<label for="floatingTextarea2">Procedures</label>
 									</div>
 								</div>
@@ -414,20 +412,15 @@ body {
 							<div class="row g-2 mb-3">
 								<div class="col-md">
 									<div class="form-floating">
-										<textarea class="form-control"
+										<textarea class="form-control enable"
 											placeholder="Leave a comment here" id="floatingTextarea2"
-											style="height: 75px" name="followUp">${encounterList[0].followUp}</textarea>
+											style="height: 75px" name="followUp" disabled>${encounterList[0].followUp} </textarea>
 										<label for="floatingTextarea2">Followup</label>
 									</div>
 								</div>
 
 							</div>
-
-
-
-
-
-
+							<input type="text" value="${phyID }" name="phyID" hidden>
 
 
 
@@ -445,12 +438,17 @@ body {
 
 							<div class="mt-4 d-flex flex-row-reverse mb-3  ">
 
-								<a href="javascript: history.go(-1)" type="button" class="btn btn-outline-info btn mx-2 mb-3">Close</a>
-								<button type="submit" class="btn btn-info btn mx-2 mb-3">Save
-									Changes</button>
+								<a href="javascript: history.go(-1)" type="button"
+									class="btn btn-outline-info btn mx-2 mb-3" id="close">Close</a>
+								<button type="submit" class="btn btn-info btn mx-2 mb-3" onclick="show2()"
+									id="savechanges" hidden>Save Changes</button>
+								<button type="button" class="btn btn-outline-info btn mx-2 mb-3"
+									onclick="show()" id="edit">Edit</button>
+									<a type="button" href="${pageContext.request.contextPath}/finalize/${reqId }/${phyID}" class="btn btn-success btn mx-2 mb-3"
+									id="show1" >finalize</a>
 								<!-- <button type="submit" class="btn btn-success btn mx-2 mb-3"
-									data-bs-toggle="modal" data-bs-target="#ec">finalize</button>
- -->
+									id="show1" data-bs-toggle="modal" data-bs-target="#ec" >finalize</button> -->
+
 
 
 							</div>
@@ -505,18 +503,29 @@ body {
 
 
 
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 	<script>
-		$(document).ready(function() {
-			$('#yourModalId').modal('show');
-		});
+
+		function show(){
+	$('.enable').removeAttr("disabled");
+	$('#savechanges').removeAttr("hidden");
+	/* $('#show1').removeAttr("hidden"); */
+	$('#edit').hide();
+	$('#show1').hide();
+	$('#close').hide();
+}
+
+/* function show2()
+{
+	$('.enable').attr("disabled", true);
+	$('#edit').removeAttr("hidden");
+	$('#close').show(); 
+	$('savechanges').attr("hidden", true);
+	$('#show1').hide();
+	
+	} */
+
 	</script>
 	<script>
 		const phoneInputField = document.querySelector("#phone");
@@ -536,6 +545,7 @@ body {
 							utilsScript : "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
 						});
 	</script>
+
 
 
 </body>

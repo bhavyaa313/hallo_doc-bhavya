@@ -20,6 +20,7 @@ public class ProviderDashboardDto {
 	private int status;
 	private int requestTypeId;
 	private int requestId;
+	private String housecall;
 
 	public String getName() {
 		return name;
@@ -136,12 +137,24 @@ public class ProviderDashboardDto {
 	public void setRequestTypeId(int requestTypeId) {
 		this.requestTypeId = requestTypeId;
 	}
+	
+	
 
 
 
-	public ProviderDashboardDto(String name, String dob, String phyNameString, LocalDateTime dateOfService, String region,
-			String requestor, String requestedDate, String phone, String address, String email, String notes,
-			int status, int requestTypeId, int requestId) {
+	public String getHousecall() {
+		return housecall;
+	}
+
+	public void setHousecall(String housecall) {
+		this.housecall = housecall;
+	}
+
+
+
+	public ProviderDashboardDto(String name, String dob, String phyNameString, LocalDateTime dateOfService,
+			String region, String requestor, String requestedDate, String phone, String address, String email,
+			String notes, int status, int requestTypeId, int requestId, String housecall) {
 		super();
 		this.name = name;
 		this.dob = dob;
@@ -157,6 +170,7 @@ public class ProviderDashboardDto {
 		this.status = status;
 		this.requestTypeId = requestTypeId;
 		this.requestId = requestId;
+		this.housecall = housecall;
 	}
 
 	public ProviderDashboardDto() {

@@ -40,7 +40,7 @@ public class HealthProfessionalsDao {
 		Session session = sessionFactory.openSession();
 
 		
-		String hqlString = "select P.vendorId, P.vendorName, P.faxNumber, P.email, P.businessContact from hallodoc.model.HealthProfessionals P where profession=:typeId and isDeleted=0";
+		String hqlString = "select P.vendorId, P.vendorName, P.faxNumber, P.email, P.businessContact from hallodoc.model.HealthProfessionals P where profession.healthProfessionalId=:typeId and isDeleted=0";
 				
 		Query query = session.createQuery(hqlString);
 		query.setParameter("typeId", typeId);

@@ -58,6 +58,9 @@ public class EncounterForm {
 	@JoinColumn(name = "request_id")
 
 	private Request requestId;
+	
+	@Column(name = "is_finalized")
+	private boolean isFinalized;
 
 	public int getEncounterFormId() {
 		return encounterFormId;
@@ -89,6 +92,15 @@ public class EncounterForm {
 
 	public void setAlergie(String alergie) {
 		this.alergie = alergie;
+	}
+
+	
+	public boolean isFinalized() {
+		return isFinalized;
+	}
+
+	public void setFinalized(boolean isFinalized) {
+		this.isFinalized = isFinalized;
 	}
 
 	public String getBloodPressurePlus() {
@@ -291,7 +303,8 @@ public class EncounterForm {
 			String bloodPressureNeg, String chest, String cv, String diagnosis, String extr, String followUp,
 			String heent, String historyOfIllness, String hr, String medicalHistory, String medications,
 			String medicationsDespensed, String neuro, String o2, String other, String pain, Physician physicianId,
-			String procedures, String rr, String skin, String temp, String treatmentPlan, Request requestId) {
+			String procedures, String rr, String skin, String temp, String treatmentPlan, Request requestId,
+			boolean isFinalized) {
 		super();
 		this.encounterFormId = encounterFormId;
 		this.abd = abd;
@@ -321,6 +334,7 @@ public class EncounterForm {
 		this.temp = temp;
 		this.treatmentPlan = treatmentPlan;
 		this.requestId = requestId;
+		this.isFinalized = isFinalized;
 	}
 
 	public EncounterForm() {

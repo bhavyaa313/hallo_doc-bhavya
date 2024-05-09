@@ -70,4 +70,80 @@ public void acceptCase(int reqId, int phyId)
 	  requestStatusLogDao.requestStatusLogSave(requestStatusLog2);
 	}
 
+public void consultCase(int reqId, int phyId)
+
+{
+  List<Request> requests = requestDao.getRequests(reqId);
+  Request request = requests.get(0);
+  request.setStatus(6);
+  request.setModifiedDate(LocalDateTime.now());
+  requestDao.requestUpdate(request);
+  List<Physician> physicians = physicianDao.getPhysiciansAll(phyId);
+  request.setAcceptedDate(LocalDateTime.now());
+  Physician physician = physicians.get(0);
+  List<RequestStatusLog> requestStatusLogs = requestStatusLogDao.getRequests(request);
+ 
+  RequestStatusLog requestStatusLog2 = new RequestStatusLog();
+  requestStatusLog2.setAdminId(1);
+  requestStatusLog2.setCreatedDate(LocalDateTime.now());
+  requestStatusLog2.setNotes("Case is Accepted");
+  requestStatusLog2.setPhysicianId(physician);
+  requestStatusLog2.setRequestId(request);
+  requestStatusLog2.setStatus(6);
+  requestStatusLogDao.requestStatusLogSave(requestStatusLog2);
+}
+
+
+public void housecall(int reqId, int phyId)
+
+{
+  List<Request> requests = requestDao.getRequests(reqId);
+  Request request = requests.get(0);
+  request.setStatus(5);
+  
+  request.setModifiedDate(LocalDateTime.now());
+  requestDao.requestUpdate(request);
+  List<Physician> physicians = physicianDao.getPhysiciansAll(phyId);
+  Physician physician = physicians.get(0);
+  List<RequestStatusLog> requestStatusLogs = requestStatusLogDao.getRequests(request);
+ 
+  RequestStatusLog requestStatusLog2 = new RequestStatusLog();
+  requestStatusLog2.setAdminId(1);
+  requestStatusLog2.setCreatedDate(LocalDateTime.now());
+  requestStatusLog2.setNotes("Case is Accepted");
+  requestStatusLog2.setPhysicianId(physician);
+  requestStatusLog2.setRequestId(request);
+  requestStatusLog2.setStatus(5);
+  requestStatusLogDao.requestStatusLogSave(requestStatusLog2);
+}
+
+public void housecall2(int reqId, int phyId)
+
+{
+  List<Request> requests = requestDao.getRequests(reqId);
+  Request request = requests.get(0);
+  request.setStatus(6);
+  request.setModifiedDate(LocalDateTime.now());
+  request.setAcceptedDate(LocalDateTime.now());
+  requestDao.requestUpdate(request);
+  List<Physician> physicians = physicianDao.getPhysiciansAll(phyId);
+  Physician physician = physicians.get(0);
+  List<RequestStatusLog> requestStatusLogs = requestStatusLogDao.getRequests(request);
+ 
+  RequestStatusLog requestStatusLog2 = new RequestStatusLog();
+  requestStatusLog2.setAdminId(1);
+  requestStatusLog2.setCreatedDate(LocalDateTime.now());
+  requestStatusLog2.setNotes("Case is Accepted");
+  requestStatusLog2.setPhysicianId(physician);
+  requestStatusLog2.setRequestId(request);
+  requestStatusLog2.setStatus(6);
+  requestStatusLogDao.requestStatusLogSave(requestStatusLog2);
+}
+
+
+
+
+
+
+
 }

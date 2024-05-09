@@ -547,6 +547,13 @@ public class AdminController {
 
 	}
 	
+	@RequestMapping(path = "/provider/send/{phyId}", method = RequestMethod.POST)
+	public String SendMailProvider(@ModelAttribute SendLinkDto sendLinkDto, @PathVariable("phyId") int phyId) {
+		sendLinkService.service(sendLinkDto);
+		return "redirect:/provider/" + phyId;
+
+	}
+	
 	@RequestMapping(path = "/contact", method = RequestMethod.POST)
 	public String SendMailContact(@ModelAttribute SendLinkDto sendLinkDto) {
 		sendLinkService.contctProvider(sendLinkDto);
@@ -600,6 +607,14 @@ public class AdminController {
 	@GetMapping(path = "/orders/ajaxForOrders")
 	@ResponseBody
 	public List<ordersDto> ajaxForOrders(@RequestParam("profession") int professionals) {
+
+		List<ordersDto> ordersDtos = ordersService.serviceOrder(professionals);
+		return ordersDtos;
+	}
+	
+	@GetMapping(path = "/provider/orders/{requestId}/ajaxForOrdersProvider")
+	@ResponseBody
+	public List<ordersDto> ajaxForOrdersProvider(@RequestParam("profession") int professionals) {
 
 		List<ordersDto> ordersDtos = ordersService.serviceOrder(professionals);
 		return ordersDtos;
@@ -793,7 +808,7 @@ public class AdminController {
 
 	}
 
-	@RequestMapping(path = "orders/{requestId}")
+	@RequestMapping(path = "/orders/{requestId}")
 	public String orders(@PathVariable("requestId") int reqId, Model model)
 
 	{
@@ -803,6 +818,19 @@ public class AdminController {
 		return ("/admin/orders");
 
 	}
+	
+	
+	@RequestMapping(path = "/provider/orders/{requestId}/{phyId}")
+	public String ordersForProviders(@PathVariable("requestId") int reqId, Model model, @PathVariable("phyId") int phyId)
+
+	{
+		String activeString = "active  text-info";
+		model.addAttribute("activeString", activeString);
+		model.addAttribute("reqId", reqId);
+		model.addAttribute("phyId", phyId);
+		return ("/provider/orders");
+
+	}
 
 	@RequestMapping(path = "/orders/sendOrders/{requestId}", method = RequestMethod.POST)
 	public String sendOrders(@ModelAttribute ordersDto ordersDto)
@@ -810,6 +838,15 @@ public class AdminController {
 	{
 		ordersService.sendOrders(ordersDto);
 		return "redirect:/admin";
+
+	}
+	
+	@RequestMapping(path = "/sendOrders/{requestId}", method = RequestMethod.POST)
+	public String sendOrdersProvider(@ModelAttribute ordersDto ordersDto, @RequestParam("phyId")int phyId)
+
+	{
+		ordersService.sendOrders(ordersDto);
+		return "redirect:/provider/" + phyId;
 
 	}
 
@@ -868,12 +905,14 @@ public class AdminController {
 	public String encounter(@PathVariable("requestId") int reqId, Model model) {
 		List<Request> requests = requestService.getRequestByReqId(reqId);
 		Request request = requests.get(0);
+		String DOS = request.getAcceptedDate().toLocalDate().toString();
 		String activeString = "active  text-info";
 		model.addAttribute("activeString", activeString);
 		List<RequestClient> requestClients = requestClientService.getRequestClientByReqId(request);
 		RequestClient requestClient = requestClients.get(0);
 		int date = requestClient.getIntDate();
 		int year = requestClient.getIntYear();
+		model.addAttribute("DOS", DOS);
 		String monthString = requestClient.getStrMonth();
 		String fullDate = dobHelper.getWholeDate(date, monthString, year);
 		System.out.println(fullDate);
@@ -887,12 +926,55 @@ public class AdminController {
 		}
 		return "/admin/encounterForm";
 	}
+	
+	
+	@RequestMapping("/provider/encounter/{requestId}/{phyID}")
+	public String encounterFormProvider(@PathVariable("requestId") int reqId, Model model, @PathVariable("phyID") int phyID) {
+		List<Request> requests = requestService.getRequestByReqId(reqId);
+		Request request = requests.get(0);
+		String DOS = request.getAcceptedDate().toLocalDate().toString();
+		String activeString = "active  text-info";
+		model.addAttribute("activeString", activeString);
+		List<RequestClient> requestClients = requestClientService.getRequestClientByReqId(request);
+		RequestClient requestClient = requestClients.get(0);
+		int date = requestClient.getIntDate();
+		int year = requestClient.getIntYear();
+		String monthString = requestClient.getStrMonth();
+		String fullDate = dobHelper.getWholeDate(date, monthString, year);
+		System.out.println(fullDate);
+		model.addAttribute("fullDate", fullDate);
+		model.addAttribute("requestClients", requestClients);
+		model.addAttribute("reqId", reqId);
+		model.addAttribute("phyID", phyID);
+		model.addAttribute("DOS", DOS);
+		List<EncounterForm> encounterList = encounterDao.getformList(request);
+		if (encounterList.size() > 0) {
+
+			model.addAttribute("encounterList", encounterList);
+		}
+		return "/provider/encounterForm";
+	}
 
 	@PostMapping("/encounter/submitEncounter/{reqId}")
 	public String submitEncounter(@PathVariable("reqId") int reqId, @ModelAttribute EncounterDto encounterDto) {
 		encounterService.service(reqId, encounterDto);
 		return "redirect:/encounter/{reqId}";
 	}
+	
+	@PostMapping("/submitEncounterProvider/{reqId}")
+	public String submitEncounterProvider(@PathVariable("reqId") int reqId, @ModelAttribute EncounterDto encounterDto, @RequestParam("phyID") int phyID) {
+		encounterService.service(reqId, encounterDto);
+		return "redirect:/provider/encounter/" + reqId + "/" + phyID;
+	}
+	
+	@GetMapping("/finalize/{reqId}/{phyID}")
+	public String finalize(@PathVariable("reqId") int reqId, @PathVariable("phyID") int phyId)
+	{
+		encounterService.finalize(reqId);
+		return "redirect:/provider/" + phyId;
+		
+	}
+
 
 	@RequestMapping("/myProfile/{userID}")
 	public String myProfile(@PathVariable("userID") int userID, Model model) {
@@ -1208,5 +1290,28 @@ public class AdminController {
 		createRoleService.deleteRole(roleId);
 		return "redirect:/accountAccess";
 	}
+	
+	@GetMapping("/provider/consult/{id}/{x}")
+	public String consultCase(@PathVariable("id") int phyId, @PathVariable("x") int reqId)
+	{
+		clearCaseService.consultCase(reqId, phyId);
+		return "redirect:/provider/" + phyId;
+	}
+	
+	@GetMapping("/provider/housecall/{id}/{x}")
+	public String houseCallCase(@PathVariable("id") int phyId, @PathVariable("x") int reqId)
+	{
+		clearCaseService.housecall(reqId, phyId);
+		return "redirect:/provider/" + phyId;
+	}
+	
+	@GetMapping("/provider/housecalls/{phyID}/{id}")
+	public String houseCall(@PathVariable("phyID") int phyId, @PathVariable("id") int reqId)
+	{
+		clearCaseService.housecall2(reqId, phyId);
+		return "redirect:/provider/" + phyId;
+	}
+
+
 
 }

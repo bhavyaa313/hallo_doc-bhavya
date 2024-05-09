@@ -155,6 +155,8 @@ body {
 					class="btn-span text-white">Create Requests</span>
 				</a>
 
+
+
 			</div>
 		</div>
 		<div class="container-fluid px-3">
@@ -664,8 +666,8 @@ body {
 							<p style="font-size: 13px;">Once Accept this request then you
 								are not able to Decline this request.</p>
 
-							<input type="text" id="reqId5" name="reqId5" >
-							<input type="text"  name="phyId" value="${id }" hidden>
+							<input type="text" id="reqId5" name="reqId5"> <input
+								type="text" name="phyId" value="${id }" hidden>
 						</div>
 						<div
 							class="modal-footer border-top-0 pb-5 d-flex justify-content-center">
@@ -760,7 +762,38 @@ body {
 				</div>
 			</div>
 		</div>
+		<div class="modal fade" id="care11" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="exampleModalLabel">Select
+							Type of care</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					
+					<div class="modal-body">
+						<div class="mx-3 d-flex justify-content-center">
+						<input id="reqId10" name="reqId10" value="" hidden>
+							<input id="reqId10" name="reqId11" value="" hidden>
+							<button href="" type="button" id="mev"
+								class="btn btn-outline-info mx-2">HouseCall</button>
+							<button type="button" class="btn btn-outline-info mx-2 "
+								id="elsev">Consult</button>
+						</div>
+					</div>
+					<div class="modal-footer">
 
+						<button type="button" class="btn btn-outline-info mx-2"
+							id="continue">
+							Save</a>
+							<button type="button" class="btn btn-outline-info mx-2 "
+								data-bs-dismiss="modal">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="modal fade" id="send" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -796,8 +829,8 @@ body {
 									placeholder="name@example.com" name="email23"> <label
 									for="floatingInput">Email address</label>
 							</div>
-							<input type="text" id="reqId6" name="reqId6" hidden>
-								<input type="text"  name="phyId" value="${id }" hidden>
+							<input type="text" id="reqId6" name="reqId6" hidden> <input
+								type="text" name="phyId" value="${id }" hidden>
 
 
 
@@ -855,7 +888,8 @@ body {
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog  modal-dialog-centered">
 				<div class="modal-content">
-					<form action="send" method="POST">
+					<form action="${pageContext.request.contextPath}/send/${id }"
+						method="POST">
 						<div class="modal-header bg-info text-white">
 							<h3 class="modal-title fs-5 " id="exampleModalLabel">Send
 								mail to patient for submitting request</h3>
@@ -1077,7 +1111,8 @@ body {
   $('#reqId4').attr('value' , reqId);
   $('#reqId5').attr('value' , reqId);
   $('#reqId6').attr('value' , reqId);
-  
+  $('#reqId10').attr('value' , reqId);
+  $('#reqId11').attr('value' , reqId);
   console.log(reqId)
 }
 	</script>
@@ -1322,7 +1357,9 @@ function onBadgeClick(event) {
 				
 				<td class="NewAction PendingAction ActiveAction ConcludeAction ">`+ dataset.phone+`</td>
 				<td class="NewAction PendingAction ActiveAction ConcludeAction ">`+ dataset.address+`</td>
-				<td class="ActiveAction">`+ dataset.state+`</td>
+				<td class="ActiveAction"><a href="housecalls/`+phyID+`/`+id+`" type="button" id="housecall"
+					class="btn btn-outline-info mx-2"  >`+ dataset.housecall+`</a>
+				</td>
 				<td class="NewAction PendingAction ActiveAction ConcludeAction "><a class=" dropdown-toggle btn-sm btn text-white border border-white "
 					style="border: 1px solid rgb(255, 255, 255); border-radius: 2px;"
 					href="#" role="button" data-bs-toggle="dropdown"
@@ -1355,17 +1392,22 @@ function onBadgeClick(event) {
 					</a></li>
 					
 					<li class="ActiveAction ConcludeAction "><a class="dropdown-item text-secondary"
-						href="orders/`+id+`""><i
+						href="orders/`+id+`/`+phyID+`""><i
 							class="bi bi-clipboard-check-fill mx-2"></i>Orders</a></li>
 							
 					<li class="NewAction"><a class="dropdown-item" onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-toggle="modal"
 						data-bs-target="#accept"><i class="bi bi-x-circle mx-2"></i>Accept
 							Case</a></li>
 
-					<li class="ActiveAction ConcludeAction "><a class="dropdown-item text-secondary" href="encounter/`+id+`"><i
-							class="bi bi-file-earmark-richtext mx-2"></i>Encounter</a></li>
+					<li class=" ConcludeAction "><a class="dropdown-item text-secondary" href="encounter/`+id+`/`+phyID+`"><i
+							class="bi bi-file-earmark-richtext mx-2"></i>Encounter Form</a></li>
+							
+
+			                  <li class="ActiveAction  "><a class="dropdown-item text-secondary" data-bs-toggle="modal" onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-target="#care11"><i
+			                        class="bi bi-file-earmark-richtext mx-2"></i>encounter</a></li>		
 				</ul>
 				</td></tr>`
+				
 				
 			let id1 = "id" + i;
 			var accordian = `<div class="accordion-item">
@@ -1664,7 +1706,51 @@ if(class1 == "blue" && dataset.status==1){
 
 
 
+	<script>
 
+
+
+
+
+      let metemp = false;
+      let elsetemp = false;
+     
+
+      $('#mev').on('click', function () {
+        // $('#me').click();
+        metemp = true;
+        elsetemp = false;
+        console.log(metemp);
+      })
+      $('#elsev').on('click', function () {
+        // $('#else').click();
+        elsetemp = true;
+        metemp = false;
+        console.log(elsetemp);
+      })
+      $('#continue').on('click', function () {
+        if (metemp == true) {
+            var x =   $('#reqId10').val();
+            let url = "housecall/${id}/"+ x; 
+            document.location.href = url;
+         
+        	
+          console.log("me")
+        }
+        else if (elsetemp == true) {
+         
+           alert("transferred to conclude state")
+                var x =   $('#reqId10').val();
+           let url = "consult/${id}/"+ x; 
+           document.location.href = url;
+          console.log("else")
+        }
+      })
+
+
+
+
+    </script>
 
 
 

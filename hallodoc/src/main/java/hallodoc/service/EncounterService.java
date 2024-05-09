@@ -88,5 +88,17 @@ public class EncounterService {
 
 		}
 	}
+	
+	public void finalize(int rId)
+	{
+		List<Request> requests = requestDao.getRequests(rId);
+		Request request = requests.get(0);
+		/*
+		 * List<RequestClient> requestClients = requestClientDao.getRequests(request);
+		 */
+		List<EncounterForm> encounterList = encounterDao.getformList(request);
+		EncounterForm encounterForm = encounterList.get(0);
+		encounterForm.setFinalized(true);
+	}
 
 }

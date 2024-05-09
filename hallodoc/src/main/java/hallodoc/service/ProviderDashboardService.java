@@ -150,9 +150,12 @@ public class ProviderDashboardService {
 			
 			String dobString = date + requestClient.getStrMonth() +year;
 			
+			if (request.getStatus()==5) {
+				providerDashboardDto.setHousecall("Housecall");
+				
+			}
 			
-			
-			providerDashboardDto.setRequestId(request.getRequestId());
+		providerDashboardDto.setRequestId(request.getRequestId());
 		providerDashboardDto.setName(requestClient.getFirstName()+ " " + requestClient.getLastName()); 
 		providerDashboardDto.setPhone(requestClient.getPhoneNumber());
 		providerDashboardDto.setRegion(requestClient.getState());
