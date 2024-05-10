@@ -1,5 +1,6 @@
 package hallodoc.service;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +14,11 @@ import org.springframework.stereotype.Service;
 import hallodoc.dto.AdminDashboardDto;
 import hallodoc.dto.PatientInfoDto;
 import hallodoc.dto.ProviderDashboardDto;
+import hallodoc.model.EncounterForm;
 import hallodoc.model.Request;
 import hallodoc.model.RequestClient;
 import hallodoc.repo.AdminDashboardDao;
+import hallodoc.repo.EncounterDao;
 import hallodoc.repo.RequestClientDao;
 import hallodoc.repo.RequestDao;
 import net.bytebuddy.dynamic.DynamicType.Builder.InnerTypeDefinition;
@@ -33,6 +36,9 @@ public class ProviderDashboardService {
 	
 	@Autowired
 	private AdminDashboardDao adminDashboardDao;
+	
+	@Autowired
+	private EncounterDao encounterDao;
 	
 
 	
@@ -138,6 +144,19 @@ public class ProviderDashboardService {
 			
 			List<RequestClient> requestClients = adminDashboardDao.getRequestClients(request);
 			
+			
+			
+			List<EncounterForm> encounterForms = encounterDao.getformList(request);
+			
+			if(encounterForms.size()>0)
+			{
+			EncounterForm encounterForm = encounterForms.get(0);
+			providerDashboardDto.setFinalized(encounterForm.isFinalized());
+			Boolean x = providerDashboardDto.isFinalized();
+			System.out.println(encounterForm.isFinalized());
+						
+			}
+			
 			RequestClient requestClient = request.getRequestClient();
 			
 			System.out.println("helooo" + i);
@@ -167,6 +186,9 @@ public class ProviderDashboardService {
 		providerDashboardDto.setStatus(request.getStatus());
 		providerDashboardDto.setRequestTypeId(request.getRequestTypeId());
 		providerDashboardDto.setEmail(requestClient.getEmail());
+	
+		
+		
 			
 			lisProviderDashboardDtos.add(providerDashboardDto);
 			

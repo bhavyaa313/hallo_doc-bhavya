@@ -292,6 +292,7 @@ public class MainController {
 				session.setAttribute("userList", userList);
 				session.setAttribute("email", emailIdString);
 				model.addAttribute("phyIdInteger", phyIdInteger);
+				session.setAttribute("phyID", phyIdInteger);
 
 				return "redirect:provider/" + phyIdInteger;
 

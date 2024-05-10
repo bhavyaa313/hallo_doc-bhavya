@@ -21,6 +21,7 @@ public class ProviderDashboardDto {
 	private int requestTypeId;
 	private int requestId;
 	private String housecall;
+	private boolean isFinalized;
 
 	public String getName() {
 		return name;
@@ -40,6 +41,15 @@ public class ProviderDashboardDto {
 
 	
 	
+	
+	public boolean isFinalized() {
+		return isFinalized;
+	}
+
+	public void setFinalized(boolean isFinalized) {
+		this.isFinalized = isFinalized;
+	}
+
 	public int getRequestId() {
 		return requestId;
 	}
@@ -152,9 +162,13 @@ public class ProviderDashboardDto {
 
 
 
+
+	
+	
+	
 	public ProviderDashboardDto(String name, String dob, String phyNameString, LocalDateTime dateOfService,
 			String region, String requestor, String requestedDate, String phone, String address, String email,
-			String notes, int status, int requestTypeId, int requestId, String housecall) {
+			String notes, int status, int requestTypeId, int requestId, String housecall, boolean isFinalized) {
 		super();
 		this.name = name;
 		this.dob = dob;
@@ -171,6 +185,7 @@ public class ProviderDashboardDto {
 		this.requestTypeId = requestTypeId;
 		this.requestId = requestId;
 		this.housecall = housecall;
+		this.isFinalized = isFinalized;
 	}
 
 	public ProviderDashboardDto() {

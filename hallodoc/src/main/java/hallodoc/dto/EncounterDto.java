@@ -33,6 +33,7 @@ public class EncounterDto {
 	private String rr;
 	private String skin;
 	private String treatmentPlan;
+	private boolean isFinalize;
 	public String getFname() {
 		return fname;
 	}
@@ -207,11 +208,25 @@ public class EncounterDto {
 	public void setTreatmentPlan(String treatmentPlan) {
 		this.treatmentPlan = treatmentPlan;
 	}
+	
+	
+	public boolean isFinalize() {
+		return isFinalize;
+	}
+	public void setFinalize(boolean isFinalize) {
+		this.isFinalize = isFinalize;
+	}
+	
+	
+
+	
+	
+	
 	public EncounterDto(String fname, String lname, String location, String dob, String date, String email,
 			String phone, String history1, String history2, String temp, String abd, String bloodPressurePlus,
 			String bloodPressureNeg, String chest, String cv, String diagnosis, String extr, String followUp,
 			String heent, String hr, String medicationsDespensed, String neuro, String o2, String other, String pain,
-			String procedures, String rr, String skin, String treatmentPlan) {
+			String procedures, String rr, String skin, String treatmentPlan, boolean isFinalize) {
 		super();
 		this.fname = fname;
 		this.lname = lname;
@@ -242,6 +257,7 @@ public class EncounterDto {
 		this.rr = rr;
 		this.skin = skin;
 		this.treatmentPlan = treatmentPlan;
+		this.isFinalize = isFinalize;
 	}
 	public EncounterDto() {
 		super();

@@ -60,6 +60,18 @@ public class UserDao {
 		return list;
 
 	}
+	
+	public int getCreatedByAsp(int id)
+	{
+		Session session = sessionFactory.openSession();
+		String hqlString = "SELECT A.createdBy from hallodoc.model.User A where A.aspnetUserId.id=:id";
+		Query query = session.createQuery(hqlString);
+		query.setParameter("id", id);
+		int createdby = (int) query.uniqueResult();
+
+		return createdby;
+		
+	}
 
 	public List<User> getUserst() {
 

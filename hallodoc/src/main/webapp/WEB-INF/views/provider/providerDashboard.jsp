@@ -772,11 +772,11 @@ body {
 						<button type="button" class="btn-close" data-bs-dismiss="modal"
 							aria-label="Close"></button>
 					</div>
-					
+
 					<div class="modal-body">
 						<div class="mx-3 d-flex justify-content-center">
-						<input id="reqId10" name="reqId10" value="" hidden>
-							<input id="reqId10" name="reqId11" value="" hidden>
+							<input id="reqId10" name="reqId10" value="" hidden> <input
+								id="reqId10" name="reqId11" value="" hidden>
 							<button href="" type="button" id="mev"
 								class="btn btn-outline-info mx-2">HouseCall</button>
 							<button type="button" class="btn btn-outline-info mx-2 "
@@ -938,6 +938,30 @@ body {
 								data-bs-dismiss="modal">Cancel</button>
 						</div>
 					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="ec" tabindex="-1"
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog  modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header bg-info text-white">
+						<h1 class="modal-title fs-5 " id="exampleModalLabel">Transfer
+							Request</h1>
+						<button type="button" class="btn-close btn-close-white"
+							data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+
+						<p class="fs-5">Encounter form is finalized successfully!</p>
+
+						<div class="mt-5 mx-auto text-center">
+							<button type="button" class="btn btn-info btn-lg ">Download</button>
+
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -1291,6 +1315,7 @@ function onBadgeClick(event) {
 		var check = $(this).children('div').attr('id');
 		var roleWiseId = (($(this).children('div').attr('id')!= "" ? ($(this).children('div').attr('id')) : "undefined"));
 		var phyID = ${id };
+		
 		  var userID = ${userList[0].userID};
 		if(class1!=undefined){
 			qForclas1.push(class1);
@@ -1349,8 +1374,26 @@ function onBadgeClick(event) {
 					var id = dataset.requestId;
 					var email = dataset.email;
 					var phone = dataset.phone;
+					var finalize = dataset.finalized;
+					console.log(finalize + "feerferf")
 					console.log("hello")
 					console.log(id);
+					
+					/* if(finalize==true)
+					{
+					console.log(finalize)
+					console.log("cutiw")
+					$('#finalize').show();
+					$('#notFinal').hide();
+					}
+				
+				else if(typeof(finalize) == "undefined")
+					{
+					console.log(typeof(finalize))
+					console.log("cutiw")
+					$('#finalize').hide();
+					$('#notFinal').show();
+					} */
 					
 				
 			var rows = `<tr><td class="NewAction PendingAction ActiveAction ConcludeAction ">`+ dataset.name+`</td>
@@ -1379,8 +1422,8 @@ function onBadgeClick(event) {
 							Notes</a></li>
 					
 					<li class="PendingAction ActiveAction ConcludeAction"><a class="dropdown-item text-secondary"
-						href="viewDocs/`+id+`""><i
-							class="bi bi-file-earmark-arrow-up mx-2 ToCloseAction UnpaidAction"></i> View Uploads</a></li>
+						href="viewDocs/`+id+`""> 
+							<i	class="bi bi-file-earmark-arrow-up mx-2 ToCloseAction UnpaidAction"></i> View Uploads</a></li>
 							
 					<li class="NewAction PendingAction"><a class="dropdown-item" data-bs-toggle="modal"
 						data-bs-target="#transfer" onclick="cancelCase('`+dataset.name+`', `+id+`)"><i
@@ -1398,16 +1441,27 @@ function onBadgeClick(event) {
 					<li class="NewAction"><a class="dropdown-item" onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-toggle="modal"
 						data-bs-target="#accept"><i class="bi bi-x-circle mx-2"></i>Accept
 							Case</a></li>
-
-					<li class=" ConcludeAction "><a class="dropdown-item text-secondary" href="encounter/`+id+`/`+phyID+`"><i
+							
+				
+					
+					<li class=" ConcludeAction "  id="notFinal"><a class="dropdown-item text-secondary" href="encounter/`+id+`/`+phyID+`"><i
 							class="bi bi-file-earmark-richtext mx-2"></i>Encounter Form</a></li>
 							
+					<li class=" ConcludeAction " id= "finalize"><a type="button" class="dropdown-item text-secondary"
+								id="" data-bs-toggle="modal" data-bs-target="#ec"  >  <i
+								class="bi bi-file-earmark-richtext mx-2"></i> Encounter</a> </li>
+							
 
-			                  <li class="ActiveAction  "><a class="dropdown-item text-secondary" data-bs-toggle="modal" onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-target="#care11"><i
-			                        class="bi bi-file-earmark-richtext mx-2"></i>encounter</a></li>		
+			         <li class="ActiveAction  "><a class="dropdown-item text-secondary" data-bs-toggle="modal" onclick="cancelCase('`+dataset.name+`', `+id+`)" data-bs-target="#care11"><i
+			                     class="bi bi-file-earmark-richtext mx-2"></i>Encounter</a></li>	
+			          
+			         <li class="ConcludeAction"><a class="dropdown-item text-secondary"
+							href="concludeCare/`+id+`""> 
+							<i	class="bi bi-file-earmark-arrow-up mx-2 ToCloseAction UnpaidAction"></i>Conclude Care</a></li>            
 				</ul>
 				</td></tr>`
 				
+	
 				
 			let id1 = "id" + i;
 			var accordian = `<div class="accordion-item">
@@ -1539,6 +1593,8 @@ function onBadgeClick(event) {
 	
 			
 		$(".t-data").append(rows);
+		
+		
 	
 
 if(class1 == "blue" && dataset.status==1){
@@ -1665,6 +1721,31 @@ if(class1 == "blue" && dataset.status==1){
 					 $(".ToCloseAction").hide();
 					 $(".UnpaidAction").hide();
 					 $(".ConcludeAction").show();
+					 
+						if(finalize===true)
+						{
+						console.log(finalize)
+						console.log("cutiw")
+						$('#finalize').show();
+						$('#notFinal').hide();
+						}
+					
+					else if(typeof(finalize) == "undefined")
+						{
+						console.log(typeof(finalize))
+						console.log("cutiw")
+						$('#finalize').hide();
+						$('#notFinal').show();
+						}
+						
+					else if(finalize == false)
+					{
+					
+					
+					$('#finalize').hide();
+					$('#notFinal').show();
+					}
+				
 					
 					
 				}
@@ -1750,6 +1831,12 @@ if(class1 == "blue" && dataset.status==1){
 
 
 
+    </script>
+
+	<script>
+    
+    
+    
     </script>
 
 

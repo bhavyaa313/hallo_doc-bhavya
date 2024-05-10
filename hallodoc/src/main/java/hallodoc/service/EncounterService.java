@@ -84,6 +84,7 @@ public class EncounterService {
 			encounterForm.setTemp(encounterDto.getTemp());
 			encounterForm.setTreatmentPlan(encounterDto.getTreatmentPlan());
 			encounterForm.setRequestId(request);
+			
 			encounterDao.EncounterSave(encounterForm);
 
 		}
@@ -99,6 +100,8 @@ public class EncounterService {
 		List<EncounterForm> encounterList = encounterDao.getformList(request);
 		EncounterForm encounterForm = encounterList.get(0);
 		encounterForm.setFinalized(true);
+		encounterDao.encounterFormUpdate(encounterForm);
+		
 	}
 
 }

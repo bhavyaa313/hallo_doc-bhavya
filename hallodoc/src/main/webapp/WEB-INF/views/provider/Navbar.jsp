@@ -94,13 +94,13 @@
       <div class="collapse navbar-collapse w-100 d-none d-lg-inline" id="navbarSupportedContent">
         <ul class="navbar-nav nav-underline">
           <li class="nav-item mx-2">
-            <a href="${pageContext.request.contextPath}/admin" class="nav-link ${activeString }">Dashboard</a>
+            <a href="${pageContext.request.contextPath}/provider/${phyID}" class="nav-link ${activeString }">Dashboard</a>
           </li>
           <li class="nav-item mx-2">
             <a href="provider_location.html" class="nav-link">My Schedule</a>
           </li>
           <li class="nav-item mx-2">
-            <a href="${pageContext.request.contextPath}/myProfile/${userList[0].userID}" class="nav-link ${activeString1 }">My Profile</a>
+            <a href="${pageContext.request.contextPath}/provider/myProfile/${phyID}" class="nav-link ${active }">My Profile</a>
           </li>
           
          

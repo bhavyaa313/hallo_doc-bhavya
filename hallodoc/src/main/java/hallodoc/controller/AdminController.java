@@ -514,7 +514,7 @@ public class AdminController {
 			@PathVariable("phyID") int phyID) {
 		System.out.println("this is ajax call");
 		List<ProviderDashboardDto> providerDashboardDtos = providerDashboardService.service(class1, roString,input, phyID);
-
+		
 		return providerDashboardDtos;
 
 	}
@@ -711,6 +711,9 @@ public class AdminController {
 		return "/admin/ViewDocs";
 	}
 	
+	
+	
+	
 	@RequestMapping("/provider/viewDocs/{requestId}")
 	public String viewDocsProvider(@PathVariable("requestId") int requestId, Model model, HttpServletRequest request1,
 			HttpSession session) {
@@ -731,6 +734,29 @@ public class AdminController {
 		session.getAttribute("userList");
 		return "/admin/ViewDocs";
 	}
+	
+	
+	@RequestMapping("/provider/concludeCare/{requestId}")
+	public String concludeCare(@PathVariable("requestId") int requestId, Model model, HttpServletRequest request1,
+			HttpSession session) {
+		String activeString = "active  text-info";
+		model.addAttribute("activeString", activeString);
+		List<Request> requests = requestService.getRequestByReqId(requestId);
+		Request request = requests.get(0);
+		String confirmString = request.getConfirmationNumber();
+		int status = request.getStatus();
+		List<RequestClient> requestClients = requestClientService.getRequestClientByReqId(request);
+		RequestClient requestClient = requestClients.get(0);
+
+		model.addAttribute("requestClients", requestClients);
+		model.addAttribute("confirmString", confirmString);
+		model.addAttribute("status", status);
+		List<ViewDocumentsDTO> viewDocumentsDTO = viewDocsService.getRequestWiseFiles(requestId, request1);
+		model.addAttribute("requestWiseFiles", viewDocumentsDTO);
+		session.getAttribute("userList");
+		return "/provider/concludeCare";
+	}
+
 
 	@RequestMapping(path = "/viewDocs/{requestId}/{userID}/uploadFile", method = RequestMethod.POST)
 	public String uploadFile(@RequestParam("file_name") CommonsMultipartFile filename, HttpSession s,
@@ -757,11 +783,45 @@ public class AdminController {
 		}
 		return "redirect:/viewDocs/{requestId}";
 	}
+	
+	
+	@RequestMapping(path = "/uploadConclude/{requestId}/{userID}/uploadFile", method = RequestMethod.POST)
+	public String uploadFileConcludeCare(@RequestParam("file_name") CommonsMultipartFile filename, HttpSession s,
+			@PathVariable("requestId") String rId, @PathVariable("userID") int userID) {
+
+		if (!(filename.getOriginalFilename().equals(""))) {
+			viewDocsService.reqWiseFileforsaveadmin(rId, filename, userID);
+			byte[] data = filename.getBytes();
+			String p = s.getServletContext().getRealPath("/") + "WEB-INF" + File.separator + "resources"
+					+ File.separator + "docs" + File.separator + filename.getOriginalFilename();
+			System.out.println(p);
+			FileOutputStream fileOutputStream;
+			try {
+				fileOutputStream = new FileOutputStream(p);
+				fileOutputStream.write(data);
+				fileOutputStream.close();
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				System.out.println("error");
+
+			}
+		}
+		return "redirect:/provider/concludeCare/{requestId}";
+	}
 
 	@RequestMapping("/viewDocs/{requestId}/{id}/delete")
 	public String deleteFile(@PathVariable("id") int id, @PathVariable("requestId") String rId) {
 		viewDocsService.delete(id);
 		return "redirect:/viewDocs/{requestId}";
+
+	}
+	
+	@RequestMapping("/concludeCare/{requestId}/{id}/delete")
+	public String deleteConcludeCare(@PathVariable("id") int id, @PathVariable("requestId") String rId) {
+		viewDocsService.delete(id);
+		return "redirect:/provider/concludeCare/{requestId}";
 
 	}
 
@@ -1046,6 +1106,32 @@ public class AdminController {
 		model.addAttribute("p", physicians);
 		return "/admin/editProvider";
 	}
+	
+	@RequestMapping("/provider/myProfile/{physicianId}")
+	public String myProfileProvider(Model model, @PathVariable("physicianId") int physicianId) {
+		String activeString = "active  text-info";
+		model.addAttribute("active", activeString);
+
+		List<Physician> physicians = physicianDao.getPhysiciansAll(physicianId);
+		model.addAttribute("p", physicians);
+		return "/provider/myProfile";
+	}
+	
+	@PostMapping("/resetPhys/{physicianId}/{id}")
+	public String resetStringProvider(@ModelAttribute CreateProviderDto createProviderDto,
+			@PathVariable("physicianId") int physicianId, @PathVariable("id") int id) {
+		providerService.reset(createProviderDto, id, physicianId);
+		return "redirect:/provider/myProfile/{physicianId}";
+
+	}
+	
+	@PostMapping("reqAdmin/{phyId}/{aspId}")
+	public String reqAdmin(@PathVariable("phyId") int phyId, @PathVariable("aspId")int id, @RequestParam("textEdit") String notes)
+	{
+		sendLinkService.SendRequestToAdmin(id, notes, phyId);
+		return "/provider/myProfile";
+	}
+
 
 	@PostMapping("/resetPhy/{physicianId}/{id}")
 	public String resetString(@ModelAttribute CreateProviderDto createProviderDto,
